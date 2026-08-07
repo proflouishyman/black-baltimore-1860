@@ -189,6 +189,8 @@
       .forEach(function (n) { tok[n] = s.getPropertyValue('--' + n).trim(); });
   }
   // quintile-ish cuts on Black share; fixed so the legend is stable
+  var CY = '1860';
+  function wd(w) { return w['y' + CY] || w.y1860; }
   function rampColor(pct) {
     if (pct < 5) return tok.c1;
     if (pct < 10) return tok.c2;
@@ -220,7 +222,7 @@
 
     if (MODE === 'density') {
       D.wards.forEach(function (w) {
-        ctx.fillStyle = rampColor(w.black_pct);
+        ctx.fillStyle = rampColor(wd(w).black_pct);
         ctx.fill(w.path);
       });
     }
@@ -347,18 +349,21 @@
     if (!html && MODE === 'density') {
       var ux = (mx - t.ox) / t.k, uy = (my - t.oy) / t.k;
       for (var w = 0; w < D.wards.length; w++) {
-        var wd = D.wards[w];
+        var wf = D.wards[w];
         ctx.save(); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         ctx.translate(t.ox, t.oy); ctx.scale(t.k, t.k);
-        var hit = ctx.isPointInPath(wd.path, ux, uy);
+        var hit = ctx.isPointInPath(wf.path, ux, uy);
         ctx.restore();
         if (hit) {
-          html = '<div class="nm">Ward ' + wd.ward + '</div><table>' +
-            '<tr><td>Black share</td><td><strong>' + wd.black_pct.toFixed(2) + '%</strong></td></tr>' +
-            '<tr><td>Free colored</td><td>' + wd.free_colored.toLocaleString() + '</td></tr>' +
-            '<tr><td>Enslaved</td><td>' + wd.slave.toLocaleString() + '</td></tr>' +
-            '<tr><td>White</td><td>' + wd.white.toLocaleString() + '</td></tr>' +
-            '<tr><td>Total</td><td>' + wd.aggregate.toLocaleString() + '</td></tr></table>';
+          var d = wd(wf), oy = CY === '1860' ? '1850' : '1860', other = wf['y' + oy];
+          html = '<div class="nm">Ward ' + wf.ward + ', ' + CY + '</div><table>' +
+            '<tr><td>Black share</td><td><strong>' + d.black_pct.toFixed(2) + '%</strong></td></tr>' +
+            '<tr><td>Free colored</td><td>' + d.free_colored.toLocaleString() + '</td></tr>' +
+            '<tr><td>Enslaved</td><td>' + d.slave.toLocaleString() + '</td></tr>' +
+            '<tr><td>White</td><td>' + d.white.toLocaleString() + '</td></tr>' +
+            '<tr><td>Total</td><td>' + d.aggregate.toLocaleString() + '</td></tr>' +
+            (other ? '<tr><td>' + oy + ' share</td><td>' + other.black_pct.toFixed(2) + '%</td></tr>' : '') +
+            '</table>';
           break;
         }
       }
@@ -371,6 +376,19 @@
     tip.style.opacity = 1;
   });
   cv.addEventListener('mouseleave', function () { tip.style.opacity = 0; });
+
+  var cyBtns = document.getElementById('cyears');
+  if (cyBtns) {
+    Array.prototype.forEach.call(cyBtns.children, function (b) {
+      b.onclick = function () {
+        CY = b.dataset.year;
+        Array.prototype.forEach.call(cyBtns.children, function (o) {
+          o.setAttribute('aria-pressed', o.dataset.year === CY);
+        });
+        draw();
+      };
+    });
+  }
 
   readTokens();
   window.addEventListener('resize', resize);

@@ -125,8 +125,16 @@ TIER2 = """<label class="row"><input type="checkbox" id="t2" checked>
 
 def build_maps(map_tpl, payload_txt, data):
     density_panel = (
-        stat_block([("25,680", "Free Black"), ("2,218", "Enslaved"),
-                    ("13.1%", "Of the city"), ("25.9%", "Ward 11, the highest")]) +
+        """
+    <div class="years" id="cyears" style="display:flex;gap:6px;margin-bottom:2px">
+      <button data-year="1850" aria-pressed="false">1850</button>
+      <button data-year="1860" aria-pressed="true">1860</button>
+    </div>
+""" +
+        stat_block([("16.8% &rarr; 13.1%", "Black share, 1850 to 1860"),
+                    ("&minus;490", "Change in Black population"),
+                    ("+43,854", "Change in white population"),
+                    ("20 of 20", "Wards where the share fell")]) +
         """
     <fieldset>
       <legend>Black share of ward population</legend>
@@ -136,6 +144,16 @@ def build_maps(map_tpl, payload_txt, data):
       <div class="ramp-lab"><span>under 5%</span><span>over 21%</span></div>
     </fieldset>
 
+    <p class="note"><strong>Switch between 1850 and 1860.</strong> The two
+      censuses share the same ward boundaries, so the comparison is exact. The
+      Black share of the city fell in <em>every one of the twenty wards</em>.
+      Not because Black Baltimore shrank much &mdash; it fell by 490 people,
+      under 2 per cent &mdash; but because 43,854 white residents arrived,
+      mostly German and Irish, and the denominator exploded beneath a
+      population that was standing still.</p>
+    <p class="note">The enslaved population fell faster, 2,946 to 2,218. Wards
+      11 and 14 barely moved, holding their share within a fifth of a point:
+      those are the neighbourhoods that persisted. Ward 17 lost ten points.</p>
     <p class="note"><strong>This is the whole population, not a sample.</strong>
       Every person the census counted, free and enslaved, by ward. The year
       maps show named individuals, but only those a directory chose to list,
@@ -145,9 +163,10 @@ def build_maps(map_tpl, payload_txt, data):
       cannot be mapped more finely: they appear under an owner's name, with no
       address of their own.</p>""")
 
-    pages = [("index.html", "density", "Eighth Census of the United States",
-              "Where Black Baltimore lived, 1860",
-              "The whole city by ward, free and enslaved, as the census counted it.",
+    pages = [("index.html", "density", "Seventh and Eighth Censuses",
+              "Where Black Baltimore lived",
+              "The whole city by ward, free and enslaved, in 1850 and 1860 \u2014 the "
+              "decade the ground shifted beneath it.",
               density_panel)]
 
     for y in ["1842", "1845", "1851", "1860", "1868"]:

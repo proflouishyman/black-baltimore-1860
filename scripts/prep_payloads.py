@@ -140,6 +140,7 @@ def main():
                 paths.append(f)
 
     cen = {int(r["ward"]): r for r in csv.DictReader(open(WORK / "ward_census_1860.csv"))}
+    cen50 = {int(r["ward"]): r for r in csv.DictReader(open(WORK / "ward_census_1850.csv"))}
     ward_feats = []
     for num, geom in zip(wards60["Ward_Num"], wards60.geometry):
         geom = geom.intersection(clip).simplify(SIMPLIFY)
@@ -153,14 +154,24 @@ def main():
                 f += [sx(x), sy(y)]
             rings.append(f)
         c = cen.get(int(num))
+        c50 = cen50.get(int(num))
         if not c:
             continue
-        ward_feats.append({
-            "ward": int(num), "rings": rings, "black_pct": float(c["black_pct"]),
-            "black": int(c["black_total"]), "white": int(c["white"]),
-            "slave": int(c["slave"]), "free_colored": int(c["free_colored"]),
-            "aggregate": int(c["aggregate"]),
-        })
+        feat = {
+            "ward": int(num), "rings": rings,
+            # 1850 and 1860 share this boundary set, so one polygon carries both
+            "y1860": {"black_pct": float(c["black_pct"]), "black": int(c["black_total"]),
+                      "white": int(c["white"]), "slave": int(c["slave"]),
+                      "free_colored": int(c["free_colored"]),
+                      "aggregate": int(c["aggregate"])},
+        }
+        if c50:
+            feat["y1850"] = {"black_pct": float(c50["black_pct"]),
+                             "black": int(c50["black_total"]), "white": int(c50["white"]),
+                             "slave": int(c50["slave"]),
+                             "free_colored": int(c50["free_colored"]),
+                             "aggregate": int(c50["aggregate"])}
+        ward_feats.append(feat)
 
     tier = {"bracketed": 0, "single_anchor": 1, "extrapolated": 1,
             "street_proportional": 2, "block_face": 0, "corner": 0}

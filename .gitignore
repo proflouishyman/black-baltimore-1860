@@ -2,3 +2,5 @@ data/raw/*.txt
 logs/
 .venv/
 data/raw/*.xml
+data/raw/hue/
+data/raw/*.geojson

@@ -224,12 +224,39 @@ def interpolate(ladder, house_no):
     return d0 + f * (d1 - d0), "extrapolated"
 
 
-def main():
-    streets = load_streets()
+YEARS = {
+    # each volume geocodes against the ward boundary in force at the time:
+    # Baltimore redrew its wards in 1861, between these two directories.
+    "1860": {"people": "woodsbaltimoreci1860balt_people.csv",
+             "anchors": "street_anchors_1860.csv",
+             "extents": "street_extents_1860.csv",
+             "wards": "baltimore_wards_1846_1860.shp"},
+    # 1845 and 1851 print no anchor table of their own, so they borrow 1860's.
+    # That is defensible because Baltimore did not renumber until the 1880s, so
+    # all three volumes share one numbering scheme; it is still an
+    # approximation across 15 and 9 years of infill, and is labelled as one.
+    "1845": {"people": "baltimoredirecto1845balt_people.csv",
+             "anchors": "street_anchors_1860.csv",
+             "extents": "street_extents_1860.csv",
+             "wards": "baltimore_wards_1841_1845.shp"},
+    "1851": {"people": "matchettsbaltimo1851balt_people.csv",
+             "anchors": "street_anchors_1860.csv",
+             "extents": "street_extents_1860.csv",
+             "wards": "baltimore_wards_1846_1860.shp"},
+    "1868": {"people": "woodsbaltimoreci1868balt_people.csv",
+             "anchors": "street_anchors_1868.csv",
+             "extents": "street_extents_1868.csv",
+             "wards": "baltimore_wards_1861_1882.shp"},
+}
+
+
+def main(year="1860"):
+    cfg = YEARS[year]
+    streets = load_streets(WARD_DIR / cfg["wards"])
     print(f"modern streets merged      : {len(streets)}")
 
     anchors_by_street = defaultdict(list)
-    for r in csv.DictReader(open(WORK / "street_anchors.csv")):
+    for r in csv.DictReader(open(WORK / cfg["anchors"])):
         r["seq"] = int(r["seq"])
         anchors_by_street[r["street"]].append(r)
     for v in anchors_by_street.values():
@@ -261,12 +288,12 @@ def main():
     # street in house-number order. The directory's extent note says which end
     # numbering starts from, so the run can be oriented rather than guessed.
     extents = {}
-    for r in csv.DictReader(open(WORK / "street_extents.csv")):
+    for r in csv.DictReader(open(WORK / cfg["extents"])):
         core, _d = norm_street(r["street"])
         if core and core not in extents:
             extents[core] = r["extent"].lower()
 
-    people = list(csv.DictReader(open(WORK / "woodsbaltimoreci1860balt_people.csv")))
+    people = list(csv.DictReader(open(WORK / cfg["people"])))
 
     # observed house-number range per street, used to scale tier-2 placement
     span = defaultdict(list)
@@ -351,7 +378,7 @@ def main():
         })
 
     gdf = gpd.GeoDataFrame(rows, crs=f"EPSG:{CRS_M}").to_crs(epsg=4326)
-    out = WORK / "people_1860_geocoded.geojson"
+    out = WORK / f"people_{year}_geocoded.geojson"
     gdf.to_file(out, driver="GeoJSON")
 
     print(f"\ngeocoded                   : {len(gdf)} of {len(people)} records")
@@ -362,8 +389,8 @@ def main():
     for s, n in sorted(miss_street.items(), key=lambda t: -t[1])[:15]:
         print(f"    {n:5d}  {s}")
     pd.Series(miss_street).sort_values(ascending=False).to_csv(
-        WORK / "unmatched_streets_1860.csv", header=["count"])
+        WORK / f"unmatched_streets_{year}.csv", header=["count"])
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1] if len(sys.argv) > 1 else "1860")

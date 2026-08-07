@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Occupations of Black Baltimoreans recorded in city directories, 1842-1868.">
+<meta property="og:title" content="How Black Baltimore worked">
+<meta property="og:description" content="Occupations of Black Baltimoreans recorded in city directories, 1842-1868.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>&#x1F5FA;</text></svg>">
+<title>Work — Black Baltimore</title>
+<style>
+  :root {
+    --ground: #E8E5DE; --panel: #F1EFE9; --ink: #17201F; --ink-2: #46514E;
+    --ink-3: #6E7A76; --rule: #CFCABF; --anchored: #A96A08; --approx: #00846F;
+    --bar: #A96A08; --bar-soft: #D8C6A4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #101619; --panel: #161E22; --ink: #E4E7E5; --ink-2: #A9B4B1;
+      --ink-3: #7E8A88; --rule: #253034; --anchored: #CB811A; --approx: #2C9C8D;
+      --bar: #CB811A; --bar-soft: #3B3527;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #101619; --panel: #161E22; --ink: #E4E7E5; --ink-2: #A9B4B1;
+    --ink-3: #7E8A88; --rule: #253034; --anchored: #CB811A; --approx: #2C9C8D;
+    --bar: #CB811A; --bar-soft: #3B3527;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--ground); color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.55;
+    -webkit-font-smoothing: antialiased; }
+  .serif { font-family: "Iowan Old Style", "Palatino Linotype", Palatino,
+           "Book Antiqua", Georgia, serif; }
+  .mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+          font-variant-numeric: tabular-nums; }
+
+  .page { max-width: 1080px; margin: 0 auto; padding: 26px 26px 80px; }
+  nav { display: flex; flex-wrap: wrap; gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule); margin-bottom: 34px; }
+  nav a { flex: 1 1 auto; min-width: 52px; text-align: center; padding: 8px 6px;
+    font-size: 12px; text-decoration: none; color: var(--ink-2);
+    background: var(--panel); letter-spacing: .04em; }
+  nav a:hover { background: var(--ground); color: var(--ink); }
+  nav a[aria-current="page"] { background: var(--ink); color: var(--panel); font-weight: 600; }
+  nav a:focus-visible { outline: 2px solid var(--anchored); outline-offset: -2px; }
+
+  .eyebrow { font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-3); margin: 0 0 10px; }
+  h1 { font-size: 38px; line-height: 1.1; margin: 0 0 12px; text-wrap: balance;
+    font-weight: 600; letter-spacing: -.015em; }
+  h2 { font-size: 21px; margin: 44px 0 12px; font-weight: 600; letter-spacing: -.01em; }
+  .lede { color: var(--ink-2); font-size: 16.5px; max-width: 64ch; margin: 0 0 6px; }
+  p { max-width: 68ch; }
+  a { color: var(--anchored); }
+
+  .years { display: flex; flex-wrap: wrap; gap: 6px; margin: 26px 0 18px; }
+  .years button { font: inherit; font-size: 13px; padding: 6px 14px; cursor: pointer;
+    background: var(--panel); color: var(--ink-2); border: 1px solid var(--rule);
+    border-radius: 2px; }
+  .years button:hover { border-color: var(--ink-3); color: var(--ink); }
+  .years button[aria-pressed="true"] { background: var(--ink); color: var(--panel);
+    border-color: var(--ink); font-weight: 600; }
+  .years button:focus-visible { outline: 2px solid var(--anchored); outline-offset: 2px; }
+
+  .chart { display: grid; grid-template-columns: 150px 1fr 64px; gap: 3px 12px;
+    align-items: center; margin-top: 8px; }
+  .chart .lab { font-size: 13px; text-align: right; color: var(--ink-2); }
+  .chart .track { background: var(--bar-soft); height: 17px; border-radius: 0 3px 3px 0; }
+  .chart .fill { background: var(--bar); height: 17px; border-radius: 0 3px 3px 0;
+    transition: width .25s ease; }
+  .chart .val { font-size: 12.5px; color: var(--ink-3);
+    font-variant-numeric: tabular-nums; }
+  @media (prefers-reduced-motion: reduce) { .chart .fill { transition: none; } }
+  @media (max-width: 620px) { .chart { grid-template-columns: 110px 1fr 52px; } }
+
+  table.data { border-collapse: collapse; font-size: 13.5px; margin-top: 10px; width: 100%; }
+  table.data th, table.data td { text-align: left; padding: 7px 12px 7px 0;
+    border-bottom: 1px solid var(--rule); }
+  table.data td.n, table.data th.n { text-align: right;
+    font-variant-numeric: tabular-nums; }
+  .scroll { overflow-x: auto; }
+
+  figure { margin: 26px 0; }
+  figure img { width: 100%; max-width: 100%; height: auto; display: block;
+    border: 1px solid var(--rule); background: #fff; }
+  figcaption { font-size: 12.5px; color: var(--ink-3); margin-top: 9px; max-width: 68ch; }
+
+  .biblio { border-top: 1px solid var(--rule); padding-top: 20px; margin-top: 30px; }
+  .biblio h3 { font-size: 16px; margin: 0 0 4px; font-weight: 600; }
+  .biblio .meta { font-size: 13px; color: var(--ink-3); margin: 0 0 6px; }
+  .biblio p { font-size: 13.5px; color: var(--ink-2); margin: 0 0 8px; }
+  .note { font-size: 13px; color: var(--ink-3); border-left: 2px solid var(--rule);
+    padding-left: 14px; margin: 22px 0; }
+  .note strong { color: var(--ink-2); font-weight: 600; }
+</style>
+
+</head>
+<body>
+<div class="page">
+  <nav>
+    <a href="./">Density</a>
+    <a href="./1842.html">1842</a>
+    <a href="./1845.html">1845</a>
+    <a href="./1851.html">1851</a>
+    <a href="./1860.html">1860</a>
+    <a href="./1868.html">1868</a>
+    <a href="./work.html" aria-current="page">Work</a>
+    <a href="./sources.html">Sources</a>
+    </nav>
+  <p class="eyebrow">Occupations, 1842–1868</p>
+  <h1 class="serif">How Black Baltimore worked</h1>
+  <p class="lede">Every occupation the directories recorded, across five volumes and twenty-six years.</p>
+  
+  <div class="years" id="years"></div>
+  <div class="chart" id="chart"></div>
+  <p class="note" id="cap"></p>
+
+  <h2>What the work tells you</h2>
+  <p>These are the trades of a population barred from most others. Laborer,
+    laundress, drayman, carter, waiter, porter: hauling, washing, serving. The
+    directories list occupations unevenly, and omit them far more often for
+    women than for men, so the counts understate women's work badly. A woman
+    listed with no trade is not a woman who did not work.</p>
+  <p>Read across the years and the shape shifts. The maritime trades &mdash;
+    caulker, sailor, stevedore, oysterman &mdash; sit close to Fells Point on
+    the maps, which is why the dots cluster there. Watch what happens to the
+    totals in 1868.</p>
+
+  <h2>Caveats worth stating</h2>
+  <p>Occupation strings come from OCR of nineteenth-century type, so spellings
+    are folded together by rule (<span class="mono">labourer</span>,
+    <span class="mono">iaborer</span> and <span class="mono">labr</span> all
+    become <span class="mono">laborer</span>). Entries longer than a few words
+    are dropped, because those are usually an address that leaked into the
+    field rather than a trade.</p>
+  <p>These counts use every parsed record, not only the ones we could place on
+    a map, so they cover more people than the year maps do.</p>
+
+</div>
+
+<script id="occ" type="application/json">{"occupations":{"1822":[["laborer",125],["laundress",53],["drayman",19],["carter",15],["sailor",9],["caulker",9],["blacksmith",8],["barber",6],["waiter",5],["teacher",4],["cook",4],["wood sawyer",4],["seamstress",2],["widow laundress",2],["package carter",2],["minister",2],["strawberry alley",2],["comb maker",2],["boot'black",1],["barbar",1],["woodsawyer",1],["rope maker",1],["cordvvainer union",1],["montgomery",1],["whitcwasher carolina",1],["market dealer carolina",1],["pratt",1],["coachman",1],["wood sawyer spring",1],["huxter low",1],["jeremiah laborer",1],["bricklayer",1],["high",1],["package case maker",1],["sawyer",1],["launclress",1],["whiskey alley",1],["cabinet maker",1],["eden",1],["duke",1]],"1842":[["laborer",438],["laundress",405],["drayman",116],["sawyer",89],["carter",81],["sailor",73],["porter",69],["waiter",58],["caulker",43],["barber",41],["stevedore",36],["huckster",33],["whitewasher",28],["shoemaker",27],["blacksmith",26],["hackman",23],["cook",21],["brickmaker",15],["seamstress",12],["coachman",10],["gardener",9],["carpenter",8],["baker",8],["ship carpenter",7],["hostler",7],["steamboat hand",7],["oysterman",5],["segar maker",5],["grain measurer",5],["farmer",5],["plaisterer",4],["teacher",4],["cooper",4],["ropemaker",4],["whip sawyer",4],["scowman",4],["wagoner",3],["midwife",3],["tanner",3],["butcher",3]],"1845":[["laborer",190],["laundress",108],["drayman",52],["porter",29],["sawyer",28],["sailor",28],["waiter",27],["barber",25],["carter",24],["caulker",17],["brickmaker",17],["stevedore",16],["shoemaker",13],["whitewasher",12],["blacksmith",9],["coachman",8],["teacher",6],["hackman",6],["cook",5],["grain measurer",5],["huckster",5],["boarding house",4],["shopkeeper",3],["gardener",2],["steamboat hand",2],["baker",2],["musician",2],["cabinet maker",2],["carpenter",2],["cooper",2],["tobacconist",2],["wagoner",2],["oysterman",2],["seamstress",2],["forrest st",2],["chambermaid",2],["tanner",2],["washerw'n",2],["cake shop",2],["camden st",1]],"1851":[["laborer",515],["laundress",239],["drayman",131],["waiter",78],["carter",71],["porter",65],["sawyer",63],["caulker",53],["barber",48],["sailor",45],["cook",30],["blacksmith",24],["coachman",22],["stevedore",21],["brickmaker",18],["whitewasher",17],["hackman",13],["oysterman",11],["seamstress",10],["whip sawyer",9],["huckster",9],["rope maker",9],["wagoner",9],["grain measurer",9],["teamster",7],["cooper",7],["hostler",7],["waterman",7],["shoemaker",6],["carpenter",6],["cor",6],["tanner",6],["shoe maker",6],["steward",6],["butcher",4],["hay dealer",4],["carriage driver",4],["teacher",4],["oak cooper",4],["steamboat hand",4]],"1860":[["laborer",557],["laundress",265],["drayman",224],["waiter",212],["porter",190],["sailor",112],["carter",88],["brickmaker",88],["barber",77],["caulker",59],["cook",58],["whitewasher",57],["oysterman",50],["coachman",42],["stevedore",38],["sawyer",33],["huckster",32],["hod carrier",26],["blacksmith",22],["wagoner",19],["grain measurer",18],["seamstress",16],["wood sawyer",15],["hostler",15],["fireman",13],["butcher",13],["shoemaker",11],["hackman",10],["confectionery",10],["carpenter",9],["engineer",9],["bricklayer",7],["steamboat hand",7],["waterman",7],["cooper",6],["tavern",5],["cigar maker",5],["trader",4],["whip sawyer",4],["driver",4]],"1868":[["laborer",1301],["laundress",1190],["waiter",369],["porter",228],["drayman",221],["cook",215],["sailor",170],["seamstress",106],["brickmaker",93],["whitewasher",79],["servant",77],["barber",70],["coachman",66],["driver",56],["carter",56],["caulker",55],["hod carrier",55],["hodcarrier",51],["stevedore",48],["hostler",47],["oysterman",43],["wagoner",39],["sawyer",34],["seeds",29],["woodsawyer",28],["grain measurer",27],["nurse",23],["steward",18],["farmer",18],["fireman",18],["huckster",17],["carpenter",17],["huckstress",17],["blacksmith",15],["shoemaker",14],["chambermaid",12],["restaurant",12],["butcher",11],["cooper",11],["grocery",11]]},"parsed":{"1822":414,"1842":2724,"1845":2100,"1851":3642,"1860":4251,"1868":8512}}</script>
+<script>
+(function () {
+  var D = JSON.parse(document.getElementById('occ').textContent);
+  var years = Object.keys(D.occupations).sort();
+  var cur = '1860';
+  var btns = document.getElementById('years'), chart = document.getElementById('chart');
+  var caption = document.getElementById('cap');
+
+  years.forEach(function (y) {
+    var b = document.createElement('button');
+    b.textContent = y; b.setAttribute('aria-pressed', y === cur);
+    b.onclick = function () { cur = y; render(); };
+    btns.appendChild(b);
+  });
+
+  function render() {
+    Array.prototype.forEach.call(btns.children, function (b) {
+      b.setAttribute('aria-pressed', b.textContent === cur);
+    });
+    var rows = (D.occupations[cur] || []).slice(0, 18);
+    var max = rows.length ? rows[0][1] : 1;
+    var listed = D.parsed[cur] || 0;
+    var withOcc = (D.occupations[cur] || []).reduce(function (a, r) { return a + r[1]; }, 0);
+    chart.innerHTML = '';
+    rows.forEach(function (r) {
+      var lab = document.createElement('div'); lab.className = 'lab'; lab.textContent = r[0];
+      var track = document.createElement('div'); track.className = 'track';
+      var fill = document.createElement('div'); fill.className = 'fill';
+      fill.style.width = Math.max(2, r[1] / max * 100) + '%';
+      track.appendChild(fill);
+      var val = document.createElement('div'); val.className = 'val';
+      val.textContent = r[1].toLocaleString();
+      chart.appendChild(lab); chart.appendChild(track); chart.appendChild(val);
+    });
+    caption.textContent = 'Top occupations among ' + withOcc.toLocaleString() +
+      ' of the ' + listed.toLocaleString() + ' people listed in ' + cur +
+      '. The rest give no occupation, which the directories record unevenly ' +
+      'and omit far more often for women.';
+  }
+  render();
+})();
+</script>
+
+
+</body>
+</html>

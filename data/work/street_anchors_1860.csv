@@ -1,0 +1,1522 @@
+street,seq,cross_street,left_no,right_no,page
+AISQUITH,1,Baltimore,,,583
+AISQUITH,2,Fayette,,,583
+AISQUITH,3,Comet,,,583
+AISQUITH,4,Jackson,,11,583
+AISQUITH,5,Holland,,19,583
+AISQUITH,6,Douglass,46,,583
+AISQUITH,7,Mullikin,,,583
+AISQUITH,8,Orleans,78,58,583
+AISQUITH,9,Thompson,96,67,583
+AISQUITH,10,Jefferson,,83,583
+AISQUITH,11,Low,130,,583
+AISQUITH,12,McElderry,150,123,583
+AISQUITH,13,Edward,,137,583
+AISQUITH,14,Gay,,141,583
+AISQUITH,15,Monument,166,145,583
+AISQUITH,16,Madison,200,177,583
+AISQUITH,17,Chew,240,217,583
+AISQUITH,18,Eager,298,257,583
+AISQUITH,19,Stirling,324,,583
+AISQUITH,20,Chase,,307,583
+AISQUITH,21,Harford av,,329,583
+AISQUITH,22,"COURTS, WHARVES, &amp;C",,,583
+THE,1,FOR THIS EUJTION,,,583
+THE,2,"any house, for instance, 71 N. CHARLES-ST., on consult",,,583
+THE,3,observe 55 is on the X. E. comer of Charles and Saratoga,,,583
+THE,4,"and Pleasant-sts. right hand. Or, if you are going up",,,583
+THE,5,"example, at 103 Park-st., examine the numbers on the",,,583
+THE,6,"will find 95 on the comer of Park and Centre, then by",,,583
+THE,7,hand,,,583
+THE,8,"eight hundred and fifty-nine, by John W. Woods",,,583
+THE,9,District Court of Maryland,,,583
+THE,10,pi Place Square,,,583
+THE,11,S South '^ -West,,,583
+THE,12,sp Space whf Wharf,,,583
+AISQUITH CT,1,son,,,583
+ALBEMARLE,1,man,,,583
+ALLEN,1,low,,,583
+ALICE ANNA,1,Sof Canton av,,,583
+ALICE ANNA,2,East Falls av,,,583
+ALICE ANNA,3,President,,,583
+ALICE ANNA,4,Albemarle,,,583
+ALICE ANNA,5,Exeter,,,583
+ALICE ANNA,6,Central av,,,583
+ALICE ANNA,7,Eden,,,583
+ALICE ANNA,8,Spring,,,583
+ALICE ANNA,9,Carolme,,141,583
+ALICE ANNA,10,Dallas,170,177,583
+ALICE ANNA,11,Bond,182,195,583
+ALICE ANNA,12,Bethel,198,215,583
+ALICE ANNA,13,Broadway,212,225,583
+ALICE ANNA,14,Regester,228,243,583
+ALICE ANNA,15,Ann,254,,583
+ALICE ANNA,16,Durham,254,275,583
+ALICE ANNA,17,Wolfe,384,392,583
+ALICE ANNA,18,Washington,304,,583
+ALICE ANNA,19,Castle,318,,583
+ALICE ANNA,20,Chester,338,,583
+ALICE ANNA,21,To East av,,,583
+"ANN, (S)",1,Baltimore,2,1,584
+"ANN, (S)",2,Lombard,36,23,584
+"ANN, (S)",3,Pratt,64,61,584
+"ANN, (S)",4,Gough,120,115,584
+"ANN, (S)",5,Bank,,141,584
+"ANN, (S)",6,Eastern av,184,165,584
+"ANN, (S)",7,Canton av,224,205,584
+"ANN, (S)",8,Aliceanna,246,229,584
+"ANN, (S)",9,Lancaster,282,263,584
+"ANN, (S)",10,Thames,,269,584
+ATLANTIC WHF,1,B,,,584
+BAKER,1,from Rock,,,584
+"BALTIMORE, (W)",1,Jones Falls,,2,584
+"BALTIMORE, (W)",2,Centre Market space,21,,584
+"BALTIMORE, (W)",3,Harrison,,22,584
+"BALTIMORE, (W)",4,Frederick,41,52,584
+"BALTIMORE, (W)",5,Gay,61,70,584
+"BALTIMORE, (W)",6,Holiday,,102,584
+"BALTIMORE, (W)",7,South,115,,584
+"BALTIMORE, (W)",8,North,,120,584
+"BALTIMORE, (W)",9,Calvert,151,152,584
+"BALTIMORE, (W)",10,Grant,169,,584
+"BALTIMORE, (W)",11,Light,1853,,584
+"BALTIMORE, (W)",12,St. Paul,,188,584
+"BALTIMORE, (W)",13,Charles,229,230,584
+"BALTIMORE, (W)",14,Hanover,263,,584
+"BALTIMORE, (W)",15,McClellan's al,,284,584
+"BALTIMORE, (W)",16,Sharp,294,289,584
+"BALTIMORE, (W)",17,Liberty,301,302,584
+"BALTIMORE, (W)",18,Howard,327,328,584
+"BALTIMORE, (W)",19,Eutaw,356,363,584
+"BALTIMORE, (W)",20,Paca,391,382,584
+"BALTIMORE, (W)",21,Greene,425,422,584
+"BALTIMORE, (W)",22,Pearl,,442,584
+"BALTIMORE, (W)",23,Pine,505,512,584
+"BALTIMORE, (W)",24,Fremont,559,572,584
+"BALTIMORE, (W)",25,Callendar al,639,,584
+"BALTIMORE, (W)",26,Poppleton,657,680,584
+"BALTIMORE, (W)",27,Amity,679,704,584
+"BALTIMORE, (W)",28,Schroeder,705,724,584
+"BALTIMORE, (W)",29,Oregon,739,,584
+"BALTIMORE, (W)",30,Republican,783,408,584
+"BALTIMORE, (W)",31,Carey,827,,584
+"BALTIMORE, (W)",32,Calhoun,859,828,584
+"BALTIMORE, (W)",33,Strieker,,868,584
+"BALTIMORE, (W)",34,Gilmor,,906,584
+"BALTIMORE, (W)",35,Mount,955,948,584
+"BALTIMORE, (W)",36,To Calverton road,,,584
+"BALTIMORE, (W)",37,(E) going east from Jones,,,584
+"BALTIMORE, (W)",38,Jones Falls,2,1,584
+"BALTIMORE, (W)",39,Front,14,15,584
+"BALTIMORE, (W)",40,High,42,45,584
+"BALTIMORE, (W)",41,Temple,54,,584
+"BALTIMORE, (W)",42,Exeter,60,73,584
+"BALTIMORE, (W)",43,East,86,,584
+"BALTIMORE, (W)",44,Lloyd,,101,584
+"BALTIMORE, (W)",45,Aisquith,118,,584
+"BALTIMORE, (W)",46,Central av,154,159,584
+"BALTIMORE, (W)",47,Eden,164,179,584
+"BALTIMORE, (W)",48,Spring,186,201,584
+"BALTIMORE, (W)",49,Caroline,206,223,584
+"BALTIMORE, (W)",50,Dallas,220,237,584
+"BALTIMORE, (W)",51,Bond,242,253,584
+"BALTIMORE, (W)",52,Bethel,266,273,584
+"BALTIMORE, (W)",53,Broadway,288,299,584
+"BALTIMORE, (W)",54,Regester,314,323,584
+"BALTIMORE, (W)",55,Ann,332,341,584
+"BALTIMORE, (W)",56,Wolfe,364,,584
+"BALTIMORE, (W)",57,Chapel,,,584
+"BALTIMORE, (W)",58,Washington,,,584
+"BALTIMORE, (W)",59,Chester,438,,584
+"BALTIMORE, (W)",60,Choptank,472,475,584
+"BALTIMORE, (W)",61,Gist,,505,584
+"BALTIMORE, (W)",62,To East av,,,584
+BANK,1,Exeter,4,1,584
+BANK,2,Central av,,25,584
+BANK,3,Eden,18,33,584
+BANK,4,Spring,44,55,584
+BANK,5,Caroline,,63,584
+BANK,6,Dallas,68,79,584
+BANK,7,Bond,72,85,584
+BANK,8,Bethel,82,,584
+BANK,9,Broadway,,101,584
+BANK,10,Regester,110,119,584
+BANK,11,Ann,,139,584
+BANK,12,Durham,148,155,584
+BANK,13,Wolfe,166,167,584
+BANK,14,Chapel,186,185,584
+BANK,15,Washington,,206,584
+BANK,16,Castle,,238,584
+BANK,17,Chester,,380,584
+BANK,18,To East av,,,584
+BARRE,1,Light-st. wharf,2,1,584
+BARRE,2,Charles,34,35,584
+BARRE,3,Hanover,48,57,584
+BARRE,4,Sharp,84,71,584
+BARRE,5,Howard,,,584
+BARRE,6,Eutaw,110,,584
+BARRE,7,L. Greene,132,129,584
+BARRE,8,Warner,,181,584
+BARRE,9,Fremont,236,,584
+"BETHEL, (N)",1,Baltimore,2,1,585
+"BETHEL, (N)",2,Hampstead,,,585
+"BETHEL, (N)",3,Fayette,,,585
+"BETHEL, (N)",4,Milliken,97,,585
+"BETHEL, (N)",5,Orleans,107,108,585
+"BETHEL, (N)",6,Jefferson,147,,585
+"BETHEL, (N)",7,Walker,,,585
+"BETHEL, (N)",8,McElderry,143,,585
+"BETHEL, (N)",9,Monument,,,585
+"BETHEL, (N)",10,Milliman,,,585
+"BETHEL, (N)",11,Madison,,,585
+"BETHEL, (S)",1,Baltimore,2,,585
+"BETHEL, (S)",2,Lombard,,27,585
+"BETHEL, (S)",3,Pratt,64,61,585
+"BETHEL, (S)",4,Gough,,129,585
+"BETHEL, (S)",5,Bank,130,,585
+"BETHEL, (S)",6,Bethel,,161,585
+"BETHEL, (S)",7,Eastern av,158,169,585
+"BETHEL, (S)",8,Canton av,182,189,585
+"BETHEL, (S)",9,Aliceanna,,223,585
+"BETHEL, (S)",10,Lancaster,226,249,585
+"BETHEL, (S)",11,Sliakspeare,,,585
+"BIDDLE, (W)",1,Jones' Falls,,,585
+"BIDDLE, (W)",2,Belvidere,,,585
+"BIDDLE, (W)",3,Hunter,,,585
+"BIDDLE, (W)",4,Calvert,,,585
+"BIDDLE, (W)",5,St. Paul,,,585
+"BIDDLE, (W)",6,Morton,,,585
+"BIDDLE, (W)",7,Decker,,,585
+"BIDDLE, (W)",8,Cathedral,,,585
+"BIDDLE, (W)",9,Grundy,,21,585
+"BIDDLE, (W)",10,Bolton,,55,585
+"BIDDLE, (W)",11,Garden,,87,585
+"BIDDLE, (W)",12,Eutaw,,115,585
+"BIDDLE, (W)",13,Morris al,,135,585
+"BIDDLE, (W)",14,Madison av,140,143,585
+"BIDDLE, (W)",15,McCulloh,,153,585
+"BIDDLE, (W)",16,Little Monument,172,,585
+"BIDDLE, (W)",17,Ross,182,183,585
+"BIDDLE, (W)",18,Elder al,190,,585
+"BIDDLE, (W)",19,Tessier,234,,585
+"BIDDLE, (W)",20,Biddle al,,,585
+"BIDDLE, (W)",21,Pennsylvania av,,,585
+"BIDDLE, (W)",22,Walsh,,,585
+"BIDDLE, (W)",23,George,272,295,585
+BIDDLE AL,1,vania av,,,585
+BIRCKHEAD'S CT,1,Lexington,,,585
+BLOOMINGDALE ROAD,1,av. to Windser Mill road,,,585
+BOLTON AL,1,Penna. av,,,585
+"BOND, (N)",1,more,,,585
+"BOND, (N)",2,Baltimore,2,1,585
+"BOND, (N)",3,Hampstead,30,,585
+"BOND, (N)",4,Fayette,66,63,585
+"BOND, (N)",5,Mullikin,100,,585
+"BOND, (N)",6,Orleans,110,87,585
+"BOND, (N)",7,Jefferson,,113,585
+"BOND, (N)",8,Walker,,133,585
+"BOND, (N)",9,McElderry,,211,585
+"BOND, (N)",10,Monument,,,585
+"BOND, (N)",11,Milliman,208,,585
+"BOND, (N)",12,Madison,228,,585
+"BOND, (N)",13,Willow,,,585
+"BOND, (N)",14,Chew,,,585
+"BOND, (N)",15,Abbott,,219,585
+"BOND, (N)",16,Barnes,,237,585
+"BOND, (N)",17,Eager,,257,585
+"BOND, (N)",18,To Northern av,,,585
+"BOND,(S)",1,Baltimore,2,1,585
+"BOND,(S)",2,Lombard,38,,585
+"BOND,(S)",3,Pratt,82,77,585
+"BOND,(S)",4,Gough,140,125,585
+"BOND,(S)",5,Bank,180,157,585
+"BOND,(S)",6,Eastern av,216,197,585
+"BOND,(S)",7,Canton av,242,231,585
+"BOND,(S)",8,Aliceanna,266,265,585
+"BOND,(S)",9,Lancaster,302,287,585
+"BOND,(S)",10,Thames,,353,585
+BOWLY,1,going south from 71 W,,,585
+"BROADWAY, (N)",1,Baltimore,2,,585
+"BROADWAY, (N)",2,Hampstead,,,586
+"BROADWAY, (N)",3,Fayette,56,67,586
+"BROADWAY, (N)",4,Mullikin,66,85,586
+"BROADWAY, (N)",5,Orleans,,,586
+"BROADWAY, (N)",6,Walker,,,586
+"BROADWAY, (N)",7,Monument,204,,586
+"BROADWAY, (N)",8,To Northern av,,,586
+"BROADWAY, (S)",1,Baltimore,2,1,586
+"BROADWAY, (S)",2,Lombard,24,37,586
+"BROADWAY, (S)",3,Pratt,54,,586
+"BROADWAY, (S)",4,Gough,96,103,586
+"BROADWAY, (S)",5,Bank,114,,586
+"BROADWAY, (S)",6,Eastern av,148,149,586
+"BROADWAY, (S)",7,Canton av,182,179,586
+"BROADWAY, (S)",8,Aliceanna,220,207,586
+"BROADWAY, (S)",9,Shakspeare,,249,586
+"BROADWAY, (S)",10,Lancaster,258,239,586
+"BROADWAY, (S)",11,Thames,274,253,586
+BYRD,1,C,,,586
+CALVERT (N.),1,Baltimore,4,,586
+CALVERT (N.),2,Fayette,12,13,586
+CALVERT (N.),3,Lexington,26,27,586
+CALVERT (N.),4,Saratoga,,57,586
+CALVERT (N.),5,Pleasant,80,81,586
+CALVERT (N.),6,Mulberry,92,,586
+CALVERT (N.),7,Foundry,,103,586
+CALVERT (N.),8,Franklin,138,,586
+CALVERT (N.),9,Centre,,,586
+CALVERT (N.),10,Monument,,101,586
+CALVERT (N.),11,Madison,190,,586
+CALVERT (N.),12,Read,214,,586
+CALVERT (N.),13,Eager,,,586
+CALVERT (S-),1,Baltimore,1,4,586
+CALVERT (S-),2,Mercer,,26,586
+CALVERT (S-),3,Water,37,30,586
+CALVERT (S-),4,Lombard,45,44,586
+CALVERT (S-),5,Matthews,46,,586
+CALVERT (S-),6,Pratt,72,,586
+CALVERTON ROAD,1,going S E from Canton av,,,586
+CAMDEN,1,Light-st. wharf,,,586
+CAMDEN,2,Charles,18,,586
+CAMDEN,3,Hanover,42,,586
+CAMDEN,4,Sharp,80,75,586
+CAMDEN,5,Howard,100,101,586
+CAMDEN,6,Eutaw,,125,586
+CAMDEN,7,Paca,150,147,586
+CAMEL AL,1,north and south from E,,,586
+CAMEL AL,2,Burke,,,586
+CANTON,1,Potomac,,,586
+CANTON AV,1,Jones Falls,2,,586
+CANTON AV,2,Albemarle,,11,586
+CANTON AV,3,Exeter,,,586
+CANTON AV,4,Central av,,,586
+CANTON AV,5,Eden,168,,586
+CANTON AV,6,Spring,,,586
+CANTON AV,7,Caroline,184,191,586
+CANTON AV,8,Dallas,196,201,586
+CANTON AV,9,Bond,208,209,586
+CANTON AV,10,Bethel,228,229,586
+CANTON AV,11,Broadway,246,251,586
+CANTON AV,12,Regester,264,263,586
+CANTON AV,13,Ann,278,291,586
+CANTON AV,14,V/olfe,316,325,586
+CANTON AV,15,Chapel,332,345,586
+CANTON AV,16,Washington,346,365,586
+CANTON AV,17,Chester,380,411,586
+CANTON AV,18,Choptank,414,,586
+CANTON AV,19,Essex,,421,586
+CANTON AV,20,Gist,464,439,586
+CANTON AV,21,Burke,,,586
+CANTON AV,22,Cannon,,547,586
+CANTON AV,23,East av,,,586
+CAROLINE. (N.),1,Baltimore,2,1,586
+CAROLINE. (N.),2,Hampstead,18,19,586
+CAROLINE. (N.),3,Fayette,,,586
+CAROLINE. (N.),4,Holland,50,,586
+CAROLINE. (N.),5,MuUikin,80,79,586
+CAROLINE. (N.),6,Orleans,89,93,586
+CAROLINE. (N.),7,McElderry,164,149,586
+CAROLINE. (N.),8,Monument,230,,586
+CAROLINE. (N.),9,Madison,228,183,587
+CAROLINE. (N.),10,Chew,254,213,587
+CAROLINE. (N.),11,Gay,,,587
+CAROLINE. (N.),12,Anthony,242,,587
+CAROLINE. (N.),13,Eager,,255,587
+CAROLINE. (N.),14,Chase,290,389,587
+CAROLINE. (N.),15,Biddle,312,,587
+CAROLINE. (N.),16,Northern av,,,587
+CAROLINE (S.),1,Baltimore,2,1,587
+CAROLINE (S.),2,Lombard,30,23,587
+CAROLINE (S.),3,Pratt,66,51,587
+CAROLINE (S.),4,Gough,132,,587
+CAROLINE (S.),5,Bank,,131,587
+CAROLINE (S.),6,Eastern av,208,165,587
+CAROLINE (S.),7,Canton av,,195,587
+CAROLINE (S.),8,Aliceanna,256,255,587
+CAROLINE (S.),9,Lancaster,292,,587
+CAROLINE (S.),10,Thames,,354,587
+CATHEDRAL,1,Mulberry,2,,587
+CATHEDRAL,2,Franklin,,,587
+CATHEDRAL,3,Hamilton,18,,587
+CATHEDRAL,4,Centre,34,15,587
+CATHEDRAL,5,Monument,50,,587
+CATHEDRAL,6,Madison,70,,587
+CATHEDRAL,7,Richmond,86,,587
+CATHEDRAL,8,Read,,,587
+CATHEDRAL,9,Tyson,102,,587
+CATHEDRAL,10,Eager,,61,587
+CATHEDRAL,11,Tyson,148,,587
+CATHEDRAL,12,Chase,,111,587
+CATHEDRAL,13,Howard,,,587
+CATHEDRAL,14,Biddle,,141,587
+CATHEDRAL,15,John,,147,587
+CATHEDRAL,16,Preston,,327,587
+CATHEDRAL,17,Hoffman,,221,587
+CATHEDRAL,18,Dolphin,,359,587
+CATHEDRAL,19,To Northern av,,,587
+CENTRAL AV (N.),1,Baltimore,,,587
+CENTRAL AV (N.),2,Hampstead,2,1,587
+CENTRAL AV (N.),3,Fayette,34,,587
+CENTRAL AV (N.),4,Jackson,,,587
+CENTRAL AV (N.),5,Holland,40,41,587
+CENTRAL AV (N.),6,May,,43,587
+CENTRAL AV (N.),7,Mullikin,68,,587
+CENTRAL AV (N.),8,Orleans,82,75,587
+CENTRAL AV (N.),9,Jefferson,108,107,587
+CENTRAL AV (N.),10,McElderry,154,147,587
+CENTRAL AV (N.),11,Edward,168,,587
+CENTRAL AV (N.),12,Monument,,195,587
+CENTRAL AV (N.),13,Gay,,,587
+CENTRAL AV (N.),14,Madison,188,135,587
+CENTRAL AV (N.),15,St. James,202,,587
+CENTRAL AV (N.),16,Chew,,265,587
+CENTRAL AV (N.),17,Eager,254,289,587
+CENTRAL AV (N.),18,Chase,300,,587
+CENTRAL AV (N.),19,To Hoffman,,,587
+CENTRAL AV (S.),1,Baltimore,2,1,587
+CENTRAL AV (S.),2,Watson,,13,587
+CENTRAL AV (S.),3,Lombard,44,,587
+CENTRAL AV (S.),4,Granby,,,587
+CENTRAL AV (S.),5,Pratt,84,,587
+CENTRAL AV (S.),6,Stiles,,,587
+CENTRAL AV (S.),7,Gough,128,,587
+CENTRAL AV (S.),8,Fawn,,,587
+CENTRAL AV (S.),9,Bank,164,161,587
+CENTRAL AV (S.),10,To Lancaster,,,587
+"CENTRE, (W)",1,Jones Falls,,,587
+"CENTRE, (W)",2,Holiday,,1,587
+"CENTRE, (W)",3,North,2,23,587
+"CENTRE, (W)",4,Davis,,,587
+"CENTRE, (W)",5,Calvert,48,51,587
+"CENTRE, (W)",6,St.. Paul,60,67,587
+"CENTRE, (W)",7,Charles,78,,587
+"CENTRE, (W)",8,Cathedral,,,587
+"CENTRE, (W)",9,Plover al,,,587
+"CENTRE, (W)",10,Park,,,587
+"CENTRE, (W)",11,Howard,100,,587
+"CENTRE, (E)",1,Jones Falls,1,2,587
+"CENTRE, (E)",2,"French, or N Front",,,587
+CHARLES (N.),1,Baltimore,2,,587
+CHARLES (N.),2,Fayette,12,,587
+CHARLES (N.),3,Lexington,32,,587
+CHARLES (N.),4,Barnet,52,,587
+CHARLES (N.),5,Saratoga,,55,587
+CHARLES (N.),6,Pleasant,86,85,587
+CHARLES (N.),7,Mulbery,,101,587
+CHARLES (N.),8,Franklin,,,587
+CHARLES (N.),9,Hamilton,124,123,587
+CHARLES (N.),10,Centre,154,131,587
+CHARLES (N.),11,Mount Vernon place,,147,587
+CHARLES (N.),12,Madison,,183,587
+CHARLES (N.),13,Read,,,587
+CHARLES (N.),14,Eager,240,233,587
+CHARLES (N.),15,To Northern av,,,587
+CHARLES (S.),1,Baltimore,1,,587
+CHARLES (S.),2,German,,14,587
+CHARLES (S.),3,Lombard,45,46,587
+CHARLES (S.),4,Balderston,55,,587
+CHARLES (S.),5,Pratt,,84,587
+CHARLES (S.),6,Camden,101,,587
+CHARLES (S.),7,Conway,,124,587
+CHARLES (S.),8,Barre,155,160,587
+CHARLES (S.),9,Lee,185,,587
+CHARLES (S.),10,York,201,194,587
+CHARLES (S.),11,Hill,213,210,587
+CHARLES (S.),12,Hughes,233,232,588
+CHARLES (S.),13,Montgomery,,250,588
+CHARLES (S.),14,Henrietta,271,281,588
+CHARLES (S.),15,',,320,588
+CHARLES (S.),16,Hamburg,309,,588
+CHARLES (S.),17,Ferry,,,588
+CHESAPEAKE,1,of Patapsco,,,588
+CHESTER,1,Castle al,,,588
+CHEW,1,Harford av,2,1,588
+CHEW,2,Ensor,,11,588
+CHEW,3,Stirling,38,37,588
+CHEW,4,Aisquith,52,51,588
+CHEW,5,Somerset,68,69,588
+CHEW,6,Central av,92,95,588
+CHEW,7,Eden,118,109,588
+CHEW,8,Gay,130,,588
+CHEW,9,Spring,,111,588
+CHEW,10,Caroline,,135,588
+CHEW,11,To East av,,,588
+CHOPTANK,1,from 475 e Baltimore,,,588
+CITY WHF,1,east of Ludlow,,,588
+COLLIN 'S CT,1,west from 50 S. Paca,,,588
+COLLIN 'S CT,2,Paca,,1,588
+COLLIN 'S CT,3,Greene,,37,588
+COLLIN 'S CT,4,Emory,,75,588
+COLLIN 'S CT,5,Fremont,122,137,588
+COLLIN 'S CT,6,Sterrett,168,199,588
+COLLIN 'S CT,7,Scott,,235,588
+COLLIN 'S CT,8,Wyeth,224,,588
+COLLIN 'S CT,9,Walker,240,,588
+COLLIN 'S CT,10,Parkin,248,,588
+COLLIN 'S CT,11,Poppleton,,347,588
+COLLIN 'S CT,12,Amity,,367,588
+COLLIN 'S CT,13,Cross,,,588
+COMET,1,ette,,,588
+COMMERCE,1,place,,,588
+COMMERCIAL WHF,1,Thames,,,588
+CONCORD,1,space,,,588
+"CONSTITUTION, LITTLE",1,"tiary wall to Eager, E of Kails",,,588
+CONWAY,1,E Left. Right,,,588
+CONWAY,2,of 20 13 Charles,,,588
+CORDERY'S WHF,1,"Yard, corner of Thames and Philpot",,,588
+CORNER'S WHF S,1,wharf,,,588
+COURT HOUSE LA,1,"St. Paul, S side of Courthouse",,,588
+COURT HOUSE LA,2,COURTLAND^oing north from 27 Lex,,,588
+COURT HOUSE LA,3,S of ington,,,588
+COURT HOUSE LA,4,Lexington,,,588
+COURT HOUSE LA,5,Saratoga,,19,588
+COURT HOUSE LA,6,Pleasant,36,,588
+COURT HOUSE LA,7,Mulberry,52,49,588
+COURT HOUSE LA,8,Franklin,76,75,588
+COURT HOUSE LA,9,"Lexington, W of Fremont",,,588
+CURLEY,1,from Waltemyer al E of,,,588
+CYPRESS AL,1,D,,,588
+DALLAS (N),1,Baltimore,2,1,588
+DALLAS (N),2,Hampstead,14,19,588
+DALLAS (N),3,Fayette,,49,588
+DALLAS (N),4,Mullikin,54,,588
+DALLAS (N),5,Orleans,64,85,588
+DALLAS (S),1,Baltimore,2,1,589
+DALLAS (S),2,Lombard,44,33,589
+DALLAS (S),3,Pratt,78,69,589
+DALLAS (S),4,Gough,134,133,589
+DALLAS (S),5,Bank,154,155,589
+DALLAS (S),6,Eastern av,188,189,589
+DALLAS (S),7,Canton av,228,221,589
+DALLAS (S),8,Aliceanna ^,254,245,589
+DALLAS (S),9,Lancaster,,277,589
+DUNCAN AL,1,Chester,,,589
+DURHAM (N),1,to Northern av,348,,589
+DURHAM (S),1,Baltimore,2,1,589
+DURHAM (S),2,Lombard,,29,589
+DURHAM (S),3,Pratt,70,65,589
+DURHAM (S),4,Gough,152,141,589
+DURHAM (S),5,Bank,180,171,589
+DURHAM (S),6,Eastern av,210,211,589
+DURHAM (S),7,Canton av,234,243,589
+DURHAM (S),8,Aliceanna,,275,589
+DURHAM (S),9,Lancaster,,,589
+DURST AL,1,E,,,589
+EAGER (E),1,Jones Falls,,,589
+EAGER (E),2,Constitution,42,41,589
+EAGER (E),3,Greenmount av,,,589
+EAGER (E),4,McKim,,,589
+EAGER (E),5,Spring,,,589
+EAGER (E),6,Caroline,,,589
+EAGER (E),7,Bel Air avenue,,,589
+EAGER (E),8,Dallas,,,589
+EAGER (E),9,Bethel,,,589
+EAGER (E),10,To East av,,,589
+EAST FALLS AV,1,Pratt,,,589
+EAST AV,1,E ASTE RN A V going east from McElderry 's,,,589
+EAST AV,2,of whf,,,589
+EAST AV,3,McElderry 's whf,,,589
+EAST AV,4,Mill,,,589
+EAST AV,5,Concord,,,589
+EAST AV,6,West Falls av,,,589
+EAST AV,7,East Falls av,16,,589
+EAST AV,8,President,24,21,589
+EAST AV,9,Albemarle,56,,589
+EAST AV,10,High,58,,589
+EAST AV,11,Exeter,82,89,589
+EAST AV,12,Central av,,115,589
+EAST AV,13,Eden,133,,589
+EAST AV,14,Spring,142,157,589
+EAST AV,15,Carohne,162,179,589
+EAST AV,16,Dallas,179,193,589
+EAST AV,17,Bond,186,209,589
+EAST AV,18,Bethel,,,589
+EAST AV,19,Broadway,100,,589
+EAST AV,20,Regester,228,255,589
+EAST AV,21,Ann,252,281,589
+EAST AV,22,Durham,266,287,589
+EAST AV,23,Wolfe,290,299,589
+EAST AV,24,Chapel,,315,589
+EAST AV,25,Washington,322,,589
+EAST AV,26,Castle,,350,589
+EAST AV,27,East av,,,589
+EDEN (N),1,Baltimore,6,1,589
+EDEN (N),2,Hampstead,14,15,589
+EDEN (N),3,Fayette,40,,589
+EDEN (N),4,Holland,,53,589
+EDEN (N),5,May,66,71,589
+EDEN (N),6,Mullikin,80,87,589
+EDEN (N),7,Orleans,100,105,589
+EDEN (N),8,Jefferson,140,141,589
+EDEN (N),9,McElderry,182,169,589
+EDEN (N),10,Monument,216,211,589
+EDEN (N),11,Madison,,245,589
+EDEN (N),12,Gay,238,,589
+EDEN (N),13,Chew,,,589
+EDEN (N),14,Anthony,,263,589
+EDEN (N),15,To Northern av,,,589
+EDEN (S),1,Baltimore,4,5,589
+EDEN (S),2,Lombard,,35,589
+EDEN (S),3,Bank,150,150,590
+EDEN (S),4,av,176,,590
+EDEN (S),5,Lancaster,,,590
+ENSOR,1,av to Burke,,,590
+ENSOR,2,west from 52 Harrison,,,590
+ENSOR,3,east of Penna. av,,,590
+ENSOR,4,north from 362 W Bal,,,590
+ENSOR,5,Mary's,,,590
+ENSOR,6,Northern av,,,590
+EUTAW (S),1,Ostend,,,590
+EUTAW (S),2,State,,,590
+EUTAW (S),3,Franklin,,,590
+EUTAW PLACE,1,Dolphin,,,590
+EXCHANGE PLACE,1,in Lombard,,,590
+EXCHANGE AL,1,ond,,,590
+EXETER (N),1,of more,,,590
+EXETER,1,Baltimore,,1,590
+EXETER,2,Watson,2,3,590
+EXETER,3,Lombard,22,29,590
+EXETER,4,Granby,34,45,590
+EXETER,5,Pratt,44,,590
+EXETER,6,Stiles,60,,590
+EXETER,7,Fawn,78,93,590
+EXETER,8,Bank,94,113,590
+EXETER,9,Trinity,104,119,590
+EXETER,10,Eastern av,,135,590
+EXETER,11,F,,,590
+PAYETTE,1,Falls,2,1,590
+PAYETTE,2,Paul,68,57,590
+PAYETTE,3,al,94,,590
+PAYETTE,4,Calverton Road,,,590
+FAYETTE (E),1,Jones Falls,2,1,591
+FAYETTE (E),2,Front,14,17,591
+FAYETTE (E),3,High,28,35,591
+FAYETTE (E),4,Temple,39,,591
+FAYETTE (E),5,Exeter,50,47,591
+FAYETTE (E),6,Chesnut,68,,591
+FAYETTE (E),7,East,76,73,591
+FAYETTE (E),8,Comet,,,591
+FAYETTE (E),9,Aisquitb,102,113,591
+FAYETTE (E),10,Central av,166,177,591
+FAYETTE (E),11,Eden,,183,591
+FAYETTE (E),12,Spring,,197,591
+FAYETTE (E),13,Caroline,208,219,591
+FAYETTE (E),14,Dallas,218,237,591
+FAYETTE (E),15,Bond,238,257,591
+FAYETTE (E),16,Bethel,268,281,591
+FAYETTE (E),17,Broadway,280,297,591
+FAYETTE (E),18,Regester,,,591
+FAYETTE (E),19,Ann,336,,591
+FAYETTE (E),20,Wolfe,,375,591
+FAYETTE (E),21,Chapel,,407,591
+FAYETTE (E),22,Washington,,429,591
+FAYETTE (E),23,To East av,,,591
+FISH MARKET SPACE,1,"space, N of Hawk",,,591
+FRANKLIN,1,Falls,,,591
+FRANKLIN,2,»,,,591
+FRANKLIN,3,Paul,26,23,591
+FRANKLIN,4,Cathedral,64,51,591
+FRANKLIN,5,Park,82,65,591
+FRANKLIN,6,Howard,100,91,591
+FRANKLIN,7,Eutaw,124,117,591
+FRANKLIN,8,Jasper,138,129,591
+FRANKLIN,9,Paca,152,143,591
+FRANKLIN,10,Pearl,172,179,591
+FRANKLIN,11,Pine,212,237,591
+FRANKLIN,12,Chatsworth,232,255,591
+FRANKLIN,13,Ogston,,301,591
+FRANKLIN,14,Brune,,339,591
+FRANKLIN,15,Fremont,348,373,591
+FRANKLIN,16,Poppleton,352,,591
+FRANKLIN,17,Schroeder,394,,591
+FRANKLIN,18,Oregon,480,,591
+FRANKLIN,19,To Northern av,,,591
+FRANKLIN SQUARE,1,"ton, Carey, Fayette and Calhoun",,,591
+FREDERICK ;N),1,Baltimore,,,591
+FREDERICK (S),1,timore,,,591
+FREDERICK AV,1,Calverton road,,,591
+FREMONT (S),1,Baltimore,,,591
+FREMONT (S),2,German,16,,591
+FREMONT (S),3,Hollins,,19,591
+FREMONT (S),4,Lombard,,27,591
+FREMONT (S),5,King,,,591
+FREMONT (S),6,Pratt,,,591
+FREMONT (S),7,McHenry,,77,591
+FREMONT (S),8,Haw,108,,591
+FREMONT (S),9,Ramsay,,,591
+FREMONT (S),10,Columbia,,117,591
+FREMONT (S),11,Eislen •,148,133,591
+FREMONT (S),12,To Eutaw,,,591
+FRONT (N),1,Baltimore,1,8,591
+FRONT (N),2,Fayette,15,14,591
+FRONT (N),3,Low,,100,591
+FRONT (N),4,Gay,93,130,591
+FRONT (N),5,Hillen,129,156,591
+FRENCH,1,Foundry,2,1,591
+FRENCH,2,High,52,41,591
+FRENCH,3,Constitution,62,61,591
+FRENCH,4,Exeter,72,67,591
+FRENCH,5,Chesnut,102,89,591
+FRENCH,6,East,142,103,591
+FRENCH,7,Forrest,158,115,591
+GARDEN,1,Monument,2,1,592
+GARDEN,2,Madison *,26,23,592
+GARDEN,3,Biddle,16,121,592
+GARDEN,4,Rose,,,592
+GARDEN,5,Preston,50,163,592
+GARDEN,6,Hoffman,,,592
+GARDEN,7,Dolphin,,217,592
+GARDEN,8,To iSTorthern av,,,592
+"GAY, (N)",1,Baltimore,2,1,592
+"GAY, (N)",2,Fayette,18,19,592
+"GAY, (N)",3,Frederick,,63,592
+"GAY, (N)",4,Saratoga,58,,592
+"GAY, (N)",5,Harrison,,79,592
+"GAY, (N)",6,Front,108,101,592
+"GAY, (N)",7,High,140,131,592
+"GAY, (N)",8,Exeter,170,,592
+"GAY, (N)",9,Chesnut,,169,592
+"GAY, (N)",10,East,202,,592
+"GAY, (N)",11,Forrest,226,231,592
+"GAY, (N)",12,Mott,240,,592
+"GAY, (N)",13,Aisquith,,341,592
+"GAY, (N)",14,Monument,330,355,592
+"GAY, (N)",15,Central av,,,592
+"GAY, (N)",16,Madison,,397,592
+"GAY, (N)",17,Eden,,415,592
+"GAY, (N)",18,Chew,,447,592
+"GAY, (N)",19,Caroline,,473,592
+"GAY, (N)",20,Dallas,,,592
+"GAY, (N)",21,Bond,,507,592
+"GAY, (N)",22,Broadway,,,592
+"GAY, (S)",1,Baltimore,1,2,592
+"GAY, (S)",2,Second,,,592
+"GAY, (S)",3,Lombard,,46,592
+"GAY, (S)",4,Pratt,67,,592
+GEORGE,1,west from Charles,,,592
+GEORGE,2,Charles,1,2,592
+GEORGE,3,Hanover,17,20,592
+GEORGE,4,Sharp,35,38,592
+GEORGE,5,Liberty,39,,592
+GEORGE,6,Howard,49,42,592
+GEORGE,7,Eutaw,,66,592
+GEORGE,8,Paca,,90,592
+GEORGE,9,Greene,11,110,592
+GEORGE,10,Pine,,184,592
+GEORGE,11,Fremont,,242,592
+GIST,1,"west from Williams, S",,,592
+GOODMAN A L,1,Charles,,,592
+GOUGH,1,Granby,,,592
+GOUGH,2,Granby,2,1,592
+GOUGH,3,Pratt,,,592
+GOUGH,4,Stiles,,21,592
+GOUGH,5,Central av,24,13,592
+GOUGH,6,Eden,36,17,592
+GOUGH,7,Spring,54,43,592
+GOUGH,8,Caroline,72,56,592
+GOUGH,9,Dallas,84,,592
+GOUGH,10,Bond,,,592
+GOUGH,11,Bethel,108,91,592
+GOUGH,12,Broadway,114,107,592
+GOUGH,13,Regester,130,127,592
+GOUGH,14,Ann,146,,592
+GOUGH,15,Durham,168,153,592
+GOUGH,16,Wolfe,,175,592
+GOUGH,17,Chapel,200,193,592
+GOUGH,18,Washington,,213,592
+GOUGH,19,Castle,,239,592
+GOUGH,20,Chester,,265,592
+GOUGH,21,To East av,,,592
+GRANVILLE AL,1,Falls,,,592
+"GREENE, LITTLE",1,Columbia,99,102,592
+"GREENE, LITTLE",2,Paca,119,126,592
+"GREENE, LITTLE",3,Conway,133,142,592
+"GREENE, LITTLE",4,Wayne,141,152,592
+"GREENE, LITTLE",5,Barre,149,162,592
+"GREENE, LITTLE",6,Lee,167,,592
+GREENE,1,Baltimore,2,1,592
+GREENE,2,Raborg,4,,592
+GREENE,3,Fayette,22,21,592
+GREENE,4,Lexington,46,37,592
+GREENE,5,Saratoga,76,53,592
+GREENE,6,Mulberry i',100,77,592
+GREENE,7,Franklin,124,,592
+"GREENE, (S)",1,Baltimore,1,2,592
+"GREENE, (S)",2,German,,10,592
+"GREENE, (S)",3,Lombard,41,,592
+"GREENE, (S)",4,King,,54,592
+"GREENE, (S)",5,Pratt,71,,592
+"GREENE, (S)",6,Dover,83,,592
+"GREENE, (S)",7,Portland,,,592
+"GREENE, (S)",8,Columbia,91,,592
+GREEN'S CT,1,"Hamburg, Light",,,592
+GREEN'S CT,2,A V going north from Mon,,,592
+GREEN'S CT,3,Cemetery,,,592
+HANOVER,1,Baltimore,1,2,593
+HANOVER,2,German,13,18,593
+HANOVER,3,Lombard,39,40,593
+HANOVER,4,Pratt,57,68,593
+HANOVER,5,Dover,,,593
+HANOVER,6,Camden,85,,593
+HANOVER,7,Perry,101,90,593
+HANOVER,8,Conway,115,104,593
+HANOVER,9,Barre,141,128,593
+HANOVER,10,Lee,167,160,593
+HANOVER,11,York,187,168,593
+HANOVER,12,Hill,205,,593
+HANOVER,13,Hughes,223,210,593
+HANOVER,14,Montgomery,243,232,593
+HANOVER,15,L. Church,239,,593
+HANOVER,16,Henrietta,273,266,593
+HANOVER,17,Hamburg,317,,593
+HANOVER,18,To Kelso,,,593
+HARFORD A V,1,Forrest,2,1,593
+HARFORD A V,2,Monument,10,9,593
+HARFORD A V,3,Madison,46,,593
+HARFORD A V,4,Wilson,52,53,593
+HARFORD A V,5,Neighbor,92,,593
+HARFORD A V,6,Chew,,91,593
+HARFORD A V,7,Eager,154,,593
+HARFORD A V,8,Chase,,,593
+HARFORD A V,9,Biddle,230,235,593
+HARFORD A V,10,To Northern av,,,593
+HARMONY LA,1,mont &quot;,,,593
+HIGH (N),1,Baltimore,2,1,593
+HIGH (N),2,Fayette,25,25,593
+HIGH (N),3,Low,108,109,593
+HIGH (N),4,Gay,124,127,593
+HIGH (N),5,Hillen,152,,593
+HIGH (N),6,Addison,156,,593
+HIGH (N),7,Humes,170,173,593
+HIGH (N),8,N. Front,184,193,593
+HIGH (S),1,Baltimore,2,,593
+HIGH (S),2,Plowman,8,1,593
+HIGH (S),3,Watson,16,15,593
+HIGH (S),4,Lombard,34,41,593
+HIGH (S),5,Granby,54,61,593
+HIGH (S),6,Pratt,70,71,593
+HIGH (S),7,Stiles,92,93,593
+HIGH (S),8,Fawn,,107,593
+HIGH (S),9,Trinity,124,129,593
+HIGH (S),10,Eastern av,134,139,593
+HILL,1,Light,2,1,593
+HILL,2,Charles,46,55,593
+HILL,3,Hanover,72,73,593
+HILL,4,Sharp,114,119,593
+HILL,5,Palapsco av,116,129,593
+HILL,6,Spring Garden av,,147,593
+HILL,7,Howard,146,149,593
+HILLEN,1,Jones Falls,2,1,593
+HILLEN,2,Front,8,15,593
+HILLEN,3,High,50,37,593
+HILLEN,4,Exeter,74,69,593
+HILLEN,5,Chesnut,92,,594
+HILLEN,6,East,116,107,594
+HILLEN,7,Forrest,132,131,594
+HILLEN,8,Ensor,,135,594
+HOFFMAN (W),1,■*,,,594
+HOFFMAN (W),2,Chatsworth,,,594
+HOFFMAN (W),3,Walsh,,,594
+HOFFMAN (W),4,Pennsylvania av,55,54,594
+HOFFMAN (W),5,Brewer,73,,594
+HOFFMAN (W),6,Division,85,,594
+HOFFMAN (W),7,Eislein,,116,594
+HOFFMAN (W),8,Ross,133,128,594
+HOFFMAN (W),9,McCulloh,143,,594
+HOFFMAN (W),10,Madison av,,,594
+HOFFMAN (W),11,Eutaw,151,152,594
+HOFFMAN (W),12,Garden,175,176,594
+HOFFMAN (W),13,Bolton,,220,594
+HOFFMAN (W),14,Grundy,253,,594
+HOFFMAN (W),15,To East av,,,594
+HOLLAND,1,Aisquith,2,1,594
+HOLLAND,2,Central av,46,57,594
+HOLLAND,3,Eden,72,73,594
+HOLLAND,4,Spring,86,,594
+HOLLAND,5,Caroline,,,594
+HOLLINS,1,Fremont,1,2,594
+HOLLINS,2,Parkins,55,,594
+HOLLINS,3,Poppleton,89,89,594
+HOLLINS,4,Amity,119,115,594
+HOLLINS,5,Schroeder,141,140,594
+HOLLINS,6,Oregon,,188,594
+HOLLINS,7,Republican,235,228,594
+HOLLINS,8,Carey,269,258,594
+HOLLINS,9,Calhoun,,,594
+HOLLINS,10,Strieker,,329,594
+HOLLINS,11,To Bentalou,,,594
+HOWARD (N),1,(S) going,,,594
+HOWARD (N),2,Baltimore,,,594
+HOWARD (N),3,Baltimore,2,1,594
+HOWARD (N),4,German,10,9,594
+HOWARD (N),5,Lombard,,35,594
+HOWARD (N),6,Pratt,,59,594
+HOWARD (N),7,Dover,64,65,594
+HOWARD (N),8,Camden,76,,594
+HOWARD (N),9,Perry,92,,594
+HOWARD (N),10,Conway,106,,594
+HOWARD (N),11,Wayne,124,,594
+HOWARD (N),12,Barre,126,,594
+HOWARD (N),13,Lee,158,161,594
+HOWARD (N),14,Montgomery,,205,594
+HOWARD (N),15,Henrietta,,,594
+HOWARD (N),16,Hamburg,266,,594
+HOWARD (N),17,Cross,316,341,594
+HOWARD (N),18,To Ostend,,,594
+HOWELL'S WHARF,1,Ann,,,594
+HUGHES' QUAY,1,of Lee,,,594
+HYDE'S CT,1,L,,,594
+IVY AL,1,J,,,594
+LEE,1,Light-st. whf,2,1,595
+LEE,2,Charles,48,37,595
+LEE,3,Xal,64,,595
+LEE,4,Hanover,72,57,595
+LEE,5,Sharp,98,85,595
+LEE,6,Howard,128,115,595
+LEE,7,Ohio av,144,,595
+LEE,8,Eutaw,160,,595
+LEE,9,L. Greene,,159,595
+LEE,10,Warner,210,217,595
+LEE,11,Fremont,,,595
+LEXINGTON,1,North,,,595
+LEXINGTON,2,Davis,,,595
+LEXINGTON,3,Calvert,,15,595
+LEXINGTON,4,Courtland,,,595
+LEXINGTON,5,St. Paul,38,35,595
+LEXINGTON,6,Charles,54,61,595
+LEXINGTON,7,Sharp,90,95,595
+LEXINGTON,8,Liberty,96,99,595
+LEXINGTON,9,Park ',120,119,595
+LEXINGTON,10,Howard,150,141,595
+LEXINGTON,11,Eutaw,176,,595
+LEXINGTON,12,Jasper,,185,595
+LEXINGTON,13,Paca,198,197,595
+LEXINGTON,14,Greene,228,221,595
+LEXINGTON,15,Pearl,,241,595
+LEXINGTON,16,Arch,246,249,595
+LEXINGTON,17,Pine,288,287,595
+LEXINGTON,18,Chatsworth,,305,595
+LEXINGTON,19,Fremont,370,347,595
+LEXINGTON,20,Rock,,397,595
+LEXINGTON,21,Poppleton,440,447,595
+LEXINGTON,22,Amity,468,435,595
+LEXINGTON,23,Schcoeder,490,457,595
+LEXINGTON,24,Oregon,,515,595
+LEXINGTON,25,Carlton,568,,595
+LEXINGTON,26,Republican,586,559,595
+LEXINGTON,27,Stockton al,,,595
+LEXINGTON,28,Carey,,,595
+LEXINGTON,29,Calhoun,608,647,595
+LEXINGTON,30,Strieker,622,665,595
+LEXINGTON,31,Gilmor,658,,595
+LEXINGTON,32,Mount,,,595
+LEXINGTON,33,Fulton,,759,595
+LEXINGTON,34,To Calverton road,,,595
+"LIBERTY, (N)",1,Baltimore,2,1,595
+"LIBERTY, (N)",2,Fayette,14,31,595
+"LIBERTY, (N)",3,Marion,28,,595
+"LIBERTY, (N)",4,Lexington,40,47,595
+"LIBERTY, (N)",5,Barnet,58,73,595
+"LIBERTY, (N)",6,Saratoga,,,595
+"LIBERTY, (S)",1,Baltimore,1,,595
+"LIBERTY, (S)",2,German,13,10,595
+"LIBERTY, (S)",3,Lombard,39,,595
+"LIBERTY, (S)",4,Howard,53,,595
+LIGHT,1,Baltimore,,2,595
+LIGHT,2,Mercer,21,,595
+LIGHT,3,Water,27,,595
+LIGHT,4,Lombard,33,38,595
+LIGHT,5,Balderston,43,46,595
+LIGHT,6,Pratt,55,66,595
+LIGHT-ST. WHF,1,Pratt,,68,595
+LIGHT-ST. WHF,2,Camden,,98,595
+LIGHT-ST. WHF,3,Conway,,130,595
+LIGHT-ST. WHF,4,Barre,,156,595
+LIGHT-ST. WHF,5,Lee,,188,595
+LIGHT,1,Lee,203,,595
+LIGHT,2,York,219,210,595
+LIGHT,3,Hill,,218,595
+LIGHT,4,Hughes,247,,595
+LIGHT,5,Montgomery,267,260,595
+LIGHT,6,L. Church,285,266,595
+LIGHT,7,Henrietta,,280,595
+LIGHT,8,Warren,291,,595
+LIGHT,9,Williamson,,296,595
+LIGHT,10,Hamburg,315,310,595
+LIGHT,11,Poultney,,,595
+LIGHT,12,Cross,369,,595
+LIGHT,13,Brown,,354,595
+LIGHT,14,West,413,378,595
+LIGHT,15,Ostend,,448,595
+LIGHT,16,Gittings,,464,595
+LIGHT,17,Fort,521,,595
+LIGHT,18,Ferry,,,596
+LITTEL AL,1,from Camden W of Charles,,,596
+"LOMBARD, (E)",1,Falls,2,1,596
+"LOMBARD, (E)",2,av,148,149,596
+"LOMBARD, (E)",3,East av,,,596
+"LOMBARD, (W)",1,Jones Falls,1,2,596
+"LOMBARD, (W)",2,Concord,5,8,596
+"LOMBARD, (W)",3,Centre Market space,17,22,596
+"LOMBARD, (W)",4,Frederick,43,38,596
+"LOMBARD, (W)",5,Gay,49,50,596
+"LOMBARD, (W)",6,Commerce,75,,596
+"LOMBARD, (W)",7,South,87,90,596
+"LOMBARD, (W)",8,Cheapside,,100,596
+"LOMBARD, (W)",9,Calvert,99,,596
+"LOMBARD, (W)",10,Hollingsworth,121,,596
+"LOMBARD, (W)",11,Light,103,94,596
+"LOMBARD, (W)",12,Charles,133,120,596
+"LOMBARD, (W)",13,Hanover,153,138,596
+"LOMBARD, (W)",14,Sharp,169,160,596
+"LOMBARD, (W)",15,Liberty,,,596
+"LOMBARD, (W)",16,Howard,177,164,596
+"LOMBARD, (W)",17,Eutaw,193,184,596
+"LOMBARD, (W)",18,Paca,207,,596
+"LOMBARD, (W)",19,Greene,233,208,596
+"LOMBARD, (W)",20,Penn,273,248,596
+"LOMBARD, (W)",21,Fremont,317,294,596
+"LOMBARD, (W)",22,Scott,355,,596
+"LOMBARD, (W)",23,Parkin,399,364,596
+"LOMBARD, (W)",24,Callendar,419,386,596
+"LOMBARD, (W)",25,Poppleton,429,406,596
+"LOMBARD, (W)",26,Amity,447,432,596
+"LOMBARD, (W)",27,Schroeder,477,458,596
+"LOMBARD, (W)",28,HoUins,493,482,596
+"LOMBARD, (W)",29,Oregon,513,518,596
+"LOMBARD, (W)",30,Republican,555,550,596
+"LOMBARD, (W)",31,Carey,601,600,596
+"LOMBARD, (W)",32,Calhoun,641,,596
+"LOMBARD, (W)",33,Strieker,663,,596
+"LOMBARD, (W)",34,To Payson,,,596
+LORMAN'S ALLEY,1,Greene,,,596
+LOVEGROVE AL,1,Charles,,,596
+LOVELY LA,1,Baltimore,,,596
+LOWMAN,1,Jones,,,596
+LOYOLA PLACE E,1,Monument,,,596
+LUDLOW,1,Lawrence,,,596
+LUZERNE,1,"timore, E of Cannon",,,596
+LUZERNE,2,M,,,596
+MADISON (E),1,Jones Falls,,,596
+MADISON (E),2,Buren,,,596
+MADISON (E),3,Constitution,,,596
+MADISON (E),4,Forrest,84,,596
+MADISON (E),5,Greenmount av,94,,596
+MADISON (E),6,McKim,,95,596
+MADISON (E),7,Harford av,118,,596
+MADISON (E),8,Ensor,142,127,596
+MADISON (E),9,Stirling,168,159,596
+MADISON (E),10,Aisquith,184,163,596
+MADISON (E),11,Madison al,,165,596
+MADISON (E),12,Somerset,208,,596
+MADISON (E),13,Central av,,,596
+MADISON (E),14,Gay,,199,596
+MADISON (E),15,Eden,230,217,596
+MADISON (E),16,Spring,244,229,596
+MADISON (E),17,Caroline,268,243,596
+MADISON (E),18,Dallas,288,267,596
+MADISON (E),19,Bond,308,289,596
+MADISON (E),20,Bethel,,315,596
+MADISON (E),21,To East av,,,596
+MADISON (W),1,Jones Falls,1,2,596
+MADISON (W),2,North,,14,596
+MADISON (W),3,Calvert,,42,596
+MADISON (W),4,St. Paul,,54,596
+MADISON (W),5,Charles,,82,596
+MADISON (W),6,Cathedral,,,596
+MADISON (W),7,Park,117,116,596
+MADISON (W),8,Howard,,144,596
+MADISON (W),9,Garden,147,166,596
+MADISON (W),10,Eutaw,161,,596
+MADISON (W),11,St. Mary's,163,,596
+MADISON AV,1,"St, Mary's",163,,596
+MADISON AV,2,Orchard,179,,596
+MADISON AV,3,Biddle,201,,596
+MADISON AV,4,Rose,,232,596
+MADISON AV,5,Preston,245,,596
+MADISON AV,6,Hoffman,269,294,596
+MADISON AV,7,Dolphin,291,324,596
+MADISON AV,8,Lanvale,319,346,596
+MADISON AV,9,To Northern av,,,596
+MADISON SQUARE,1,and Eden,,,596
+MAY,1,Biddle,1,2,597
+MAY,2,Preston,31,38,597
+MAY,3,Hoffman,63,72,597
+MAY,4,Dolphin,97,100,597
+MAY,5,Lanvale,127,,597
+MAY,6,from 123 Aisquith,,,597
+MAY,7,Aisquith,2,1,597
+MAY,8,Short,,21,597
+MAY,9,Central av,,31,597
+MAY,10,Eden,60,51,597
+MAY,11,Spring,72,65,597
+MAY,12,Caroline,84,79,597
+MAY,13,Dallas,106,91,597
+MAY,14,Bond,126,105,597
+MAY,15,Bethel,,125,597
+MAY,16,To Eastern av,,,597
+MAY,17,LITTLE from 123 Forrest,,,597
+MAY,18,from'347 Pennsylvania av,,,597
+MAY,19,W from 77 S Fremont,,,597
+MAY,20,from 370 W Lombard,,,597
+MONROE,1,Fulton,,,597
+MONTGOMERY,1,Jackson,,,597
+MONTGOMERY,2,Covington,,,597
+MONTGOMERY,3,Henry,,,597
+MONTGOMERY,4,Johnson,146,133,597
+MONTGOMERY,5,William,158,149,597
+MONTGOMERY,6,Light,180,181,597
+MONTGOMERY,7,Charles,236,231,597
+MONTGOMERY,8,Hanover,252,,597
+MONTGOMERY,9,Butler,256,,597
+MONTGOMERY,10,Leadenhall,268,,597
+MONTGOMERY,11,Sharp,,,597
+MONTGOMERY,12,Howard,,,597
+MONTGOMERY,13,Ohio av,330,,597
+"MONTGOMERY, LITTLE",1,S of Montgomery,,,597
+MONTGOMERY PCT,1,W of Light,,,597
+MONTMORENCY AL,1,N of Lexington,,,597
+MONUMENT (E),1,Falls,,,597
+MONUMENT (E),2,Jones Falls,2,1,597
+MONUMENT (E),3,Buren,4,3,597
+MONUMENT (E),4,Constitution,30,23,597
+MONUMENT (E),5,Forrest,,,597
+MONUMENT (E),6,Greenmount av,102,,597
+MONUMENT (E),7,Harford av,116,,597
+MONUMENT (E),8,Ensor,146,127,597
+MONUMENT (E),9,Stirling,186,145,597
+MONUMENT (E),10,Aisquith,214,,597
+MONUMENT (E),11,Gay,226,173,597
+MONUMENT (E),12,Central av,260,211,597
+MONUMENT (E),13,Eden,282,233,597
+MONUMENT (E),14,Spring,306,257,597
+MONUMENT (E),15,Caroline,328,281,597
+MONUMENT (E),16,Dallas,,293,597
+MONUMENT (E),17,Bond,366,311,597
+MONUMENT (E),18,Bethel,394,341,597
+MONUMENT (E),19,Broadway,,365,597
+MONUMENT (W),1,Jones Falls,,2,597
+MONUMENT (W),2,Holiday,,,597
+MONUMENT (W),3,North,,,597
+MONUMENT (W),4,Davis,,,597
+MONUMENT (W),5,Calvert,,40,597
+MONUMENT (W),6,"St. Paul, or Mt. Vernon place",35,34,597
+MONUMENT (W),7,Charles,61,58,597
+MONUMENT (W),8,'Cathedral,75,72,597
+MONUMENT (W),9,Park,87,78,597
+MONUMENT (W),10,Tyson,,90,597
+MONUMENT (W),11,Howard,109,104,597
+MONUMENT (W),12,Garden,,106,597
+MONUMENT (W),13,Eutaw,119,110,597
+MONUMENT SQUARE,1,Fayette,,,597
+MOUNT,1,Gilmor,,,597
+MOUNT VERNON PLACE,1,N of Centre,,,597
+MOUNT VERNON PLACE,2,going west from 90 N Calvert,,,597
+MOUNT VERNON PLACE,3,Calvert,2,1,597
+MOUNT VERNON PLACE,4,Courtland,,,597
+MOUNT VERNON PLACE,5,St. Paul,18,13,597
+MOUNT VERNON PLACE,6,Charles,20,,597
+MOUNT VERNON PLACE,7,Cathedral,,,597
+MOUNT VERNON PLACE,8,Park,56,51,597
+MOUNT VERNON PLACE,9,Howard,,,597
+MOUNT VERNON PLACE,10,State,82,,597
+MOUNT VERNON PLACE,11,Eutaw,100,,597
+MOUNT VERNON PLACE,12,Jasper,110,101,597
+MOUNT VERNON PLACE,13,Paca,126,119,597
+MOUNT VERNON PLACE,14,Green,,,597
+MOUNT VERNON PLACE,15,Pearl,140,145,597
+MOUNT VERNON PLACE,16,Pine,208,209,597
+MOUNT VERNON PLACE,17,Chatsworth,228,231,597
+MULLIKIN,1,Aisquith,,1,598
+MULLIKIN,2,Lewis,,41,598
+MULLIKIN,3,Central av,,51,598
+MULLIKIN,4,Eden,58,57,598
+MULLIKIN,5,Spring,72,73,598
+MULLIKIN,6,Carolme,82,87,598
+MULLIKIN,7,Dallas,96,107,598
+MULLIKIN,8,Bond,110,121,598
+MULLIKIN,9,Bethel,138,133,598
+MULLIKIN,10,Broadway,168,165,598
+MULLIKIN,11,Regester,,,598
+MULLIKIN,12,Ann,,225,598
+MYER'S CT,1,N,,,598
+NORTH,1,Baltimore,,1,598
+NORTH,2,Fayette,,17,598
+NORTH,3,Lexington,32,,598
+NORTH,4,Saratoga,,59,598
+NORTH,5,Pleasant,,99,598
+NORTH,6,Foundry,,131,598
+NORTH,7,Centre,,199,598
+NORTH,8,Monument,,,598
+NORTH,9,Madison,,,598
+NORTH,10,Eager,,295,598
+NORTH,11,John,,,598
+NORTHWEST,1,S of,0,,598
+NORTHWEST,2,Lexington,,,598
+ORLEANS,1,Forrest,2,1,598
+ORLEANS,2,Young,22,,598
+ORLEANS,3,Aisquith,32,31,598
+ORLEANS,4,Short,52,,598
+ORLEANS,5,Lewis,62,69,598
+ORLEANS,6,Central av,76,85,598
+ORLEANS,7,Eden,106,105,598
+ORLEANS,8,Spring,118,117,598
+ORLEANS,9,Caroline,140,139,598
+ORLEANS,10,Dallas,160,159,598
+ORLEANS,11,Bond,180,181,598
+ORLEANS,12,Bethel,,209,598
+ORLEANS,13,Broadway,,229,598
+ORLEANS,14,Regester,,257,598
+ORLEANS,15,Ann,,283,598
+ORLEANS,16,To East av,,,598
+PACA (N),1,Baltimore,2,1,598
+PACA (N),2,Fayette,14,,598
+PACA (N),3,Marion,,19,598
+PACA (N),4,Lexington,46,,598
+PACA (N),5,Saratoga,68,67,598
+PACA (N),6,Mulberry,86,87,598
+PACA (N),7,Franklin,,107,598
+PACA (N),8,New,,131,598
+PACA (N),9,Ross,,183,598
+PACA (N),10,south from 391 w Baltimore,,,598
+PACA (N),11,Baltimore,,2,598
+PACA (N),12,German,,16,598
+PACA (N),13,Lombard,25,,598
+PACA (N),14,King,33,,598
+PACA (N),15,Pratt,49,,598
+PACA (N),16,Dover,55,,598
+PACA (N),17,Columbia,,50,598
+PACA (N),18,Elbow la,,66,598
+PACA (N),19,L. Paca,71,,598
+PACA (N),20,L. Greene,109,106,598
+PACA (N),21,Warner,165,156,598
+PACA (N),22,Fremont,205,202,598
+PACA (N),23,St. Peters,217,,598
+PACA (N),24,Sterrett,249,,598
+PACA (N),25,Hamburg,105,298,598
+PACA (N),26,To Putnam,,,598
+PACA PL,1,from 37 E Fayette,,,598
+PARK,1,Liberty,2,,598
+PARK,2,Fayette,,,598
+PARK,3,Marion,,9,598
+PARK,4,Lexington,32,29,598
+PARK,5,Clay,47,48,598
+PARK,6,Saratoga,60,,598
+PARK,7,Mulberry,92,,598
+PARK,8,Franklin,108,83,598
+PARK,9,Hamilton,,85,598
+PARK,10,Centre,95,,598
+PARK,11,Monument,132,,598
+PARK,12,Madison,,119,598
+PARK,13,Richmond,188,161,598
+PEIRCE,1,Baltimore,2,1,599
+PEIRCE,2,Raborg,14,13,599
+PEIRCE,3,Fayette,28,23,599
+PEIRCE,4,Lexington,164,,599
+PEIRCE,5,Saratoga,122,83,599
+PEIRCE,6,Sarah Ann,136,,599
+PEIRCE,7,Mulberry,148,111,599
+PEIRCE,8,Peirce,164,,599
+PEIRCE,9,Franklin,174,,599
+PEIRCE,10,Pennsylvania av,192,,599
+PENNSYLVANIA AV,1,Franklin,2,1,599
+PENNSYLVANIA AV,2,Pearl,,,599
+PENNSYLVANIA AV,3,George,20,,599
+PENNSYLVANIA AV,4,St. Mary's,,39,599
+PENNSYLVANIA AV,5,Orchard,,51,599
+PENNSYLVANIA AV,6,Biddle,70,77,599
+PENNSYLVANIA AV,7,Union,,109,599
+PENNSYLVANIA AV,8,Greenwillow,106,,599
+PENNSYLVANIA AV,9,Preston,,,599
+PENNSYLVANIA AV,10,Hoffman,158,173,599
+PENNSYLVANIA AV,11,Dolphin,196,,599
+PENNSYLVANIA AV,12,Lanvale,240,249,599
+PENNSYLVANIA AV,13,Townsend,290,321,599
+PENNSYLVANIA AV,14,Mosher,334,,599
+PENNSYLVANIA AV,15,Smith,362,,599
+PENNSYLVANIA AV,16,McMechin,,385,599
+PENNSYLVANIA AV,17,Wilson,429,,599
+PENNSYLVANIA AV,18,Laurens,464,,599
+PENNSYLVANIA AV,19,Robert,554,,599
+PENNSYLVANIA AV,20,Fremont,578,,599
+PENNSYLVANIA AV,21,Presstman,,,599
+"PINE, (N)",1,Baltimore,2,1,599
+"PINE, (N)",2,Raborg,8,3,599
+"PINE, (N)",3,Fayette,,7,599
+"PINE, (N)",4,Vine,26,25,599
+"PINE, (N)",5,Lexington,,,599
+"PINE, (N)",6,Josephine,44,49,599
+"PINE, (N)",7,Saratoga,74,59,599
+"PINE, (N)",8,Sarah Ann,88,65,599
+"PINE, (N)",9,Mulberry,104,73,599
+"PINE, (N)",10,Peirce,122,91,599
+"PINE, (N)",11,Franklin,132,,599
+PLEASANT,1,Falls,2,1,599
+PLEASANT,2,North,,5,599
+PLEASANT,3,Couriland,30,31,599
+PLEASANT,4,St. Paul,,,599
+PLEASANT,5,Charles,38,,599
+POINT LA,1,Cemetery,,,599
+POPPLETON (N),1,Baltimore,,1,599
+POPPLETON (N),2,Raborg,12,15,599
+POPPLETON (N),3,Fayette,30,23,599
+POPPLETON (N),4,Vine,,31,599
+POPPLETON (N),5,Lexington,54,43,599
+POPPLETON (N),6,Saratoga,,81,599
+POPPLETON (N),7,Mulberry,,99,599
+POPPLETON (N),8,Peirce,,,599
+POPPLETON (N),9,Franklin,,105,599
+POPPLETON (S),1,Baltimore,2,1,599
+POPPLETON (S),2,Booth,12,11,599
+POPPLETON (S),3,Hollins,24,21,599
+POPPLETON (S),4,Boyd,26,31,599
+POPPLETON (S),5,Lombard,38,39,599
+POPPLETON (S),6,Lemmon,56,,599
+POPPLETON (S),7,Pratt,,,599
+POPPLETON (S),8,McHenry,80,75,599
+POPPLETON (S),9,Ryan,94,89,599
+POPPLETON (S),10,To Columbia,,,599
+POTOMAC,1,Patuxent,,,599
+"PRATT, (E)",1,Falls,2,1,599
+"PRATT, (E)",2,av,,105,599
+"PRATT, (E)",3,Dallas,168,183,600
+"PRATT, (E)",4,Bond,188,201,600
+"PRATT, (E)",5,Bethel,206,221,600
+"PRATT, (E)",6,Broadway,238,237,600
+"PRATT, (E)",7,Regester,,259,600
+"PRATT, (E)",8,Ann,256,281,600
+"PRATT, (E)",9,Wolfe,296,309,600
+"PRATT, (E)",10,Chapel,312,325,600
+"PRATT, (E)",11,Washington,326,337,600
+"PRATT, (E)",12,To East av,,,600
+"PRATT, (W)",1,Falls,1,2,600
+"PRATT, (W)",2,Concord,11,12,600
+"PRATT, (W)",3,Mill,27,24,600
+"PRATT, (W)",4,Centre Market space,29,30,600
+"PRATT, (W)",5,O'Donnell's whf,35,,600
+"PRATT, (W)",6,Frederick,,46,600
+"PRATT, (W)",7,Buchanan's whf,37,,600
+"PRATT, (W)",8,Gay,,68,600
+"PRATT, (W)",9,Spear's whf,43,,600
+"PRATT, (W)",10,Patterson,51,,600
+"PRATT, (W)",11,Commerce,61,104,600
+"PRATT, (W)",12,South,65,120,600
+"PRATT, (W)",13,Bowly's whf,71,,600
+"PRATT, (W)",14,Cheapside,,140,600
+"PRATT, (W)",15,Calvert,,144,600
+"PRATT, (W)",16,Hollingsworth,,152,600
+"PRATT, (W)",17,Grant,,156,600
+"PRATT, (W)",18,Ellicott,,158,600
+"PRATT, (W)",19,Light,,164,600
+"PRATT, (W)",20,Charles,167,202,600
+"PRATT, (W)",21,Hanover,199,236,600
+"PRATT, (W)",22,Sharp,231,264,600
+"PRATT, (W)",23,Howard,263,291,600
+"PRATT, (W)",24,Eutaw,295,326,600
+"PRATT, (W)",25,Paca,323,,600
+"PRATT, (W)",26,Greene,347,392,600
+"PRATT, (W)",27,Emory,377,,600
+"PRATT, (W)",28,Penn,405,,600
+"PRATT, (W)",29,Fremont,445,,600
+"PRATT, (W)",30,Scott,503,,600
+"PRATT, (W)",31,Parkin,,526,600
+"PRATT, (W)",32,Poppleton,,560,600
+"PRATT, (W)",33,Amity,,580,600
+"PRATT, (W)",34,Schroeder,,600,600
+"PRATT, (W)",35,Ongon,,630,600
+"PRATT, (W)",36,Republican,,682,600
+"PRATT, (W)",37,Carey,719,718,600
+"PRATT, (W)",38,Calhoun,,,600
+"PRATT, (W)",39,Strieker,,,600
+"PRATT, (W)",40,Gilmor,,,600
+"PRATT, (W)",41,Mount,805,,600
+"PRATT, (W)",42,Fulton,835,,600
+"PRATT, (W)",43,Monroe,,902,600
+"PRATT, (W)",44,Payson,,,600
+"PRATT, (W)",45,Pulaski,,,600
+PRESTON,1,Pennsylvania av,,1,600
+PRESTON,2,Ross,85,,600
+PRESTON,3,McCulloh,,,600
+PRESTON,4,Madison av,,,600
+PRESTON,5,Eutaw,99,108,600
+PRESTON,6,la,,,600
+PRESTON,7,Grundy,185,218,600
+PULASKI,1,Payson,,,600
+PUTNAM,1,Q,,,600
+QUAY AL,1,R,,,600
+RABORG,1,Pearl,,,600
+RABORG,2,Arch,,17,600
+RABORG,3,Pine,64,71,600
+RABORG,4,Fremont,114,121,600
+RABORG,5,Poppleton,206,205,600
+RABORG,6,Amity,224,,600
+RABORG,7,Schroeder,236,,600
+RABORG,8,Republican,320,,600
+RAMSAY,1,west,,,600
+REGESTER (N),1,av,,,600
+REGESTER (S),1,Baltimore,,1,600
+REGESTER (S),2,Lombard,26,33,600
+REGESTER (S),3,Pratt,48,61,600
+REGESTER (S),4,Gough,102,113,600
+REGESTER (S),5,Bank,124,133,600
+REGESTER (S),6,Eastern av,136,143,600
+REGESTER (S),7,Canton av,150,159,600
+REGESTER (S),8,Aliceanna,170,,600
+REGESTER (S),9,Lancaster,196,197,600
+REPUBLICAN (S),1,"Lancaster, E of Broadway",,,600
+RICKETT'S AL,1,from 18 McHenry,,,600
+ROSS,1,Howard,,1,601
+ROSS,2,Eutaw,8,,601
+ROSS,3,Jasper,32,,601
+ROSS,4,Paca,,,601
+ROSS,5,St. Mary's,54,,601
+ROSS,6,Orchard,68,83,601
+ROSS,7,Biddle,104,109,601
+ROSS,8,Union,128,,601
+ROSS,9,Preston,158,161,601
+ROSS,10,Hoffman,194,194,601
+ROSS,11,Dolphin,226,227,601
+ROSS,12,Lanvaie,,273,601
+ROSS,13,Townsend,,317,601
+ROSS,14,To Northern av,,,601
+RYAN,1,McHenry,,,601
+SARATOGA,1,Gay,2,1,601
+SARATOGA,2,Holiday,,,601
+SARATOGA,3,North,22,,601
+SARATOGA,4,Davis,,,601
+SARATOGA,5,Calvert,36,,601
+SARATOGA,6,Courtland,,,601
+SARATOGA,7,St. Paul,46,47,601
+SARATOGA,8,Church lane,56,,601
+SARATOGA,9,Charles,28,,601
+SARATOGA,10,Sharp,72,81,601
+SARATOGA,11,Liberty,78,,601
+SARATOGA,12,Park,120,105,601
+SARATOGA,13,Howard,142,131,601
+SARATOGA,14,State,,135,601
+SARATOGA,15,Eutaw,164,153,601
+SARATOGA,16,Jasper,178,165,601
+SARATOGA,17,Paca,194,171,601
+SARATOGA,18,Diamond,,,601
+SARATOGA,19,Greene,,191,601
+SARATOGA,20,Pearl,218,201,601
+SARATOGA,21,Arch,230,,601
+SARATOGA,22,Pine,280,271,601
+SARATOGA,23,Chatsworth,298,291,601
+SARATOGA,24,Fremont,384,389,601
+SARATOGA,25,Rock,406,,601
+SARATOGA,26,Poppleton,424,427,601
+SARATOGA,27,Amity,454,,601
+SARATOGA,28,Schroeder,470,483,601
+SARATOGA,29,Oregon,512,537,601
+SARATOGA,30,Carlton,544,,601
+SARATOGA,31,Republican,568,,601
+SARATOGA,32,Carey,602,541,601
+SARATOGA,33,Calhoun,638,,601
+SARATOGA,34,Strieker,672,,601
+SARATOGA,35,Gilmor,696,,601
+SARATOGA,36,Mount,702,,601
+SARATOGA,37,To Calverton road,,,601
+SCHROEDER (N),1,Fayette,25,22,601
+SCHROEDER (N),2,Lanvaie,,,601
+SCOTT,1,Thames,,15,601
+"SECOND, (W)",1,Centre Market space,1,2,601
+"SECOND, (W)",2,Frederick,27,14,601
+"SECOND, (W)",3,Gay,,18,601
+"SECOND, (W)",4,South,91,44,601
+"SECOND, (W)",5,going south from Fifth,,,601
+"SHARP, (S)",1,Baltimore,1,,601
+"SHARP, (S)",2,German,29,14,601
+"SHARP, (S)",3,Lombard,37,46,601
+"SHARP, (S)",4,Pratt,59,62,601
+"SHARP, (S)",5,Dover,73,66,601
+"SHARP, (S)",6,Camden,87,,601
+"SHARP, (S)",7,Perry,97,80,601
+"SHARP, (S)",8,Conway,101,96,601
+"SHARP, (S)",9,Wayne,,110,601
+"SHARP, (S)",10,Barre,,128,601
+"SHARP, (S)",11,Lee,,160,601
+"SHARP, (S)",12,York,178,184,601
+"SHARP, (S)",13,Hill,183,204,601
+"SHARP, (S)",14,Montgomery,,220,601
+"SHARP, (S)",15,Henrietta,229,270,601
+"SHARP, (S)",16,Hamburg,273,316,601
+"SHARP, (S)",17,Cross,229,,601
+"SHARP, (S)",18,To Moale,,,601
+SMALL WOOD,1,of Pulaski,,,601
+SMALL WOOD,2,to Pennsylvania av,,,601
+SOUTH,1,Baltimore,1,2,602
+SOUTH,2,Lovely lane,,16,602
+SOUTH,3,Second,27,,602
+SOUTH,4,Water,34,,602
+SOUTH,5,Lombard,39,44,602
+SOUTH,6,Guilford,,52,602
+SOUTH,7,Pratt,,66,602
+SOUTH,8,Wood,,76,602
+SPRING (N.),1,Hollins,28,33,602
+SPRING (N.),2,Orleans,36,,602
+SPRING (N.),3,McElderry,92,93,602
+SPRING (N.),4,Monument,120,119,602
+SPRING (N.),5,Madison,152,,602
+SPRING (N.),6,Gay,170,,602
+SPRING (N.),7,To' Lanvale,,,602
+SPRING (S.),1,Baltimore,,9,602
+SPRING (S.),2,Lombard,20,,602
+SPRING (S.),3,Pratt,56,,602
+SPRING (S.),4,Gough,126,127,602
+SPRING (S.),5,Bank,142,153,602
+SPRING (S.),6,Eastern av,168,151,602
+SPRING (S.),7,Canton av,,191,602
+SPRING (S.),8,Aliceanna,,,602
+SPRING (S.),9,Lancaster,,,602
+STILES,1,East Falls av,,,602
+STILES,2,President,,,602
+STILES,3,Albemarle,,,602
+STILES,4,High,26,23,602
+STILES,5,Exeter,52,47,602
+STILES,6,Gough,72,,602
+STILES,7,Central av,98,,602
+STILES,8,S of STIRLING from 17 Mott,,,602
+STOCKHOLM,1,N of Ostend,,,602
+STOCKTON AL,1,publican,,,602
+"STRICKER, (N)",1,Baltimore,,,602
+STRANGE AL,1,more,,,602
+STUART,1,Andre,,,602
+ST. PAUL,1,Madison,,171,602
+THOMPSON,1,Adams,,,602
+TOONE,1,S W and N W from,,,602
+TOONE,2,going,,,602
+TOONE,3,Lanvale,,,602
+TOWSON,1,E end of Hughes,,,602
+TYSON AL,1,U,,,602
+WASHINGTON (S) F. P,1,Baltimore,,19,603
+WASHINGTON (S) F. P,2,Lombard,,39,603
+WASHINGTON (S) F. P,3,Pratt,64,,603
+WASHINGTON (S) F. P,4,Gough,110,115,603
+WASHINGTON (S) F. P,5,Bank,,135,603
+WASHINGTON (S) F. P,6,Eastern av,,167,603
+WASHINGTON (S) F. P,7,Canton av,,191,603
+WASHINGTON (S) F. P,8,Fountain,192,,603
+WASHINGTON (S) F. P,9,Aliceanna,,209,603
+WASHINGTON SQ,1,at the intei-section of Charles,,,603
+WEST FALLS AV,1,bard,,,603
+WEST FALLS AV,2,Right,,,603
+WELSH AL,1,WH ITE A L going west from 88 N Poppleton,,,603
+WICOMICO,1,Severn,,,603
+WILLIAMSON AL,1,N of Hamburg,,,603
+WILLIAMSON AL,2,Wl LLOW from 52 Harford av,,,603
+WINDSOR,1,Canton av,,,603
+WINE AL,1,timore,,,603
+WOLFE (N),1,more,,,603
+WOLFE (S),1,Left. lii'jkt,,,603
+WOOD,1,Pratt,,,603
+WOOSTER,1,holm,,,603
+WYETH,1,"X AL from Barre, W of Charles",,,603
+BEL- AIR MARKET,1,to Orleans,,,603
+CENTRE MARKET,1,"Pratt, W of Jones Falls",,,603
+CROSS STRKET MARKET,1,"Charles, between Cross and West",,,603
+FELL'S POIN,1,Canton av to Thames,,,603
+HANOVER,1,over and Camden,,,603
+HOLLINS-ST. MARKET,1,timore,,,603
+LEXINGTON MARKET,1,Eutaw to Pearl,,,603
+RICHMOND MARKET,1,Biddle,,,603

@@ -43,9 +43,20 @@ RAW = Path(__file__).resolve().parent.parent / "data" / "raw"
 WORK = Path(__file__).resolve().parent.parent / "data" / "work"
 XML = RAW / "wood1860.djvu.xml"
 
-COL_SPLIT = 930      # x dividing the two book columns
+# Page geometry differs between volumes (1860 scans are 2211x3668, 1868 are
+# 2028x3466), so these are derived per volume from the actual page size rather
+# than hardcoded. The fractions come from the 1860 scans, where the book gutter
+# sits at just past mid-page and the running head clears the top ~7%.
+COL_SPLIT_FRAC = 930 / 2211
+HEADER_ZONE_FRAC = 260 / 3668
+COL_SPLIT = 930      # x dividing the two book columns, set per volume
 ROW_TOL = 22         # y tolerance when grouping words into a visual row
-HEADER_ZONE = 260    # running page head ("STREET DIRECTORY. 513") sits above this
+HEADER_ZONE = 260    # running page head sits above this, set per volume
+
+SOURCES = {
+    "1860": {"xml": "wood1860.djvu.xml", "prefix": "1860"},
+    "1868": {"xml": "wood1868.djvu.xml", "prefix": "1868"},
+}
 NAME_MARGIN = 10     # gap after the Right. column before the name column starts
 
 WORD_RE = re.compile(r'<WORD coords="(\d+),(\d+),(\d+),(\d+)"[^>]*>([^<]*)</WORD>')
@@ -120,10 +131,21 @@ def split_heading(text):
     return n, ext
 
 
-def main():
-    if not XML.exists():
-        sys.exit(f"missing {XML}: download the _djvu.xml first")
-    pages = open(XML, encoding="utf8", errors="ignore").read().split("<OBJECT ")
+def main(key="1860"):
+    global COL_SPLIT, HEADER_ZONE
+    cfg = SOURCES[key]
+    xml = RAW / cfg["xml"]
+    if not xml.exists():
+        sys.exit(f"missing {xml}: download the _djvu.xml first")
+    pages = open(xml, encoding="utf8", errors="ignore").read().split("<OBJECT ")
+
+    # scale the layout constants to this volume's actual page size
+    dims = re.search(r'width="(\d+)" height="(\d+)"', pages[1] if len(pages) > 1 else "")
+    if dims:
+        pw, ph = int(dims.group(1)), int(dims.group(2))
+        COL_SPLIT = int(pw * COL_SPLIT_FRAC)
+        HEADER_ZONE = int(ph * HEADER_ZONE_FRAC)
+    print(f"volume {key}: column split x={COL_SPLIT}, header zone y<{HEADER_ZONE}")
 
     # locate the section: title page through the ward-boundary page that follows
     start = end = None
@@ -203,11 +225,11 @@ def main():
                                 "left_no": left_no, "right_no": right_no, "page": pno})
 
     WORK.mkdir(parents=True, exist_ok=True)
-    with (WORK / "street_extents.csv").open("w", newline="", encoding="utf8") as fh:
+    with (WORK / f"street_extents_{cfg['prefix']}.csv").open("w", newline="", encoding="utf8") as fh:
         w = csv.DictWriter(fh, fieldnames=["street", "extent"])
         w.writeheader()
         w.writerows(extents)
-    with (WORK / "street_anchors.csv").open("w", newline="", encoding="utf8") as fh:
+    with (WORK / f"street_anchors_{cfg['prefix']}.csv").open("w", newline="", encoding="utf8") as fh:
         w = csv.DictWriter(fh, fieldnames=["street", "seq", "cross_street",
                                            "left_no", "right_no", "page"])
         w.writeheader()
@@ -220,4 +242,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1] if len(sys.argv) > 1 else "1860")

@@ -44,8 +44,9 @@
   @media (max-width: 900px) { .rail { max-height: none; border-right: 0;
     border-bottom: 1px solid var(--rule); } }
 
-  nav { display: flex; gap: 2px; border: 1px solid var(--rule); }
-  nav a { flex: 1; text-align: center; padding: 7px 4px; font-size: 12px;
+  nav { display: flex; flex-wrap: wrap; gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule); }
+  nav a { flex: 1 1 auto; min-width: 44px; text-align: center; padding: 7px 5px; font-size: 11.5px;
     text-decoration: none; color: var(--ink-2); background: var(--panel);
     letter-spacing: .04em; }
   nav a:hover { background: var(--ground); color: var(--ink); }
@@ -116,11 +117,7 @@
 
 <div class="wrap">
   <aside class="rail">
-    <nav>
-      <a href="./" __NAV0__>Density</a>
-      <a href="./1860.html" __NAV1__>1860</a>
-      <a href="./1842.html" __NAV2__>1842</a>
-    </nav>
+    __NAV__
 
     <div>
       <p class="eyebrow">__EYEBROW__</p>
@@ -165,7 +162,7 @@
 (function () {
   var MODE = "__MODE__";
   var D = JSON.parse(document.getElementById('payload').textContent);
-  var PEOPLE = MODE === '1842' ? D.people1842 : (MODE === '1860' ? D.people1860 : []);
+  var PEOPLE = (D.people && D.people[MODE]) ? D.people[MODE] : [];
   var cv = document.getElementById('map'), ctx = cv.getContext('2d');
   var tip = document.getElementById('tip'), stage = cv.parentNode;
 
@@ -245,8 +242,8 @@
     ctx.restore();
 
     if (PEOPLE.length) {
-      var showA = MODE === '1842' ? true : chk('t0');
-      var showB = MODE === '1842' ? false : chk('t2');
+      var showA = document.getElementById('t0') ? chk('t0') : true;
+      var showB = document.getElementById('t2') ? chk('t2') : false;
       for (var pass = 0; pass < 2; pass++) {
         var tier = pass === 0 ? 2 : 0;
         if (tier === 0 && !showA) continue;
@@ -327,8 +324,8 @@
 
     if (PEOPLE.length) {
       var best = null, bd = 81;
-      var showA = MODE === '1842' ? true : chk('t0');
-      var showB = MODE === '1842' ? false : chk('t2');
+      var showA = document.getElementById('t0') ? chk('t0') : true;
+      var showB = document.getElementById('t2') ? chk('t2') : false;
       for (var i = 0; i < PEOPLE.length; i++) {
         var p = PEOPLE[i], isA = p[2] !== 2;
         if (isA && !showA) continue;

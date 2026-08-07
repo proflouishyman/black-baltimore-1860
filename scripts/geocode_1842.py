@@ -41,7 +41,12 @@ from geocode_1860 import norm_street, load_streets, CRS_M, WARD_DIR
 ROOT = Path(__file__).resolve().parent.parent
 WORK = ROOT / "data" / "work"
 
-WARD_1842 = WARD_DIR / "baltimore_wards_1841_1845.shp"
+YEARS = {
+    "1842": {"people": "matchettsbaltimo1842balt_people.csv",
+             "wards": "baltimore_wards_1841_1845.shp"},
+    "1822": {"people": "baltimoredirecto1822keen_people.csv",
+             "wards": "baltimore_wards_1818_1831.shp"},
+}
 BLOCK_FRACTION = 0.4      # how far into the block to sit, 0 = on the corner
 MAX_STEP = 55.0           # metres; keeps huge suburban blocks from overshooting
 MIN_STEP = 12.0
@@ -128,8 +133,9 @@ def offset_side(geom, d, side, sign):
     return nx * SIDE_OFFSET, ny * SIDE_OFFSET
 
 
-def main():
-    streets = load_streets(WARD_1842)
+def main(year="1842"):
+    cfg = YEARS[year]
+    streets = load_streets(WARD_DIR / cfg["wards"])
     print(f"streets inside the 1841-45 city : {len(streets)}")
     xtab = intersection_table(streets)
     print(f"streets with known crossings    : {len(xtab)}")
@@ -143,7 +149,7 @@ def main():
         hit = fuzzproc.extractOne(core, list(streets), score_cutoff=90)
         return hit[0] if hit else None
 
-    people = list(csv.DictReader(open(WORK / "matchettsbaltimo1842balt_people.csv")))
+    people = list(csv.DictReader(open(WORK / cfg["people"])))
     rows = []
     miss_street, miss_cross, no_bearing = defaultdict(int), defaultdict(int), 0
 
@@ -196,7 +202,7 @@ def main():
         })
 
     gdf = gpd.GeoDataFrame(rows, crs=f"EPSG:{CRS_M}").to_crs(epsg=4326)
-    gdf.to_file(WORK / "people_1842_geocoded.geojson", driver="GeoJSON")
+    gdf.to_file(WORK / f"people_{year}_geocoded.geojson", driver="GeoJSON")
 
     rel = sum(1 for p in people if p["addr_type"] == "relative" and p["cross_street"])
     print(f"\nplaced          : {len(gdf)} of {rel} relative records "
@@ -211,4 +217,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    main(sys.argv[1] if len(sys.argv) > 1 else "1842")

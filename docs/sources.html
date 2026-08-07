@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Primary sources behind the Black Baltimore mapping project, 1822-1868.">
+<meta property="og:title" content="Where all of this comes from">
+<meta property="og:description" content="Primary sources behind the Black Baltimore mapping project, 1822-1868.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>&#x1F5FA;</text></svg>">
+<title>Sources — Black Baltimore</title>
+<style>
+  :root {
+    --ground: #E8E5DE; --panel: #F1EFE9; --ink: #17201F; --ink-2: #46514E;
+    --ink-3: #6E7A76; --rule: #CFCABF; --anchored: #A96A08; --approx: #00846F;
+    --bar: #A96A08; --bar-soft: #D8C6A4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #101619; --panel: #161E22; --ink: #E4E7E5; --ink-2: #A9B4B1;
+      --ink-3: #7E8A88; --rule: #253034; --anchored: #CB811A; --approx: #2C9C8D;
+      --bar: #CB811A; --bar-soft: #3B3527;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #101619; --panel: #161E22; --ink: #E4E7E5; --ink-2: #A9B4B1;
+    --ink-3: #7E8A88; --rule: #253034; --anchored: #CB811A; --approx: #2C9C8D;
+    --bar: #CB811A; --bar-soft: #3B3527;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--ground); color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.55;
+    -webkit-font-smoothing: antialiased; }
+  .serif { font-family: "Iowan Old Style", "Palatino Linotype", Palatino,
+           "Book Antiqua", Georgia, serif; }
+  .mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+          font-variant-numeric: tabular-nums; }
+
+  .page { max-width: 1080px; margin: 0 auto; padding: 26px 26px 80px; }
+  nav { display: flex; flex-wrap: wrap; gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule); margin-bottom: 34px; }
+  nav a { flex: 1 1 auto; min-width: 52px; text-align: center; padding: 8px 6px;
+    font-size: 12px; text-decoration: none; color: var(--ink-2);
+    background: var(--panel); letter-spacing: .04em; }
+  nav a:hover { background: var(--ground); color: var(--ink); }
+  nav a[aria-current="page"] { background: var(--ink); color: var(--panel); font-weight: 600; }
+  nav a:focus-visible { outline: 2px solid var(--anchored); outline-offset: -2px; }
+
+  .eyebrow { font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-3); margin: 0 0 10px; }
+  h1 { font-size: 38px; line-height: 1.1; margin: 0 0 12px; text-wrap: balance;
+    font-weight: 600; letter-spacing: -.015em; }
+  h2 { font-size: 21px; margin: 44px 0 12px; font-weight: 600; letter-spacing: -.01em; }
+  .lede { color: var(--ink-2); font-size: 16.5px; max-width: 64ch; margin: 0 0 6px; }
+  p { max-width: 68ch; }
+  a { color: var(--anchored); }
+
+  .years { display: flex; flex-wrap: wrap; gap: 6px; margin: 26px 0 18px; }
+  .years button { font: inherit; font-size: 13px; padding: 6px 14px; cursor: pointer;
+    background: var(--panel); color: var(--ink-2); border: 1px solid var(--rule);
+    border-radius: 2px; }
+  .years button:hover { border-color: var(--ink-3); color: var(--ink); }
+  .years button[aria-pressed="true"] { background: var(--ink); color: var(--panel);
+    border-color: var(--ink); font-weight: 600; }
+  .years button:focus-visible { outline: 2px solid var(--anchored); outline-offset: 2px; }
+
+  .chart { display: grid; grid-template-columns: 150px 1fr 64px; gap: 3px 12px;
+    align-items: center; margin-top: 8px; }
+  .chart .lab { font-size: 13px; text-align: right; color: var(--ink-2); }
+  .chart .track { background: var(--bar-soft); height: 17px; border-radius: 0 3px 3px 0; }
+  .chart .fill { background: var(--bar); height: 17px; border-radius: 0 3px 3px 0;
+    transition: width .25s ease; }
+  .chart .val { font-size: 12.5px; color: var(--ink-3);
+    font-variant-numeric: tabular-nums; }
+  @media (prefers-reduced-motion: reduce) { .chart .fill { transition: none; } }
+  @media (max-width: 620px) { .chart { grid-template-columns: 110px 1fr 52px; } }
+
+  table.data { border-collapse: collapse; font-size: 13.5px; margin-top: 10px; width: 100%; }
+  table.data th, table.data td { text-align: left; padding: 7px 12px 7px 0;
+    border-bottom: 1px solid var(--rule); }
+  table.data td.n, table.data th.n { text-align: right;
+    font-variant-numeric: tabular-nums; }
+  .scroll { overflow-x: auto; }
+
+  figure { margin: 26px 0; }
+  figure img { width: 100%; max-width: 100%; height: auto; display: block;
+    border: 1px solid var(--rule); background: #fff; }
+  figcaption { font-size: 12.5px; color: var(--ink-3); margin-top: 9px; max-width: 68ch; }
+
+  .biblio { border-top: 1px solid var(--rule); padding-top: 20px; margin-top: 30px; }
+  .biblio h3 { font-size: 16px; margin: 0 0 4px; font-weight: 600; }
+  .biblio .meta { font-size: 13px; color: var(--ink-3); margin: 0 0 6px; }
+  .biblio p { font-size: 13.5px; color: var(--ink-2); margin: 0 0 8px; }
+  .note { font-size: 13px; color: var(--ink-3); border-left: 2px solid var(--rule);
+    padding-left: 14px; margin: 22px 0; }
+  .note strong { color: var(--ink-2); font-weight: 600; }
+</style>
+
+</head>
+<body>
+<div class="page">
+  <nav>
+    <a href="./">Density</a>
+    <a href="./1842.html">1842</a>
+    <a href="./1845.html">1845</a>
+    <a href="./1851.html">1851</a>
+    <a href="./1860.html">1860</a>
+    <a href="./1868.html">1868</a>
+    <a href="./work.html">Work</a>
+    <a href="./sources.html" aria-current="page">Sources</a>
+    </nav>
+  <p class="eyebrow">Bibliography</p>
+  <h1 class="serif">Where all of this comes from</h1>
+  <p class="lede">Nine primary sources, spanning 1822 to 1868, each linked to the original scan.</p>
+  
+  <p>Every figure on this site comes from one of the documents below. All are
+    public and linked. Where a page image is shown, it is the actual page the
+    data was read from.</p>
+
+  <div class="note"><strong>On the language.</strong> The section headings
+    quoted here &mdash; “Colored Persons,” “Colored Householders” &mdash; are
+    the directories' own. They are reproduced because they are what makes this
+    project possible: the publishers segregated these residents into separate
+    lists, and that act of separation is why they can be identified and counted
+    today. The words are theirs, not ours.</div>
+
+
+  <div class="biblio">
+    <h3>The Baltimore Directory for 1822</h3>
+    <p class="meta">Richard J. Matchett (Keenan), 1822 &middot; <a href="https://archive.org/details/baltimoredirecto1822keen">view the original</a></p>
+    <p>No separate section. Instead a dagger (&dagger;) precedes certain names &mdash; 360 of them &mdash; which the OCR renders variously as <span class="mono">f</span> or <span class="mono">t</span>. <strong>The meaning is inferred, not stated:</strong> this scan's &ldquo;Directions to the Reader&rdquo; page, which would carry the legend, is not legible. The reading rests on the flagged entries' occupations (laundress, labourer, drayman, bootblack), their concentration in the alleys, and at least one that is also described outright as <em>coloured</em>. Treat it as a strong inference pending a clean copy of that page. Note also that trailing <span class="mono">f. p.</span> and <span class="mono">o. t.</span> mark Fell's Point and Old Town, not race. Only 8 of this volume's addresses resolve, so it is parsed but not mapped.</p>
+    <p class="mono" style="color:var(--approx);font-size:12.5px">414 residents parsed, 360 flagged</p>
+    <figure><img src="img/1822_f_marker.jpg" alt="Page from The Baltimore Directory for 1822" loading="lazy"><figcaption>The Baltimore Directory for 1822, Richard J. Matchett (Keenan), 1822.</figcaption></figure>
+  </div>
+
+  <div class="biblio">
+    <h3>Matchett's Baltimore Director</h3>
+    <p class="meta">1842 &middot; <a href="https://archive.org/details/matchettsbaltimo1842balt">view the original</a></p>
+    <p>Prints a separate “Colored Householders” section with a note at the front that they are listed “by themselves.” Addresses are relative, not numbered. Its appendix also carries the full ward ordinance, with boundaries described by street centre lines.</p>
+    <p class="mono" style="color:var(--approx);font-size:12.5px">2,724 residents parsed</p>
+    <figure><img src="img/1842_colored_householders.jpg" alt="Page from Matchett's Baltimore Director" loading="lazy"><figcaption>Matchett's Baltimore Director, 1842.</figcaption></figure>
+  </div>
+
+  <div class="biblio">
+    <h3>The Baltimore Directory</h3>
+    <p class="meta">1845 &middot; <a href="https://archive.org/details/baltimoredirecto1845balt">view the original</a></p>
+    <p>The first of these volumes with house numbers. Same segregated section, now giving addresses like <span class="mono">13 Lerew's alley</span>.</p>
+    <p class="mono" style="color:var(--approx);font-size:12.5px">2,100 residents parsed</p>
+    
+  </div>
+
+  <div class="biblio">
+    <h3>Matchett's Baltimore Director</h3>
+    <p class="meta">1851 &middot; <a href="https://archive.org/details/matchettsbaltimo1851balt">view the original</a></p>
+    <p>Section closes with an explicit <span class="mono">END COLORED RESIDENTS</span>, which is what bounds the parse. Also prints the 1851 ward division law.</p>
+    <p class="mono" style="color:var(--approx);font-size:12.5px">3,642 residents parsed</p>
+    
+  </div>
+
+  <div class="biblio">
+    <h3>Wood's Baltimore City Directory</h3>
+    <p class="meta">John W. Woods, 1860 &middot; <a href="https://archive.org/details/woodsbaltimoreci1860balt">view the original</a></p>
+    <p>The “Colored Persons” section, 31 printed pages beginning at p. 427, giving name, occupation and address for each resident. The backbone of the project.</p>
+    <p class="mono" style="color:var(--approx);font-size:12.5px">4,251 residents parsed</p>
+    <figure><img src="img/1860_colored_persons.jpg" alt="Page from Wood's Baltimore City Directory" loading="lazy"><figcaption>Wood's Baltimore City Directory, John W. Woods, 1860.</figcaption></figure>
+  </div>
+
+  <div class="biblio">
+    <h3>Wood's Baltimore City Directory — Street Directory</h3>
+    <p class="meta">1860, pp. 509–529 &middot; <a href="https://archive.org/details/woodsbaltimoreci1860balt">view the original</a></p>
+    <p>The key that makes address-level geocoding possible. For every street it prints the house number standing at each cross street, in Left and Right columns, so an 1860 number can be placed between two named corners without ever being compared to a modern one. The flat OCR destroys this table; it is rebuilt from per-word coordinates.</p>
+    <p class="mono" style="color:var(--approx);font-size:12.5px">1,521 anchors across 215 streets</p>
+    <figure><img src="img/1860_street_directory.jpg" alt="Page from Wood's Baltimore City Directory — Street Directory" loading="lazy"><figcaption>Wood's Baltimore City Directory — Street Directory, 1860, pp. 509–529.</figcaption></figure>
+  </div>
+
+  <div class="biblio">
+    <h3>Wood's Baltimore City Directory</h3>
+    <p class="meta">1868 &middot; <a href="https://archive.org/details/woodsbaltimoreci1868balt">view the original</a></p>
+    <p>Three years after emancipation. The section runs 64 pages where 1860's ran 31, and lists twice as many people. Its own street directory is richer than 1860's, covering 387 streets.</p>
+    <p class="mono" style="color:var(--approx);font-size:12.5px">8,512 residents parsed</p>
+    <figure><img src="img/1868_colored_persons.jpg" alt="Page from Wood's Baltimore City Directory" loading="lazy"><figcaption>Wood's Baltimore City Directory, 1868.</figcaption></figure>
+  </div>
+
+  <div class="biblio">
+    <h3>Population of the United States in 1860</h3>
+    <p class="meta">Eighth Census, Table No. 3, p. 214 &middot; <a href="https://www2.census.gov/library/publications/decennial/1860/population/1860a-18.pdf">view the original</a></p>
+    <p>Baltimore ward by ward, with white, free colored and slave counts. The only ward-level race breakdown available for 1860: IPUMS does not distribute ward geography in its public complete count. Transcribed from the scan and checked against the printed totals, which reconcile exactly.</p>
+    <p class="mono" style="color:var(--approx);font-size:12.5px">20 wards; 25,680 free Black, 2,218 enslaved</p>
+    
+  </div>
+
+  <div class="biblio">
+    <h3>Historical Urban Ecological (HUE) Data</h3>
+    <p class="meta">Center for Population Economics, ICPSR 35617 &middot; <a href="https://www.icpsr.umich.edu/web/ICPSR/studies/35617">view the original</a></p>
+    <p>Baltimore street centrelines c.1930 and ward boundaries in period slices. Chosen over modern street data for one reason: it still carries the alleys &mdash; Camel, Pin, Welcome &mdash; where much of this population lived and which modern data has lost.</p>
+    <p class="mono" style="color:var(--approx);font-size:12.5px">20,459 street segments; ward layers 1818–1930</p>
+    
+  </div>
+
+  <h2>Method and code</h2>
+  <p>Every step is scripted and the repository is public:
+    <a href="https://github.com/proflouishyman/black-baltimore-1860">github.com/proflouishyman/black-baltimore-1860</a>.
+    It includes the parsers, the geocoders, the transcription check on the
+    census table, and a log of every bug found and what caused it.</p>
+</div>
+
+
+</body>
+</html>

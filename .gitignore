@@ -1,2 +1,4 @@
 data/raw/*.txt
 logs/
+.venv/
+data/raw/*.xml

@@ -82,6 +82,20 @@ def norm_street(raw):
 
 
 HUE_SHP = RAW / "hue" / "HUE_Baltimore_Streets" / "CPE_Baltimore_Streets_HUE_v1.shp"
+WARD_SHP = RAW / "hue" / "HUE_Baltimore_Wards" / "baltimore_wards_1846_1860.shp"
+
+
+def city_limits():
+    """The 1846-1860 ward polygons dissolved into the city boundary.
+
+    Street geometry must be clipped to this before anything is placed on it.
+    The street file is a c.1930 survey, by which date arteries like Harford
+    Avenue ran miles past the 1860 city line. Proportional placement along an
+    unclipped street therefore flings residents into what was open country in
+    1860. Everyone in this directory lived inside these wards, so the boundary
+    is the correct domain, not a cosmetic crop."""
+    wg = gpd.read_file(WARD_SHP).to_crs(epsg=CRS_M)
+    return unary_union(wg.geometry.values).buffer(0)
 
 
 def load_streets():
@@ -99,6 +113,7 @@ def load_streets():
     does not have, so nothing is lost by the swap."""
     buckets = defaultdict(list)
     source_of = {}
+    city = city_limits()
 
     hue = gpd.read_file(HUE_SHP).to_crs(epsg=CRS_M)
     for name, geom in zip(hue["Full_Name"], hue.geometry):
@@ -117,7 +132,9 @@ def load_streets():
 
     merged = {}
     for core, geoms in buckets.items():
-        g = unary_union(geoms)
+        g = unary_union(geoms).intersection(city)
+        if g.is_empty:
+            continue
         # linemerge rejects a geometry that is already a single LineString
         if g.geom_type == "MultiLineString":
             g = linemerge(g)

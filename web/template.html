@@ -1,0 +1,416 @@
+<title>Black Baltimore, 1860 — a working geocode</title>
+<style>
+  /* Light is the base palette. Dark redefines only tokens, in both the
+     unstamped (prefers-color-scheme) and explicitly stamped cases. */
+  :root {
+    --ground: #E8E5DE;
+    --panel: #F1EFE9;
+    --map-ground: #E4E0D7;
+    --ink: #17201F;
+    --ink-2: #46514E;
+    --ink-3: #6E7A76;
+    --rule: #CFCABF;
+    --street: #B3AC9E;
+    --ward: #8C8272;
+    --anchored: #A96A08;
+    --approx: #00846F;
+    --shadow: 0 1px 2px rgba(23,32,31,.08), 0 8px 24px rgba(23,32,31,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #101619;
+      --panel: #161E22;
+      --map-ground: #0C1214;
+      --ink: #E4E7E5;
+      --ink-2: #A9B4B1;
+      --ink-3: #7E8A88;
+      --rule: #253034;
+      --street: #2E3B40;
+      --ward: #55666C;
+      --anchored: #CB811A;
+      --approx: #2C9C8D;
+      --shadow: 0 1px 2px rgba(0,0,0,.5), 0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #101619;
+    --panel: #161E22;
+    --map-ground: #0C1214;
+    --ink: #E4E7E5;
+    --ink-2: #A9B4B1;
+    --ink-3: #7E8A88;
+    --rule: #253034;
+    --street: #2E3B40;
+    --ward: #55666C;
+    --anchored: #CB811A;
+    --approx: #2C9C8D;
+    --shadow: 0 1px 2px rgba(0,0,0,.5), 0 10px 30px rgba(0,0,0,.35);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .serif {
+    font-family: "Iowan Old Style", "Palatino Linotype", Palatino,
+                 "Book Antiqua", Georgia, serif;
+  }
+  .mono {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .wrap { display: grid; grid-template-columns: 336px 1fr; min-height: 100vh; }
+  @media (max-width: 900px) { .wrap { grid-template-columns: 1fr; } }
+
+  .rail {
+    background: var(--panel);
+    border-right: 1px solid var(--rule);
+    padding: 28px 26px 32px;
+    display: flex; flex-direction: column; gap: 26px;
+    overflow-y: auto; max-height: 100vh;
+  }
+  @media (max-width: 900px) { .rail { max-height: none; border-right: 0;
+    border-bottom: 1px solid var(--rule); } }
+
+  .eyebrow {
+    font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-3); margin: 0 0 10px;
+  }
+  h1 { font-size: 30px; line-height: 1.12; margin: 0 0 10px; text-wrap: balance;
+       font-weight: 600; letter-spacing: -.01em; }
+  .lede { color: var(--ink-2); font-size: 14.5px; margin: 0; }
+
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+           background: var(--rule); border: 1px solid var(--rule); }
+  .stat { background: var(--panel); padding: 12px 13px; }
+  .stat .n { font-size: 22px; font-weight: 600; letter-spacing: -.02em; }
+  .stat .k { font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+             color: var(--ink-3); margin-top: 3px; }
+
+  fieldset { border: 0; padding: 0; margin: 0; }
+  legend { font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+           color: var(--ink-3); padding: 0 0 10px; }
+  .row { display: flex; align-items: flex-start; gap: 10px; padding: 7px 0;
+         cursor: pointer; }
+  .row input { margin: 3px 0 0; accent-color: var(--ink-2); flex: none; }
+  .swatch { width: 12px; height: 12px; border-radius: 50%; flex: none;
+            margin-top: 4px; }
+  .row .lab { font-size: 13.5px; }
+  .row .sub { font-size: 12px; color: var(--ink-3); }
+  .ward-key { width: 12px; height: 0; border-top: 2px dashed var(--ward);
+              margin-top: 9px; }
+
+  .note { font-size: 12.5px; color: var(--ink-3); border-left: 2px solid var(--rule);
+          padding-left: 12px; }
+  .note strong { color: var(--ink-2); font-weight: 600; }
+
+  .sources { border-top: 1px solid var(--rule); padding-top: 16px;
+             margin-top: auto; }
+  .sources p { font-size: 11.5px; line-height: 1.55; color: var(--ink-3);
+               margin: 0 0 9px; }
+  .sources em { font-style: italic; }
+
+  .stage { position: relative; background: var(--map-ground); }
+  canvas { display: block; width: 100%; height: 100%; cursor: crosshair; }
+  @media (max-width: 900px) { .stage { height: 72vh; } }
+
+  .hud { position: absolute; left: 16px; bottom: 14px; display: flex; gap: 8px;
+         align-items: center; font-size: 11.5px; color: var(--ink-3); }
+  .scalebar { height: 5px; border: 1px solid var(--ink-3); border-top: 0; }
+
+  .zoomers { position: absolute; right: 16px; bottom: 14px; display: flex; gap: 6px; }
+  .zoomers button {
+    width: 30px; height: 30px; font-size: 15px; line-height: 1; cursor: pointer;
+    background: var(--panel); color: var(--ink); border: 1px solid var(--rule);
+    border-radius: 3px;
+  }
+  .zoomers button:hover { border-color: var(--ink-3); }
+  .zoomers button:focus-visible, .row:focus-within { outline: 2px solid var(--anchored);
+    outline-offset: 2px; }
+
+  #tip {
+    position: absolute; pointer-events: none; opacity: 0; transition: opacity .1s;
+    background: var(--panel); border: 1px solid var(--rule); box-shadow: var(--shadow);
+    padding: 9px 11px; max-width: 260px; font-size: 13px; border-radius: 3px;
+    z-index: 5;
+  }
+  #tip .nm { font-weight: 600; }
+  #tip .oc { color: var(--ink-2); font-style: italic; }
+  #tip .ad { color: var(--ink-3); font-size: 12px; margin-top: 3px; }
+  #tip .tier { font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase;
+               margin-top: 6px; }
+  @media (prefers-reduced-motion: reduce) { #tip { transition: none; } }
+</style>
+
+<div class="wrap">
+  <aside class="rail">
+    <div>
+      <p class="eyebrow">Wood's Baltimore City Directory</p>
+      <h1 class="serif">Black Baltimore,<br>1860</h1>
+      <p class="lede">Every resident listed in the directory's separate
+        &ldquo;Colored Persons&rdquo; section, placed on the streets they lived on.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="n mono">4,251</div><div class="k">Listed</div></div>
+      <div class="stat"><div class="n mono">2,868</div><div class="k">Placed</div></div>
+      <div class="stat"><div class="n mono">848</div><div class="k">Anchored</div></div>
+      <div class="stat"><div class="n mono">38%</div><div class="k">Gone from modern maps</div></div>
+    </div>
+
+    <fieldset>
+      <legend>Show</legend>
+      <label class="row">
+        <input type="checkbox" id="t0" checked>
+        <span class="swatch" style="background:var(--anchored)"></span>
+        <span><span class="lab">Anchored &mdash; 848</span><br>
+          <span class="sub">Placed between two named corners using the house
+            numbers the directory itself prints.</span></span>
+      </label>
+      <label class="row">
+        <input type="checkbox" id="t2" checked>
+        <span class="swatch" style="background:var(--approx)"></span>
+        <span><span class="lab">Street&nbsp;only &mdash; 2,020</span><br>
+          <span class="sub">Street is known, position along it is estimated.
+            No printed number table survives for these.</span></span>
+      </label>
+      <label class="row">
+        <input type="checkbox" id="tw">
+        <span class="ward-key"></span>
+        <span><span class="lab">Ward boundaries</span><br>
+          <span class="sub">City wards as drawn 1846&ndash;1860.</span></span>
+      </label>
+    </fieldset>
+
+    <p class="note"><strong>Working prototype, not a finished map.</strong>
+      Street geometry is a c.1930 survey, the closest layer that still carries
+      the alleys &mdash; Camel, Pin, Welcome, Strawberry &mdash; where much of
+      this population actually lived. Modern street data has lost them, and
+      would have quietly emptied the densest blocks. A properly georeferenced
+      1860s map is the next step, and will move these dots.</p>
+
+    <p class="note">Drag to pan, scroll to zoom, hover a dot for the person.</p>
+
+    <div class="sources">
+      <p class="eyebrow" style="margin-bottom:8px">Sources</p>
+      <p><em>Wood's Baltimore City Directory for 1860</em>, John W. Woods.
+        Residents and the house-number tables are taken from the scanned volume
+        at the Internet Archive.</p>
+      <p>Street centrelines and ward boundaries: Historical Urban Ecological
+        (HUE) Data, Center for Population Economics, ICPSR study 35617.
+        Incorporates U.S. Census Bureau TIGER/Line data, acknowledged as the
+        source per its terms of use.</p>
+      <p>Parsing, geocoding and cartography by Louis Hyman, Johns Hopkins
+        University.</p>
+    </div>
+  </aside>
+
+  <div class="stage">
+    <canvas id="map"></canvas>
+    <div class="hud"><span id="scale-label" class="mono">—</span>
+      <div class="scalebar" id="scalebar"></div></div>
+    <div class="zoomers">
+      <button id="zin" aria-label="Zoom in">+</button>
+      <button id="zout" aria-label="Zoom out">&minus;</button>
+      <button id="zreset" aria-label="Reset view">&#8634;</button>
+    </div>
+    <div id="tip" role="status"></div>
+  </div>
+</div>
+
+<script id="payload" type="application/json">__PAYLOAD__</script>
+<script>
+(function () {
+  var D = JSON.parse(document.getElementById('payload').textContent);
+  var cv = document.getElementById('map'), ctx = cv.getContext('2d');
+  var tip = document.getElementById('tip'), stage = cv.parentNode;
+
+  // Build the static geometry once. 20k polylines redrawn per frame would
+  // stutter; one Path2D reused under a transform does not.
+  var streetPath = new Path2D();
+  D.streets.forEach(function (f) {
+    streetPath.moveTo(f[0], f[1]);
+    for (var i = 2; i < f.length; i += 2) streetPath.lineTo(f[i], f[i + 1]);
+  });
+  var wardPath = new Path2D();
+  D.wards.forEach(function (f) {
+    wardPath.moveTo(f[0], f[1]);
+    for (var i = 2; i < f.length; i += 2) wardPath.lineTo(f[i], f[i + 1]);
+    wardPath.closePath();
+  });
+
+  var view = { k: 1, x: 0, y: 0 }, dpr = 1, css = { w: 0, h: 0 }, fit = 1;
+  var tok = {};
+  function readTokens() {
+    var s = getComputedStyle(document.documentElement);
+    ['street', 'ward', 'anchored', 'approx', 'map-ground'].forEach(function (n) {
+      tok[n] = s.getPropertyValue('--' + n).trim();
+    });
+  }
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    css.w = stage.clientWidth; css.h = stage.clientHeight;
+    cv.width = Math.round(css.w * dpr); cv.height = Math.round(css.h * dpr);
+    fit = Math.min(css.w / D.w, css.h / D.h);
+    draw();
+  }
+
+  function tx() { return { k: fit * view.k,
+    ox: (css.w - D.w * fit * view.k) / 2 + view.x,
+    oy: (css.h - D.h * fit * view.k) / 2 + view.y }; }
+
+  function draw() {
+    var t = tx();
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.fillStyle = tok['map-ground'];
+    ctx.fillRect(0, 0, css.w, css.h);
+    ctx.save();
+    ctx.translate(t.ox, t.oy); ctx.scale(t.k, t.k);
+
+    ctx.strokeStyle = tok.street;
+    ctx.lineWidth = Math.max(0.35, 0.9 / t.k);
+    ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+    ctx.stroke(streetPath);
+
+    if (document.getElementById('tw').checked) {
+      ctx.strokeStyle = tok.ward;
+      ctx.lineWidth = Math.max(0.8, 1.8 / t.k);
+      ctx.setLineDash([7 / t.k, 5 / t.k]);
+      ctx.stroke(wardPath);
+      ctx.setLineDash([]);
+    }
+    ctx.restore();
+
+    // Dots in screen space so they hold a constant size while zooming.
+    var showA = document.getElementById('t0').checked;
+    var showB = document.getElementById('t2').checked;
+    var rA = 2.9, rB = 2.2;
+    for (var pass = 0; pass < 2; pass++) {
+      // street-only underneath, anchored on top: precision should win overlaps
+      var tier = pass === 0 ? 2 : 0;
+      if (tier === 0 && !showA) continue;
+      if (tier === 2 && !showB) continue;
+      ctx.fillStyle = tier === 0 ? tok.anchored : tok.approx;
+      ctx.globalAlpha = tier === 0 ? 0.92 : 0.62;
+      ctx.beginPath();
+      for (var i = 0; i < D.people.length; i++) {
+        var p = D.people[i];
+        var pt = p[2] === 2 ? 2 : 0;
+        if (pt !== tier) continue;
+        var X = p[0] * t.k + t.ox, Y = p[1] * t.k + t.oy;
+        if (X < -8 || Y < -8 || X > css.w + 8 || Y > css.h + 8) continue;
+        ctx.moveTo(X + (tier === 0 ? rA : rB), Y);
+        ctx.arc(X, Y, tier === 0 ? rA : rB, 0, 6.2832);
+      }
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+    scalebar(t.k);
+  }
+
+  function scalebar(k) {
+    // k is screen px per payload unit; payload units carry metres_per_unit.
+    var target = 110, metres = target * D.metres_per_unit / k;
+    var steps = [25, 50, 100, 200, 400, 800, 1600], pick = steps[0];
+    for (var i = 0; i < steps.length; i++) if (steps[i] <= metres) pick = steps[i];
+    var px = pick / D.metres_per_unit * k;
+    document.getElementById('scalebar').style.width = Math.round(px) + 'px';
+    document.getElementById('scale-label').textContent =
+      pick >= 1000 ? (pick / 1000) + ' km' : pick + ' m';
+  }
+
+  // ---- interaction ----
+  var drag = null;
+  cv.addEventListener('mousedown', function (e) {
+    drag = { x: e.clientX, y: e.clientY, vx: view.x, vy: view.y };
+    cv.style.cursor = 'grabbing';
+  });
+  window.addEventListener('mouseup', function () {
+    drag = null; cv.style.cursor = 'crosshair';
+  });
+  window.addEventListener('mousemove', function (e) {
+    if (!drag) return;
+    view.x = drag.vx + (e.clientX - drag.x);
+    view.y = drag.vy + (e.clientY - drag.y);
+    draw();
+  });
+  cv.addEventListener('wheel', function (e) {
+    e.preventDefault();
+    var r = cv.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top;
+    var before = tx();
+    var ux = (mx - before.ox) / before.k, uy = (my - before.oy) / before.k;
+    view.k = Math.max(1, Math.min(40, view.k * (e.deltaY < 0 ? 1.15 : 1 / 1.15)));
+    var after = tx();
+    // keep the point under the cursor fixed
+    view.x += mx - (ux * after.k + after.ox);
+    view.y += my - (uy * after.k + after.oy);
+    draw();
+  }, { passive: false });
+
+  function zoomBy(f) {
+    var before = tx(), cx = css.w / 2, cy = css.h / 2;
+    var ux = (cx - before.ox) / before.k, uy = (cy - before.oy) / before.k;
+    view.k = Math.max(1, Math.min(40, view.k * f));
+    var after = tx();
+    view.x += cx - (ux * after.k + after.ox);
+    view.y += cy - (uy * after.k + after.oy);
+    draw();
+  }
+  document.getElementById('zin').onclick = function () { zoomBy(1.5); };
+  document.getElementById('zout').onclick = function () { zoomBy(1 / 1.5); };
+  document.getElementById('zreset').onclick = function () {
+    view = { k: 1, x: 0, y: 0 }; draw();
+  };
+  ['t0', 't2', 'tw'].forEach(function (id) {
+    document.getElementById(id).addEventListener('change', draw);
+  });
+
+  cv.addEventListener('mousemove', function (e) {
+    if (drag) { tip.style.opacity = 0; return; }
+    var r = cv.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top;
+    var t = tx(), best = null, bd = 81;   // 9px radius, squared
+    var showA = document.getElementById('t0').checked;
+    var showB = document.getElementById('t2').checked;
+    for (var i = 0; i < D.people.length; i++) {
+      var p = D.people[i], isA = p[2] !== 2;
+      if (isA && !showA) continue;
+      if (!isA && !showB) continue;
+      var dx = (p[0] * t.k + t.ox) - mx, dy = (p[1] * t.k + t.oy) - my;
+      var d2 = dx * dx + dy * dy;
+      if (d2 < bd) { bd = d2; best = p; }
+    }
+    if (!best) { tip.style.opacity = 0; return; }
+    var anchored = best[2] !== 2;
+    tip.innerHTML =
+      '<div class="nm">' + esc(best[3]) + (best[4] ? ' ' + esc(best[4]) : '') + '</div>' +
+      (best[5] ? '<div class="oc">' + esc(best[5]) + '</div>' : '') +
+      '<div class="ad mono">' + esc(String(best[7])) + ' ' + esc(best[6]) + '</div>' +
+      '<div class="tier" style="color:' + (anchored ? tok.anchored : tok.approx) + '">' +
+      (anchored ? 'Anchored to corners' : 'Street only') + '</div>';
+    var left = Math.min(mx + 14, css.w - 274), top = Math.max(8, my - 12);
+    tip.style.left = left + 'px'; tip.style.top = top + 'px';
+    tip.style.opacity = 1;
+  });
+  cv.addEventListener('mouseleave', function () { tip.style.opacity = 0; });
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
+  readTokens();
+  window.addEventListener('resize', resize);
+  var mq = window.matchMedia('(prefers-color-scheme: dark)');
+  (mq.addEventListener ? mq.addEventListener.bind(mq, 'change') : mq.addListener.bind(mq))(
+    function () { readTokens(); draw(); });
+  resize();
+})();
+</script>

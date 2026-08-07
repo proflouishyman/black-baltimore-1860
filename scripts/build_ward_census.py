@@ -55,6 +55,33 @@ PRINTED = {"white_m": 88613, "white_f": 95907, "white": 184520,
            "fc_m": 10346, "fc_f": 15334, "fc": 25680,
            "slave": 2218, "aggregate": 212418}
 
+# ---------------------------------------------------------------------------
+# 1850: Seventh Census, Table II, Population of Cities and Towns, Maryland
+# report p.221. This PDF does carry a text layer, but pdftotext interleaves the
+# columns across ward rows, so only the three columns that self-check are taken
+# directly - free colored, slave, aggregate - and white is derived as
+# aggregate - free colored - slave. Wards 1846-1860 are the same polygons as
+# 1860, so the two years are directly comparable on one boundary set.
+#
+# ward: (free_colored, slave, aggregate)
+WARDS_1850 = {
+    1:  (1091, 79, 14653),   2:  (917, 85, 9492),
+    3:  (1862, 195, 11821),  4:  (766, 250, 7627),
+    5:  (1198, 84, 5712),    6:  (2145, 104, 9015),
+    7:  (1013, 57, 7660),    8:  (750, 78, 8953),
+    9:  (333, 139, 4740),    10: (596, 241, 5033),
+    11: (2078, 252, 8923),   12: (1911, 158, 9283),
+    13: (807, 264, 5566),    14: (1221, 177, 7411),
+    15: (2242, 307, 10302),  16: (1189, 134, 5878),
+    17: (2400, 45, 9834),    18: (934, 168, 11746),
+    19: (717, 63, 7875),
+    # ward 20's slave count reads as 99 in the scrambled text layer, but
+    # aggregate minus total-free gives 66, and only 66 makes the column sum to
+    # the printed 2,946. The arithmetic check is the authority here.
+    20: (1272, 66, 7530),
+}
+PRINTED_1850 = {"fc": 25442, "slave": 2946, "aggregate": 169054, "white": 140666}
+
 
 def main():
     rows, totals = [], {k: 0 for k in
@@ -104,5 +131,42 @@ def main():
     print(f"\ncitywide Black share: {citywide*100:.2f}%")
 
 
+def main_1850():
+    rows, tot = [], {"fc": 0, "slave": 0, "aggregate": 0, "white": 0}
+    problems = []
+    for w in sorted(WARDS_1850):
+        fc, slave, agg = WARDS_1850[w]
+        white = agg - fc - slave
+        black = fc + slave
+        rows.append({"ward": w, "white": white, "free_colored": fc,
+                     "slave": slave, "black_total": black, "aggregate": agg,
+                     "black_pct": round(black / agg * 100, 2)})
+        tot["fc"] += fc; tot["slave"] += slave
+        tot["aggregate"] += agg; tot["white"] += white
+
+    for k, want in PRINTED_1850.items():
+        got = tot[k]
+        print(f"  {'OK ' if got == want else 'MISMATCH'} {k:10s} "
+              f"transcribed {got:>7,}  printed {want:>7,}")
+        if got != want:
+            problems.append(f"{k}: {got} != {want}")
+    if problems:
+        raise SystemExit("1850 TRANSCRIPTION FAILED:\n  " + "\n  ".join(problems))
+
+    out = WORK / "ward_census_1850.csv"
+    with out.open("w", newline="", encoding="utf8") as fh:
+        w = csv.DictWriter(fh, fieldnames=list(rows[0]))
+        w.writeheader(); w.writerows(rows)
+    share = sum(r["black_total"] for r in rows) / sum(r["aggregate"] for r in rows)
+    print(f"\n1850 reconciles -> {out.name}")
+    print(f"citywide Black share 1850: {share*100:.2f}%")
+    for r in sorted(rows, key=lambda r: -r["black_pct"])[:4]:
+        print(f"   ward {r['ward']:2d}  {r['black_pct']:5.2f}%")
+    return rows
+
+
 if __name__ == "__main__":
+    print("=== 1860 ===")
     main()
+    print("\n=== 1850 ===")
+    main_1850()

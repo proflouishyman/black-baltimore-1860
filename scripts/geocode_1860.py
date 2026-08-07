@@ -82,10 +82,11 @@ def norm_street(raw):
 
 
 HUE_SHP = RAW / "hue" / "HUE_Baltimore_Streets" / "CPE_Baltimore_Streets_HUE_v1.shp"
-WARD_SHP = RAW / "hue" / "HUE_Baltimore_Wards" / "baltimore_wards_1846_1860.shp"
+WARD_DIR = RAW / "hue" / "HUE_Baltimore_Wards"
+WARD_SHP = WARD_DIR / "baltimore_wards_1846_1860.shp"
 
 
-def city_limits():
+def city_limits(ward_shp=None):
     """The 1846-1860 ward polygons dissolved into the city boundary.
 
     Street geometry must be clipped to this before anything is placed on it.
@@ -94,11 +95,11 @@ def city_limits():
     unclipped street therefore flings residents into what was open country in
     1860. Everyone in this directory lived inside these wards, so the boundary
     is the correct domain, not a cosmetic crop."""
-    wg = gpd.read_file(WARD_SHP).to_crs(epsg=CRS_M)
+    wg = gpd.read_file(ward_shp or WARD_SHP).to_crs(epsg=CRS_M)
     return unary_union(wg.geometry.values).buffer(0)
 
 
-def load_streets():
+def load_streets(ward_shp=None):
     """One merged geometry per normalised street name.
 
     Primary source is the HUE Baltimore street file (Center for Population
@@ -113,7 +114,7 @@ def load_streets():
     does not have, so nothing is lost by the swap."""
     buckets = defaultdict(list)
     source_of = {}
-    city = city_limits()
+    city = city_limits(ward_shp)
 
     hue = gpd.read_file(HUE_SHP).to_crs(epsg=CRS_M)
     for name, geom in zip(hue["Full_Name"], hue.geometry):

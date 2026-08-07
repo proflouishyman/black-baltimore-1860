@@ -163,6 +163,15 @@ def parse_entry(line, year, source_id):
         dwelling = m_dw.group(1).strip(" .,")
         tail = tail[:m_dw.start()].strip(" .,")
 
+    # Matchett's often separates occupation from address with a period rather
+    # than a comma ("Adams Charles, labourer. Pierce st w of Pearl"), which
+    # would otherwise leave "labourer." glued to the street name and break
+    # street matching. Split on ". " only where a lowercase word is followed by
+    # a capitalised one, so real abbreviations survive: "Penn. avenue" is not
+    # split (next word is lowercase) and neither is "L. Sharp st" (previous
+    # token is a capital initial).
+    tail = re.sub(r"\b([a-z]{3,})\.\s+(?=[A-Z])", r"\1, ", tail)
+
     seg = [s.strip() for s in tail.split(",") if s.strip()]
     # the address is the last comma-segment containing a digit or street word;
     # everything before it is occupation

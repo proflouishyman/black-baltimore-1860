@@ -14,14 +14,22 @@ list those residents in a section of their own — "Colored Persons" in Wood's
 address. This project parses those sections and puts the people back on the
 map.
 
-Current state: **7,389 residents parsed** across 1822, 1842 and 1860, and
-**2,868 of the 1860 cohort placed** on period street geometry.
+Current state: **21,643 residents parsed** across six directories spanning 46
+years, **2,866 of the 1860 cohort** placed as points, **637 of the 1842 cohort**
+placed by block face, and the whole city mapped by ward from the census.
 
 | Year | Directory | Residents parsed | Addressing |
 |---|---|---|---|
-| 1860 | Wood's | 4,251 | house number + street |
-| 1842 | Matchett's | 2,724 | relative ("Wolfe st s of Fleet") |
 | 1822 | Keenan's | 414 | relative, flagged `f` for free |
+| 1842 | Matchett's | 2,724 | relative ("Wolfe st s of Fleet") |
+| 1845 | Baltimore Directory | 2,100 | house number + street |
+| 1851 | Matchett's | 3,642 | house number + street |
+| 1860 | Wood's | 4,251 | house number + street |
+| 1868 | Wood's | 8,512 | house number + street |
+
+House numbering arrives between 1842 and 1845, which is why the addressing
+column changes. The 1868 section is twice the size of 1860's: emancipation and
+wartime migration, visible in the page count alone.
 
 ## The two problems this project had to solve
 

@@ -52,6 +52,28 @@ SOURCES = {
         "end": r"^\s*APPENDIX\s*$",
         "marker": None,
     },
+    # 1845 and 1851 follow Matchett's title-page pattern rather than a running
+    # head, so each needs its own terminator. 1851 helpfully prints one.
+    "baltimoredirecto1845balt": {
+        "year": 1845,
+        "header": r"^\s*COLORED\s+HOUSEHOLDERS",
+        "end": r"^\s*DIRECTIONS\s+FOR\s+FINDING",
+        "marker": None,
+    },
+    "matchettsbaltimo1851balt": {
+        "year": 1851,
+        "header": r"^\s*COLORED\s+HOUSEHOLDERS",
+        "end": r"^\s*END\s+COLORED\s+RESIDENTS",
+        "marker": None,
+    },
+    # 1868 restores the running head, and the section has doubled in length
+    # since 1860 (printed pp. 601-665) now that emancipation has come.
+    "woodsbaltimoreci1868balt": {
+        "year": 1868,
+        "header": r"^\s*COLORED\s+PERSONS[.,]?\s*$",
+        "end": None,
+        "marker": None,
+    },
     "baltimoredirecto1822keen": {
         "year": 1822,
         # Keenan's 1822 has no separate section; free people of colour are

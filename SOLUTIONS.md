@@ -102,3 +102,69 @@ a numpy pin there could break them.
 
 ### Notes
 Run project scripts with `./.venv/bin/python`, not `python3`.
+
+---
+
+## [2026-08-07] - Residents geocoded into open country miles from the 1860 city
+
+### Problem
+The first rendered map was zoomed almost entirely out, because scattered
+residents landed miles from the historic core, in places that were farmland in
+1860. Only 484 of 4,251 records placed at all, and just 29 with usable
+precision.
+
+### Root Cause
+Three separate faults.
+
+1. **Unclipped street geometry.** The HUE street file is a c.1930 survey, by
+   which date arteries like Harford Avenue ran far past the 1860 city line.
+   Tier-2 proportional placement spreads residents along a street's *whole*
+   length, so those streets flung people into open country.
+2. **`Aly` was not a recognised street-type suffix.** HUE writes alleys as
+   "Pin Aly" while the directory writes "Pin al", so normalisation produced
+   `PIN ALY` versus `PIN` and the two never matched. This hit alleys almost
+   exclusively - precisely the addresses that matter most here.
+3. `shapely.linemerge` raises rather than passing through when the union of a
+   street's segments is already a single LineString.
+
+### Solution
+Street geometry is intersected with the dissolved 1846-1860 ward polygons
+before anything is placed on it, so the domain is the city as it existed. Added
+`ALY` to the suffix list - ordered before the bare `AL`, since alternation is
+ordered and `AL` would otherwise strip only two characters and leave a stray
+`Y`. Guarded the linemerge call on geometry type.
+
+Result: 2,868 of 4,251 placed, 848 anchored between two named corners, and the
+street pool correctly shrinks from 3,085 to 785 once clipped to the old city.
+
+### Notes
+Geocoding against modern centrelines was rejected for the same reason fault 2
+mattered: the alleys this population lived on (Camel, Pin, Welcome, Strawberry,
+Lerew's) are absent from modern data, so a modern basemap silently thins the
+densest blocks while still looking like a clean result. Missing geometry is an
+invisible failure here, not a visible one, which is why unmatched streets are
+written to `data/work/unmatched_streets_1860.csv` rather than dropped quietly.
+
+---
+
+## [2026-08-07] - QGIS unusable for scripting straight from the cask
+
+### Problem
+`qgis_process` printed "Cannot find proj.db" on every invocation and
+`import qgis.core` aborted the interpreter outright.
+
+### Root Cause
+The Homebrew cask installs QGIS as a self-contained app bundle that does not
+export its PROJ, GDAL or QGIS prefix paths to the shell.
+
+### Solution
+`scripts/qgis_env.sh` sets `QGIS_PREFIX_PATH`, `PROJ_LIB`, `GDAL_DATA` and
+`PYTHONPATH` against the bundle. It defines shell *functions* rather than
+aliases, because aliases are not expanded in non-interactive shells, and
+resolves the project root without `BASH_SOURCE`, which is empty under zsh and
+was silently yielding the wrong directory.
+
+### Notes
+The bundle name carries its version (`QGIS-final-4_2_1.app`), so `QGIS_APP`
+needs bumping after a QGIS upgrade. Most work here uses geopandas in `.venv`;
+QGIS is only needed for georeferencing and final cartography.

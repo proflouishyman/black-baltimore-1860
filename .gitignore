@@ -4,3 +4,5 @@ logs/
 data/raw/*.xml
 data/raw/hue/
 data/raw/*.geojson
+data/raw/maps/*.jp2
+data/raw/maps/*.tif

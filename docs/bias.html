@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="How far the Baltimore city directories under-represent the densest Black wards, measured against the 1860 census.">
+<meta property="og:title" content="What the maps miss">
+<meta property="og:description" content="How far the Baltimore city directories under-represent the densest Black wards, measured against the 1860 census.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>&#x1F5FA;</text></svg>">
+<title>What's missing — Black Baltimore</title>
+<style>
+  :root {
+    --ground: #E8E5DE; --panel: #F1EFE9; --ink: #17201F; --ink-2: #46514E;
+    --ink-3: #6E7A76; --rule: #CFCABF; --anchored: #A96A08; --approx: #00846F;
+    --bar: #A96A08; --bar-soft: #D8C6A4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #101619; --panel: #161E22; --ink: #E4E7E5; --ink-2: #A9B4B1;
+      --ink-3: #7E8A88; --rule: #253034; --anchored: #CB811A; --approx: #2C9C8D;
+      --bar: #CB811A; --bar-soft: #3B3527;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #101619; --panel: #161E22; --ink: #E4E7E5; --ink-2: #A9B4B1;
+    --ink-3: #7E8A88; --rule: #253034; --anchored: #CB811A; --approx: #2C9C8D;
+    --bar: #CB811A; --bar-soft: #3B3527;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--ground); color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.55;
+    -webkit-font-smoothing: antialiased; }
+  .serif { font-family: "Iowan Old Style", "Palatino Linotype", Palatino,
+           "Book Antiqua", Georgia, serif; }
+  .mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+          font-variant-numeric: tabular-nums; }
+
+  .page { max-width: 1080px; margin: 0 auto; padding: 26px 26px 80px; }
+  nav { display: flex; flex-wrap: wrap; gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule); margin-bottom: 34px; }
+  nav a { flex: 1 1 auto; min-width: 52px; text-align: center; padding: 8px 6px;
+    font-size: 12px; text-decoration: none; color: var(--ink-2);
+    background: var(--panel); letter-spacing: .04em; }
+  nav a:hover { background: var(--ground); color: var(--ink); }
+  nav a[aria-current="page"] { background: var(--ink); color: var(--panel); font-weight: 600; }
+  nav a:focus-visible { outline: 2px solid var(--anchored); outline-offset: -2px; }
+
+  .eyebrow { font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-3); margin: 0 0 10px; }
+  h1 { font-size: 38px; line-height: 1.1; margin: 0 0 12px; text-wrap: balance;
+    font-weight: 600; letter-spacing: -.015em; }
+  h2 { font-size: 21px; margin: 44px 0 12px; font-weight: 600; letter-spacing: -.01em; }
+  .lede { color: var(--ink-2); font-size: 16.5px; max-width: 64ch; margin: 0 0 6px; }
+  p { max-width: 68ch; }
+  a { color: var(--anchored); }
+
+  .years { display: flex; flex-wrap: wrap; gap: 6px; margin: 26px 0 18px; }
+  .years button { font: inherit; font-size: 13px; padding: 6px 14px; cursor: pointer;
+    background: var(--panel); color: var(--ink-2); border: 1px solid var(--rule);
+    border-radius: 2px; }
+  .years button:hover { border-color: var(--ink-3); color: var(--ink); }
+  .years button[aria-pressed="true"] { background: var(--ink); color: var(--panel);
+    border-color: var(--ink); font-weight: 600; }
+  .years button:focus-visible { outline: 2px solid var(--anchored); outline-offset: 2px; }
+
+  .chart { display: grid; grid-template-columns: 150px 1fr 64px; gap: 3px 12px;
+    align-items: center; margin-top: 8px; }
+  .chart .lab { font-size: 13px; text-align: right; color: var(--ink-2); }
+  .chart .track { background: var(--bar-soft); height: 17px; border-radius: 0 3px 3px 0; }
+  .chart .fill { background: var(--bar); height: 17px; border-radius: 0 3px 3px 0;
+    transition: width .25s ease; }
+  .chart .val { font-size: 12.5px; color: var(--ink-3);
+    font-variant-numeric: tabular-nums; }
+  @media (prefers-reduced-motion: reduce) { .chart .fill { transition: none; } }
+  @media (max-width: 620px) { .chart { grid-template-columns: 110px 1fr 52px; } }
+
+  table.data { border-collapse: collapse; font-size: 13.5px; margin-top: 10px; width: 100%; }
+  table.data th, table.data td { text-align: left; padding: 7px 12px 7px 0;
+    border-bottom: 1px solid var(--rule); }
+  table.data td.n, table.data th.n { text-align: right;
+    font-variant-numeric: tabular-nums; }
+  .scroll { overflow-x: auto; }
+  table.data th { cursor: pointer; user-select: none; white-space: nowrap; }
+  table.data th:hover { color: var(--ink); }
+  table.data th[aria-sort]::after { content: " \2193"; font-size: 11px; }
+  table.data th[aria-sort="descending"]::after { content: " \2191"; }
+  table.data th:focus-visible { outline: 2px solid var(--anchored); outline-offset: -2px; }
+  td.bar { position: relative; min-width: 92px; }
+  td.bar .bw { position: absolute; left: 0; top: 4px; bottom: 4px;
+    background: var(--bar-soft); border-radius: 0 2px 2px 0; z-index: 0; }
+  td.bar .bv { position: relative; z-index: 1; padding-right: 2px; }
+
+  figure { margin: 26px 0; }
+  figure img { width: 100%; max-width: 100%; height: auto; display: block;
+    border: 1px solid var(--rule); background: #fff; }
+  figcaption { font-size: 12.5px; color: var(--ink-3); margin-top: 9px; max-width: 68ch; }
+
+  .biblio { border-top: 1px solid var(--rule); padding-top: 20px; margin-top: 30px; }
+  .biblio h3 { font-size: 16px; margin: 0 0 4px; font-weight: 600; }
+  .biblio .meta { font-size: 13px; color: var(--ink-3); margin: 0 0 6px; }
+  .biblio p { font-size: 13.5px; color: var(--ink-2); margin: 0 0 8px; }
+  .note { font-size: 13px; color: var(--ink-3); border-left: 2px solid var(--rule);
+    padding-left: 14px; margin: 22px 0; }
+  .note strong { color: var(--ink-2); font-weight: 600; }
+</style>
+
+</head>
+<body>
+<div class="page">
+  <nav>
+    <a href="./">Density</a>
+    <a href="./1819.html">1819</a>
+    <a href="./1822.html">1822</a>
+    <a href="./1842.html">1842</a>
+    <a href="./1845.html">1845</a>
+    <a href="./1851.html">1851</a>
+    <a href="./1860.html">1860</a>
+    <a href="./1868.html">1868</a>
+    <a href="./wards.html">Wards</a>
+    <a href="./work.html">Work</a>
+    <a href="./trade.html">Trade</a>
+    <a href="./building.html">Building</a>
+    <a href="./bias.html" aria-current="page">What's missing</a>
+    <a href="./sources.html">Sources</a>
+    </nav>
+  <p class="eyebrow">Directory bias, measured</p>
+  <h1 class="serif">What the maps miss</h1>
+  <p class="lede">The dot maps show who a directory chose to list. Here is exactly how that choice was skewed, measured against the census.</p>
+  
+  <div class="note"><strong>Read this before trusting any dot map on this
+    site.</strong> The maps show people a directory chose to list. That choice
+    was not random, and we can now measure exactly how it was skewed.</div>
+
+  <h2>The measurement</h2>
+  <p>The 1860 census counted every Black Baltimorean by ward. Our 1860 map shows
+    2,939 of them. Comparing the two distributions gives a
+    <em>representation index</em>: 1.00 means a ward appears on our map at
+    exactly its true weight, 0.50 means it appears at half.</p>
+
+  <div class="scroll">
+    <table class="data" id="btab">
+      <thead><tr id="bhead"></tr></thead>
+      <tbody id="bbody"></tbody>
+    </table>
+  </div>
+
+  <h2>What it says</h2>
+  <p><strong>The map is worst exactly where Black Baltimore was densest.</strong>
+    Ward 11 held 9.8 per cent of the city's Black population &mdash; more than
+    any other ward &mdash; and appears on our map at <strong>0.46&times;</strong>
+    its true weight. Ward 3 held 6.7 per cent and appears at
+    <strong>1.95&times;</strong>. A viewer reading the 1860 map without this
+    table would conclude Ward 3 was a bigger centre of Black life than Ward 11.
+    The census says the opposite.</p>
+
+  <p><strong>And the error is not random noise.</strong> Sort by
+    <em>Best-anchored&nbsp;%</em> &mdash; the share of each ward's residents we
+    could place precisely between two named corners. Ward 3 is 95 per cent
+    well-anchored. Ward 11 is <strong>zero</strong>. Across all twenty wards the
+    correlation between geocoding quality and over-representation is
+    <strong>+0.52</strong>. We show most confidently the places we happened to
+    be able to place.</p>
+
+  <h2>Why</h2>
+  <p>Two causes compound, and both run the same direction.</p>
+  <p>First, <strong>the directories under-recorded the poorest households</strong>.
+    Wood's lists 4,251 Black residents against a census count of 27,898. It was
+    a commercial product, canvassed for people worth listing, and it thinned
+    where rents were lowest.</p>
+  <p>Second, <strong>the addresses that survive least well are alley
+    addresses</strong>. Our anchor method needs a printed house number on a
+    street we can locate. Alleys often have neither, and alleys are where the
+    densest Black settlement was. So the same neighbourhoods are lost twice:
+    once by the canvasser in 1860, once by the geocoder in 2026.</p>
+
+  <h2>What this does not mean</h2>
+  <p>It does not mean the maps are wrong about the people they show. Every dot
+    is a real person at a real address, and the anchored ones are placed by the
+    directory's own printed table. It means the maps are <em>incomplete in a
+    patterned way</em>, and the pattern runs against the densest Black
+    neighbourhoods.</p>
+  <p>The honest use of these maps is as evidence of presence, never of absence.
+    A thin area on a dot map here is not a place where few Black Baltimoreans
+    lived. It may be a place we could not see.</p>
+  <p>The ward choropleths do not have this problem. They come from the census,
+    which counted everyone, and they are the right layer for any question about
+    how many and where.</p>
+
+</div>
+
+<script id="bd" type="application/json">[{"ward":1,"dir_n":41,"dir_pct":1.4,"cen_n":487,"cen_pct":1.75,"rep":0.8,"bracketed":61,"black_pct":3.24},{"ward":2,"dir_n":122,"dir_pct":4.15,"cen_n":674,"cen_pct":2.42,"rep":1.72,"bracketed":82,"black_pct":7.22},{"ward":3,"dir_n":384,"dir_pct":13.07,"cen_n":1865,"cen_pct":6.69,"rep":1.95,"bracketed":95,"black_pct":12.16},{"ward":4,"dir_n":86,"dir_pct":2.93,"cen_n":457,"cen_pct":1.64,"rep":1.79,"bracketed":13,"black_pct":6.52},{"ward":5,"dir_n":48,"dir_pct":1.63,"cen_n":944,"cen_pct":3.38,"rep":0.48,"bracketed":0,"black_pct":17.61},{"ward":6,"dir_n":103,"dir_pct":3.5,"cen_n":1972,"cen_pct":7.07,"rep":0.5,"bracketed":0,"black_pct":19.94},{"ward":7,"dir_n":180,"dir_pct":6.12,"cen_n":1421,"cen_pct":5.09,"rep":1.2,"bracketed":0,"black_pct":11.46},{"ward":8,"dir_n":146,"dir_pct":4.97,"cen_n":812,"cen_pct":2.91,"rep":1.71,"bracketed":0,"black_pct":5.64},{"ward":9,"dir_n":21,"dir_pct":0.71,"cen_n":280,"cen_pct":1.0,"rep":0.71,"bracketed":24,"black_pct":8.91},{"ward":10,"dir_n":43,"dir_pct":1.46,"cen_n":603,"cen_pct":2.16,"rep":0.68,"bracketed":0,"black_pct":13.97},{"ward":11,"dir_n":134,"dir_pct":4.56,"cen_n":2742,"cen_pct":9.83,"rep":0.46,"bracketed":0,"black_pct":25.94},{"ward":12,"dir_n":246,"dir_pct":8.37,"cen_n":2078,"cen_pct":7.45,"rep":1.12,"bracketed":6,"black_pct":21.05},{"ward":13,"dir_n":59,"dir_pct":2.01,"cen_n":782,"cen_pct":2.8,"rep":0.72,"bracketed":8,"black_pct":17.48},{"ward":14,"dir_n":103,"dir_pct":3.5,"cen_n":1318,"cen_pct":4.72,"rep":0.74,"bracketed":1,"black_pct":18.66},{"ward":15,"dir_n":425,"dir_pct":14.46,"cen_n":2960,"cen_pct":10.61,"rep":1.36,"bracketed":24,"black_pct":22.66},{"ward":16,"dir_n":113,"dir_pct":3.84,"cen_n":1562,"cen_pct":5.6,"rep":0.69,"bracketed":6,"black_pct":18.96},{"ward":17,"dir_n":190,"dir_pct":6.46,"cen_n":2171,"cen_pct":7.78,"rep":0.83,"bracketed":32,"black_pct":14.52},{"ward":18,"dir_n":158,"dir_pct":5.38,"cen_n":1494,"cen_pct":5.36,"rep":1.0,"bracketed":2,"black_pct":7.0},{"ward":19,"dir_n":136,"dir_pct":4.63,"cen_n":1113,"cen_pct":3.99,"rep":1.16,"bracketed":0,"black_pct":8.52},{"ward":20,"dir_n":188,"dir_pct":6.4,"cen_n":2163,"cen_pct":7.75,"rep":0.83,"bracketed":2,"black_pct":15.93}]</script>
+<script>
+(function () {
+  var D = JSON.parse(document.getElementById('bd').textContent);
+  var tb = document.getElementById('bbody'), hr = document.getElementById('bhead');
+  var key = 'rep', asc = true;
+  var COLS = [
+    {k:'ward',      t:'Ward',                    n:false},
+    {k:'cen_n',     t:'Black residents (census)', n:true},
+    {k:'cen_pct',   t:'Share of Black city',      n:true},
+    {k:'dir_n',     t:'On our map',               n:true},
+    {k:'dir_pct',   t:'Share of our map',         n:true},
+    {k:'rep',       t:'Representation',           n:true},
+    {k:'bracketed', t:'Best-anchored %',          n:true}
+  ];
+  function render() {
+    var rows = D.slice().sort(function (a, b) {
+      var x = a[key], y = b[key];
+      return (x === y ? 0 : (x > y ? 1 : -1)) * (asc ? 1 : -1);
+    });
+    tb.innerHTML = '';
+    rows.forEach(function (r) {
+      var tr = document.createElement('tr');
+      COLS.forEach(function (c) {
+        var td = document.createElement('td'), v = r[c.k];
+        td.className = c.n ? 'n' : '';
+        if (c.k === 'rep') {
+          td.textContent = v.toFixed(2) + '\u00d7';
+          if (v < 0.7) { td.style.color = 'var(--anchored)'; td.style.fontWeight = '600'; }
+          else if (v > 1.4) { td.style.color = 'var(--approx)'; td.style.fontWeight = '600'; }
+        } else if (c.k === 'cen_pct' || c.k === 'dir_pct') {
+          td.textContent = v.toFixed(1) + '%';
+        } else if (c.k === 'bracketed') {
+          td.textContent = v + '%';
+        } else {
+          td.textContent = c.n ? v.toLocaleString() : v;
+        }
+        tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+  }
+  COLS.forEach(function (c) {
+    var th = document.createElement('th');
+    th.className = c.n ? 'n' : ''; th.textContent = c.t;
+    th.tabIndex = 0; th.setAttribute('role', 'button');
+    function go() {
+      if (key === c.k) { asc = !asc; } else { key = c.k; asc = (c.k === 'ward'); }
+      Array.prototype.forEach.call(hr.children, function (o) { o.removeAttribute('aria-sort'); });
+      th.setAttribute('aria-sort', asc ? 'ascending' : 'descending');
+      render();
+    }
+    th.onclick = go;
+    th.onkeydown = function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } };
+    hr.appendChild(th);
+  });
+  render();
+})();
+</script>
+
+
+</body>
+</html>

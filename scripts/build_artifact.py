@@ -19,7 +19,8 @@ NAV = [("index.html", "Density"), ("1819.html", "1819"), ("1822.html", "1822"),
        ("1842.html", "1842"), ("1845.html", "1845"), ("1851.html", "1851"),
        ("1860.html", "1860"), ("1868.html", "1868"),
        ("wards.html", "Wards"), ("work.html", "Work"), ("trade.html", "Trade"),
-       ("building.html", "Building"), ("sources.html", "Sources")]
+       ("building.html", "Building"), ("bias.html", "What's missing"),
+       ("sources.html", "Sources")]
 
 # per-year framing: eyebrow, headline, lede, and the paragraph that states the
 # method and its limits honestly
@@ -625,6 +626,29 @@ WARDS_BODY = """
 """
 
 
+def build_bias(content_tpl):
+    bias = (ROOT / "data" / "work" / "directory_bias_1860.json").read_text(encoding="utf8")
+    body = (content_tpl
+            .replace("__TITLE__", "What's missing \u2014 Black Baltimore")
+            .replace("__NAV__", nav_html("bias.html"))
+            .replace("__EYEBROW__", "Directory bias, measured")
+            .replace("__H1__", "What the maps miss")
+            .replace("__LEDE__", "The dot maps show who a directory chose to "
+                                 "list. Here is exactly how that choice was skewed, "
+                                 "measured against the census.")
+            .replace("__CONTENT__", BIAS_BODY)
+            .replace("__SCRIPT__", BIAS_SCRIPT.replace("__BIAS__", bias)))
+    desc = ("How far the Baltimore city directories under-represent the densest "
+            "Black wards, measured against the 1860 census.")
+    (DOCS / "bias.html").write_text(document(body, "What the maps miss", desc),
+                                    encoding="utf8")
+    print(f"wrote docs/bias.html ({(DOCS/'bias.html').stat().st_size/1_000:.0f} KB)")
+
+
+BIAS_SCRIPT = '\n<script id="bd" type="application/json">__BIAS__</script>\n<script>\n(function () {\n  var D = JSON.parse(document.getElementById(\'bd\').textContent);\n  var tb = document.getElementById(\'bbody\'), hr = document.getElementById(\'bhead\');\n  var key = \'rep\', asc = true;\n  var COLS = [\n    {k:\'ward\',      t:\'Ward\',                    n:false},\n    {k:\'cen_n\',     t:\'Black residents (census)\', n:true},\n    {k:\'cen_pct\',   t:\'Share of Black city\',      n:true},\n    {k:\'dir_n\',     t:\'On our map\',               n:true},\n    {k:\'dir_pct\',   t:\'Share of our map\',         n:true},\n    {k:\'rep\',       t:\'Representation\',           n:true},\n    {k:\'bracketed\', t:\'Best-anchored %\',          n:true}\n  ];\n  function render() {\n    var rows = D.slice().sort(function (a, b) {\n      var x = a[key], y = b[key];\n      return (x === y ? 0 : (x > y ? 1 : -1)) * (asc ? 1 : -1);\n    });\n    tb.innerHTML = \'\';\n    rows.forEach(function (r) {\n      var tr = document.createElement(\'tr\');\n      COLS.forEach(function (c) {\n        var td = document.createElement(\'td\'), v = r[c.k];\n        td.className = c.n ? \'n\' : \'\';\n        if (c.k === \'rep\') {\n          td.textContent = v.toFixed(2) + \'\\u00d7\';\n          if (v < 0.7) { td.style.color = \'var(--anchored)\'; td.style.fontWeight = \'600\'; }\n          else if (v > 1.4) { td.style.color = \'var(--approx)\'; td.style.fontWeight = \'600\'; }\n        } else if (c.k === \'cen_pct\' || c.k === \'dir_pct\') {\n          td.textContent = v.toFixed(1) + \'%\';\n        } else if (c.k === \'bracketed\') {\n          td.textContent = v + \'%\';\n        } else {\n          td.textContent = c.n ? v.toLocaleString() : v;\n        }\n        tr.appendChild(td);\n      });\n      tb.appendChild(tr);\n    });\n  }\n  COLS.forEach(function (c) {\n    var th = document.createElement(\'th\');\n    th.className = c.n ? \'n\' : \'\'; th.textContent = c.t;\n    th.tabIndex = 0; th.setAttribute(\'role\', \'button\');\n    function go() {\n      if (key === c.k) { asc = !asc; } else { key = c.k; asc = (c.k === \'ward\'); }\n      Array.prototype.forEach.call(hr.children, function (o) { o.removeAttribute(\'aria-sort\'); });\n      th.setAttribute(\'aria-sort\', asc ? \'ascending\' : \'descending\');\n      render();\n    }\n    th.onclick = go;\n    th.onkeydown = function (e) { if (e.key === \'Enter\' || e.key === \' \') { e.preventDefault(); go(); } };\n    hr.appendChild(th);\n  });\n  render();\n})();\n</script>\n'
+BIAS_BODY = '\n  <div class="note"><strong>Read this before trusting any dot map on this\n    site.</strong> The maps show people a directory chose to list. That choice\n    was not random, and we can now measure exactly how it was skewed.</div>\n\n  <h2>The measurement</h2>\n  <p>The 1860 census counted every Black Baltimorean by ward. Our 1860 map shows\n    2,939 of them. Comparing the two distributions gives a\n    <em>representation index</em>: 1.00 means a ward appears on our map at\n    exactly its true weight, 0.50 means it appears at half.</p>\n\n  <div class="scroll">\n    <table class="data" id="btab">\n      <thead><tr id="bhead"></tr></thead>\n      <tbody id="bbody"></tbody>\n    </table>\n  </div>\n\n  <h2>What it says</h2>\n  <p><strong>The map is worst exactly where Black Baltimore was densest.</strong>\n    Ward 11 held 9.8 per cent of the city\'s Black population &mdash; more than\n    any other ward &mdash; and appears on our map at <strong>0.46&times;</strong>\n    its true weight. Ward 3 held 6.7 per cent and appears at\n    <strong>1.95&times;</strong>. A viewer reading the 1860 map without this\n    table would conclude Ward 3 was a bigger centre of Black life than Ward 11.\n    The census says the opposite.</p>\n\n  <p><strong>And the error is not random noise.</strong> Sort by\n    <em>Best-anchored&nbsp;%</em> &mdash; the share of each ward\'s residents we\n    could place precisely between two named corners. Ward 3 is 95 per cent\n    well-anchored. Ward 11 is <strong>zero</strong>. Across all twenty wards the\n    correlation between geocoding quality and over-representation is\n    <strong>+0.52</strong>. We show most confidently the places we happened to\n    be able to place.</p>\n\n  <h2>Why</h2>\n  <p>Two causes compound, and both run the same direction.</p>\n  <p>First, <strong>the directories under-recorded the poorest households</strong>.\n    Wood\'s lists 4,251 Black residents against a census count of 27,898. It was\n    a commercial product, canvassed for people worth listing, and it thinned\n    where rents were lowest.</p>\n  <p>Second, <strong>the addresses that survive least well are alley\n    addresses</strong>. Our anchor method needs a printed house number on a\n    street we can locate. Alleys often have neither, and alleys are where the\n    densest Black settlement was. So the same neighbourhoods are lost twice:\n    once by the canvasser in 1860, once by the geocoder in 2026.</p>\n\n  <h2>What this does not mean</h2>\n  <p>It does not mean the maps are wrong about the people they show. Every dot\n    is a real person at a real address, and the anchored ones are placed by the\n    directory\'s own printed table. It means the maps are <em>incomplete in a\n    patterned way</em>, and the pattern runs against the densest Black\n    neighbourhoods.</p>\n  <p>The honest use of these maps is as evidence of presence, never of absence.\n    A thin area on a dot map here is not a place where few Black Baltimoreans\n    lived. It may be a place we could not see.</p>\n  <p>The ward choropleths do not have this problem. They come from the census,\n    which counted everyone, and they are the right layer for any question about\n    how many and where.</p>\n'
+
+
 def build_wards(content_tpl):
     import csv as _csv
     w50 = {int(r["ward"]): r for r in _csv.DictReader(
@@ -669,6 +693,7 @@ def main():
     content_tpl = CONTENT_TPL.read_text(encoding="utf8")
     build_work(content_tpl, data)
     build_wards(content_tpl)
+    build_bias(content_tpl)
     build_sources(content_tpl)
 
 

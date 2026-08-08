@@ -108,3 +108,42 @@ carry the equivalent ordinance for their own ward configuration.
 2. Geocode 1860 by address interpolation; 1842 by block face.
 3. Reconstruct 1842 ward polygons from the ordinance text.
 4. Improve the 1822 parser.
+
+---
+
+## Ward-level census availability, 1800–1860 (settled 2026-08-07)
+
+How far back a ward choropleth can go is decided by whether the *published*
+census volumes broke Baltimore out by ward. Checked directly, volume by volume:
+
+| Year | Volume | Baltimore by ward? |
+|---|---|---|
+| 1860 | Eighth Census, Table No. 3, p.214 | **Yes** — 20 wards, white / free colored / slave |
+| 1850 | Seventh Census, Table II, Maryland report p.221 | **Yes** — 20 wards, same categories |
+| 1840 | Compendium of the Sixth Census | **No** — Maryland by county only; Baltimore is one row |
+| 1820 | Census for 1820 | **No** — no ward tables; scan carries no text layer |
+
+1830 and 1810 were not separately confirmed, but the 1840 volume's structure
+makes it near-certain they are county-level too: the detailed
+"Population of Cities and Towns" table with ward subdivision is an innovation
+of the 1850 volume.
+
+**Consequence for the map series.** Ward choropleths from published sources are
+possible for **1850 and 1860 only**. The two share the same ward boundary set
+(1846–1860), so they are exactly comparable, which is what makes the decade
+comparison on the site trustworthy.
+
+**The remaining route to earlier years** is not the published volumes but the
+manuscript schedules, which *are* arranged by ward for Baltimore from 1820
+onward. Deriving 1820/1830/1840 ward counts means tallying free-colored and
+slave columns off the schedule images ward by ward. That is a real but bounded
+transcription job, and it is the only way LJ's earlier panels become possible.
+No microdata exists for those years: IPUMS full counts begin at 1850.
+
+### 1850 vs 1860, the finding that came out of this
+
+Black share of the city fell from **16.79% to 13.13%**, and fell in **every one
+of the twenty wards**. The Black population itself barely moved (−490, −1.7%);
+the white population grew by 43,854 (+31.2%). The enslaved population fell
+faster, 2,946 to 2,218. Wards 11 and 14 held their share within a fifth of a
+point while ward 17 lost ten points.

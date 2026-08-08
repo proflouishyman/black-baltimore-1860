@@ -282,10 +282,14 @@ def build_ladders(placed):
 
 def interpolate(ladder, house_no):
     """Return (distance_along_line, confidence) for a house number."""
-    if not ladder:
+    # A single anchor locates ONE house number on the street. It says nothing
+    # about where any other number falls, so returning that distance for every
+    # resident piles them all onto one point - 75 people from 9 to 116 South
+    # Howard landed on a single coordinate this way. Refuse, and let the caller
+    # spread them proportionally instead, which is both more accurate and
+    # honestly labelled.
+    if len(ladder) < 2:
         return None, None
-    if len(ladder) == 1:
-        return ladder[0][1], "single_anchor"
     for (n0, d0), (n1, d1) in zip(ladder, ladder[1:]):
         if n0 <= house_no <= n1:
             if n1 == n0:
@@ -383,6 +387,11 @@ def main(year="1860"):
     for p in people:
         if p["addr_type"] == "numbered" and p["house_no"].isdigit():
             c2, d2 = norm_street(p["street"])
+            # key the span by the RESOLVED street, so that residents of a
+            # renamed street ("Lerew's alley" -> Tyson) pool with each other
+            # instead of inheriting the number range of whoever happened to
+            # write the modern name.
+            c2 = resolve_street(c2, streets, ALIASES) or c2
             if c2:
                 span[(c2, d2)].append(int(p["house_no"]))
 

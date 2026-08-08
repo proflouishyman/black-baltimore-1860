@@ -166,6 +166,11 @@
   var cv = document.getElementById('map'), ctx = cv.getContext('2d');
   var tip = document.getElementById('tip'), stage = cv.parentNode;
 
+  var modernPath = new Path2D();
+  (D.modern || []).forEach(function (f) {
+    modernPath.moveTo(f[0], f[1]);
+    for (var i = 2; i < f.length; i += 2) modernPath.lineTo(f[i], f[i + 1]);
+  });
   var streetPath = new Path2D();
   D.streets.forEach(function (f) {
     streetPath.moveTo(f[0], f[1]);
@@ -225,6 +230,16 @@
         ctx.fillStyle = rampColor(wd(w).black_pct);
         ctx.fill(w.path);
       });
+    }
+
+    // orientation layer: today's streets, drawn faint and underneath
+    if (chk('tm')) {
+      ctx.strokeStyle = tok.approx;
+      ctx.globalAlpha = 0.28;
+      ctx.lineWidth = Math.max(0.3, 0.8 / t.k);
+      ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+      ctx.stroke(modernPath);
+      ctx.globalAlpha = 1;
     }
 
     ctx.strokeStyle = tok.street;
@@ -308,7 +323,7 @@
   document.getElementById('zin').onclick = function () { zoomBy(1.5); };
   document.getElementById('zout').onclick = function () { zoomBy(1 / 1.5); };
   document.getElementById('zreset').onclick = function () { view = { k: 1, x: 0, y: 0 }; draw(); };
-  ['t0', 't2', 'tw'].forEach(function (id) {
+  ['t0', 't2', 'tw', 'tm'].forEach(function (id) {
     var e = document.getElementById(id);
     if (e) e.addEventListener('change', draw);
   });

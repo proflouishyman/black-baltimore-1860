@@ -81,6 +81,15 @@
   table.data td.n, table.data th.n { text-align: right;
     font-variant-numeric: tabular-nums; }
   .scroll { overflow-x: auto; }
+  table.data th { cursor: pointer; user-select: none; white-space: nowrap; }
+  table.data th:hover { color: var(--ink); }
+  table.data th[aria-sort]::after { content: " \2193"; font-size: 11px; }
+  table.data th[aria-sort="descending"]::after { content: " \2191"; }
+  table.data th:focus-visible { outline: 2px solid var(--anchored); outline-offset: -2px; }
+  td.bar { position: relative; min-width: 92px; }
+  td.bar .bw { position: absolute; left: 0; top: 4px; bottom: 4px;
+    background: var(--bar-soft); border-radius: 0 2px 2px 0; z-index: 0; }
+  td.bar .bv { position: relative; z-index: 1; padding-right: 2px; }
 
   figure { margin: 26px 0; }
   figure img { width: 100%; max-width: 100%; height: auto; display: block;
@@ -108,6 +117,7 @@
     <a href="./1851.html">1851</a>
     <a href="./1860.html">1860</a>
     <a href="./1868.html">1868</a>
+    <a href="./wards.html">Wards</a>
     <a href="./work.html" aria-current="page">Work</a>
     <a href="./sources.html">Sources</a>
     </nav>

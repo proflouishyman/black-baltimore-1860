@@ -65,7 +65,28 @@ HEAD_RE = re.compile(r"^[A-Z][A-Z'’\.]{2,}")
 DIGITS_RE = re.compile(r"^(\d+)")
 # things that look like headings but are not streets
 NOT_STREET = re.compile(r"^(STREET|DIRECTOR|INCLUDING|AVENUES|LANES|ALLEYS|COURTS|"
-                        r"WHARVES|COMPILED|EXPLANATION|ABBEE|ABBRE|ENTERED|FOR\b)", re.I)
+                        r"WHARVES|COMPILED|EXPLANATION|ABBEE|ABBRE|ENTERED|FOR\b|"
+                        r"THE$|AND$|OF$|TO$|IN$|A$|AN$|IF$|OR$|ON$)", re.I)
+
+# A cross street is a short proper name. The book's explanatory paragraph and
+# its running furniture parse as rows otherwise: an audit found twelve rows
+# filed under a fabricated street "THE", carrying text like "any house, for
+# instance, 71 N. CHARLES-ST., on consulting". Reject prose.
+# NB: the lowercase test must NOT be case-insensitive, or [a-z] matches
+# capitals and rejects every genuine cross street.
+PROSE_WORDS = re.compile(r"\b(?:for instance|consult|hence|desired|right hand|"
+                         r"examine|counting|arrive|observe|example|going up|"
+                         r"wish to|you will|so as to)\b", re.I)
+
+
+def is_prose(cross):
+    """True when a captured 'cross street' is really running text."""
+    if len(cross.split()) > 4:
+        return True
+    if PROSE_WORDS.search(cross):
+        return True
+    # a real cross street is a proper name; running text starts lowercase
+    return bool(re.match(r"^[a-z]", cross)) and len(cross.split()) > 1
 
 
 def page_words(page_xml):
@@ -219,6 +240,9 @@ def main(key="1860"):
 
                 cross = clean_street(" ".join(name_parts))
                 if not cross or DIGITS_RE.match(cross):
+                    continue
+                # a real cross street is a couple of words, not a sentence
+                if is_prose(cross):
                     continue
                 seq += 1
                 anchors.append({"street": street, "seq": seq, "cross_street": cross,

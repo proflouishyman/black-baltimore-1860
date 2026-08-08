@@ -1,0 +1,721 @@
+source_id,row,category,subtype
+1819,26,business,service
+1819,31,business,food
+1819,71,business,food
+1819,79,business,retail
+1819,98,business,street trade
+1819,112,business,food
+1819,120,business,service
+1819,121,business,service
+1819,130,business,service
+1819,142,business,food
+1819,149,business,service
+1819,185,business,food
+1819,196,business,service
+1819,201,business,retail
+1819,216,business,service
+1819,220,business,lodging
+1819,228,business,retail
+1819,261,business,service
+1819,277,business,service
+1819,305,business,service
+1819,308,business,service
+1819,309,business,food
+1819,312,business,service
+1819,318,business,service
+1819,322,business,service
+1819,351,business,food
+1819,354,business,food
+1819,378,business,service
+1819,379,business,retail
+1819,383,business,service
+1819,405,business,street trade
+1819,406,business,food
+1819,419,business,service
+1819,469,business,service
+1819,470,business,service
+1819,485,business,food
+1819,500,business,food
+1819,503,business,street trade
+1819,513,business,service
+1822,2,business,retail
+1822,8,business,lodging
+1822,20,business,food
+1822,28,business,service
+1822,39,business,service
+1822,60,business,service
+1822,101,business,service
+1822,102,business,retail
+1822,123,business,retail
+1822,129,business,retail
+1822,163,business,retail
+1822,238,business,lodging
+1822,261,business,retail
+1822,303,business,retail
+1822,309,business,service
+1822,326,business,service
+1822,332,business,retail
+1822,348,business,service
+1822,356,business,service
+1822,366,business,service
+1822,367,business,service
+1822,371,business,food
+1822,395,business,food
+1822,399,business,service
+1822,402,business,lodging
+1822,434,business,lodging
+1822,500,business,food
+1822,501,business,service
+1822,534,business,service
+1822,541,business,street trade
+1822,560,business,service
+1822,561,business,food
+1822,563,business,service
+1822,595,business,service
+1822,598,business,retail
+1822,612,business,service
+1822,614,business,service
+1822,619,business,service
+1822,667,business,service
+1822,692,business,retail
+1822,710,business,service
+1822,712,business,retail
+1822,718,business,food
+1822,745,business,service
+1822,763,business,service
+1822,815,business,food
+1822,824,business,service
+1822,842,business,retail
+1822,874,business,street trade
+1822,943,business,retail
+1822,952,business,service
+1822,969,business,service
+1842,9,business,street trade
+1842,38,business,service
+1842,41,business,service
+1842,45,business,service
+1842,47,business,food
+1842,78,business,service
+1842,101,business,street trade
+1842,127,business,service
+1842,147,business,food
+1842,159,business,street trade
+1842,183,business,service
+1842,230,business,lodging
+1842,253,business,service
+1842,277,business,street trade
+1842,302,business,street trade
+1842,322,business,service
+1842,339,business,service
+1842,362,business,street trade
+1842,371,business,service
+1842,385,business,service
+1842,445,business,food
+1842,532,business,food
+1842,553,business,service
+1842,561,business,street trade
+1842,586,business,service
+1842,590,business,service
+1842,599,business,food
+1842,634,business,retail
+1842,666,business,service
+1842,671,business,service
+1842,686,business,service
+1842,693,business,retail
+1842,743,business,service
+1842,751,business,retail
+1842,764,business,food
+1842,776,business,retail
+1842,788,business,lodging
+1842,797,business,street trade
+1842,811,business,food
+1842,835,business,service
+1842,896,business,retail
+1842,900,business,food
+1842,901,business,street trade
+1842,916,business,street trade
+1842,920,business,service
+1842,960,business,food
+1842,961,business,service
+1842,981,business,service
+1842,990,business,street trade
+1842,994,business,service
+1842,1013,business,lodging
+1842,1019,business,street trade
+1842,1020,business,service
+1842,1038,business,street trade
+1842,1053,business,service
+1842,1143,business,food
+1842,1226,business,food
+1842,1244,business,service
+1842,1278,business,street trade
+1842,1281,business,service
+1842,1282,business,service
+1842,1284,business,food
+1842,1348,business,retail
+1842,1376,business,street trade
+1842,1396,business,service
+1842,1407,business,service
+1842,1410,business,food
+1842,1456,business,retail
+1842,1458,business,street trade
+1842,1470,business,street trade
+1842,1472,business,street trade
+1842,1484,business,street trade
+1842,1487,business,street trade
+1842,1502,business,service
+1842,1513,business,service
+1842,1575,business,service
+1842,1581,business,service
+1842,1601,business,service
+1842,1602,business,service
+1842,1696,business,street trade
+1842,1754,business,service
+1842,1767,business,service
+1842,1812,business,service
+1842,1818,business,service
+1842,1851,business,street trade
+1842,1884,business,service
+1842,1924,business,lodging
+1842,2006,business,street trade
+1842,2033,business,service
+1842,2035,business,food
+1842,2057,business,service
+1842,2091,business,street trade
+1842,2103,business,service
+1842,2106,business,service
+1842,2132,business,street trade
+1842,2167,business,food
+1842,2212,business,street trade
+1842,2214,business,food
+1842,2221,business,street trade
+1842,2232,business,street trade
+1842,2234,business,street trade
+1842,2277,business,street trade
+1842,2279,business,street trade
+1842,2294,business,street trade
+1842,2460,business,service
+1842,2472,business,service
+1842,2511,institution,church
+1842,2515,business,street trade
+1842,2518,business,service
+1842,2526,business,service
+1842,2548,business,service
+1842,2556,business,service
+1842,2596,business,service
+1842,2641,business,retail
+1842,2670,business,street trade
+1842,2691,business,service
+1842,2692,business,service
+1842,2719,business,street trade
+1845,35,business,service
+1845,45,business,lodging
+1845,142,business,food
+1845,155,business,lodging
+1845,201,business,service
+1845,273,business,retail
+1845,444,business,street trade
+1845,446,business,street trade
+1845,459,business,service
+1845,482,business,food
+1845,495,business,lodging
+1845,512,business,service
+1845,529,business,service
+1845,531,business,retail
+1845,561,business,service
+1845,564,business,service
+1845,569,business,service
+1845,583,business,lodging
+1845,595,business,retail
+1845,635,business,service
+1845,661,business,retail
+1845,666,business,street trade
+1845,710,business,food
+1845,729,business,retail
+1845,751,business,service
+1845,779,business,service
+1845,883,business,lodging
+1845,900,business,retail
+1845,942,business,service
+1845,1076,business,street trade
+1845,1097,business,street trade
+1845,1132,business,street trade
+1845,1135,business,retail
+1845,1140,business,service
+1845,1158,institution,church
+1845,1195,business,service
+1845,1196,business,service
+1845,1255,business,service
+1845,1258,business,street trade
+1845,1301,business,service
+1845,1321,business,lodging
+1845,1326,business,service
+1845,1355,business,street trade
+1845,1378,business,service
+1845,1411,business,service
+1845,1448,business,service
+1845,1467,business,lodging
+1845,1490,business,service
+1845,1495,business,service
+1845,1522,business,service
+1845,1603,business,street trade
+1845,1622,business,street trade
+1845,1630,business,service
+1845,1673,business,food
+1845,1778,business,retail
+1845,1788,business,street trade
+1845,1875,business,service
+1845,1896,business,service
+1845,1938,business,street trade
+1845,1959,business,service
+1845,2014,business,service
+1845,2019,business,service
+1845,2066,business,food
+1845,2092,business,service
+1845,2093,business,retail
+1845,2099,business,street trade
+1851,13,business,service
+1851,39,business,service
+1851,69,business,street trade
+1851,195,business,street trade
+1851,201,business,street trade
+1851,221,business,food
+1851,247,business,service
+1851,281,business,retail
+1851,344,business,service
+1851,345,business,service
+1851,346,business,service
+1851,347,business,service
+1851,422,business,street trade
+1851,442,business,retail
+1851,451,business,service
+1851,516,business,retail
+1851,532,business,service
+1851,551,business,street trade
+1851,576,business,service
+1851,592,business,service
+1851,658,business,food
+1851,667,business,food
+1851,688,business,lodging
+1851,692,business,retail
+1851,774,business,service
+1851,778,business,service
+1851,816,business,service
+1851,833,business,service
+1851,838,business,service
+1851,851,business,food
+1851,902,business,food
+1851,952,business,retail
+1851,954,business,service
+1851,984,business,service
+1851,1051,business,service
+1851,1075,business,service
+1851,1117,business,lodging
+1851,1192,business,retail
+1851,1303,business,service
+1851,1337,business,food
+1851,1369,business,service
+1851,1428,business,street trade
+1851,1505,business,retail
+1851,1513,business,retail
+1851,1541,business,service
+1851,1630,business,retail
+1851,1693,business,service
+1851,1732,business,service
+1851,1742,business,food
+1851,1745,business,service
+1851,1762,business,service
+1851,1814,business,service
+1851,1856,business,service
+1851,1870,business,service
+1851,1899,business,street trade
+1851,1901,business,service
+1851,1965,business,retail
+1851,1976,business,service
+1851,2053,business,food
+1851,2081,business,retail
+1851,2117,business,service
+1851,2123,business,service
+1851,2162,business,service
+1851,2163,business,service
+1851,2270,business,service
+1851,2297,business,food
+1851,2357,institution,church
+1851,2365,business,service
+1851,2377,business,service
+1851,2388,business,service
+1851,2389,business,lodging
+1851,2425,business,service
+1851,2442,business,food
+1851,2447,business,service
+1851,2558,business,service
+1851,2571,business,service
+1851,2607,business,retail
+1851,2665,business,service
+1851,2695,business,retail
+1851,2700,business,retail
+1851,2713,business,retail
+1851,2754,business,retail
+1851,2794,business,food
+1851,2803,business,service
+1851,2821,business,service
+1851,2832,business,food
+1851,2851,business,service
+1851,2895,business,retail
+1851,2896,business,retail
+1851,2929,business,street trade
+1851,3033,business,lodging
+1851,3072,business,food
+1851,3101,business,retail
+1851,3163,business,food
+1851,3243,business,street trade
+1851,3494,business,service
+1851,3504,business,service
+1851,3596,business,service
+1860,23,institution,church
+1860,24,institution,church
+1860,37,business,retail
+1860,66,business,service
+1860,164,business,service
+1860,176,business,street trade
+1860,254,business,street trade
+1860,265,business,food
+1860,319,business,service
+1860,406,business,service
+1860,407,business,service
+1860,458,business,service
+1860,459,business,service
+1860,460,business,service
+1860,471,business,street trade
+1860,485,business,food
+1860,527,business,service
+1860,549,business,service
+1860,562,business,food
+1860,593,business,street trade
+1860,597,business,street trade
+1860,641,business,street trade
+1860,655,business,street trade
+1860,659,business,service
+1860,689,business,street trade
+1860,704,business,service
+1860,775,business,service
+1860,787,business,service
+1860,791,business,service
+1860,792,business,service
+1860,812,business,food
+1860,874,institution,school
+1860,895,business,service
+1860,897,business,lodging
+1860,900,business,lodging
+1860,911,business,service
+1860,934,business,service
+1860,962,business,food
+1860,974,business,street trade
+1860,1011,institution,church
+1860,1028,business,service
+1860,1051,business,service
+1860,1070,business,food
+1860,1071,business,street trade
+1860,1072,business,street trade
+1860,1073,business,street trade
+1860,1081,business,service
+1860,1124,business,service
+1860,1153,business,service
+1860,1164,business,service
+1860,1183,business,service
+1860,1207,business,service
+1860,1210,business,service
+1860,1215,business,service
+1860,1216,business,service
+1860,1234,business,service
+1860,1236,business,street trade
+1860,1254,institution,church
+1860,1258,business,service
+1860,1261,business,street trade
+1860,1275,business,lodging
+1860,1292,business,street trade
+1860,1322,business,food
+1860,1340,business,service
+1860,1342,business,service
+1860,1354,business,street trade
+1860,1364,business,lodging
+1860,1393,business,retail
+1860,1431,business,service
+1860,1434,business,retail
+1860,1438,business,lodging
+1860,1454,business,lodging
+1860,1471,business,street trade
+1860,1475,business,street trade
+1860,1511,business,service
+1860,1515,business,food
+1860,1531,business,food
+1860,1603,business,service
+1860,1620,business,service
+1860,1621,business,food
+1860,1789,business,street trade
+1860,1823,business,service
+1860,1832,business,service
+1860,1841,business,service
+1860,1906,business,retail
+1860,1937,business,service
+1860,1940,business,service
+1860,1963,business,food
+1860,1987,business,service
+1860,2011,business,street trade
+1860,2019,business,service
+1860,2028,business,service
+1860,2042,business,lodging
+1860,2045,institution,church
+1860,2050,business,service
+1860,2089,business,retail
+1860,2111,business,street trade
+1860,2125,business,service
+1860,2128,business,service
+1860,2164,business,food
+1860,2207,business,food
+1860,2237,business,retail
+1860,2246,business,service
+1860,2251,business,service
+1860,2268,business,street trade
+1860,2292,business,street trade
+1860,2297,business,street trade
+1860,2323,business,food
+1860,2324,business,food
+1860,2425,business,service
+1860,2442,business,service
+1860,2507,business,service
+1860,2544,business,service
+1860,2598,business,service
+1860,2675,business,service
+1860,2684,business,lodging
+1860,2690,business,street trade
+1860,2695,institution,church
+1860,2783,business,street trade
+1860,2784,business,service
+1860,2816,business,street trade
+1860,2821,business,retail
+1860,2884,business,food
+1860,2888,business,lodging
+1860,2894,business,service
+1860,2898,business,food
+1860,2915,business,service
+1860,2978,business,service
+1860,2981,business,service
+1860,3036,business,service
+1860,3062,business,service
+1860,3063,business,service
+1860,3083,business,food
+1860,3090,business,service
+1860,3153,business,service
+1860,3158,business,service
+1860,3188,business,retail
+1860,3193,business,food
+1860,3197,business,service
+1860,3237,business,food
+1860,3249,business,lodging
+1860,3263,business,retail
+1860,3265,business,retail
+1860,3302,business,service
+1860,3318,business,food
+1860,3325,business,service
+1860,3332,business,service
+1860,3379,business,service
+1860,3403,business,food
+1860,3480,business,retail
+1860,3487,business,service
+1860,3490,business,service
+1860,3521,business,service
+1860,3573,business,service
+1860,3699,business,food
+1860,3701,business,food
+1860,3736,business,service
+1860,3777,business,street trade
+1860,3822,business,street trade
+1860,3824,business,street trade
+1860,3838,business,street trade
+1860,3909,business,food
+1860,3973,business,food
+1860,3991,business,service
+1860,4006,business,service
+1860,4011,business,service
+1860,4030,business,food
+1860,4071,business,service
+1860,4092,business,food
+1860,4123,business,street trade
+1860,4157,business,service
+1860,4219,business,lodging
+1860,4232,business,service
+1860,4235,business,retail
+1868,2,business,service
+1868,54,business,service
+1868,71,institution,church
+1868,103,business,food
+1868,109,business,street trade
+1868,122,business,street trade
+1868,379,business,retail
+1868,406,business,food
+1868,407,business,food
+1868,459,business,service
+1868,462,business,service
+1868,540,business,service
+1868,548,business,service
+1868,549,business,service
+1868,595,business,service
+1868,629,business,food
+1868,667,business,food
+1868,748,business,service
+1868,782,business,service
+1868,784,business,service
+1868,785,business,service
+1868,789,business,lodging
+1868,835,business,food
+1868,933,business,lodging
+1868,947,business,service
+1868,956,business,food
+1868,1054,business,service
+1868,1213,business,street trade
+1868,1223,business,lodging
+1868,1404,business,street trade
+1868,1417,business,service
+1868,1589,business,service
+1868,1614,business,food
+1868,1621,business,service
+1868,1647,institution,school
+1868,1670,business,food
+1868,1679,business,street trade
+1868,1735,business,food
+1868,1784,business,food
+1868,1872,business,street trade
+1868,1899,institution,church
+1868,1914,business,service
+1868,1921,business,lodging
+1868,1944,business,service
+1868,1947,business,service
+1868,1977,business,street trade
+1868,2136,business,service
+1868,2203,institution,school
+1868,2208,business,lodging
+1868,2230,business,service
+1868,2303,business,street trade
+1868,2428,business,food
+1868,2455,institution,church
+1868,2456,institution,church
+1868,2482,business,lodging
+1868,2590,business,lodging
+1868,2592,business,service
+1868,2595,business,service
+1868,2607,business,food
+1868,2625,business,service
+1868,2665,business,retail
+1868,2692,business,service
+1868,2694,business,street trade
+1868,2702,business,street trade
+1868,2736,business,lodging
+1868,2770,business,retail
+1868,2790,business,service
+1868,2823,business,service
+1868,2840,business,food
+1868,2854,business,service
+1868,2886,business,service
+1868,2889,business,food
+1868,2893,business,service
+1868,2902,institution,society
+1868,2921,business,street trade
+1868,2959,business,service
+1868,2972,business,food
+1868,3097,business,food
+1868,3127,business,service
+1868,3146,business,food
+1868,3178,business,food
+1868,3220,business,street trade
+1868,3225,business,lodging
+1868,3266,business,service
+1868,3313,business,service
+1868,3321,business,food
+1868,3365,business,street trade
+1868,3393,business,service
+1868,3525,business,food
+1868,3574,business,service
+1868,3580,business,service
+1868,3602,business,retail
+1868,3640,business,service
+1868,3691,business,food
+1868,3783,business,service
+1868,3844,business,street trade
+1868,3855,business,service
+1868,3885,business,service
+1868,3949,business,retail
+1868,3964,business,food
+1868,3994,business,lodging
+1868,4000,business,service
+1868,4003,business,street trade
+1868,4038,business,service
+1868,4240,business,food
+1868,4320,business,service
+1868,4346,business,lodging
+1868,4348,business,food
+1868,4350,business,service
+1868,4408,business,food
+1868,4501,business,street trade
+1868,4522,business,retail
+1868,4526,business,food
+1868,4546,business,service
+1868,4565,business,food
+1868,4566,business,food
+1868,4605,business,street trade
+1868,4608,business,service
+1868,4654,business,food
+1868,4708,business,lodging
+1868,4717,business,food
+1868,4749,business,service
+1868,4842,business,service
+1868,5005,business,service
+1868,5147,business,service
+1868,5189,business,service
+1868,5298,business,service
+1868,5300,business,service
+1868,5423,business,service
+1868,5589,business,service
+1868,5590,business,service
+1868,5617,business,service
+1868,5837,business,lodging
+1868,5841,business,service
+1868,5898,business,food
+1868,5926,business,service
+1868,5975,business,street trade
+1868,6175,business,food
+1868,6200,business,service
+1868,6264,business,service
+1868,6301,business,lodging
+1868,6423,business,food
+1868,6455,business,lodging
+1868,6553,business,food
+1868,6634,business,food
+1868,6685,business,food
+1868,6820,business,lodging
+1868,6831,business,food
+1868,6837,business,food
+1868,6843,business,food
+1868,6891,business,retail
+1868,6894,business,retail
+1868,6945,business,service
+1868,6964,business,service
+1868,7124,business,food
+1868,7180,business,food
+1868,7192,business,food
+1868,7285,business,service
+1868,7312,business,service
+1868,7462,business,service
+1868,7466,business,food
+1868,7596,institution,church
+1868,7696,business,service
+1868,7812,business,street trade
+1868,7815,business,food
+1868,7831,business,service
+1868,7908,institution,church
+1868,7965,business,service
+1868,8144,business,service
+1868,8187,business,service
+1868,8288,business,service
+1868,8399,business,food
+1868,8483,business,food

@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Baltimore population by ward and race, 1850 and 1860, from the printed censuses.">
+<meta property="og:title" content="Twenty wards, two censuses">
+<meta property="og:description" content="Baltimore population by ward and race, 1850 and 1860, from the printed censuses.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>&#x1F5FA;</text></svg>">
+<title>Wards — Black Baltimore</title>
+<style>
+  :root {
+    --ground: #E8E5DE; --panel: #F1EFE9; --ink: #17201F; --ink-2: #46514E;
+    --ink-3: #6E7A76; --rule: #CFCABF; --anchored: #A96A08; --approx: #00846F;
+    --bar: #A96A08; --bar-soft: #D8C6A4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #101619; --panel: #161E22; --ink: #E4E7E5; --ink-2: #A9B4B1;
+      --ink-3: #7E8A88; --rule: #253034; --anchored: #CB811A; --approx: #2C9C8D;
+      --bar: #CB811A; --bar-soft: #3B3527;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #101619; --panel: #161E22; --ink: #E4E7E5; --ink-2: #A9B4B1;
+    --ink-3: #7E8A88; --rule: #253034; --anchored: #CB811A; --approx: #2C9C8D;
+    --bar: #CB811A; --bar-soft: #3B3527;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--ground); color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.55;
+    -webkit-font-smoothing: antialiased; }
+  .serif { font-family: "Iowan Old Style", "Palatino Linotype", Palatino,
+           "Book Antiqua", Georgia, serif; }
+  .mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+          font-variant-numeric: tabular-nums; }
+
+  .page { max-width: 1080px; margin: 0 auto; padding: 26px 26px 80px; }
+  nav { display: flex; flex-wrap: wrap; gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule); margin-bottom: 34px; }
+  nav a { flex: 1 1 auto; min-width: 52px; text-align: center; padding: 8px 6px;
+    font-size: 12px; text-decoration: none; color: var(--ink-2);
+    background: var(--panel); letter-spacing: .04em; }
+  nav a:hover { background: var(--ground); color: var(--ink); }
+  nav a[aria-current="page"] { background: var(--ink); color: var(--panel); font-weight: 600; }
+  nav a:focus-visible { outline: 2px solid var(--anchored); outline-offset: -2px; }
+
+  .eyebrow { font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-3); margin: 0 0 10px; }
+  h1 { font-size: 38px; line-height: 1.1; margin: 0 0 12px; text-wrap: balance;
+    font-weight: 600; letter-spacing: -.015em; }
+  h2 { font-size: 21px; margin: 44px 0 12px; font-weight: 600; letter-spacing: -.01em; }
+  .lede { color: var(--ink-2); font-size: 16.5px; max-width: 64ch; margin: 0 0 6px; }
+  p { max-width: 68ch; }
+  a { color: var(--anchored); }
+
+  .years { display: flex; flex-wrap: wrap; gap: 6px; margin: 26px 0 18px; }
+  .years button { font: inherit; font-size: 13px; padding: 6px 14px; cursor: pointer;
+    background: var(--panel); color: var(--ink-2); border: 1px solid var(--rule);
+    border-radius: 2px; }
+  .years button:hover { border-color: var(--ink-3); color: var(--ink); }
+  .years button[aria-pressed="true"] { background: var(--ink); color: var(--panel);
+    border-color: var(--ink); font-weight: 600; }
+  .years button:focus-visible { outline: 2px solid var(--anchored); outline-offset: 2px; }
+
+  .chart { display: grid; grid-template-columns: 150px 1fr 64px; gap: 3px 12px;
+    align-items: center; margin-top: 8px; }
+  .chart .lab { font-size: 13px; text-align: right; color: var(--ink-2); }
+  .chart .track { background: var(--bar-soft); height: 17px; border-radius: 0 3px 3px 0; }
+  .chart .fill { background: var(--bar); height: 17px; border-radius: 0 3px 3px 0;
+    transition: width .25s ease; }
+  .chart .val { font-size: 12.5px; color: var(--ink-3);
+    font-variant-numeric: tabular-nums; }
+  @media (prefers-reduced-motion: reduce) { .chart .fill { transition: none; } }
+  @media (max-width: 620px) { .chart { grid-template-columns: 110px 1fr 52px; } }
+
+  table.data { border-collapse: collapse; font-size: 13.5px; margin-top: 10px; width: 100%; }
+  table.data th, table.data td { text-align: left; padding: 7px 12px 7px 0;
+    border-bottom: 1px solid var(--rule); }
+  table.data td.n, table.data th.n { text-align: right;
+    font-variant-numeric: tabular-nums; }
+  .scroll { overflow-x: auto; }
+  table.data th { cursor: pointer; user-select: none; white-space: nowrap; }
+  table.data th:hover { color: var(--ink); }
+  table.data th[aria-sort]::after { content: " \2193"; font-size: 11px; }
+  table.data th[aria-sort="descending"]::after { content: " \2191"; }
+  table.data th:focus-visible { outline: 2px solid var(--anchored); outline-offset: -2px; }
+  td.bar { position: relative; min-width: 92px; }
+  td.bar .bw { position: absolute; left: 0; top: 4px; bottom: 4px;
+    background: var(--bar-soft); border-radius: 0 2px 2px 0; z-index: 0; }
+  td.bar .bv { position: relative; z-index: 1; padding-right: 2px; }
+
+  figure { margin: 26px 0; }
+  figure img { width: 100%; max-width: 100%; height: auto; display: block;
+    border: 1px solid var(--rule); background: #fff; }
+  figcaption { font-size: 12.5px; color: var(--ink-3); margin-top: 9px; max-width: 68ch; }
+
+  .biblio { border-top: 1px solid var(--rule); padding-top: 20px; margin-top: 30px; }
+  .biblio h3 { font-size: 16px; margin: 0 0 4px; font-weight: 600; }
+  .biblio .meta { font-size: 13px; color: var(--ink-3); margin: 0 0 6px; }
+  .biblio p { font-size: 13.5px; color: var(--ink-2); margin: 0 0 8px; }
+  .note { font-size: 13px; color: var(--ink-3); border-left: 2px solid var(--rule);
+    padding-left: 14px; margin: 22px 0; }
+  .note strong { color: var(--ink-2); font-weight: 600; }
+</style>
+
+</head>
+<body>
+<div class="page">
+  <nav>
+    <a href="./">Density</a>
+    <a href="./1819.html">1819</a>
+    <a href="./1822.html">1822</a>
+    <a href="./1842.html">1842</a>
+    <a href="./1845.html">1845</a>
+    <a href="./1851.html">1851</a>
+    <a href="./1860.html">1860</a>
+    <a href="./1868.html">1868</a>
+    <a href="./wards.html" aria-current="page">Wards</a>
+    <a href="./work.html">Work</a>
+    <a href="./sources.html">Sources</a>
+    </nav>
+  <p class="eyebrow">Seventh and Eighth Censuses</p>
+  <h1 class="serif">Twenty wards, two censuses</h1>
+  <p class="lede">The ward table behind the density map, sortable, with 1850 and 1860 side by side.</p>
+  
+  <p>Both censuses used the same twenty wards, so this is a like-for-like
+    comparison. Click any column to sort. <em>Change</em> is the shift in Black
+    share between the two years, in percentage points.</p>
+
+  <div class="scroll">
+    <table class="data" id="wtab">
+      <thead><tr id="whead"></tr></thead>
+      <tbody id="wbody"></tbody>
+    </table>
+  </div>
+
+  <h2>What to notice</h2>
+  <p>Sort by <em>Change</em> and the pattern is unmistakable: every ward moved
+    the same direction. Not one of the twenty gained Black share between 1850
+    and 1860. That is not a story about Black Baltimore leaving. The Black
+    population fell by 490 people, under two per cent. It is a story about
+    43,854 white arrivals, largely German and Irish, landing on top of a
+    population that was standing still.</p>
+  <p>Sort by <em>Black&nbsp;% 1860</em> and wards 11, 15 and 12 sit at the top,
+    the same wards that top 1850. Sort by <em>Change</em> and wards 11 and 14
+    sit at the bottom of the movement, having shifted by a fifth of a point.
+    Those are the neighbourhoods that held. Ward 17 lost ten points, the
+    largest single change in the city.</p>
+  <p>The enslaved columns carry their own story: 2,946 people in 1850 down to
+    2,218 in 1860, a quarter gone in a decade, in a city where free Black
+    residents already outnumbered them more than eleven to one.</p>
+
+  <h2>Provenance</h2>
+  <p>1850 from the Seventh Census, Table II of the Maryland report,
+    p.&nbsp;221. 1860 from the Eighth Census, Table No.&nbsp;3, p.&nbsp;214.
+    Both were transcribed from the page and checked by summing every column
+    against the printed city totals. Both reconcile exactly, and the check
+    caught a real error in each: a misread white female count in 1860 ward 1,
+    and an enslaved count in 1850 ward 20.</p>
+
+</div>
+
+<script id="wd" type="application/json">[{"ward":1,"fc50":1091,"sl50":79,"pct50":7.98,"fc60":433,"sl60":54,"pct60":3.24,"dpct":-4.74,"agg60":15032},{"ward":2,"fc50":917,"sl50":85,"pct50":10.56,"fc60":628,"sl60":46,"pct60":7.22,"dpct":-3.34,"agg60":9340},{"ward":3,"fc50":1862,"sl50":195,"pct50":17.4,"fc60":1750,"sl60":115,"pct60":12.16,"dpct":-5.24,"agg60":15343},{"ward":4,"fc50":766,"sl50":250,"pct50":13.32,"fc60":385,"sl60":72,"pct60":6.52,"dpct":-6.8,"agg60":7010},{"ward":5,"fc50":1198,"sl50":84,"pct50":22.44,"fc60":903,"sl60":41,"pct60":17.61,"dpct":-4.83,"agg60":5360},{"ward":6,"fc50":2145,"sl50":104,"pct50":24.95,"fc60":1894,"sl60":78,"pct60":19.94,"dpct":-5.01,"agg60":9888},{"ward":7,"fc50":1013,"sl50":57,"pct50":13.97,"fc60":1378,"sl60":43,"pct60":11.46,"dpct":-2.51,"agg60":12405},{"ward":8,"fc50":750,"sl50":78,"pct50":9.25,"fc60":753,"sl60":59,"pct60":5.64,"dpct":-3.61,"agg60":14387},{"ward":9,"fc50":333,"sl50":139,"pct50":9.96,"fc60":188,"sl60":92,"pct60":8.91,"dpct":-1.05,"agg60":3144},{"ward":10,"fc50":596,"sl50":241,"pct50":16.63,"fc60":553,"sl60":50,"pct60":13.97,"dpct":-2.66,"agg60":4315},{"ward":11,"fc50":2078,"sl50":252,"pct50":26.11,"fc60":2389,"sl60":353,"pct60":25.94,"dpct":-0.17,"agg60":10571},{"ward":12,"fc50":1911,"sl50":158,"pct50":22.29,"fc60":1967,"sl60":111,"pct60":21.05,"dpct":-1.24,"agg60":9871},{"ward":13,"fc50":807,"sl50":264,"pct50":19.24,"fc60":691,"sl60":91,"pct60":17.48,"dpct":-1.76,"agg60":4473},{"ward":14,"fc50":1221,"sl50":177,"pct50":18.86,"fc60":1176,"sl60":142,"pct60":18.66,"dpct":-0.2,"agg60":7062},{"ward":15,"fc50":2242,"sl50":307,"pct50":24.74,"fc60":2787,"sl60":173,"pct60":22.66,"dpct":-2.08,"agg60":13061},{"ward":16,"fc50":1189,"sl50":134,"pct50":22.51,"fc60":1482,"sl60":80,"pct60":18.96,"dpct":-3.55,"agg60":8237},{"ward":17,"fc50":2400,"sl50":45,"pct50":24.86,"fc60":2168,"sl60":3,"pct60":14.52,"dpct":-10.34,"agg60":14955},{"ward":18,"fc50":934,"sl50":168,"pct50":9.38,"fc60":1219,"sl60":275,"pct60":7.0,"dpct":-2.38,"agg60":21331},{"ward":19,"fc50":717,"sl50":63,"pct50":9.9,"fc60":1019,"sl60":94,"pct60":8.52,"dpct":-1.38,"agg60":13057},{"ward":20,"fc50":1272,"sl50":66,"pct50":17.77,"fc60":1917,"sl60":246,"pct60":15.93,"dpct":-1.84,"agg60":13576}]</script>
+<script>
+(function () {
+  var D = JSON.parse(document.getElementById('wd').textContent);
+  var tb = document.getElementById('wbody'), hr = document.getElementById('whead');
+  var sortKey = 'ward', asc = true;
+  var COLS = [
+    {k:'ward',  t:'Ward',             n:false},
+    {k:'fc50',  t:'Free Black 1850',  n:true},
+    {k:'sl50',  t:'Enslaved 1850',    n:true},
+    {k:'pct50', t:'Black % 1850',     n:true},
+    {k:'fc60',  t:'Free Black 1860',  n:true},
+    {k:'sl60',  t:'Enslaved 1860',    n:true},
+    {k:'pct60', t:'Black % 1860',     n:true},
+    {k:'dpct',  t:'Change',           n:true},
+    {k:'agg60', t:'Ward total 1860',  n:true}
+  ];
+  var max = Math.max.apply(null, D.map(function (r) { return r.pct60; }));
+
+  function render() {
+    var rows = D.slice().sort(function (a, b) {
+      var x = a[sortKey], y = b[sortKey];
+      return (x === y ? 0 : (x > y ? 1 : -1)) * (asc ? 1 : -1);
+    });
+    tb.innerHTML = '';
+    rows.forEach(function (r) {
+      var tr = document.createElement('tr');
+      COLS.forEach(function (c) {
+        var td = document.createElement('td'), v = r[c.k];
+        if (c.k === 'pct50' || c.k === 'pct60') {
+          td.className = 'n bar';
+          td.innerHTML = '<span class="bw" style="width:' + (v / max * 100).toFixed(1) +
+            '%"></span><span class="bv">' + v.toFixed(2) + '%</span>';
+        } else if (c.k === 'dpct') {
+          td.className = 'n';
+          td.textContent = (v > 0 ? '+' : '') + v.toFixed(2);
+          if (v < -5) td.style.color = 'var(--anchored)';
+        } else {
+          td.className = c.n ? 'n' : '';
+          td.textContent = c.n ? v.toLocaleString() : v;
+        }
+        tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+  }
+
+  COLS.forEach(function (c) {
+    var th = document.createElement('th');
+    th.className = c.n ? 'n' : '';
+    th.textContent = c.t;
+    th.tabIndex = 0;
+    th.setAttribute('role', 'button');
+    function go() {
+      if (sortKey === c.k) { asc = !asc; } else { sortKey = c.k; asc = (c.k === 'ward'); }
+      Array.prototype.forEach.call(hr.children, function (o) { o.removeAttribute('aria-sort'); });
+      th.setAttribute('aria-sort', asc ? 'ascending' : 'descending');
+      render();
+    }
+    th.onclick = go;
+    th.onkeydown = function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+    };
+    hr.appendChild(th);
+  });
+  render();
+})();
+</script>
+
+
+</body>
+</html>

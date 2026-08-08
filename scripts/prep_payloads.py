@@ -140,6 +140,25 @@ def main():
                     f += [sx(x), sy(y)]
                 paths.append(f)
 
+    # Modern centrelines, purely for orientation. Simplified harder than the
+    # period network because it is never measured against, only glanced at.
+    modern = []
+    mpath = RAW / "balt_streets.geojson"
+    if mpath.exists():
+        mg = gpd.read_file(mpath).to_crs(epsg=CRS_M)
+        mg = mg[mg.intersects(city)].copy()
+        mg["geometry"] = mg.geometry.intersection(city).simplify(SIMPLIFY * 3)
+        for g in mg.geometry:
+            if g.is_empty:
+                continue
+            parts = [g] if g.geom_type == "LineString" else list(getattr(g, "geoms", []))
+            for pp in parts:
+                if pp.geom_type == "LineString" and len(pp.coords) >= 2:
+                    f = []
+                    for x, y in pp.coords:
+                        f += [sx(x), sy(y)]
+                    modern.append(f)
+
     cen = {int(r["ward"]): r for r in csv.DictReader(open(WORK / "ward_census_1860.csv"))}
     cen50 = {int(r["ward"]): r for r in csv.DictReader(open(WORK / "ward_census_1850.csv"))}
     ward_feats = []
@@ -204,12 +223,13 @@ def main():
                 c[o] += 1
         occ[y] = c.most_common(40)
 
-    payload = {"w": W, "h": H, "streets": paths, "wards": ward_feats,
+    payload = {"w": W, "h": H, "streets": paths, "modern": modern,
+               "wards": ward_feats,
                "people": people, "occupations": occ, "parsed": parsed_counts,
                "metres_per_unit": round(1 / scale, 3)}
     out = WORK / "map_payload.json"
     out.write_text(json.dumps(payload, separators=(",", ":")))
-    print("streets", len(paths), "wards", len(ward_feats))
+    print("streets", len(paths), "modern", len(modern), "wards", len(ward_feats))
     for y in YEARS:
         print(f"  {y}: {len(people.get(y, [])):5d} placed, "
               f"{parsed_counts.get(y,0):5d} parsed, "

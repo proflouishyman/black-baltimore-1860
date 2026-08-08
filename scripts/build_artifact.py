@@ -18,7 +18,7 @@ DOCS = ROOT / "docs"
 NAV = [("index.html", "Density"), ("1819.html", "1819"), ("1822.html", "1822"),
        ("1842.html", "1842"), ("1845.html", "1845"), ("1851.html", "1851"),
        ("1860.html", "1860"), ("1868.html", "1868"),
-       ("work.html", "Work"), ("sources.html", "Sources")]
+       ("wards.html", "Wards"), ("work.html", "Work"), ("sources.html", "Sources")]
 
 # per-year framing: eyebrow, headline, lede, and the paragraph that states the
 # method and its limits honestly
@@ -140,6 +140,11 @@ TIER_CONTROLS = """
         <span class="ward-key"></span>
         <span><span class="lab">Ward boundaries</span><br>
           <span class="sub">Compare against the density map.</span></span></label>
+      <label class="row"><input type="checkbox" id="tm">
+        <span class="swatch" style="background:var(--approx);opacity:.35"></span>
+        <span><span class="lab">Baltimore today</span><br>
+          <span class="sub">Modern streets, faint, for orientation only. Not
+            the geometry anything is placed on.</span></span></label>
     </fieldset>
 """
 TIER2 = """<label class="row"><input type="checkbox" id="t2" checked>
@@ -167,6 +172,15 @@ def build_maps(map_tpl, payload_txt, data):
         <div style="background:var(--c2)"></div><div style="background:var(--c3)"></div>
         <div style="background:var(--c4)"></div><div style="background:var(--c5)"></div></div>
       <div class="ramp-lab"><span>under 5%</span><span>over 21%</span></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Overlay</legend>
+      <label class="row"><input type="checkbox" id="tm">
+        <span class="swatch" style="background:var(--approx);opacity:.35"></span>
+        <span><span class="lab">Baltimore today</span><br>
+          <span class="sub">Modern streets, faint, for orientation only. Not
+            the geometry anything is placed on.</span></span></label>
     </fieldset>
 
     <p class="note"><strong>Switch between 1850 and 1860.</strong> The two
@@ -478,6 +492,151 @@ def build_sources(content_tpl):
     print(f"wrote docs/sources.html ({(DOCS/'sources.html').stat().st_size/1_000:.0f} KB)")
 
 
+WARDS_SCRIPT = """
+<script id="wd" type="application/json">__WARDS__</script>
+<script>
+(function () {
+  var D = JSON.parse(document.getElementById('wd').textContent);
+  var tb = document.getElementById('wbody'), hr = document.getElementById('whead');
+  var sortKey = 'ward', asc = true;
+  var COLS = [
+    {k:'ward',  t:'Ward',             n:false},
+    {k:'fc50',  t:'Free Black 1850',  n:true},
+    {k:'sl50',  t:'Enslaved 1850',    n:true},
+    {k:'pct50', t:'Black % 1850',     n:true},
+    {k:'fc60',  t:'Free Black 1860',  n:true},
+    {k:'sl60',  t:'Enslaved 1860',    n:true},
+    {k:'pct60', t:'Black % 1860',     n:true},
+    {k:'dpct',  t:'Change',           n:true},
+    {k:'agg60', t:'Ward total 1860',  n:true}
+  ];
+  var max = Math.max.apply(null, D.map(function (r) { return r.pct60; }));
+
+  function render() {
+    var rows = D.slice().sort(function (a, b) {
+      var x = a[sortKey], y = b[sortKey];
+      return (x === y ? 0 : (x > y ? 1 : -1)) * (asc ? 1 : -1);
+    });
+    tb.innerHTML = '';
+    rows.forEach(function (r) {
+      var tr = document.createElement('tr');
+      COLS.forEach(function (c) {
+        var td = document.createElement('td'), v = r[c.k];
+        if (c.k === 'pct50' || c.k === 'pct60') {
+          td.className = 'n bar';
+          td.innerHTML = '<span class="bw" style="width:' + (v / max * 100).toFixed(1) +
+            '%"></span><span class="bv">' + v.toFixed(2) + '%</span>';
+        } else if (c.k === 'dpct') {
+          td.className = 'n';
+          td.textContent = (v > 0 ? '+' : '') + v.toFixed(2);
+          if (v < -5) td.style.color = 'var(--anchored)';
+        } else {
+          td.className = c.n ? 'n' : '';
+          td.textContent = c.n ? v.toLocaleString() : v;
+        }
+        tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+  }
+
+  COLS.forEach(function (c) {
+    var th = document.createElement('th');
+    th.className = c.n ? 'n' : '';
+    th.textContent = c.t;
+    th.tabIndex = 0;
+    th.setAttribute('role', 'button');
+    function go() {
+      if (sortKey === c.k) { asc = !asc; } else { sortKey = c.k; asc = (c.k === 'ward'); }
+      Array.prototype.forEach.call(hr.children, function (o) { o.removeAttribute('aria-sort'); });
+      th.setAttribute('aria-sort', asc ? 'ascending' : 'descending');
+      render();
+    }
+    th.onclick = go;
+    th.onkeydown = function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+    };
+    hr.appendChild(th);
+  });
+  render();
+})();
+</script>
+"""
+
+WARDS_BODY = """
+  <p>Both censuses used the same twenty wards, so this is a like-for-like
+    comparison. Click any column to sort. <em>Change</em> is the shift in Black
+    share between the two years, in percentage points.</p>
+
+  <div class="scroll">
+    <table class="data" id="wtab">
+      <thead><tr id="whead"></tr></thead>
+      <tbody id="wbody"></tbody>
+    </table>
+  </div>
+
+  <h2>What to notice</h2>
+  <p>Sort by <em>Change</em> and the pattern is unmistakable: every ward moved
+    the same direction. Not one of the twenty gained Black share between 1850
+    and 1860. That is not a story about Black Baltimore leaving. The Black
+    population fell by 490 people, under two per cent. It is a story about
+    43,854 white arrivals, largely German and Irish, landing on top of a
+    population that was standing still.</p>
+  <p>Sort by <em>Black&nbsp;% 1860</em> and wards 11, 15 and 12 sit at the top,
+    the same wards that top 1850. Sort by <em>Change</em> and wards 11 and 14
+    sit at the bottom of the movement, having shifted by a fifth of a point.
+    Those are the neighbourhoods that held. Ward 17 lost ten points, the
+    largest single change in the city.</p>
+  <p>The enslaved columns carry their own story: 2,946 people in 1850 down to
+    2,218 in 1860, a quarter gone in a decade, in a city where free Black
+    residents already outnumbered them more than eleven to one.</p>
+
+  <h2>Provenance</h2>
+  <p>1850 from the Seventh Census, Table II of the Maryland report,
+    p.&nbsp;221. 1860 from the Eighth Census, Table No.&nbsp;3, p.&nbsp;214.
+    Both were transcribed from the page and checked by summing every column
+    against the printed city totals. Both reconcile exactly, and the check
+    caught a real error in each: a misread white female count in 1860 ward 1,
+    and an enslaved count in 1850 ward 20.</p>
+"""
+
+
+def build_wards(content_tpl):
+    import csv as _csv
+    w50 = {int(r["ward"]): r for r in _csv.DictReader(
+        open(ROOT / "data" / "work" / "ward_census_1850.csv"))}
+    w60 = {int(r["ward"]): r for r in _csv.DictReader(
+        open(ROOT / "data" / "work" / "ward_census_1860.csv"))}
+    rows = []
+    for w in sorted(w60):
+        a, b = w50.get(w), w60[w]
+        if not a:
+            continue
+        rows.append({
+            "ward": w,
+            "fc50": int(a["free_colored"]), "sl50": int(a["slave"]),
+            "pct50": float(a["black_pct"]),
+            "fc60": int(b["free_colored"]), "sl60": int(b["slave"]),
+            "pct60": float(b["black_pct"]),
+            "dpct": round(float(b["black_pct"]) - float(a["black_pct"]), 2),
+            "agg60": int(b["aggregate"]),
+        })
+    body = (content_tpl
+            .replace("__TITLE__", "Wards — Black Baltimore")
+            .replace("__NAV__", nav_html("wards.html"))
+            .replace("__EYEBROW__", "Seventh and Eighth Censuses")
+            .replace("__H1__", "Twenty wards, two censuses")
+            .replace("__LEDE__", "The ward table behind the density map, sortable, "
+                                 "with 1850 and 1860 side by side.")
+            .replace("__CONTENT__", WARDS_BODY)
+            .replace("__SCRIPT__", WARDS_SCRIPT.replace("__WARDS__",
+                     json.dumps(rows, separators=(",", ":")))))
+    desc = "Baltimore population by ward and race, 1850 and 1860, from the printed censuses."
+    (DOCS / "wards.html").write_text(document(body, "Twenty wards, two censuses", desc),
+                                     encoding="utf8")
+    print(f"wrote docs/wards.html ({(DOCS/'wards.html').stat().st_size/1_000:.0f} KB)")
+
+
 def main():
     DOCS.mkdir(parents=True, exist_ok=True)
     data = json.loads(PAYLOAD.read_text(encoding="utf8"))
@@ -485,6 +644,7 @@ def main():
     build_maps(MAP_TPL.read_text(encoding="utf8"), payload_txt, data)
     content_tpl = CONTENT_TPL.read_text(encoding="utf8")
     build_work(content_tpl, data)
+    build_wards(content_tpl)
     build_sources(content_tpl)
 
 

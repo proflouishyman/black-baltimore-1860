@@ -82,6 +82,60 @@ WARDS_1850 = {
 }
 PRINTED_1850 = {"fc": 25442, "slave": 2946, "aggregate": 169054, "white": 140666}
 
+# ---------------------------------------------------------------------------
+# 1820: Fourth Census, "AGGREGATE amount of each description of persons within
+# the DISTRICT OF MARYLAND", printed p.97 of 1820a-02.pdf. City of Baltimore is
+# broken into its twelve wards, thirty years before the 1850 table.
+#
+# This page was nearly missed. The PDF is a pure image scan with no text layer,
+# so grep and pdftotext both return nothing and the obvious conclusion is that
+# the data does not exist. It does. Old volumes have to be paged through, not
+# searched.
+#
+# The census bands by age, so slaves and free colored each arrive as eight
+# columns (four male, four female). Stored summed. The transcription is
+# confirmed by three independent twelve-number sums landing exactly on the
+# known city totals: 4,357 enslaved, 10,326 free colored, 62,738 aggregate.
+#
+# ward: (slave_total, free_colored_total, aggregate)
+WARDS_1820 = {
+    1:  (267, 535, 4477),    2:  (288, 1430, 7512),
+    3:  (362, 1204, 6548),   4:  (371, 809, 6645),
+    5:  (313, 240, 3091),    6:  (459, 258, 3469),
+    7:  (468, 450, 3460),    8:  (227, 626, 3592),
+    9:  (268, 795, 3579),    10: (407, 1066, 6119),
+    11: (334, 1273, 5882),   12: (593, 1640, 8364),
+}
+PRINTED_1820 = {"fc": 10326, "slave": 4357, "aggregate": 62738}
+
+
+def main_1820():
+    rows, tot = [], {"fc": 0, "slave": 0, "aggregate": 0}
+    for w in sorted(WARDS_1820):
+        sl, fc, agg = WARDS_1820[w]
+        black = sl + fc
+        rows.append({"ward": w, "white": agg - black, "free_colored": fc,
+                     "slave": sl, "black_total": black, "aggregate": agg,
+                     "black_pct": round(black / agg * 100, 2)})
+        tot["fc"] += fc; tot["slave"] += sl; tot["aggregate"] += agg
+    problems = []
+    for k, want in PRINTED_1820.items():
+        got = tot[k]
+        print(f"  {'OK ' if got == want else 'MISMATCH'} {k:10s} "
+              f"transcribed {got:>7,}  known {want:>7,}")
+        if got != want:
+            problems.append(f"{k}: {got} != {want}")
+    if problems:
+        raise SystemExit("1820 TRANSCRIPTION FAILED:\n  " + "\n  ".join(problems))
+    out = WORK / "ward_census_1820.csv"
+    with out.open("w", newline="", encoding="utf8") as fh:
+        w = csv.DictWriter(fh, fieldnames=list(rows[0]))
+        w.writeheader(); w.writerows(rows)
+    share = sum(r["black_total"] for r in rows) / sum(r["aggregate"] for r in rows)
+    print(f"\n1820 reconciles -> {out.name}")
+    print(f"citywide Black share 1820: {share*100:.2f}%")
+    return rows
+
 
 def main():
     rows, totals = [], {k: 0 for k in
@@ -170,3 +224,5 @@ if __name__ == "__main__":
     main()
     print("\n=== 1850 ===")
     main_1850()
+    print("\n=== 1820 ===")
+    main_1820()

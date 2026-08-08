@@ -21,6 +21,7 @@ NAV = [("index.html", "Density"), ("1819.html", "1819"), ("1822.html", "1822"),
        ("wards.html", "Wards"), ("work.html", "Work"), ("trade.html", "Trade"),
        ("building.html", "Building"), ("bias.html", "What's missing"),
        ("checking.html", "Checking"),
+       ("maps.html", "Maps"),
        ("sources.html", "Sources")]
 
 # per-year framing: eyebrow, headline, lede, and the paragraph that states the
@@ -725,6 +726,8 @@ def main():
     build_wards(content_tpl)
     build_bias(content_tpl)
     build_checking(content_tpl)
+    from build_maps_page import main as build_maps_gallery
+    build_maps_gallery()
     build_sources(content_tpl)
 
 

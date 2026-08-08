@@ -103,6 +103,23 @@
   .note { font-size: 13px; color: var(--ink-3); border-left: 2px solid var(--rule);
     padding-left: 14px; margin: 22px 0; }
   .note strong { color: var(--ink-2); font-weight: 600; }
+
+  .map-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px; margin: 22px 0 8px; }
+  .map-card { margin: 0; border: 1px solid var(--rule); background: var(--panel);
+    padding: 12px; border-radius: 3px; }
+  .map-card img { width: 100%; height: auto; display: block; border: 1px solid var(--rule);
+    background: #fff; }
+  .map-card h3 { font-size: 14.5px; margin: 10px 0 3px; font-weight: 600;
+    letter-spacing: -.005em; }
+  .map-card .meta { font-size: 12px; color: var(--ink-3); margin: 0 0 8px; }
+  .map-card p { font-size: 13px; color: var(--ink-2); margin: 0 0 8px; max-width: none; }
+  .map-card .dl { font-size: 12.5px; margin: 10px 0 0; }
+  .map-badge { display: inline-block; font-size: 10.5px; letter-spacing: .04em;
+    text-transform: uppercase; padding: 2px 7px; border-radius: 2px; margin: 10px 0 0;
+    border: 1px solid var(--rule); color: var(--ink-3); }
+  .map-badge.in { color: var(--anchored); border-color: var(--anchored); }
+  .map-badge.out { border-style: dashed; }
 </style>
 
 </head>
@@ -123,6 +140,7 @@
     <a href="./building.html">Building</a>
     <a href="./bias.html">What's missing</a>
     <a href="./checking.html">Checking</a>
+    <a href="./maps.html">Maps</a>
     <a href="./sources.html">Sources</a>
     </nav>
   <p class="eyebrow">Occupations, 1842–1868</p>

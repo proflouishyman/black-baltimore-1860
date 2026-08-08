@@ -168,3 +168,61 @@ was silently yielding the wrong directory.
 The bundle name carries its version (`QGIS-final-4_2_1.app`), so `QGIS_APP`
 needs bumping after a QGIS upgrade. Most work here uses geopandas in `.venv`;
 QGIS is only needed for georeferencing and final cartography.
+
+---
+
+## [2026-08-07] - Split streets placed people on the wrong side of the city
+
+### Problem
+An external check against the 1860 census (8 named residents looked up on
+Ancestry Library Edition) found that of the three who could be confidently
+identified, only one landed in the ward the census recorded. John Ashton, a
+drayman at 143 N Caroline, was placed in ward 3; the census puts him in ward 7.
+All three were in the `bracketed` tier - the highest-confidence placements.
+
+### Root Cause
+Two independent faults, both in how street identity and direction were handled.
+
+1. **Direction was discarded when keying street ladders.** `norm_street`
+   returns a core name and a direction, but the geocoder keyed everything by
+   core alone. "CHARLES (N.)" and "CHARLES (S.)" both reduce to CHARLES, so the
+   second silently overwrote the first, and the merged geometry fused both
+   halves into one line. 34 street cores were affected, covering 581 of the
+   2,939 placed 1860 residents and 473 of the 705 bracketed ones. An address on
+   the north half could be interpolated onto the south half, putting a person
+   on the wrong side of Baltimore Street.
+
+2. **Ladders assumed distance rises with house number.** `build_ladders` kept
+   only anchors whose distance along the line increased. On N Caroline the
+   digitised geometry runs north to south while the numbering runs south to
+   north, so distance *falls* as numbers rise: Baltimore (no. 2) sits at 2,287m
+   and Chew (no. 254) at 1,291m. The filter therefore discarded every anchor
+   but the first, collapsing a 10-anchor street to a single point at the wrong
+   end. That is precisely how Ashton ended up in ward 3.
+
+### Solution
+Street geometry and ladders are both keyed by `(core, direction)`, and the HUE
+data supports this because it names the halves separately ("N Caroline St",
+"S Caroline St"). Where a directory entry gives no direction and several
+ladders exist, the one whose anchor range actually brackets the house number is
+chosen, rather than whichever happened to be stored last.
+
+`build_ladders` now detects whether distance rises or falls with house number
+and enforces monotonicity in whichever direction the street actually runs.
+
+Result for 1860: bracketed placements rose from 705 to 758, `single_anchor`
+fell from 246 to 97, and Ashton now lands in ward 7, matching the census. Ward
+agreement on the validated sample went from 1 of 3 to 2 of 3.
+
+### Notes
+Wm. T. Aldridge (44 Ross) is still placed in ward 12 against a census ward of
+20 and remains unexplained. Ross Street was renamed Druid Hill Avenue, so his
+anchors resolve onto a much longer modern street; that alias is historically
+correct but may be misplacing him. It could equally be a move between the
+directory canvass and the June 1860 enumeration, or a different man of the same
+name. Left open rather than explained away.
+
+**This bug was only found because the placements were checked against an
+independent source.** Nothing in the internal consistency of the data would
+have revealed it: the ladders were monotone, the anchors were real, and the
+output looked entirely plausible. Validate against something external.

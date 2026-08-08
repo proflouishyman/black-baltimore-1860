@@ -113,25 +113,48 @@ def load_streets(ward_shp=None):
     Modern centrelines are then layered underneath, supplying only names HUE
     does not have, so nothing is lost by the swap."""
     buckets = defaultdict(list)
+    dbuckets = defaultdict(list)      # keyed by (core, direction)
     source_of = {}
     city = city_limits(ward_shp)
 
     hue = gpd.read_file(HUE_SHP).to_crs(epsg=CRS_M)
     for name, geom in zip(hue["Full_Name"], hue.geometry):
-        core, _d = norm_street(name)
+        core, d = norm_street(name)
         if core:
             buckets[core].append(geom)
+            # HUE distinguishes the halves of a split street ("N Caroline St",
+            # "S Caroline St"). Keeping them apart matters: north and south
+            # Caroline are different streets with different numbering, and
+            # merging them puts people on the wrong side of Baltimore street.
+            if d:
+                dbuckets[(core, d)].append(geom)
             source_of.setdefault(core, "hue")
 
     gdf = gpd.read_file(RAW / "balt_streets.geojson").to_crs(epsg=CRS_M)
     gdf = gdf[gdf["ROAD_NAME"].notna()]
     for name, geom in zip(gdf["ROAD_NAME"], gdf.geometry):
-        core, _d = norm_street(name)
+        core, d = norm_street(name)
         if core and core not in source_of:
             buckets[core].append(geom)
+            if d:
+                dbuckets[(core, d)].append(geom)
             source_of[core] = "modern"
 
+    def merge(geoms):
+        g = unary_union(geoms).intersection(city)
+        if g.is_empty:
+            return None
+        if g.geom_type == "MultiLineString":
+            g = linemerge(g)
+        if g.geom_type == "MultiLineString":
+            g = max(g.geoms, key=lambda p: p.length)
+        return g if g.geom_type == "LineString" and g.length > 0 else None
+
     merged = {}
+    for key, geoms in dbuckets.items():
+        g = merge(geoms)
+        if g is not None:
+            merged[key] = g
     for core, geoms in buckets.items():
         g = unary_union(geoms).intersection(city)
         if g.is_empty:
@@ -145,6 +168,13 @@ def load_streets(ward_shp=None):
         if g.geom_type == "LineString" and g.length > 0:
             merged[core] = g
     return merged
+
+
+def pick_geom(streets, core, dirn):
+    """Prefer the directional half of a split street when we know which half."""
+    if dirn and (core, dirn) in streets:
+        return streets[(core, dirn)], (core, dirn)
+    return streets.get(core), core
 
 
 def load_aliases():
@@ -171,11 +201,12 @@ def resolve_street(core, streets, aliases):
     for alt in aliases.get(core, []):
         if alt in streets:
             return alt
-    hit = fuzzproc.extractOne(core, list(streets), score_cutoff=92)
+    names = [k for k in streets if isinstance(k, str)]
+    hit = fuzzproc.extractOne(core, names, score_cutoff=92)
     if hit:
         return hit[0]
     for alt in aliases.get(core, []):
-        hit = fuzzproc.extractOne(alt, list(streets), score_cutoff=92)
+        hit = fuzzproc.extractOne(alt, names, score_cutoff=92)
         if hit:
             return hit[0]
     return None
@@ -194,8 +225,9 @@ def resolve_intersections(street_geom, anchors, streets):
     placed = []
     last = -1.0
     for a in anchors:
-        key = resolve_street(norm_street(a["cross_street"])[0], streets, ALIASES)
-        cross = streets.get(key) if key else None
+        ccore, cdir = norm_street(a["cross_street"])
+        key = resolve_street(ccore, streets, ALIASES)
+        cross = pick_geom(streets, key, cdir)[0] if key else None
         if cross is None:
             continue
         inter = street_geom.intersection(cross)
@@ -216,7 +248,14 @@ def resolve_intersections(street_geom, anchors, streets):
 
 
 def build_ladders(placed):
-    """Two monotone number->distance ladders, one per side of the street."""
+    """Two monotone number->distance ladders, one per side of the street.
+
+    The digitised line may run either way relative to the house numbering: on
+    N Caroline, distance along the line *decreases* as numbers rise, because
+    the geometry was drawn north to south. Requiring increasing distance threw
+    away every anchor but the first there, collapsing the ladder to a single
+    point at the wrong end of the street. So the run direction is detected and
+    monotonicity enforced in whichever direction the street actually runs."""
     out = {}
     for side in ("left", "right"):
         pts = []
@@ -225,10 +264,16 @@ def build_ladders(placed):
             if v and v.isdigit():
                 pts.append((int(v), p["dist"]))
         pts.sort(key=lambda t: t[0])
-        # keep strictly increasing distance so interpolation stays sane
+        if len(pts) < 2:
+            out[side] = pts
+            continue
+        # does distance rise or fall as the numbers rise?
+        rising = sum(1 for a, b in zip(pts, pts[1:]) if b[1] > a[1])
+        falling = len(pts) - 1 - rising
+        sign = 1 if rising >= falling else -1
         clean, lastd = [], None
         for num, d in pts:
-            if lastd is None or d > lastd:
+            if lastd is None or (d - lastd) * sign > 0:
                 clean.append((num, d))
                 lastd = d
         out[side] = clean
@@ -301,16 +346,22 @@ def main(year="1860"):
     # resolve each 1860 street to modern geometry + its number ladders
     resolved, unmatched_streets = {}, []
     for st, anchors in anchors_by_street.items():
-        core = resolve_street(norm_street(st)[0], streets, ALIASES)
-        geom = streets.get(core) if core else None
+        core_raw, dirn = norm_street(st)
+        core = resolve_street(core_raw, streets, ALIASES)
+        geom, _k = pick_geom(streets, core, dirn) if core else (None, None)
         if geom is None:
             unmatched_streets.append(st)
             continue
         placed = resolve_intersections(geom, anchors, streets)
         if not placed:
             continue
-        resolved[core] = {"geom": geom, "ladders": build_ladders(placed),
-                          "anchors": len(placed), "label": st}
+        # Key by direction as well as name. "CHARLES (N.)" and "CHARLES (S.)"
+        # are two separate ladders running opposite ways from Baltimore street,
+        # and both normalise to CHARLES. Keying by name alone let the second
+        # silently overwrite the first, so half of every split street was placed
+        # off the wrong ladder - which put people on the wrong side of the city.
+        resolved[(core, dirn)] = {"geom": geom, "ladders": build_ladders(placed),
+                                  "anchors": len(placed), "label": st}
     print(f"1860 streets with a ladder : {len(resolved)}")
     print(f"1860 streets unmatched     : {len(unmatched_streets)}")
 
@@ -331,16 +382,20 @@ def main(year="1860"):
     span = defaultdict(list)
     for p in people:
         if p["addr_type"] == "numbered" and p["house_no"].isdigit():
-            core, _d = norm_street(p["street"])
-            if core:
-                span[core].append(int(p["house_no"]))
+            c2, d2 = norm_street(p["street"])
+            if c2:
+                span[(c2, d2)].append(int(p["house_no"]))
 
-    def tier2(core, num):
+    def tier2(core, num, dirn=""):
         """Proportional placement along a street with no printed ladder."""
-        geom = streets.get(core)
-        if geom is None or core not in span:
+        geom = pick_geom(streets, core, dirn)[0]
+        key = (core, dirn) if (core, dirn) in span else None
+        if key is None:
+            alt = [k for k in span if k[0] == core]
+            key = alt[0] if len(alt) == 1 else None
+        if geom is None or key is None:
             return None
-        nums = span[core]
+        nums = span[key]
         lo, hi = min(nums), max(nums)
         if hi == lo:
             return geom.interpolate(0.5, normalized=True)
@@ -366,14 +421,31 @@ def main(year="1860"):
         if p["addr_type"] != "numbered" or not p["house_no"].isdigit():
             miss_num += 1
             continue
-        core = resolve_street(norm_street(p["street"])[0], streets, ALIASES) \
-            or norm_street(p["street"])[0]
+        core_raw, pdir = norm_street(p["street"])
+        core = resolve_street(core_raw, streets, ALIASES) or core_raw
         num = int(p["house_no"])
-        r = resolved.get(core)
+        r = resolved.get((core, pdir))
+        if r is None:
+            # the entry gave no direction, or gave one the book does not use.
+            # Choose among the candidate ladders by which one actually brackets
+            # this house number, rather than by whichever was stored last.
+            cands = [v for (c, _d), v in resolved.items() if c == core]
+            if len(cands) == 1:
+                r = cands[0]
+            elif cands:
+                def brackets(v):
+                    best = 0
+                    for side in ("left", "right"):
+                        lad = v["ladders"][side]
+                        if len(lad) >= 2 and lad[0][0] <= num <= lad[-1][0]:
+                            best = max(best, len(lad))
+                    return best
+                scored = sorted(cands, key=brackets, reverse=True)
+                r = scored[0] if brackets(scored[0]) else None
         if r is None:
             # no printed ladder: fall back to proportional placement if the
             # street's geometry is known at all
-            pt = tier2(core, num)
+            pt = tier2(core, num, pdir)
             if pt is None:
                 miss_street[p["street"]] += 1
                 continue

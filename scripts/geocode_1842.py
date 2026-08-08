@@ -36,7 +36,8 @@ import geopandas as gpd
 from shapely.geometry import Point
 from rapidfuzz import process as fuzzproc
 
-from geocode_1860 import norm_street, load_streets, CRS_M, WARD_DIR
+from geocode_1860 import (norm_street, load_streets, CRS_M, WARD_DIR,
+                          load_aliases, resolve_street)
 
 ROOT = Path(__file__).resolve().parent.parent
 WORK = ROOT / "data" / "work"
@@ -44,7 +45,11 @@ WORK = ROOT / "data" / "work"
 YEARS = {
     "1842": {"people": "matchettsbaltimo1842balt_people.csv",
              "wards": "baltimore_wards_1841_1845.shp"},
-    "1822": {"people": "baltimoredirecto1822keen_people.csv",
+    # our own OCR of the 1822 volume placed only 8 of 213; the AfriGeneas hand
+    # transcription of the same book is used instead, and 1819 exists only there
+    "1822": {"people": "afrigeneas_1822_people.csv",
+             "wards": "baltimore_wards_1818_1831.shp"},
+    "1819": {"people": "afrigeneas_1819_people.csv",
              "wards": "baltimore_wards_1818_1831.shp"},
 }
 BLOCK_FRACTION = 0.4      # how far into the block to sit, 0 = on the corner
@@ -140,21 +145,17 @@ def main(year="1842"):
     xtab = intersection_table(streets)
     print(f"streets with known crossings    : {len(xtab)}")
 
+    aliases = load_aliases()
+
     def match(name):
-        core, _d = norm_street(name)
-        if not core:
-            return None
-        if core in streets:
-            return core
-        hit = fuzzproc.extractOne(core, list(streets), score_cutoff=90)
-        return hit[0] if hit else None
+        return resolve_street(norm_street(name)[0], streets, aliases)
 
     people = list(csv.DictReader(open(WORK / cfg["people"])))
     rows = []
     miss_street, miss_cross, no_bearing = defaultdict(int), defaultdict(int), 0
 
     for p in people:
-        if p["addr_type"] != "relative" or not p["cross_street"]:
+        if p["addr_type"] not in ("relative", "near", "corner") or not p["cross_street"]:
             continue
         s_core = match(p["street"])
         if s_core is None:
@@ -177,16 +178,19 @@ def main(year="1842"):
             continue
         d0 = geom.project(pts[0])
 
-        sign = bearing_sign(geom, d0, p["bearing"])
-        if sign == 0:
+        # "near X" and "cor. X and Y" name an intersection outright, with no
+        # direction to walk in, so they sit on the corner itself
+        if p["addr_type"] in ("near", "corner"):
+            conf, d, sign = p["addr_type"], d0, 0
+        else:
+            sign = bearing_sign(geom, d0, p["bearing"])
+        if p["addr_type"] == "relative" and sign == 0:
             conf, d = "corner", d0
             no_bearing += 1
-        else:
+        elif p["addr_type"] == "relative":
             nxt = next_crossing(xtab.get(s_core, []), d0, sign)
-            if nxt is None:
-                step = MIN_STEP
-            else:
-                step = min(MAX_STEP, max(MIN_STEP, abs(nxt - d0) * BLOCK_FRACTION))
+            step = MIN_STEP if nxt is None else \
+                min(MAX_STEP, max(MIN_STEP, abs(nxt - d0) * BLOCK_FRACTION))
             d = max(0.0, min(geom.length, d0 + sign * step))
             conf = "block_face"
 
@@ -204,7 +208,8 @@ def main(year="1842"):
     gdf = gpd.GeoDataFrame(rows, crs=f"EPSG:{CRS_M}").to_crs(epsg=4326)
     gdf.to_file(WORK / f"people_{year}_geocoded.geojson", driver="GeoJSON")
 
-    rel = sum(1 for p in people if p["addr_type"] == "relative" and p["cross_street"])
+    rel = sum(1 for p in people
+              if p["addr_type"] in ("relative", "near", "corner") and p["cross_street"])
     print(f"\nplaced          : {len(gdf)} of {rel} relative records "
           f"({len(people)} parsed in total)")
     print("  confidence:", dict(gdf["confidence"].value_counts()))

@@ -31,9 +31,10 @@ PAD = 24
 MARGIN = 200
 SIMPLIFY = 6
 
-YEARS = ["1842", "1845", "1851", "1860", "1868"]
+YEARS = ["1819", "1822", "1842", "1845", "1851", "1860", "1868"]
 PEOPLE_CSV = {
-    "1822": "baltimoredirecto1822keen_people.csv",
+    "1819": "afrigeneas_1819_people.csv",
+    "1822": "afrigeneas_1822_people.csv",
     "1842": "matchettsbaltimo1842balt_people.csv",
     "1845": "baltimoredirecto1845balt_people.csv",
     "1851": "matchettsbaltimo1851balt_people.csv",

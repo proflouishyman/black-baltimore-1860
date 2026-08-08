@@ -147,6 +147,43 @@ def load_streets(ward_shp=None):
     return merged
 
 
+def load_aliases():
+    """Historic street name -> later name, from the Gunby index.
+
+    Without this, the streets that fail to match are overwhelmingly the alleys
+    the Black population lived on, because most were renamed rather than
+    demolished: Strawberry became Dallas, Brandy became Perry, Happy became
+    Durham. Matching without aliases silently thins the densest blocks."""
+    path = WORK / "street_aliases.csv"
+    idx = {}
+    if path.exists():
+        for r in csv.DictReader(open(path)):
+            idx.setdefault(r["old"], []).append(r["new"])
+    return idx
+
+
+def resolve_street(core, streets, aliases):
+    """Map a directory street name onto a key in the geometry table."""
+    if not core:
+        return None
+    if core in streets:
+        return core
+    for alt in aliases.get(core, []):
+        if alt in streets:
+            return alt
+    hit = fuzzproc.extractOne(core, list(streets), score_cutoff=92)
+    if hit:
+        return hit[0]
+    for alt in aliases.get(core, []):
+        hit = fuzzproc.extractOne(alt, list(streets), score_cutoff=92)
+        if hit:
+            return hit[0]
+    return None
+
+
+ALIASES = {}
+
+
 def resolve_intersections(street_geom, anchors, streets):
     """Locate each cross street on this street, as a distance along the line.
 
@@ -157,11 +194,8 @@ def resolve_intersections(street_geom, anchors, streets):
     placed = []
     last = -1.0
     for a in anchors:
-        core, _d = norm_street(a["cross_street"])
-        cross = streets.get(core)
-        if cross is None:
-            hit = fuzzproc.extractOne(core, list(streets), score_cutoff=90)
-            cross = streets[hit[0]] if hit else None
+        key = resolve_street(norm_street(a["cross_street"])[0], streets, ALIASES)
+        cross = streets.get(key) if key else None
         if cross is None:
             continue
         inter = street_geom.intersection(cross)
@@ -251,6 +285,8 @@ YEARS = {
 
 
 def main(year="1860"):
+    global ALIASES
+    ALIASES = load_aliases()
     cfg = YEARS[year]
     streets = load_streets(WARD_DIR / cfg["wards"])
     print(f"modern streets merged      : {len(streets)}")
@@ -265,12 +301,8 @@ def main(year="1860"):
     # resolve each 1860 street to modern geometry + its number ladders
     resolved, unmatched_streets = {}, []
     for st, anchors in anchors_by_street.items():
-        core, _d = norm_street(st)
-        geom = streets.get(core)
-        if geom is None:
-            hit = fuzzproc.extractOne(core, list(streets), score_cutoff=92)
-            if hit:
-                geom = streets[hit[0]]
+        core = resolve_street(norm_street(st)[0], streets, ALIASES)
+        geom = streets.get(core) if core else None
         if geom is None:
             unmatched_streets.append(st)
             continue
@@ -334,15 +366,13 @@ def main(year="1860"):
         if p["addr_type"] != "numbered" or not p["house_no"].isdigit():
             miss_num += 1
             continue
-        core, _d = norm_street(p["street"])
+        core = resolve_street(norm_street(p["street"])[0], streets, ALIASES) \
+            or norm_street(p["street"])[0]
         num = int(p["house_no"])
         r = resolved.get(core)
         if r is None:
             # no printed ladder: fall back to proportional placement if the
             # street's geometry is known at all
-            if core not in streets:
-                hit = fuzzproc.extractOne(core, list(streets), score_cutoff=90)
-                core = hit[0] if hit else core
             pt = tier2(core, num)
             if pt is None:
                 miss_street[p["street"]] += 1

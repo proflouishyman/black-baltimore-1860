@@ -15,13 +15,36 @@ CONTENT_TPL = ROOT / "web" / "content.html"
 PAYLOAD = ROOT / "data" / "work" / "map_payload.json"
 DOCS = ROOT / "docs"
 
-NAV = [("index.html", "Density"), ("1842.html", "1842"), ("1845.html", "1845"),
-       ("1851.html", "1851"), ("1860.html", "1860"), ("1868.html", "1868"),
+NAV = [("index.html", "Density"), ("1819.html", "1819"), ("1822.html", "1822"),
+       ("1842.html", "1842"), ("1845.html", "1845"), ("1851.html", "1851"),
+       ("1860.html", "1860"), ("1868.html", "1868"),
        ("work.html", "Work"), ("sources.html", "Sources")]
 
 # per-year framing: eyebrow, headline, lede, and the paragraph that states the
 # method and its limits honestly
 YEAR_TEXT = {
+    "1819": ("Jackson's Baltimore Directory", "Black Baltimore, 1819",
+             "The earliest year we can map at all, and only because someone "
+             "transcribed it by hand a quarter-century ago.",
+             """<p class="note"><strong>This year exists here on borrowed
+      labour.</strong> Jackson's 1819 directory was transcribed from the page
+      by Louis S. Diggs, Sr. and published by AfriGeneas. We had no route to it
+      otherwise.</p>
+      <p class="note"><strong>Only 92 of 526 are placed, and that is the honest
+      ceiling for now.</strong> 1819 addresses mostly say <em>near</em>
+      something rather than giving a corner and a direction, and the city of
+      1819 is small enough that much of its street fabric has since been
+      renamed twice over.</p>"""),
+    "1822": ("Keenan's Baltimore Directory", "Black Baltimore, 1822",
+             "Persons of colour, marked in the original with a dagger, "
+             "transcribed by hand and mapped by block face.",
+             """<p class="note"><strong>Our own OCR of this book placed 8
+      people.</strong> The hand transcription places 230, from 1,061 parsed
+      entries against our scan's 414. Small type and dense abbreviations defeat
+      the machine; a person reading the page did not have that problem.</p>
+      <p class="note">Addresses give street, side and a bearing from a named
+      corner (<em>Potter e side n of Pitt</em>), so these are block faces, not
+      houses.</p>"""),
     "1842": ("Matchett's Baltimore Director", "Black Baltimore, 1842",
              "The “Colored Householders” section, placed by block face because "
              "the city had no house numbers yet.",
@@ -56,8 +79,10 @@ YEAR_TEXT = {
       Wood's prints a street directory giving the house number standing at each
       cross street, so residents are placed between two named corners in 1860's
       own numbering. The 1880s renumbering never enters the calculation.</p>
-      <p class="note">Of these addresses, 26% sit on streets already gone by
-      1930 and a further 12% on streets lost since.</p>"""),
+      <p class="note">Street names are matched through the 1993 Baltimore City
+      Archives index of renamings, which is what lets Strawberry, Brandy, Happy
+      and Honey alleys resolve at all: none of them vanished, they were
+      renamed Dallas, Perry, Durham and Hughes.</p>"""),
     "1868": ("Wood's Baltimore City Directory", "Black Baltimore, 1868",
              "Three years after emancipation, the listed population has doubled.",
              """<p class="note"><strong>The largest cohort by far.</strong>
@@ -169,7 +194,7 @@ def build_maps(map_tpl, payload_txt, data):
               "decade the ground shifted beneath it.",
               density_panel)]
 
-    for y in ["1842", "1845", "1851", "1860", "1868"]:
+    for y in ["1819", "1822", "1842", "1845", "1851", "1860", "1868"]:
         eyebrow, h1, lede, notes = YEAR_TEXT[y]
         rows = data["people"].get(y, [])
         anch = sum(1 for r in rows if r[2] != 2)
@@ -177,8 +202,8 @@ def build_maps(map_tpl, payload_txt, data):
         parsed = data["parsed"].get(y, 0)
         block = TIER_CONTROLS % {
             "anch": f"{anch:,}",
-            "anchdesc": ("Placed on a block face between two named corners."
-                         if y == "1842" else
+            "anchdesc": ("Placed on a block face, or at a named corner."
+                         if y in ("1819", "1822", "1842") else
                          "Placed between two named corners using printed house numbers."),
             "tier2": (TIER2 % {"approx": f"{approx:,}"}) if approx else "",
         }
@@ -308,6 +333,24 @@ BIB = [
      "mark Fell's Point and Old Town, not race. Only 8 of this volume's "
      "addresses resolve, so it is parsed but not mapped.",
      "414 residents parsed, 360 flagged"),
+    ("Jackson's Baltimore Directory, 1819 — AfriGeneas transcription",
+     "Transcribed by Louis S. Diggs, Sr., 1998",
+     "https://www.afrigeneas.org/library/baltimore/1819.html", None,
+     "A hand transcription of the &ldquo;Colored Householders&rdquo; from "
+     "Jackson's 1819 directory, giving name, occupation and address. Without "
+     "it this year would not appear here at all. Addresses are mostly of the "
+     "form <span class=\"mono\">near Bank st</span>, so they place to a "
+     "corner rather than a block face.",
+     "526 residents parsed, 92 placed"),
+    ("Keenan's Baltimore Directory 1822-23 — AfriGeneas transcription",
+     "Transcribed by Louis S. Diggs, Sr., 2000",
+     "https://afrigeneas.org/library/baltimore/1822-23.html", None,
+     "The same volume our own OCR handled badly, read properly by a person. "
+     "It yields 1,061 entries against our scan's 414, and 230 placed against "
+     "8. The transcriber's closing note is worth quoting: &ldquo;My poor eyes "
+     "got tired of trying to read those little &lsquo;N side W of whatever "
+     "street.&rsquo;&rdquo;",
+     "1,061 residents parsed, 230 placed"),
     ("Matchett's Baltimore Director", "1842",
      "https://archive.org/details/matchettsbaltimo1842balt",
      "img/1842_colored_householders.jpg",
@@ -358,6 +401,26 @@ BIB = [
      "distribute ward geography in its public complete count. Transcribed from "
      "the scan and checked against the printed totals, which reconcile exactly.",
      "20 wards; 25,680 free Black, 2,218 enslaved"),
+    ("Index of Streets and Alleys", "Gunby, Baltimore City Archives, 1993",
+     "https://msa.maryland.gov/megafile/msa/speccol/sc5300/sc5339/000097/000000/000017/unrestricted/gunby-bc-streets-1993.pdf",
+     None,
+     "A card index of every Baltimore street renaming, and the fix for this "
+     "project's largest source of silent loss. The streets that failed to "
+     "geocode were overwhelmingly the alleys the Black population lived on, "
+     "and most had not been demolished at all &mdash; they were renamed. "
+     "Strawberry became Dallas, Brandy became Perry, Bottle became Dover, "
+     "Happy became Durham, Honey became Hughes, German became Redwood. "
+     "1,460 alias pairs extracted.",
+     "1,460 name changes; lifted 1822 from 8 placed to 230"),
+    ("Population of the United States in 1850", "Seventh Census, Table II, Maryland report p. 221",
+     "https://www2.census.gov/library/publications/decennial/1850/1850a/1850-census-report-maryland.pdf",
+     None,
+     "Baltimore by ward, on the same model as 1860 and on the same ward "
+     "boundaries, which makes the two directly comparable. Unlike the 1860 "
+     "volume this PDF carries a text layer. Checked against the printed "
+     "totals, which reconcile exactly, and that check corrected ward 20's "
+     "enslaved count.",
+     "20 wards; 25,442 free Black, 2,946 enslaved"),
     ("Historical Urban Ecological (HUE) Data", "Center for Population Economics, ICPSR 35617",
      "https://www.icpsr.umich.edu/web/ICPSR/studies/35617", None,
      "Baltimore street centrelines c.1930 and ward boundaries in period "

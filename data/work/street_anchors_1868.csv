@@ -2,18 +2,10 @@ street,seq,cross_street,left_no,right_no,page
 AISQUITH,1,av,,329,757
 AISQUITH,2,Rosendale Cement and,,,757
 AISQUITH,3,"COURTS, WHARVES, &amp;C",,,757
-THE,1,"house, for instance, 71 N. CHARLES-ST., on consult",,,757
-THE,2,"and Pleasant-sts , right hand. Or, if you are going up",,,757
-THE,3,"for example, at 103 Park-st., examine thenumbers on the",,,757
-THE,4,"will find 95 on the corner of Park and Centre, then by",,,757
-THE,5,right hand,,,757
-THE,6,"thousand, eight hundred and sixty-three, by John TV",,,757
-THE,7,the District Court of Maryland,,,757
-THE,8,pi Place sq Square,,,757
-THE,9,S' South w- West,,,757
-THE,10,sp Space whf Wharf,,,757
-THE,11,Hoffman,,,757
-THE,12,To Northern av,,,757
+AISQUITH,4,THE,,,757
+AISQUITH,5,S' South w- West,,,757
+AISQUITH,6,Hoffman,,,757
+AISQUITH,7,To Northern av,,,757
 ALICEANNA,1,S of Canton av,,,757
 ALICEANNA,2,Falls av,,,757
 ALICEANNA,3,av,,,757
@@ -23,7 +15,6 @@ ALICEANNA,4,East av,,,757
 "ANN, (S)",2,Bank,160,141,758
 "ANN, (S)",3,av,182,167,758
 "ANN, (S)",4,av,224,205,758
-ARBEL AL,1,and McKim,,,758
 ATLANTIC WHF,1,B,,,758
 "BALTIMORE, (W)",1,Falls,1,2,758
 "BALTIMORE, (W)",2,Market space,25,,758
@@ -113,22 +104,21 @@ SEWING MACHINE,9,Fremont,236,237,759
 "BIDDLE, (W)",3,Decker,,,759
 "BIDDLE, (W)",4,Cathedral,,,759
 "BIDDLE, (W)",5,al,,1,759
-"BIDDLE, (W)",6,purposes. Sales Room,,,759
-"BIDDLE, (W)",7,Park av,,23,759
-"BIDDLE, (W)",8,Bolton,,55,759
-"BIDDLE, (W)",9,Garden or Linden av,,87,759
-"BIDDLE, (W)",10,Eutaw,,115,759
-"BIDDLE, (W)",11,Morris al,,135,759
-"BIDDLE, (W)",12,Madison,138,143,759
-"BIDDLE, (W)",13,McCulloh,,153,759
-"BIDDLE, (W)",14,Little Monument,172,,759
-"BIDDLE, (W)",15,Druid Hill av,182,183,759
-"BIDDLE, (W)",16,Elder al,190,,759
-"BIDDLE, (W)",17,Tessier,234,,759
-"BIDDLE, (W)",18,Biddle al,,251,759
-"BIDDLE, (W)",19,Pennsylvania av,242,261,759
-"BIDDLE, (W)",20,Walsh,,285,759
-"BIDDLE, (W)",21,George,272,295,759
+"BIDDLE, (W)",6,Park av,,23,759
+"BIDDLE, (W)",7,Bolton,,55,759
+"BIDDLE, (W)",8,Garden or Linden av,,87,759
+"BIDDLE, (W)",9,Eutaw,,115,759
+"BIDDLE, (W)",10,Morris al,,135,759
+"BIDDLE, (W)",11,Madison,138,143,759
+"BIDDLE, (W)",12,McCulloh,,153,759
+"BIDDLE, (W)",13,Little Monument,172,,759
+"BIDDLE, (W)",14,Druid Hill av,182,183,759
+"BIDDLE, (W)",15,Elder al,190,,759
+"BIDDLE, (W)",16,Tessier,234,,759
+"BIDDLE, (W)",17,Biddle al,,251,759
+"BIDDLE, (W)",18,Pennsylvania av,242,261,759
+"BIDDLE, (W)",19,Walsh,,285,759
+"BIDDLE, (W)",20,George,272,295,759
 "BIDDLE, (E)",1,Jones' falls,,,759
 "BIDDLE, (E)",2,Constitution,,,759
 "BIDDLE, (E)",3,Greenmount av,,,759
@@ -169,7 +159,6 @@ BOSTON,6,Hudson,,,760
 BOSTON,7,O'Donnell,193,,760
 BOSTON,8,Chesapeake,217,,760
 BOSTON,9,East av,,,760
-BOULDIN AL,1,and Division,,,760
 BOWLY'S WHARF,1,South-st,,,760
 BRANNAN CT,1,*,,,760
 "BROADWAY, (N)",1,Fayette,56,63,760
@@ -189,7 +178,6 @@ SMITH BROS,7,Lancaster,258,239,760
 SMITH BROS,8,Thames,272,253,760
 "BROADWAY, LITTLE",1,"Charles, S of Cross",,,760
 BROWN'S WHARF,1,Franklin,,327,760
-BYRD,1,"wharf to Commerce, S",,,760
 CALVERT (N;,1,Fayette,12,13,760
 CALVERT (N;,2,Lexington,26,27,760
 CALVERT (N;,3,Saratoga,,59,760
@@ -256,7 +244,6 @@ CAROLINE (S),9,"Marble Hall, 38 and",,,761
 CAROLINE CT,1,line,,,761
 CAROLINE AL,1,timore,,,761
 CARROLL,1,Nanticoke,,,761
-CASTLE,1,more Pi of Washington,,,761
 CATHEDRAL,1,Mulberry,2,,761
 CATHEDRAL,2,Monument,50,71,761
 CATHEDRAL,3,Madison,68,77,761
@@ -301,7 +288,6 @@ CENTRE (W),8,Cathedral,,,762
 CENTRE (W),9,Plover al,,,762
 CENTRE (W),10,Park,88,,762
 CENTRE (W),11,To Howard,100,,762
-CENTRE (E),1,to Front,,,762
 CHARLES (N),1,Fayette,14,,762
 CHARLES (N),2,Lexington,34,33,762
 CHARLES (N),3,Barnet,54,,762
@@ -367,8 +353,6 @@ CHEW,6,Caroline,135,,762
 CHEW,7,Dallas,,,762
 CHEW,8,Bond,,,762
 CHEW,9,East av,,,762
-CHOPTANK,1,from 475 E Baltimore,,,762
-CITY AVENUE,1,of Canton,,,762
 COLUMBIA,1,Greene,,37,763
 COLUMBIA,2,Emory,,75,763
 COLUMBIA,3,Fremont,114,137,763
@@ -391,9 +375,7 @@ CONWAY,7,L. Paca,,97,763
 CONWAY,8,L. Greene,142,137,763
 CONWAY,9,Warner,196,195,763
 CONWAY,10,Fremont,246,247,763
-CORDERY'S WHARF,1,and Philpot,,,763
 COURT HOUSE LA,1,Court house,,,763
-COURT HOUSE LA,2,for Eosendale Cement,,,763
 COURT ROW W,1,die,,,763
 COURTLAND,1,Pleasant,36,41,763
 COURTLAND,2,Franklin,76,75,763
@@ -478,16 +460,14 @@ EDEN (S),7,Canton av,182,,764
 EUTAW(N),1,Hill av,170,171,765
 EUTAW(N),2,Mary,220,,765
 EUTAW(N),3,Northern av,,,765
-EUTAW(N),4,S from 363 W Baltimore,,,765
-EUTAW(N),5,Baltimore,1,2,765
-EUTAW(N),6,German,5,8,765
-EUTAW(N),7,Lombard,23,32,765
-EUTAW(N),8,King,33,44,765
-EUTAW(N),9,Pratt,53,56,765
-EUTAW(N),10,Dover,55,68,765
-EUTAW(N),11,West al,,90,765
-EUTAW(N),12,Montgomery,221,216,765
-EXCHANGE AL,1,purposes. Sales Room,,,765
+EUTAW(N),4,Baltimore,1,2,765
+EUTAW(N),5,German,5,8,765
+EUTAW(N),6,Lombard,23,32,765
+EUTAW(N),7,King,33,44,765
+EUTAW(N),8,Pratt,53,56,765
+EUTAW(N),9,Dover,55,68,765
+EUTAW(N),10,West al,,90,765
+EUTAW(N),11,Montgomery,221,216,765
 EXCHANGE PLACE,1,Lombard,,,765
 EXETER (N,1,Fayette,18,19,765
 EXETER (N,2,Low,120,125,765
@@ -518,7 +498,6 @@ FAYETTE (E),4,av,150,155,766
 FAYETTE (E),5,^,264,281,766
 FAYETTE (E),6,Gist,,559,766
 FAYETTE (E),7,East aT&gt;,,,766
-FEDERAL,1,from 127 Thames,,,766
 FISH MARKET SPACE,1,N of Hawk,,,766
 FRANKLIN,1,Jones Falls,,,766
 FRANKLIN,2,Holliday,,,766
@@ -538,7 +517,6 @@ FRANKLIN,15,Paca,152,143,766
 SMITH BROS,1,*,218,237,766
 SMITH BROS,2,Oregon,480,479,766
 SMITH BROS,3,Northern av,,,766
-FRANKLIN SQUARE,1,and Calhoun,,,766
 FREDERICK AV,1,Calverton road,,,766
 FREMONT (N),1,Baltimore,2,1,766
 FREMONT (N),2,Raborg,8,11,766
@@ -595,7 +573,6 @@ FULTON,1,Mount,,,767
 FURNACE AL,1,G,,,767
 GARDEN,1,Madison,26,23,767
 GARDEN,2,Biddle,114,119,767
-GARDEN,3,intersection of Linden,,,767
 GAY (N),1,Baltimore,2,1,767
 GAY (N),2,Fayette,18,19,767
 GAY (N),3,Frederick,,63,767
@@ -620,7 +597,6 @@ GAY (N),21,Bond,524,507,767
 GAY (N),22,Broadway,,,767
 GAY (S),1,"Marble Hall, 38",,,767
 GEORGE,1,avenue,,,767
-GEORGE AL,1,of Penna av,,,767
 GERMAN,1,Hanover,17,20,767
 GERMAN,2,Sharp,35,,767
 GERMAN,3,Liberty,39,,767
@@ -632,7 +608,6 @@ GERMAN,8,Penn,163,,767
 GERMAN,9,Pine,,184,767
 GERMAN,10,Fremont,227,242,767
 GOODMAN AL,1,Harford av,,,767
-GOODMAN AL,2,from Sharp N of Fayette,,,767
 GOUGH,1,Granby,2,1,767
 GOUGH,2,Pratt,21,,767
 GOUGH,3,Stiles,,,767
@@ -674,49 +649,36 @@ GRANBY,2,Street,40,,767
 "GREENE, (S)",5,Pratt,71,68,768
 "GREENE, (S)",6,Dover,83,,768
 "GREENE, (S)",7,Columbia,91,,768
-GREENMOUNT AV,1,and Harford av,,,768
-GREENMOUNT AV,2,av,,1,768
-GREENMOUNT AV,3,HAPPY,44,35,768
-GREENMOUNT AV,4,Eager H,146,129,768
-GREENMOUNT AV,5,HARE,,,768
-GREENMOUNT AV,6,HARFORD,,,768
-GREENMOUNT AV,7,Northern av,,,768
+GREENMOUNT AV,1,av,,1,768
+GREENMOUNT AV,2,HAPPY,44,35,768
+GREENMOUNT AV,3,Eager H,146,129,768
+GREENMOUNT AV,4,HARE,,,768
+GREENMOUNT AV,5,HARFORD,,,768
+GREENMOUNT AV,6,Northern av,,,768
 GREEN WILLOW,1,Biddle,,,768
 GROCER'S AL,1,HARGROVE,,,768
 GROVE'S AL,1,HARMONY,,,768
 GUILFORD,1,"GIESE &amp; CO., Flour",,,768
 GWYNN'S.LA,1,H,,,768
-GWYNN'S.LA,2,"H AL from Eden, N of Jefferson",,,768
-HALL AL,1,ington and Johnson,,,768
 HAMBURG,1,rietta,,,768
-HAMILTON,1,of Franklin,,,768
-HAMILTON AL,1,south of McEIderry,,,768
-TERRACE N,1,ison and Biddle,,,768
-TERRACE N,2,"AL from Eden to Caroline, N of",,,768
-TERRACE N,3,Canton av,,,768
-TERRACE N,4,(now Jackson sq av) going,,,768
-TERRACE N,5,"east from N Bond, N of Baltimore",,,768
+TERRACE N,1,Canton av,,,768
 LITTLE,1,"Central av, Nof Baltimore",,,768
-LITTLE,2,going south from 263 W Balti,,,768
-LITTLE,3,more,,,768
-LITTLE,4,German,13,16,768
-LITTLE,5,Lombard,39,40,768
-LITTLE,6,Pratt,57,68,768
-LITTLE,7,Perry,101,90,768
-LITTLE,8,Conway,115,104,768
-LITTLE,9,Lee,167,160,768
-LITTLE,10,York,187,178,768
-LITTLE,11,Church,261,,768
-LITTLE,12,Kelso,,,768
-LITTLE,13,Durham,,,768
+LITTLE,2,more,,,768
+LITTLE,3,German,13,16,768
+LITTLE,4,Lombard,39,40,768
+LITTLE,5,Pratt,57,68,768
+LITTLE,6,Perry,101,90,768
+LITTLE,7,Conway,115,104,768
+LITTLE,8,Lee,167,160,768
+LITTLE,9,York,187,178,768
+LITTLE,10,Church,261,,768
+LITTLE,11,Kelso,,,768
+LITTLE,12,Durham,,,768
 ARNDEN CT,1,E of Potomac,,,768
-ARNDEN CT,2,going from intersection of,,,768
-ARNDEN CT,3,av,,,768
-ARNDEN CT,4,Northern ar,,,768
-ARNDEN CT,5,Gravel al) going,,,768
-ARNDEN CT,6,west from 108 N Fre,,,768
-ARNDEN CT,7,"south from Marriott, E of",,,768
-ARNDEN CT,8,Seeds &amp;c,,,768
+ARNDEN CT,2,av,,,768
+ARNDEN CT,3,Northern ar,,,768
+ARNDEN CT,4,Gravel al) going,,,768
+ARNDEN CT,5,Seeds &amp;c,,,768
 HIGH (N),1,Baltimore,2,1,769
 HIGH (N),2,Fayette,22,25,769
 HIGH (S),1,Baltimore,2,,769
@@ -761,10 +723,9 @@ HOFFMAN,14,To Jones falls,,,769
 "HOLLIDAY, (N)",5,Foundry,158,127,769
 "HOLLIDAY, (N)",6,Centre,,,769
 "HOLLIDAY, (N)",7,To Monument,,,769
-HOLLAND A L,1,east from 21,,,769
-HOLLAND A L,2,Aisquith,,,769
-HOLLAND A L,3,av,46,57,769
-HOLLAND A L,4,Caroline,,,769
+HOLLAND A L,1,Aisquith,,,769
+HOLLAND A L,2,av,46,57,769
+HOLLAND A L,3,Caroline,,,769
 HOLLINS,1,Parkin,55,,769
 HOLLINS,2,Poppleton,89,88,769
 HOLLINS,3,Amity,115,114,769
@@ -802,16 +763,11 @@ HOLLINS,12,To Frederick av,,,769
 "HOWARD, (S)",15,Cross,316,341,770
 "HOWARD, (S)",16,To Ostend,,,770
 "HUGHES,LITTLE",1,',,,770
-HUGHES QUAY,1,of Lee,,,770
 HYDE CT,1,I,,,770
-ICELAND AL,1,and St. Peter,,,770
 IRVIN PLACE,1,Broadway,,,770
 IVY AL,1,J,,,770
 JACKSON,1,GROVER &amp; BAKER,,,770
-JACKSON'S CT,1,between Bank and Eastern av,,,770
 JACKSON SQUARE E,1,Fayette and Baltimore,,,770
-JACKSON SQUARE AV,1,"stead) E from Broadway, N of Baltimore",,,770
-JAMES,1,ington av,,,770
 JEFFERSON,1,Short,22,15,770
 JEFFERSON,2,av,36,43,770
 JEFFERSON,3,Eden,48,53,770
@@ -827,7 +783,6 @@ JOSEPHINE,1,K,,,770
 KAUFMAN AL,1,Cross,,,770
 KNOX AL,1,L,,,770
 KNOX AL,2,S of Lombard,,,770
-LAFAYETTE AV,1,opp. square,,,770
 LEXINGTON,1,Davis,,13,771
 LEXINGTON,2,Calvert,,15,771
 LEXINGTON,3,Courtland,,29,771
@@ -858,8 +813,7 @@ LEXINGTON,27,Carey,600,579,771
 LEXINGTON,28,Calhoun,608,645,771
 LEXINGTON,29,Strieker,622,665,771
 LEXINGTON,30,Gilmor,658,705,771
-LEXINGTON,31,purposes. Sales Booms,,,771
-LEXINGTON,32,To Calverton road,,,771
+LEXINGTON,31,To Calverton road,,,771
 "LIBERTY, (N)",1,Baltimore,,,771
 LIGHT,1,Water,27,,771
 LIGHT,2,Lombard,33,38,771
@@ -885,7 +839,6 @@ LIGHT,18,Barney,653,,771
 LIGHT,19,Wells,,662,771
 LIGHT,20,Winder,755,,771
 LIGHT,21,Ferry,,,771
-LINCOLN,1,from 99 Cross,,,771
 LINDEN AV,1,Biddle,,87,771
 LINDEN AV,2,Biddle,116,121,771
 LINDEN AV,3,Rose,120,,771
@@ -996,43 +949,31 @@ MADISON (W),11,St. Mary's,163,,772
 MADISON AV,1,St. Mary's,163,,772
 MADISON AV,2,Men and Boys',,,772
 MADISON AV,3,Northern av,,,773
-MADISON SQUARE,1,and Eden,,,773
-MADISON LA,1,of Druid Hill Park,,,773
 MARYLAND AV,1,W of Charles,,24,773
-MAY LITTLE,1,al) from 282 w Bal,,,773
-MAY LITTLE,2,betw Commerce &amp; South,,,773
-MAY LITTLE,3,from 151 W Biddle,,,773
-MAY LITTLE,4,Biddle,1,2,773
-MAY LITTLE,5,Preston,31,40,773
-MAY LITTLE,6,Hoffman,63,72,773
-MAY LITTLE,7,Dolphin,97,100,773
-MAY LITTLE,8,Lanvale,127,,773
-MAY LITTLE,9,Townsend,153,,773
-MAY LITTLE,10,from 87 E Lombard,,,773
-MAY LITTLE,11,Aisquith,2,1,773
-MAY LITTLE,12,Short,,21,773
-MAY LITTLE,13,Central av,56,31,773
-MAY LITTLE,14,Eden,60,51,773
-MAY LITTLE,15,Spring,72,65,773
-MAY LITTLE,16,Caroline,84,79,773
-MAY LITTLE,17,Dallas,106,91,773
-MAY LITTLE,18,Bond,,105,773
-MAY LITTLE,19,Bethel,126,,773
-MAY LITTLE,20,Broadway,,,773
-MAY LITTLE,21,To East av,,,773
-MAY LITTLE,22,from McElderry E of Eden,,,773
-MAY LITTLE,23,"N from McElderry, betw",,,773
-MAY LITTLE,24,Eden,,,773
-MAY LITTLE,25,E from 123 Forrest,,,773
-MAY LITTLE,26,west from 77 S Fremont,,,773
-MAY LITTLE,27,E Madison,,94,773
-MAY LITTLE,28,west of Harford av,,,773
-MAY LITTLE,29,Wilson,,,773
+MAY LITTLE,1,Biddle,1,2,773
+MAY LITTLE,2,Preston,31,40,773
+MAY LITTLE,3,Hoffman,63,72,773
+MAY LITTLE,4,Dolphin,97,100,773
+MAY LITTLE,5,Lanvale,127,,773
+MAY LITTLE,6,Townsend,153,,773
+MAY LITTLE,7,Aisquith,2,1,773
+MAY LITTLE,8,Short,,21,773
+MAY LITTLE,9,Central av,56,31,773
+MAY LITTLE,10,Eden,60,51,773
+MAY LITTLE,11,Spring,72,65,773
+MAY LITTLE,12,Caroline,84,79,773
+MAY LITTLE,13,Dallas,106,91,773
+MAY LITTLE,14,Bond,,105,773
+MAY LITTLE,15,Bethel,126,,773
+MAY LITTLE,16,Broadway,,,773
+MAY LITTLE,17,To East av,,,773
+MAY LITTLE,18,"N from McElderry, betw",,,773
+MAY LITTLE,19,Eden,,,773
+MAY LITTLE,20,E from 123 Forrest,,,773
+MAY LITTLE,21,E Madison,,94,773
+MAY LITTLE,22,Wilson,,,773
 MEYER CT,1,"Marble Hall, 38 and",,,773
-MILLLMAN,1,of Monument,,,773
 MINCE'S AL,1,Eastern av,,,773
-MONMONIER'S CT,1,ern av,,,773
-MONROE,1,more W of Fulton,,,773
 MONTGOMERY,1,Hughes,,,773
 MONTGOMERY,2,Covington,,,773
 MONTGOMERY,3,Henry,,,773
@@ -1094,8 +1035,6 @@ MULLIKIN,12,Ann,,225,774
 MEYER CT,1,N,,,774
 NEIGHBOR,1,GIESE &amp; CO,,,774
 NEW CHURCH,1,Sharp s of Lexington,,,774
-NEWINGTON PL,1,of Northern avenue,,,774
-NEW WILSON,1,nia avenue n of McMechin »,,,774
 "NICHOLSON, LITTLE",1,Jackson,,,774
 NORTH,1,Baltimore,8,1,774
 NORTH,2,Fayette,24,31,774
@@ -1110,10 +1049,8 @@ NORTH,10,Madison ^,,,774
 NORTH,11,Eager,,295,774
 NORTH,12,Read &quot;*,,,774
 NORTH,13,Chase,,,774
-NORTH,14,To Northern av &quot; y^,,,774
 NORTHERN AV,1,&quot; * ^,,,774
 NORTHWEST,1,O,,,774
-NORTHWEST,2,s of Lexington,0,,774
 OLIVER,1,^,,,774
 ORLEANS,1,Forrest,2,1,774
 ORLEANS,2,Young,22,,774
@@ -1317,38 +1254,28 @@ PULASKI,1,Payson,,,777
 PUTNAM,1,Q,,,777
 QUAY AL,1,R,,,777
 RABORG,1,al,332,,777
-RACE,1,of Columbia and,,,777
 RANDALL,1,rj,,,777
-RANDALL,2,"fi'O™ Jones' Falls, ' N of",,,777
 REESE,1,"Nicholson, '",,,777
 REESE AL,1,Sharp,,,777
 REGESTER (N),1,av,,,777
 REGESTER (S),1,av,136,143,777
 REGESTER (S),2,av,154,163,777
-REGESTER (S),3,purposes. Sales Eoom,,,777
-REGESTER (S),4,Aliceanna,172,177,777
-REGESTER (S),5,north from 806 w,,,777
+REGESTER (S),3,Aliceanna,172,177,777
 RESERVOIR,1,E of Broadway ^,,,777
 RESERVOIR,2,^^ Cathedral,,,777
-RESERVOIR,3,from W of,,,777
-RESERVOIR,4,Montgomery,,,777
-RESERVOIR,5,S Fremont,,190,777
-RESERVOIR,6,"av, N of Lauren-?",,,777
+RESERVOIR,3,Montgomery,,,777
+RESERVOIR,4,S Fremont,,190,777
 ROSE,1,and,,,777
-RUSSELL,1,"N Central av, N of Or",,,777
-RUSSELL,2,leans ',,,777
-RUSSELL,3,"^IcMechin, W of Cathedral",5,,777
-RUSSELL,4,from Parkin to,,,777
-RUSSELL,5,s,,,777
-RUSSELL,6,Winderling row),,,777
+RUSSELL,1,"^IcMechin, W of Cathedral",5,,777
+RUSSELL,2,s,,,777
+RUSSELL,3,Winderling row),,,777
 SALISBURY AL,1,',,,777
 SALISBURY AL,2,^^s* f™&quot; 136 Pearl,,,777
-SALISBURY AL,3,west from 78 N Gav,,,777
-SALISBURY AL,4,^,,,777
-SALISBURY AL,5,Paul,46,53,777
-SALISBURY AL,6,Lane,56,,777
-SALISBURY AL,7,worth,298,291,777
-SALISBURY AL,8,"See Advt, p, 4",181,,777
+SALISBURY AL,3,^,,,777
+SALISBURY AL,4,Paul,46,53,777
+SALISBURY AL,5,Lane,56,,777
+SALISBURY AL,6,worth,298,291,777
+SALISBURY AL,7,"See Advt, p, 4",181,,777
 SCHROEDER (N),1,Fayette,17,,778
 SCHROEDER (N),2,Lanvale,,,778
 SCHROEDER (S),1,Booth,13,8,778
@@ -1380,15 +1307,10 @@ SHARP (S),14,Montgomery,,220,778
 SHARP (S),15,Henrietta,229,270,778
 SHARP (S),16,Hamburg,273,316,778
 SMITH BROS,1,To water edge,,,778
-SHIRK'S AL,1,of ern av,,,778
-SLAUGHTER HOUSE AL,1,"al «ast of Fremont, between Columbia and",,,778
-SLAUGHTER HOUSE AL,2,Haw,,,778
+SLAUGHTER HOUSE AL,1,Haw,,,778
 SLEMMER AL,1,ument,,,778
 SMALLWOOD,1,"Baltimore, AV of Pulaski",,,778
-SMITH,1,of Mosher,,,778
 SMITH'S AL,1,Lombard,,,778
-SMITH'S WHF,1,foot of Gay,,,778
-SMITH'S LA,1,"of anan's wharf, S of Pratt",,,778
 SNYDER'S CT,1,Eastern av,,,778
 SOUTH,1,Baltimore,1,2,778
 SOUTH,2,Lovely la,,16,778
@@ -1400,19 +1322,18 @@ SOUTH,7,Pratt,71,66,778
 SOUTH,8,Wood,,76,778
 SOUTH,9,To Basin,107,84,778
 SOUTH LANE,1,Light,,,778
-SPRING GARDEN WHF,1,N from 186 e Baltimore,,,778
-SPRING GARDEN WHF,2,Baltimore,6,1,778
-SPRING GARDEN WHF,3,Hampstead,30,11,778
-SPRING GARDEN WHF,4,Holland,28,33,778
-SPRING GARDEN WHF,5,May,,,778
-SPRING GARDEN WHF,6,Mullikin,,,778
-SPRING GARDEN WHF,7,Orleans,36,57,778
-SPRING GARDEN WHF,8,Jefferson,64,81,778
-SPRING GARDEN WHF,9,McElderry,92,93,778
-SPRING GARDEN WHF,10,Monument,120,119,778
-SPRING GARDEN WHF,11,Madison,152,,778
-SPRING GARDEN WHF,12,Gay,170,173,778
-SPRING GARDEN WHF,13,Lanvale,,,778
+SPRING GARDEN WHF,1,Baltimore,6,1,778
+SPRING GARDEN WHF,2,Hampstead,30,11,778
+SPRING GARDEN WHF,3,Holland,28,33,778
+SPRING GARDEN WHF,4,May,,,778
+SPRING GARDEN WHF,5,Mullikin,,,778
+SPRING GARDEN WHF,6,Orleans,36,57,778
+SPRING GARDEN WHF,7,Jefferson,64,81,778
+SPRING GARDEN WHF,8,McElderry,92,93,778
+SPRING GARDEN WHF,9,Monument,120,119,778
+SPRING GARDEN WHF,10,Madison,152,,778
+SPRING GARDEN WHF,11,Gay,170,173,778
+SPRING GARDEN WHF,12,Lanvale,,,778
 SPRING (S),1,Baltimore,18,9,778
 SPRING (S),2,Lombard,20,,778
 SPRING (S),3,Pratt,80,69,778
@@ -1434,31 +1355,23 @@ ST. PAUL,12,Read,132,201,779
 ST. PAUL,13,Eager,,237,779
 ST. PAUL,14,Chase,,,779
 SWANN'S WIIF,1,T,,,779
-TELEGRAPH,1,"av, N of Preston",,,779
-TELEGRAPH,2,"Marble Hall, 38 and",,,779
-THOMPSON,1,tween George and Adams,,,779
+TELEGRAPH,1,"Marble Hall, 38 and",,,779
 THOMPSON AL,1,bard,,,779
 THOMSEN,1,Orleans,,,779
 TOWNSEND,1,"Cathedral, N of Lanvale",,,779
 TRIPOLET'S AL,1,Post Office av),,,779
 TRUXTON,1,tiary,,,779
-TYSON,1,from 123 Saratoga,,,779
 TRUSTS AL,1,u,,,779
 ULRICK AL,1,"Spring, S of Pratt",,,779
-UNION CT,1,and Stirling,,,779
 UNION SQUARE,1,"Strieker, Hollins and Lombard",,,779
 UNION DOCK,1,Jones Falls to Basin,,,779
-UPTON PARK,1,worth and Fremont,,,779
 VINE W,1,w,,,779
 WAGON AL,1,Amity,,,779
 WALTEMEYER AL,1,Cooke,,,779
 WASHINGTON AV,1,W of Carroll,,,779
-WASHINGTON (N),1,"timore, E of Chapel",,,779
 WASHINGTON (S),1,Chapel,,,780
 WASHINGTON (S),2,av,168,167,780
 WASHINGTON (S),3,av,,191,780
-WASHINGTON SQ,1,intersection of Cliarles and,,,780
-WELSH AL,1,"from Basin, s of Cross",,,780
 WEST FALLS AV,1,Lombard,,2,780
 WEST FALLS AV,2,Pratt,,8,780
 WEST FALLS AV,3,Bowly,,32,780
@@ -1467,37 +1380,21 @@ WEST FALLS AV,5,Canton av,,118,780
 WEST FALLS AV,6,Block,,212,780
 WINDERLING ROW,1,GIESE &amp; CO,,,780
 WINDSOR,1,Canton av,,,780
-WINDSOR MILL ROAD,1,"mont, near Penna av",,,780
-WINE AL,1,timore --&quot;&quot;^,,,780
-WINTER'S AL,1,e of Hanover,,,780
 WOLFE (S),1,av,160,161,780
 WOLFE (S),2,av,192,195,780
-WYETH,1,w*of Charles,,,780
 BELAIR MARKET,1,"Pfiday, and Satur",,,780
-CENTRE MARKET,1,and Saturday,,,780
-CROSS STREET MARKET,1,and West,,,780
 FELL'S POINT MARKET,1,Tuesday and,,,780
 FELL'S POINT MARKET,2,evenings,,,780
 HANOVER MARKET,1,"Thursday, and Sat",,,780
-HOLLINS MARKET,1,and Saturday even,,,780
-LEXINGTON MARKET,1,"and Friday, and",,,780
-RICHMOND MARKET,1,and Saturday,,,780
-RICHMOND MARKET,2,&amp;c,,,780
+RICHMOND MARKET,1,&amp;c,,,780
 UNITED STATES,1,President,,,781
-UNITED STATES,2,of State,,,781
-UNITED STATES,3,of the Treasury,,,781
-UNITED STATES,4,of War,,,781
-UNITED STATES,5,of the Navy,,,781
-UNITED STATES,6,of the Interior,,,781
-UNITED STATES,7,General,,,781
-UNITED STATES,8,General,,,781
+UNITED STATES,2,General,,,781
+UNITED STATES,3,General,,,781
 STATE OF MARYLAND,1,Governor,,,781
 STATE OF MARYLAND,2,Secretary of State,,,781
 STATE OF MARYLAND,3,Treasurer,,,781
-STATE OF MARYLAND,4,of the Treasury,,,781
-STATE OF MARYLAND,5,Adjutant General,,,781
-STATE OF MARYLAND,6,and Historiographer,,,781
-STATE OF MARYLAND,7,State Librarian,,,781
+STATE OF MARYLAND,4,Adjutant General,,,781
+STATE OF MARYLAND,5,State Librarian,,,781
 STATE NORMAL SCHOOL,1,Allegany County,,,781
 JAMES L. BRYAN,1,"College, Annapolis",,,781
 INSPECTOR GENERAL STATE MILITIA,1,North Calvert-st,,31,781
@@ -1520,7 +1417,6 @@ CITY COUNCIL,14,George M. Bokee,13,14,782
 CITY COUNCIL,15,Thomas White,15,16,782
 CITY COUNCIL,16,Lewis Ehlers,17,18,782
 CITY COUNCIL,17,William H. Owens,19,20,782
-CITY COMMISSIONER,1,and Lexington,,,782
 MAGISTRATES,1,F,1,,783
 MAGISTRATES,2,Flaherty,,,783
 MAGISTRATES,3,Eager ty,,,783
@@ -1551,22 +1447,14 @@ MAGISTRATES,27,Hem-mick,,,783
 MAGISTRATES,28,President,,,783
 MAGISTRATES,29,Supekintendent,,,783
 MAGISTRATES,30,Secretary,,,783
-MAGISTRATES,31,and place of business,,,783
-MAGISTRATES,32,and cor Pratt and Mill,,329,783
-MAGISTRATES,33,and 20 S Charles,,66,783
-MAGISTRATES,34,of Eager,,,783
-MAGISTRATES,35,and 43 N Charles,,71,783
-MAGISTRATES,36,and 38 St. Paul,,81,783
-MAGISTRATES,37,and 46 n Howard,,113,783
-MAGISTRATES,38,and 51 W Fayette,,3,783
-MAGISTRATES,39,av,,182,783
-MAGISTRATES,40,SCHOOLS,,,783
-MAGISTRATES,41,• principals,,,783
-MAGISTRATES,42,Thomas D. Baird,,,783
-MAGISTRATES,43,Nathaniel H. Thayer,,,783
-MAGISTRATES,44,D. A. Hollingshead,,,783
-MAGISTRATES,45,M. A. Newell,20,,783
-MAGISTRATES,46,See p. 4. Advt,181,,783
+MAGISTRATES,31,av,,182,783
+MAGISTRATES,32,SCHOOLS,,,783
+MAGISTRATES,33,• principals,,,783
+MAGISTRATES,34,Thomas D. Baird,,,783
+MAGISTRATES,35,Nathaniel H. Thayer,,,783
+MAGISTRATES,36,D. A. Hollingshead,,,783
+MAGISTRATES,37,M. A. Newell,20,,783
+MAGISTRATES,38,See p. 4. Advt,181,,783
 PRINCIPALS,1,G. Cox,,,784
 PRINCIPALS,2,C. Adams,,,784
 PRINCIPALS,3,Markland,,,784
@@ -1634,7 +1522,6 @@ PRINCIPALS,64,Jones,,,784
 PRINCIPALS,65,Hanna,,,784
 PRINCIPALS,66,A.Sewell,,,784
 PRINCIPALS,67,Addison,,,784
-PRINCIPALS,68,and Boys',,,784
 ENGINE CO,1,Annie Frederick,,,785
 ENGINE CO,2,Isabella Fort,,,785
 ENGINE CO,3,Susanna Fleury,,,785
@@ -1668,17 +1555,9 @@ ENGINE CO,30,"Wm. Elliott, Jr",,,785
 ENGINE CO,31,John E. McCahan,,,785
 HOOK AND LADDER,1,Fayette and Balti,,,785
 HOOK AND LADDER,1,Fayette and Lexington,,,785
-FIRE ALARM TELEGRAPH,1,iV. Holliday Street,,,785
-FIRE ALARM TELEGRAPH,2,"Police purposes, and for",,,785
-FIRE ALARM TELEGRAPH,3,will please hand,,,785
-FIRE ALARM TELEGRAPH,4,officer or send them to a,,,785
-FIRE ALARM TELEGRAPH,5,"an alarm of fire, turn the",,,785
-FIRE ALARM TELEGRAPH,6,"twenty times, should",,,785
-FIRE ALARM TELEGRAPH,7,"Box not answer, repeat",,,785
-FIRE ALARM TELEGRAPH,8,of the entire Department,,,785
-FIRE ALARM TELEGRAPH,9,"alarm will be rung, the",,,785
-FIRE ALARM TELEGRAPH,10,being given in quick suc,,,785
-FIRE ALARM TELEGRAPH,11,intermission,,,785
+FIRE ALARM TELEGRAPH,1,"Police purposes, and for",,,785
+FIRE ALARM TELEGRAPH,2,"Box not answer, repeat",,,785
+FIRE ALARM TELEGRAPH,3,intermission,,,785
 JOHN H. WITMAN,1,Street,40,,785
 WARD MANAGERS OP THE POOR,1,McClintock,6,,786
 WARD MANAGERS OP THE POOR,2,Piatt,8,,786
@@ -1693,255 +1572,86 @@ POST OFFICE,2,R. Newcomer,,,786
 POST OFFICE,3,W. Coomes,,,786
 POST OFFICE,4,A. Blair,,,786
 POST OFFICE,5,S. Showacre,,,786
-POST OFFICE,6,the week at 8 a,,,786
-POST OFFICE,7,from 9 till 10.30,7,,786
-POST OFFICE,8,of letters can,,,786
-POST OFFICE,9,Departure of the,,,786
-POST OFFICE,10,"New York, and",,,786
-POST OFFICE,11,"the Mails, is",,,786
-POST OFFICE,12,Post Office,,,786
-RATES OF POSTAGE,1,charged two cents,,,786
-RATES OF POSTAGE,2,Drop letters,,,786
-RATES OF POSTAGE,3,of drop letters is,,,786
-RATES OF POSTAGE,4,Post Office every,,,786
-RATES OF POSTAGE,5,"or less, sent for",,,786
-RATES OF POSTAGE,6,stamps required,,,786
-RATES OF POSTAGE,7,postage on reg,,,786
-RATES OF POSTAGE,8,"is five cents, or",,,786
-RATES OF POSTAGE,9,proportion if pub,,,786
-RATES OF POSTAGE,10,newspapers sent,,,786
-RATES OF POSTAGE,11,States at two,,,786
-RATES OF POSTAGE,12,"ounces, prepaid by",,,786
-RATES OF POSTAGE,13,printed matter,,,786
-RATES OF POSTAGE,14,on other printed matter see,,,786
-RATES OF POSTAGE,15,article to be mailed is a circular,,,786
-RATES OF POSTAGE,16,it should be so envel,,,786
-RATES OF POSTAGE,17,open at one end otherwise it,,,786
-RATES OF POSTAGE,18,as a letter,,,786
-RATES OF POSTAGE,19,required to be prepaid by stamps,,,786
-RATES OF POSTAGE,20,prepaid are sent to the Dead,,,786
-RATES OF POSTAGE,21,"Seeds, &amp;c",,,786
+POST OFFICE,6,Departure of the,,,786
+POST OFFICE,7,"New York, and",,,786
+POST OFFICE,8,Post Office,,,786
+RATES OF POSTAGE,1,Drop letters,,,786
+RATES OF POSTAGE,2,Post Office every,,,786
+RATES OF POSTAGE,3,States at two,,,786
+RATES OF POSTAGE,4,"Seeds, &amp;c",,,786
 MAILS DUE. MAILS CLOSE,1,&quot; I 4.30 3.30,,,787
 MAILS DUE. MAILS CLOSE,2,Phila,,,787
-MAILS DUE. MAILS CLOSE,3,j 9.00,,,787
-MAILS DUE. MAILS CLOSE,4,&quot; 5.00,,,787
-MAILS DUE. MAILS CLOSE,5,&quot; 10.45 5.00 7.00,,,787
-MAILS DUE. MAILS CLOSE,6,&quot; 5.00 7.00,,,787
-MAILS DUE. MAILS CLOSE,7,&quot; 9.30 4.00,,,787
-MAILS DUE. MAILS CLOSE,8,daily 1.30,,,787
-MAILS DUE. MAILS CLOSE,9,'7.00 6.00 7.00,,,787
-MAILS DUE. MAILS CLOSE,10,&quot;7.00,,,787
-MAILS DUE. MAILS CLOSE,11,Sunday 6.00 ■7.00,,,787
-MAILS DUE. MAILS CLOSE,12,daily 7.00 6.00 7.00,,,787
-MAILS DUE. MAILS CLOSE,13,&quot; 9.30 10.30 2.00,,,787
-MAILS DUE. MAILS CLOSE,14,&quot; 9.30 10.30 2.00,,,787
-MAILS DUE. MAILS CLOSE,15,&quot; 10.30 2.00,,,787
-MAILS DUE. MAILS CLOSE,16,'« 9.30 2.00,,,787
-MAILS DUE. MAILS CLOSE,17,&quot; 9.00 6.00 6.00,,,787
-MAILS DUE. MAILS CLOSE,18,&lt;' 9.00 6.00,,,787
-MAILS DUE. MAILS CLOSE,19,&quot; 9.30 2.00,,,787
-MAILS DUE. MAILS CLOSE,20,&quot; | 8.00,,,787
-MAILS DUE. MAILS CLOSE,21,&quot; 12 M. 7.00 6.00,,,787
-MAILS DUE. MAILS CLOSE,22,of Customs .David T. Bennett,,,787
-MAILS DUE. MAILS CLOSE,23,Depository T. H. H. Leary,,,787
-MAILS DUE. MAILS CLOSE,24,Clerk Uriah Jones,,,787
-MAILS DUE. MAILS CLOSE,25,W. T. R. SafFell,,,787
-MAILS DUE. MAILS CLOSE,26,Adjusting Clerk W. H. Leonard,,,787
-MAILS DUE. MAILS CLOSE,27,Clerk J. F. Brady,,,787
-MAILS DUE. MAILS CLOSE,28,Frank H. Shallus,,,787
-MAILS DUE. MAILS CLOSE,29,Cierk Seth G. Reed,,,787
-MAILS DUE. MAILS CLOSE,30,Export Statistical Clerk Wm. G,,,787
-MODE OF CANCELLING STAMPS,1,"Card Stamps, for which a",,,788
-MODE OF CANCELLING STAMPS,2,been provided,,,788
-MODE OF CANCELLING STAMPS,3,cannot be used in payment,,,788
-MODE OF CANCELLING STAMPS,4,on instruments,,,788
-AGREEMENT,1,of paper upon which,,,788
-AGREEMENT,2,same shall be written. .. $ 05,,,788
-THE ASSIGNMENT,1,of insurance requires,,,788
-THE ASSIGNMENT,2,as the original instru,,,788
-BILL OF EXCHANGE,1,exceeding one hundred,,,788
-BILL OF EXCHANGE,2,any,,,788
-PROMISSORY NOTE,1,one hundred dollars 5,,,788
-PROMISSORY NOTE,2,additional hundred dollars 5,,,788
-BILL OF EXCHANGE,1,dollars 2,,,788
-BILL OF EXCHANGE,2,additional hundred dollars 2,,,788
-BILL OF SALE,1,of one thousand dol,,,788
-BILL OF SALE,2,additional one thousand,,,788
-BILL OF SALE,3,due execution or perform,,,788
-BILL OF SALE,4,duties of any office 1 00,,,788
+MAILS DUE. MAILS CLOSE,3,&quot; 5.00,,,787
+MAILS DUE. MAILS CLOSE,4,&quot; 10.45 5.00 7.00,,,787
+MAILS DUE. MAILS CLOSE,5,&quot; 5.00 7.00,,,787
+MAILS DUE. MAILS CLOSE,6,&quot; 9.30 4.00,,,787
+MAILS DUE. MAILS CLOSE,7,'7.00 6.00 7.00,,,787
+MAILS DUE. MAILS CLOSE,8,&quot;7.00,,,787
+MAILS DUE. MAILS CLOSE,9,Sunday 6.00 ■7.00,,,787
+MAILS DUE. MAILS CLOSE,10,&quot; 9.30 10.30 2.00,,,787
+MAILS DUE. MAILS CLOSE,11,&quot; 9.30 10.30 2.00,,,787
+MAILS DUE. MAILS CLOSE,12,&quot; 10.30 2.00,,,787
+MAILS DUE. MAILS CLOSE,13,'« 9.30 2.00,,,787
+MAILS DUE. MAILS CLOSE,14,&quot; 9.00 6.00 6.00,,,787
+MAILS DUE. MAILS CLOSE,15,&lt;' 9.00 6.00,,,787
+MAILS DUE. MAILS CLOSE,16,&quot; 9.30 2.00,,,787
+MAILS DUE. MAILS CLOSE,17,&quot; | 8.00,,,787
+MAILS DUE. MAILS CLOSE,18,Clerk Uriah Jones,,,787
+MAILS DUE. MAILS CLOSE,19,W. T. R. SafFell,,,787
+MAILS DUE. MAILS CLOSE,20,Clerk J. F. Brady,,,787
+MAILS DUE. MAILS CLOSE,21,Frank H. Shallus,,,787
+MAILS DUE. MAILS CLOSE,22,Cierk Seth G. Reed,,,787
+BILL OF EXCHANGE,1,any,,,788
 BOND,1,BOND see mort,,,788
-COUNTY,1,corporation Bonds and,,,788
-COUNTY,2,subject to stamp duty see,,,788
-CERTIFICATE,1,in any bank or trust com,,,788
-CERTIFICATE,2,not exceeding one hundred,,,788
-CERTIFICATE,3,one hundred dol,,,788
-CERTIFICATE,4,any other description than,,,788
-CHARTER PARTY,1,hundred and fifty tons... 1 00,,,788
-CHARTER PARTY,2,hundred and fifty tons,,,788
-CHARTER PARTY,3,"three hundred tons, 3 00",,,788
-CHARTER PARTY,4,"hundred tons, and not",,,788
-CHARTER PARTY,5,six hundred tons 5 00,,,788
-CHARTER PARTY,6,hundred tons 10 00,,,788
-CONTRACT,1,orandum of sale of any goods or mer,,,788
-CONTRACT,2,"chandise, stocks, bonds, exchange",,,788
-CONTRACT,3,"hand, real estate, or prop",,,788
-CONVEYANCE,1,the actual considera,,,788
-CONVEYANCE,2,does not exceed fivehun,,,788
-CONVEYANCE,3,consideration exceeds five,,,788
-CONVEYANCE,4,and does not exceed,,,788
-CONVEYANCE,5,dollars 1 00,,,788
-CONVEYANCE,6,additional five hundred,,,788
-CONVEYANCE,7,"fractional part thereof, in",,,788
-CONVEYANCE,8,one thousand dollars 50,,,788
 PROPRIETARY,1,fifty,,,789
-PROPRIETARY,2,the value of one dollar 2,,,789
 FRICTION MATCHES,1,i,,,789
-FRICTION MATCHES,2,or packages containing,,,789
-FRICTION MATCHES,3,"one hundred, for each par",,,789
-PHOTOGRAPHS,1,of twenty-five cents 2,,,789
-PHOTOGRAPHS,2,the retail price of twenty,,,789
-PHOTOGRAPHS,3,the retail price of fifty cents 5,,,789
-PHOTOGRAPHS,4,the retail price of one dollar 5,,,789
-PHOTOGRAPHS,5,additional one dollar 5,,,789
-PLAYING CARDS,1,pack does not exceed eigh,,,789
-PLAYING CARDS,2,the retail price of eighteen,,,789
-PLAYING CARDS,3,the retail price of twenty,,,789
-PLAYING CARDS,4,the retail price of fifty cents 15,,,789
-PLAYING CARDS,5,the retail price of one dollar 5,,,789
-PLAYING CARDS,6,additional fiftv cents 5,,,789
-CANNED MEATS,1,"bottle, or single package",,,789
-CANNED MEATS,2,"sauces, syrups, prepared",,,789
-CANNED MEATS,3,jams or jellies contained,,,789
-CANNED MEATS,4,"and packed or sealed, made",,,789
-CANNED MEATS,5,"and sold, or offered for sale",,,789
-CANNED MEATS,6,for consumption in the,,,789
-CANNED MEATS,7,"States, on and after the first",,,789
-CANNED MEATS,8,"October, eighteen hundred",,,789
-CANNED MEATS,9,"when such can, bottle",,,789
-CANNED MEATS,10,single package with its con,,,789
-CANNED MEATS,11,not exceed two pounds,,,789
-CANNED MEATS,12,the sum of one cent 1,,,789
-CANNED MEATS,13,"can, bottle, or other single",,,789
-CANNED MEATS,14,"with its contents, shall ex",,,789
-CANNED MEATS,15,"pounds in weight, for every",,,789
-CANNED MEATS,16,pound or fractional part,,,789
-CANNED MEATS,17,one cent 1,,,789
-CANNED MEATS,18,COURTS,,,789
-THE COURT OF APPEALS,1,elected from the Eighth Judi,,,789
-THE COURT OF APPEALS,2,"(Baltimore City,) and the Chief",,,789
-THE COURT OF APPEALS,3,the seven remaining judicial circuits,,,789
-THE COURT OF APPEALS,4,"Hon. James L. Bartol, of Bal",,,789
-THE COURT OF APPEALS,5,"Hon. James A. Stewart, of",,,789
-THE COURT OF APPEALS,6,county,,,789
-THE COURT OF APPEALS,7,"Circuit. Hon. J. M. Robinson, of",,,789
-THE COURT OF APPEALS,8,county,,,789
-THE COURT OF APPEALS,9,"'Hon. Richard Grason, of",,,789
-THE COURT OF APPEALS,10,county,,,789
-THE COURT OF APPEALS,11,"Circuit. Hon. Richard H. Alvey, of",,,789
-THE COURT OF APPEALS,12,county,,,789
-THE COURT OF APPEALS,13,"Hon. Oliver Miller, of Anne",,,789
-THE COURT OF APPEALS,14,county,,,789
-THE COURT OF APPEALS,15,"Hon. Madison Nelson, of",,,789
-THE COURT OF APPEALS,16,county,,,789
-THE COURT OF APPEALS,17,"Circuit. Hon. George Brent, of",,,789
-THE COURT OF APPEALS,18,county,,,789
-THE COURT OF APPEALS,19,"Jas. S. Franklin, Esq., of Annapolis",,,789
-THE COURT OF APPEALS,20,Court. First Monday in April and,,,789
-THE COURT OF APPEALS,21,See Advt. p. 4,181,,789
-SMITH BROS,1,"a jury, 3d Monday in February",,,790
-SMITH BROS,2,and 2d Monday in May and,,,790
-SMITH BROS,3,"county. Rockville, law and",,,790
-SMITH BROS,4,in June and 2d Monday in,,1,790
-SMITH BROS,5,Juries summoned only to March,,,790
-SMITH BROS,6,terms,,,790
-SMITH BROS,7,Circuit. Hon Geo. Brent,,,790
-SMITH BROS,8,Hon. Robt. Ford and Hon. Dan'l,,,790
-SMITH BROS,9,associates. Terms of Court,,,790
-SMITH BROS,10,county. Upper Marlborough,,,790
-SMITH BROS,11,in April and October,1,,790
-SMITH BROS,12,"Port Tobacco, 3d Mon",,,790
-SMITH BROS,13,and November,,,790
-SMITH BROS,14,"Prince Frederick, IstMon",,,790
-SMITH BROS,15,and on Wednesday next after 1st,,,790
+CANNED MEATS,1,"October, eighteen hundred",,,789
+CANNED MEATS,2,COURTS,,,789
+CANNED MEATS,3,JUDICIARY OF MARYLAND,,,789
+CANNED MEATS,4,county,,,789
+CANNED MEATS,5,county,,,789
+CANNED MEATS,6,"'Hon. Richard Grason, of",,,789
+CANNED MEATS,7,county,,,789
+CANNED MEATS,8,county,,,789
+CANNED MEATS,9,county,,,789
+CANNED MEATS,10,"Hon. Madison Nelson, of",,,789
+CANNED MEATS,11,county,,,789
+CANNED MEATS,12,county,,,789
+CANNED MEATS,13,See Advt. p. 4,181,,789
+SMITH BROS,1,terms,,,790
+SMITH BROS,2,Circuit. Hon Geo. Brent,,,790
+SMITH BROS,3,"Port Tobacco, 3d Mon",,,790
+SMITH BROS,4,"Prince Frederick, IstMon",,,790
+SMITH BROS,5,November,,,790
+SMITH BROS,6,Circuit. Baltimore city,,,790
+SMITH BROS,7,WhytePinkney and Robert,,,790
+SMITH BROS,8,Judge Dobbin with Judge,,,790
+SMITH BROS,9,"Geo. Robinson, Clerk",,,790
+SMITH BROS,10,Pleas. Judge Garey with,,,790
+SMITH BROS,11,Judge Pinkney with Judge,,,790
+SMITH BROS,12,"James R. Brewer, Clerk",,,790
+SMITH BROS,13,"Fred. Pinkney, assistant",,,790
+SMITH BROS,14,"Andrew J. George, Clerk",,,790
+SMITH BROS,15,"City Courts, commence their",,,790
 SMITH BROS,16,November,,,790
-SMITH BROS,17,"county. Leonardtown, 3d Mon",,,790
-SMITH BROS,18,and September,,,790
-SMITH BROS,19,Circuit. Baltimore city,,,790
-SMITH BROS,20,Bench. Hon. T. Parkin Scott,,,790
-SMITH BROS,21,"Hons. Geo. W. Dobbin, Henry",,,790
-SMITH BROS,22,WhytePinkney and Robert,,,790
-SMITH BROS,23,The Judges of the Supreme,,,790
-SMITH BROS,24,to the following courts :,,,790
-SMITH BROS,25,Judge Dobbin with Judge,,,790
-SMITH BROS,26,"Geo. Robinson, Clerk",,,790
-SMITH BROS,27,Pleas. Judge Garey with,,,790
-SMITH BROS,28,to assist. I. Freeman Rasin,,,790
-SMITH BROS,29,"M. Young, Commissioner of In",,,790
-SMITH BROS,30,Judge Pinkney with Judge,,,790
-SMITH BROS,31,"James R. Brewer, Clerk",,,790
-SMITH BROS,32,Court. Judge Gilmor with Judge,,,790
-SMITH BROS,33,"assist. Wm. F. McKewen, Clerk;",,,790
-SMITH BROS,34,"Sheriff; A. Leo Knott, Esq",,,790
-SMITH BROS,35,"Fred. Pinkney, assistant",,,790
-SMITH BROS,36,Judge Scott with Judge Pink,,,790
-SMITH BROS,37,"Andrew J. George, Clerk",,,790
-SMITH BROS,38,"Court, Court of Common Pleas",,,790
-SMITH BROS,39,"City Courts, commence their",,,790
-SMITH BROS,40,The terms of the Circuit Court,,,790
-SMITH BROS,41,"in January, March, May, July",,2,790
-SMITH BROS,42,November,,,790
-SMITH BROS,43,"Court. Chief Judge, Isaiah Bal",,,790
-SMITH BROS,44,Thomas Bond and Bolivar,,,790
-SMITH BROS,45,associate Judges. J. Harman,,,790
-SMITH BROS,46,of Wills. The Orphans',,,790
-SMITH BROS,47,"every day, except Sundays",,,790
-SMITH BROS,48,"A. M. to 1 o'clock, P. M",,11,790
-MARYLAND,1,"Court House, Cor. Fayette and",,,790
-MARYLAND,2,North streets. ',,,790
-MARYLAND,3,of Maryland is in the Fourth Ju,,,790
-MARYLAND,4,which also includes Delaware,,,790
-MARYLAND,5,"and South Carolina, and is",,,790
-MARYLAND,6,Chief Justice Chase of the United,,,790
-MARYLAND,7,Court,,,790
-THE U. S. CIRCUIT COURT,1,United States for the Fourth Cir,,,790
-THE U. S. CIRCUIT COURT,2,"for Maryland District,&quot; is pro",,,790
-THE U. S. CIRCUIT COURT,3,"the Hon. Salmon P. Ciiask, (&quot;hief",,,790
-THE U. S. CIRCUIT COURT,4,"the United States, and Hon. Wm",,,790
-THE U. S. CIRCUIT COURT,5,"District Judge. Clerk, Jamks F",,,790
-THE U. S. CIRCUIT COURT,6,"S. District Attorney, A. Stkrett",,,790
-THE U. S. CIRCUIT COURT,7,Men and Boys',,,790
-MORE,1,"Claas Vocke, No. 116 S. Charles",,,791
-MORE,2,of Pontifical States- -T. P. Scott,,,791
-MORE,3,Fayette street,,65,791
-MORE,4,and Denmark Martin Lewis,,,791
-MORE,5,street,20,,791
-MORE,6,of Uruguay P. De Murgui,,,791
-MORE,7,"C. Morton Stewart, No. 52",,,791
-MORE,8,street,,,791
-MORE,9,"R. A. Fisher, No. 25 South",,,791
-MORE,10,"I. Fisher, No. 25 South Gay",,,791
-MORE,11,"'Bolivar D. Danels, 43 Lexington",,,791
-MORE,12,"Bremen A. Schumacher, Con",,,791
-MORE,13,No. 9 South Charles street,,,791
-MORE,14,Nicaragua C. Oliver O'Donnell,,,791
-MORE,15,Gay street,,52,791
-MORE,16,"Robert Lehr, 29 S. Charles street",,,791
-MORE,17,"B. Fitzgerald, No. 6 South",,,791
-MORE,18,"B. Fitzgerald, No. 6 South",,,791
-MORE,19,"Von KapfF, No. 22 German street",,,791
-MORE,20,"D. Kremelberg, Vice-Consul, No",,,791
-MORE,21,Underwriters at Bremen F.W,,,791
-MORE,22,Sons,,,791
-MORE,23,"the Underwriters at Lloyd's, Liv",,,791
-MORE,24,Glasgow' James Carey Coale,,,791
-MORE,25,place,56,,791
-BANKS IN THIS CITY,1,M. to 3 P. M. except Sundays,,10,791
-BANKS IN THIS CITY,2,Days,,,791
-BANKS IN THIS CITY,3,"at six per cent, per annum",,,791
-BANKS IN THIS CITY,4,the same. Every Bill or Note,,,791
-BANKS IN THIS CITY,5,day of discount. Bills or Notes,,,791
-BANKS IN THIS CITY,6,the person lodging the,,,791
-BANKS IN THIS CITY,7,for collection must be entered,,,791
+SMITH BROS,17,Thomas Bond and Bolivar,,,790
+SMITH BROS,18,STATES COURTS IN,,,790
+MARYLAND,1,North streets. ',,,790
+MARYLAND,2,Court,,,790
+MARYLAND,3,CIRCUIT COURT. &quot;TheCircuit,,,790
+MARYLAND,4,Men and Boys',,,790
+MORE,1,Fayette street,,65,791
+MORE,2,street,20,,791
+MORE,3,street,,,791
+MORE,4,"Bremen A. Schumacher, Con",,,791
+MORE,5,Nicaragua C. Oliver O'Donnell,,,791
+MORE,6,Gay street,,52,791
+MORE,7,"D. Kremelberg, Vice-Consul, No",,,791
+MORE,8,Underwriters at Bremen F.W,,,791
+MORE,9,Sons,,,791
+MORE,10,Glasgow' James Carey Coale,,,791
+MORE,11,place,56,,791
+BANKS IN THIS CITY,1,Days,,,791
 NATIONAL UNION BANK OF MARYLAND,1,Charles and Fayette Streets,,,791
 NATIONAL UNION BANK OF MARYLAND,2,"Wm. W. Taylor, President",,,791
 NATIONAL UNION BANK OF MARYLAND,3,Cashier,,,791
@@ -1952,18 +1662,16 @@ J.'C,2,Wm. W. Woodward,,,791
 J.'C,3,"Days, Monday and Thursday",,,791
 J.'C,4,Baltimore Street,40,,791
 NATIONAL MECHANICS' BANK,1,Calvert and Fayette Streets,,,792
-NATIONAL MECHANICS' BANK,2,"R. T. Baldwin, President. .•",,,792
-NATIONAL MECHANICS' BANK,3,Cashier. f,,,792
-NATIONAL MECHANICS' BANK,4,DIRECTORS,,,792
-NATIONAL MECHANICS' BANK,5,Thos. Kensett,,,792
-NATIONAL MECHANICS' BANK,6,G. W. Wnrd,,,792
-NATIONAL MECHANICS' BANK,7,S.'II. Caughey,,,792
-NATIONAL MECHANICS' BANK,8,Wm. Stirling,,,792
-NATIONAL MECHANICS' BANK,9,Wm. Lehr,,,792
-NATIONAL MECHANICS' BANK,10,"Days, Wednesday and Saturday^",,,792
-NATIONAL MECHANICS' BANK,11,"January and July. Eleciion, Jan-*",,,792
-NATIONAL MECHANICS' BANK,12,*,,,792
-NATIONAL MECHANICS' BANK,13,_s,,,792
+NATIONAL MECHANICS' BANK,2,Cashier. f,,,792
+NATIONAL MECHANICS' BANK,3,DIRECTORS,,,792
+NATIONAL MECHANICS' BANK,4,Thos. Kensett,,,792
+NATIONAL MECHANICS' BANK,5,G. W. Wnrd,,,792
+NATIONAL MECHANICS' BANK,6,S.'II. Caughey,,,792
+NATIONAL MECHANICS' BANK,7,Wm. Stirling,,,792
+NATIONAL MECHANICS' BANK,8,Wm. Lehr,,,792
+NATIONAL MECHANICS' BANK,9,"Days, Wednesday and Saturday^",,,792
+NATIONAL MECHANICS' BANK,10,*,,,792
+NATIONAL MECHANICS' BANK,11,_s,,,792
 COMMERCIAL AND FARMERS' NATION,1,AL BANK,,,792
 COMMERCIAL AND FARMERS' NATION,2,Howard and German Streets,,,792
 COMMERCIAL AND FARMERS' NATION,3,"Jesse Slingluff, President",,,792
@@ -1975,44 +1683,35 @@ COMMERCIAL AND FARMERS' NATION,8,"Albert, John Cushing",,,792
 COMMERCIAL AND FARMERS' NATION,9,Wm. Devries,,,792
 COMMERCIAL AND FARMERS' NATION,10,J. H. Rieman,,,792
 COMMERCIAL AND FARMERS' NATION,11,♦,,,792
-COMMERCIAL AND FARMERS' NATION,12,Days. Tuesday and Friday. Divi,,,792
-COMMERCIAL AND FARMERS' NATION,13,and November. *■,,,792
-WESTERN NATIONAL BANK,1,one door north of Eutaw ffouse,,,792
-WESTERN NATIONAL BANK,2,"C. Brooks, President.'&quot;",,,792
-WESTERN NATIONAL BANK,3,&quot;,,,792
-WESTERN NATIONAL BANK,4,Cashier. ' « ^ » ',,,792
-WESTERN NATIONAL BANK,5,DIRECTORS,,,792
-WESTERN NATIONAL BANK,6,Wm. G. Power,,,792
-WESTERN NATIONAL BANK,7,Jas. Harvey,,,792
-WESTERN NATIONAL BANK,8,Geo. Bartlett,,,792
-WESTERN NATIONAL BANK,9,S. R. Smith,,,792
-WESTERN NATIONAL BANK,10,Wm. F. Burns,,,792
-WESTERN NATIONAL BANK,11,"B. Clarke, Wm: S. Raj^lTfer",,,792
-WESTERN NATIONAL BANK,12,"Days, Tuesday and Friday. Divi",,,792
-WESTERN NATIONAL BANK,13,and July. Electroa.Alaujj^y. Jaumirj,,,792
-WESTERN NATIONAL BANK,14,CHeSaPEAKE BANK,,,792
-WESTERN NATIONAL BANK,15,of North and Fayette Streets,,,792
-WESTERN NATIONAL BANK,16,"J. S. GiTTiNGS, President",,,792
-WESTERN NATIONAL BANK,17,Act'g Cashier,,,792
-WESTERN NATIONAL BANK,18,DIRECTORS,,,792
-WESTERN NATIONAL BANK,19,John Boyd,,,792
+WESTERN NATIONAL BANK,1,"C. Brooks, President.'&quot;",,,792
+WESTERN NATIONAL BANK,2,&quot;,,,792
+WESTERN NATIONAL BANK,3,DIRECTORS,,,792
+WESTERN NATIONAL BANK,4,Wm. G. Power,,,792
+WESTERN NATIONAL BANK,5,Jas. Harvey,,,792
+WESTERN NATIONAL BANK,6,Geo. Bartlett,,,792
+WESTERN NATIONAL BANK,7,S. R. Smith,,,792
+WESTERN NATIONAL BANK,8,Wm. F. Burns,,,792
+WESTERN NATIONAL BANK,9,CHeSaPEAKE BANK,,,792
+WESTERN NATIONAL BANK,10,"J. S. GiTTiNGS, President",,,792
+WESTERN NATIONAL BANK,11,Act'g Cashier,,,792
+WESTERN NATIONAL BANK,12,DIRECTORS,,,792
+WESTERN NATIONAL BANK,13,John Boyd,,,792
 II. M,1,J. Matthews,,,792
 II. M,2,Isaac Rogers,,,792
 II. M,3,M. Benzinger,,,792
 II. M,4,"Day, Wednesday, Dividends, Jan",,,792
 II. M,5,"July. Election, May",,,792
 II. M,6,"Grain, Seeds, &amp;c",,,792
-FIRST NATIONAL BANK OF BALTIMORE,1,No. 8 South Gay Street,,,793
-FIRST NATIONAL BANK OF BALTIMORE,2,"Stock, $1,110,000",,,793
-FIRST NATIONAL BANK OF BALTIMORE,3,"Columbus O'Donnkll, President",,,793
-FIRST NATIONAL BANK OF BALTIMORE,4,Cashier,,,793
-FIRST NATIONAL BANK OF BALTIMORE,5,DIRECTORS,,,793
-FIRST NATIONAL BANK OF BALTIMORE,6,"O'Donnell, B. Deford",,,793
-FIRST NATIONAL BANK OF BALTIMORE,7,Thomas Kelso,,,793
-FIRST NATIONAL BANK OF BALTIMORE,8,Wm. J. Albert,,,793
-FIRST NATIONAL BANK OF BALTIMORE,9,Horace Abbott,,,793
-FIRST NATIONAL BANK OF BALTIMORE,10,Geo. Small,,,793
-FIRST NATIONAL BANK OF BALTIMORE,11,Discounts Daily,,,793
+FIRST NATIONAL BANK OF BALTIMORE,1,"Stock, $1,110,000",,,793
+FIRST NATIONAL BANK OF BALTIMORE,2,"Columbus O'Donnkll, President",,,793
+FIRST NATIONAL BANK OF BALTIMORE,3,Cashier,,,793
+FIRST NATIONAL BANK OF BALTIMORE,4,DIRECTORS,,,793
+FIRST NATIONAL BANK OF BALTIMORE,5,"O'Donnell, B. Deford",,,793
+FIRST NATIONAL BANK OF BALTIMORE,6,Thomas Kelso,,,793
+FIRST NATIONAL BANK OF BALTIMORE,7,Wm. J. Albert,,,793
+FIRST NATIONAL BANK OF BALTIMORE,8,Horace Abbott,,,793
+FIRST NATIONAL BANK OF BALTIMORE,9,Geo. Small,,,793
+FIRST NATIONAL BANK OF BALTIMORE,10,Discounts Daily,,,793
 MORE,1,Fell's Point Bank),,,793
 MORE,2,No. 147 Broadway,,,793
 MORE,3,"Capital $350,000",,,793
@@ -2023,234 +1722,124 @@ MORE,7,Jacob W. Hugg,,,793
 MORE,8,"Robinson, Hugh A. Cooper",,,793
 MORE,9,John S. Oilman,,,793
 MORE,10,"Day, Thursday. Dividends, May",,,793
-THIRD NATIONAL BANK OF BALTIMORE,1,iVb. 31 South Street,,,793
-THIRD NATIONAL BANK OF BALTIMORE,2,"Capital $600,000",,,793
-THIRD NATIONAL BANK OF BALTIMORE,3,"W. Whitelock, President",,,793
-THIRD NATIONAL BANK OF BALTIMORE,4,Cashier,,,793
-THIRD NATIONAL BANK OF BALTIMORE,5,directors,,,793
-THIRD NATIONAL BANK OF BALTIMORE,6,"Canby, Sam'l E. Hoogewerff",,,793
-THIRD NATIONAL BANK OF BALTIMORE,7,Philip S. Chappell,,,793
-THIRD NATIONAL BANK OF BALTIMORE,8,W. H. Crawford,,,793
-THIRD NATIONAL BANK OF BALTIMORE,9,G. H. Reese,,,793
-THIRD NATIONAL BANK OF BALTIMORE,10,Christian Ax,,,793
-THIRD NATIONAL BANK OF BALTIMORE,11,"Discount Day, Tuesday",,,793
-NATIONAL EXCHANGE BANK,1,No. 4 South Sharp Street,,,793
-NATIONAL EXCHANGE BANK,2,"Capital $600,000",,,793
-NATIONAL EXCHANGE BANK,3,"John Hurst, President",,,793
-NATIONAL EXCHANGE BANK,4,"Snow, Cashier",,,793
-NATIONAL EXCHANGE BANK,5,directors,,,793
-NATIONAL EXCHANGE BANK,6,M. Stein,,,793
-NATIONAL EXCHANGE BANK,7,J- P. Neer,,,793
-NATIONAL EXCHANGE BANK,8,H. C. Smith,,,793
-NATIONAL EXCHANGE BANK,9,"Spiller, A. J. Miller",,,793
-NATIONAL EXCHANGE BANK,10,"Days, Monday and Thursday",,,793
-MORE CITY,1,"Lombard and South Streets, {tip stairs.)",,,794
-MORE CITY,2,"Capital $500,000",,,794
-MORE CITY,3,"Charles Weber, President",,,794
-MORE CITY,4,"Henry Straus, Vice-President",,,794
-MORE CITY,5,"Vees, Cashier",,,794
-MORE CITY,6,Anton Weiskittel,,,794
-MORE CITY,7,E. W. Ullrich,,,794
-MORE CITY,8,August Wagner,,,794
-MORE CITY,9,Christopher Gissel,,,794
-MORE CITY,10,John G. Koppelmann,,,794
-MORE CITY,11,H. R. Hoeneman,,,794
-THE BENEFICIAL SAVINGS FUND SOCIE,1,TY OF BALTIMORE,,,794
-THE BENEFICIAL SAVINGS FUND SOCIE,2,"and North Streets, Chesapeake",,,794
-THE BENEFICIAL SAVINGS FUND SOCIE,3,Bank Building,,,794
-THE BENEFICIAL SAVINGS FUND SOCIE,4,"deposits daily, from 9 to 1 o'clock",,,794
-THE BENEFICIAL SAVINGS FUND SOCIE,5,paid on deposits,,,794
-THE BENEFICIAL SAVINGS FUND SOCIE,6,"Francis Neale, President",,,794
-THE BENEFICIAL SAVINGS FUND SOCIE,7,Treasurer,,,794
+THIRD NATIONAL BANK OF BALTIMORE,1,"Capital $600,000",,,793
+THIRD NATIONAL BANK OF BALTIMORE,2,"W. Whitelock, President",,,793
+THIRD NATIONAL BANK OF BALTIMORE,3,Cashier,,,793
+THIRD NATIONAL BANK OF BALTIMORE,4,directors,,,793
+THIRD NATIONAL BANK OF BALTIMORE,5,"Canby, Sam'l E. Hoogewerff",,,793
+THIRD NATIONAL BANK OF BALTIMORE,6,Philip S. Chappell,,,793
+THIRD NATIONAL BANK OF BALTIMORE,7,W. H. Crawford,,,793
+THIRD NATIONAL BANK OF BALTIMORE,8,G. H. Reese,,,793
+THIRD NATIONAL BANK OF BALTIMORE,9,Christian Ax,,,793
+THIRD NATIONAL BANK OF BALTIMORE,10,"Discount Day, Tuesday",,,793
+NATIONAL EXCHANGE BANK,1,"Capital $600,000",,,793
+NATIONAL EXCHANGE BANK,2,"John Hurst, President",,,793
+NATIONAL EXCHANGE BANK,3,"Snow, Cashier",,,793
+NATIONAL EXCHANGE BANK,4,directors,,,793
+NATIONAL EXCHANGE BANK,5,M. Stein,,,793
+NATIONAL EXCHANGE BANK,6,J- P. Neer,,,793
+NATIONAL EXCHANGE BANK,7,H. C. Smith,,,793
+NATIONAL EXCHANGE BANK,8,"Spiller, A. J. Miller",,,793
+NATIONAL EXCHANGE BANK,9,"Days, Monday and Thursday",,,793
+MORE CITY,1,"Capital $500,000",,,794
+MORE CITY,2,"Charles Weber, President",,,794
+MORE CITY,3,"Henry Straus, Vice-President",,,794
+MORE CITY,4,"Vees, Cashier",,,794
+MORE CITY,5,Anton Weiskittel,,,794
+MORE CITY,6,E. W. Ullrich,,,794
+MORE CITY,7,August Wagner,,,794
+MORE CITY,8,Christopher Gissel,,,794
+MORE CITY,9,John G. Koppelmann,,,794
+MORE CITY,10,H. R. Hoeneman,,,794
+MORE CITY,11,SAVINGS FUND SOCIE,,,794
+MORE CITY,12,TY OF BALTIMORE,,,794
+MORE CITY,13,Bank Building,,,794
+MORE CITY,14,"Francis Neale, President",,,794
+MORE CITY,15,Treasurer,,,794
 MANAGERS,1,"Neale, John W. Jenkins",,,794
 MANAGERS,2,"Webb, Daniel J. Foley",,,794
-MANAGERS,3,"Dougherty, Wm. H. V. Smith",,,794
-MANAGERS,4,"O'Donnell, Thomas J. Myer",,,794
-MANAGERS,5,Henr}' Bogue,,,794
-MANAGERS,6,"J. Tormey, Joseph Fink",,,794
-MANAGERS,7,S. John Carroll,,,794
-MANAGERS,8,Henry McCaffrey,,,794
-MANAGERS,9,Isaac Hartman,,,794
-MANAGERS,10,"G. V. Hull, Thomas C. Yearly",,,794
-MANAGERS,11,Matthias Benzinger,,,794
-MANAGERS,12,"Dammann, John T. Piquette",,,794
-MANAGERS,13,Patrick J. Costolay,,,794
+MANAGERS,3,"O'Donnell, Thomas J. Myer",,,794
+MANAGERS,4,Henr}' Bogue,,,794
+MANAGERS,5,"J. Tormey, Joseph Fink",,,794
+MANAGERS,6,S. John Carroll,,,794
+MANAGERS,7,Henry McCaffrey,,,794
+MANAGERS,8,Isaac Hartman,,,794
+MANAGERS,9,Matthias Benzinger,,,794
+MANAGERS,10,"Dammann, John T. Piquette",,,794
+MANAGERS,11,Patrick J. Costolay,,,794
 BALTIMORE AND OHIO RAILROAD,1,"Garrett, President",,,794
 BALTIMORE AND OHIO RAILROAD,2,"Jr., Vice President",,,794
 BALTIMORE AND OHIO RAILROAD,3,Treasurer,,,794
-BALTIMORE AND OHIO RAILROAD,4,"Wilson, Master of Transportation and",,,794
-BALTIMORE AND OHIO RAILROAD,5,"Davis, Master of Machinery",,,794
-BALTIMORE AND OHIO RAILROAD,6,"Ijams, Auditor",,,794
-BALTIMORE AND OHIO RAILROAD,7,General Ticket Agent,,,794
-BALTIMORE AND OHIO RAILROAD,8,"General Agent, Camden Sta",,,794
-BALTIMORE AND OHIO RAILROAD,9,"Agent, Locust Point",,,794
+BALTIMORE AND OHIO RAILROAD,4,"Davis, Master of Machinery",,,794
+BALTIMORE AND OHIO RAILROAD,5,"Ijams, Auditor",,,794
+BALTIMORE AND OHIO RAILROAD,6,General Ticket Agent,,,794
+BALTIMORE AND OHIO RAILROAD,7,"General Agent, Camden Sta",,,794
+BALTIMORE AND OHIO RAILROAD,8,"Agent, Locust Point",,,794
 NORTHERN CENTRAL RAILWAY,1,President,,,794
 NORTHERN CENTRAL RAILWAY,2,"S. HoLLiNS, Secretary",,,794
 NORTHERN CENTRAL RAILWAY,3,Treasurer,,,794
 NORTHERN CENTRAL RAILWAY,4,Auditor,,,794
 NORTHERN CENTRAL RAILWAY,5,General Freight Agent,,,794
 NORTHERN CENTRAL RAILWAY,6,General Passenger Agent,,,794
-"FOLGER, ROBERTS",1,and Havana Steamship,,,795
-"FOLGER, ROBERTS",2,Company,,,795
-"FOLGER, ROBERTS",3,comprises the following First Class,,,795
-"FOLGER, ROBERTS",4,making two trips per month,,,795
-"FOLGER, ROBERTS",5,and Cuba which are dispatched every,,,795
-"FOLGER, ROBERTS",6,"alternately, from Brown's wharf",,,795
-"FOLGER, ROBERTS",7,"B&amp;ltimore, to Havana and New",,,795
-"FOLGER, ROBERTS",8,"calling at Key West, carrying the",,,795
-"FOLGER, ROBERTS",9,"MoRDECAi &amp; Co., Agents",,,795
-"FOLGER, ROBERTS",10,Line for Chester River,,,795
-"FOLGER, ROBERTS",11,Fall and Winter Arrangement,,,795
-"FOLGER, ROBERTS",12,"Chester and George Law, will",,,795
-"FOLGER, ROBERTS",13,"No. 7, Light street, daily, at 8",,,795
-"FOLGER, ROBERTS",14,"A. M., for Crumpton and all landings",,,795
-"FOLGER, ROBERTS",15,River,,,795
-"FOLGER, ROBERTS",16,"leave Crumpton at 6j A. M., ar",,,795
-"FOLGER, ROBERTS",17,Baltimore at 2^ P. M,,,795
-"FOLGER, ROBERTS",18,Law will stop at Corsica and,,,795
-"FOLGER, ROBERTS",19,wharf,,,795
-"FOLGER, ROBERTS",20,"C. A. Roe, Agent",,,795
-"FOLGER, ROBERTS",21,"Va., and Land",,,795
-"FOLGER, ROBERTS",22,ings on Rappahannock River,,,795
-"FOLGER, ROBERTS",23,"steamer Wenonah, Capt. Joseph D",,,795
-"FOLGER, ROBERTS",24,"leaving Baltimore, foot of Spear's",,,795
-"FOLGER, ROBERTS",25,"every Tuesday at 4 o'clock P. M., stop",,,795
-"FOLGER, ROBERTS",26,"her way up the Rappahannock, at all",,,795
-"FOLGER, ROBERTS",27,the Wenonah will leave Freder,,,795
-"FOLGER, ROBERTS",28,"icksburg every Thursday at 8 o'clock, on arri",,,795
-"FOLGER, ROBERTS",29,"train, stopping at ail Land",,,795
-"FOLGER, ROBERTS",30,"her way down the river, and arrive at",,,795
-"FOLGER, ROBERTS",31,"early Saturday morning, connecting",,,795
-"FOLGER, ROBERTS",32,"for the North, East and West. All",,,795
-"FOLGER, ROBERTS",33,for the River must be prepaid,,,795
-"FOLGER, ROBERTS",34,"Matilda, Capt.Wm. B. Kirwan",,,795
-"FOLGER, ROBERTS",35,every Friday at 4 P. M. for,,,795
-"FOLGER, ROBERTS",36,and landings on the Rappa,,,795
-"FOLGER, ROBERTS",37,"hannock, Returning leaves Fredericksburg",,,795
-"FOLGER, ROBERTS",38,at 8 P. M,,,795
-"FOLGER, ROBERTS",39,"R. A. Taylor, Agent",,,795
-"FOLGER, ROBERTS",40,Foot of Spear's wharf,,,795
-"FOLGER, ROBERTS",41,and Baltimore Transporta,,,795
-"FOLGER, ROBERTS",42,tion Line,,,795
-"FOLGER, ROBERTS",43,"line, via Canals. ) The attention",,,795
-"FOLGER, ROBERTS",44,"is called to this route, as being",,,795
-"FOLGER, ROBERTS",45,and speedy. Freights care,,,795
-"FOLGER, ROBERTS",46,and no trans-shipment upon the,,,795
-"FOLGER, ROBERTS",47,For freight only apply to,,,795
-"FOLGER, ROBERTS",48,J. Alex. Shriver,,,795
-"FOLGER, ROBERTS",49,"No. 3 Light Street, wharf",,,795
-"FOLGER, ROBERTS",50,and Philadelphia Steamboat,,,795
-"FOLGER, ROBERTS",51,Company,,,795
-"FOLGER, ROBERTS",52,"John S. Shriver, H. L. G.aw, Rich",,,795
-"FOLGER, ROBERTS",53,"and Florence Franklin, leave",,,795
-"FOLGER, ROBERTS",54,"Street wharf every afternoon, (Sundays",,,795
-"FOLGER, ROBERTS",55,) at 3 o'clock,,,795
-"FOLGER, ROBERTS",56,freight or passage apply to,,,795
-"FOLGER, ROBERTS",57,J. Alex. Shriver,,,795
-"FOLGER, ROBERTS",58,No. 3 Light Street wharf,,,795
-"FOLGER, ROBERTS",59,Baltimore-st. See p. 4. Advt,,181,795
+"FOLGER, ROBERTS",1,Company,,,795
+"FOLGER, ROBERTS",2,"MoRDECAi &amp; Co., Agents",,,795
+"FOLGER, ROBERTS",3,Line for Chester River,,,795
+"FOLGER, ROBERTS",4,Fall and Winter Arrangement,,,795
+"FOLGER, ROBERTS",5,River,,,795
+"FOLGER, ROBERTS",6,wharf,,,795
+"FOLGER, ROBERTS",7,"C. A. Roe, Agent",,,795
+"FOLGER, ROBERTS",8,"Va., and Land",,,795
+"FOLGER, ROBERTS",9,"Matilda, Capt.Wm. B. Kirwan",,,795
+"FOLGER, ROBERTS",10,"R. A. Taylor, Agent",,,795
+"FOLGER, ROBERTS",11,Foot of Spear's wharf,,,795
+"FOLGER, ROBERTS",12,J. Alex. Shriver,,,795
+"FOLGER, ROBERTS",13,Company,,,795
+"FOLGER, ROBERTS",14,) at 3 o'clock,,,795
+"FOLGER, ROBERTS",15,J. Alex. Shriver,,,795
 SMITH BROS,1,Boston Steamships,,,796
 SMITH BROS,2,Capt. F. M. Howes,,,796
 SMITH BROS,3,Capt. Wm. A. Hallett,,,796
 SMITH BROS,4,Capt. Solomon Howes,,,796
-SMITH BROS,5,above Steamers leaves for Boston,,,796
-SMITH BROS,6,"days, from the wharf, foot of Long",,,796
-SMITH BROS,7,"A. L. HuGGiNS, Agent",,,796
-SMITH BROS,8,and Charleston R. R. and,,,796
-SMITH BROS,9,Steamship Co,,,796
-SMITH BROS,10,"&amp; Co., Agents, 45 South Ga3^-st",,,796
-SMITH BROS,11,fifth day from Boyce's wharf,,,796
-SMITH BROS,12,"Norfolk Steamboat Compan3-, foot",,,796
-SMITH BROS,13,street,,,796
-SMITH BROS,14,Steamers to Norfolk,,,796
-SMITH BROS,15,"Richmond, &amp;c",,,796
-SMITH BROS,16,"at 4 o'clock P. M., foot of",,,796
-SMITH BROS,17,"J. M. Robinson, Pres't",,,796
-SMITH BROS,18,Transportation Line to,,,796
-SMITH BROS,19,Patuxent River,,,796
-SMITH BROS,20,Mary Washington will leave,,,796
-SMITH BROS,21,"No. 1 Tobacco Warehouse, every",,,796
-SMITH BROS,22,"night, at 11 o'clock, for Patuxent",,,796
-SMITH BROS,23,as far up as Hill's Landing,,,796
-SMITH BROS,24,will leave Hill's Landing every,,,796
-SMITH BROS,25,"for Nottingham, leaving",,,796
-SMITH BROS,26,"every Tue.«day morning, at 5 o'",,,796
-SMITH BROS,27,"Baltimore, calling at all the Land",,,796
-SMITH BROS,28,Benedict for passengers only,,,796
-SMITH BROS,29,every Thursday till 4 o'clock,,,796
-SMITH BROS,30,Planter will leave same wharf,,,796
-SMITH BROS,31,and Saturday morning at 6|,,,796
-SMITH BROS,32,"Benedict. Returning, will leave",,,796
-SMITH BROS,33,every Thursday and Monday morn,,,796
-SMITH BROS,34,"for Baltimore, calling at all",,6,796
-SMITH BROS,35,on the river: also at Fair Haven,,,796
-SMITH BROS,36,"Point, going and returning. Freight",,,796
-SMITH BROS,37,Tuesday and Friday till 4 o'clock,,,796
-SMITH BROS,38,"M. L. Wke-ms, Agent",,,796
+SMITH BROS,5,"A. L. HuGGiNS, Agent",,,796
+SMITH BROS,6,Steamship Co,,,796
+SMITH BROS,7,"Norfolk Steamboat Compan3-, foot",,,796
+SMITH BROS,8,street,,,796
+SMITH BROS,9,Steamers to Norfolk,,,796
+SMITH BROS,10,"Richmond, &amp;c",,,796
+SMITH BROS,11,"J. M. Robinson, Pres't",,,796
+SMITH BROS,12,Transportation Line to,,,796
+SMITH BROS,13,Patuxent River,,,796
+SMITH BROS,14,Mary Washington will leave,,,796
+SMITH BROS,15,Benedict for passengers only,,,796
+SMITH BROS,16,"Benedict. Returning, will leave",,,796
+SMITH BROS,17,"M. L. Wke-ms, Agent",,,796
 HARNDEN EXPRESS,1,"Street, cor. of Sharp",,293,796
 HARNDEN EXPRESS,2,STEPHENSON &amp; GO'S,,,796
 JOHN M,1,"(baggage,)",,,796
 JOHN M,2,Baltimore and Ohio Railroad,,,796
 JOHN M,3,Office 51 W. Fayette,,,796
-NATIONAL EXPRESS COMPANY,1,Over 40 St. Paul Street,,,796
-NATIONAL EXPRESS COMPANY,2,Men and Boys',,,796
-EXPRESS,1,of Saratoga and,,,797
-EXPRESS,2,"o'clock, P. M., in",,2,797
+NATIONAL EXPRESS COMPANY,1,Men and Boys',,,796
 TELEGRAPHS,1,Company,,,797
 TELEGRAPHS,2,South streets,,,797
 TELEGRAPHS,3,"Hotel, Howard",,,797
 TELEGRAPHS,4,Harnden's E.x,79,,797
-TELEGRAPHS,5,cor. Baltimore,166,,797
-TELEGRAPHS,6,W^ilhelm's Ho,,,797
-TELEGRAPHS,7,Adams Ex,,,797
-TELEGRAPHS,8,and President,,,797
-TELEGRAPHS,9,"Jr., Manager",,,797
-TELEGRAPHS,10,Company,,,797
-TELEGRAPHS,11,street,125,,797
-TELEGRAPHS,12,and Exchange,,,797
-TELEGRAPHS,13,Manager,,,797
-TELEGRAPHS,14,Commercial,,,797
-TELEGRAPHS,15,Manager,,,797
+TELEGRAPHS,5,W^ilhelm's Ho,,,797
+TELEGRAPHS,6,Adams Ex,,,797
+TELEGRAPHS,7,"Jr., Manager",,,797
+TELEGRAPHS,8,Company,,,797
+TELEGRAPHS,9,street,125,,797
+TELEGRAPHS,10,Manager,,,797
+TELEGRAPHS,11,Commercial,,,797
+TELEGRAPHS,12,Manager,,,797
 SMITH BKOS,1,Pacific and Atlantic Telegraph,,,797
 SMITH BKOS,2,Company,,,797
 SMITH BKOS,3,"H. L. Harris, Manager",,,797
-CITY PASSENGER RAILWAY,1,Office N. E. cor Eutaw and Baltimore-sts,,,797
 HENRY TYSON,1,President and Superintendent,,,797
-MADISON AVENUE LINE,1,the city limits. Madison avenue cars run at,,,797
-MADISON AVENUE LINE,2,"intervals of 5 minutes in the morning, and 4",,,797
-MADISON AVENUE LINE,3,minutes in the afternoon,,,797
-FRANKLIN SQUARE LINE,1,Runs from west end of Baltimore street to,,,797
-FRANKLIN SQUARE LINE,2,Baltimore Cemetery. Cars run at intervals of,,,797
-MORE LINE,1,"Runs from city limits, on Penna. avenue, to",,,797
-MORE LINE,2,"the terminus of Light street, every 10 minutes",,,797
-NORTH BALTIMORE LINE,1,Cars run at intervals of 10 minutes from the,,,797
-NORTH BALTIMORE LINE,2,corner of North and Baltimore streets to the,,,797
-NORTH BALTIMORE LINE,3,end of Charles-st. at North Boundary avenue,,,797
-CANTON LINE,1,Connects with the Madison avenue line at,,,797
-CANTON LINE,2,"Thames street, and runs to East Boundary of",,,797
-CANTON LINE,3,the city at Canton,,,797
-CANTON LINE,4,^^Time of starting the cars on all of the,,,797
-CANTON LINE,5,"lines in Summer, 6 A. M., in Winter, Q\ A",,,797
-CANTON LINE,6,M. Ran until midnight,,,797
-YORK ROAD RAILWAY,1,"On and after Monday, July 9, Cars will",,,797
-YORK ROAD RAILWAY,2,leave City Hall each hour from 7 A. M. to 7,,,797
-YORK ROAD RAILWAY,3,P. M. Night Car for Towsontown at 1 1 P. M,,,797
-YORK ROAD RAILWAY,4,(Except Sunday.) Leave Towsontown every,,,797
-YORK ROAD RAILWAY,5,"hour, from 6A.M. to 7 P. M., except 12",,,797
-YORK ROAD RAILWAY,6,noon. Night Car from Towsontown at 9,,,797
-YORK ROAD RAILWAY,7,"o'clock, P. M. Night Car for Towsontown on",,,797
-YORK ROAD RAILWAY,8,Sunday at 9^ P. M,,,797
-CITY RAILWAY,1,"Office West Baltimore Street extended, terminus",,,797
-CITY RAILWAY,2,Ci&lt;y Passenger Railway,,,797
-CITY RAILWAY,3,W\M. W. ORNDORFF,,,797
-CITY RAILWAY,4,Treasurer,,,797
-CITY RAILWAY,5,"Cars- run hourly, except at 12 noon, from",,,797
-NOTARIES PUBLIC,1,"Joseph T. Atkinson, Commercial bdg. and 36",,,797
-NOTARIES PUBLIC,2,St. Paul,,,797
-NOTARIES PUBLIC,3,"T. Harris Hodges, 23 Lexington",,,797
-NOTARIES PUBLIC,4,"George R Hyland, 48 Second",,,797
-NOTARIES PUBLIC,5,"Geo. E. Sangstou, 1 Law buildings, St. Paul",,,797
-NOTARIES PUBLIC,6,"and Clothiers, Men and Boys'",,,797
+CANTON LINE,1,M. Ran until midnight,,,797
+CITY RAILWAY,1,Ci&lt;y Passenger Railway,,,797
+CITY RAILWAY,2,W\M. W. ORNDORFF,,,797
+CITY RAILWAY,3,Treasurer,,,797
+NOTARIES PUBLIC,1,St. Paul,,,797
 RESIDENT COMMISSIONERS,1,^c,,,798
 RESIDENT COMMISSIONERS,2,St. Paul,,,798
 RESIDENT COMMISSIONERS,3,Paul and,,,798
@@ -2286,177 +1875,98 @@ MEETINGS OF LODGES AND CHAPTERS,25,Monday,,9,798
 MEETINGS OF LODGES AND CHAPTERS,26,VVcdnesd,,19,798
 MEETINGS OF LODGES AND CHAPTERS,27,Monday,,4,798
 MEETINGS OF LODGES AND CHAPTERS,28,Ilall,,,798
-MEETINGS OF LODGES AND CHAPTERS,29,on the,,,798
-MEETINGS OF LODGES AND CHAPTERS,30,of Bal,,,798
-MEETINGS OF LODGES AND CHAPTERS,31,MargUind,,,798
-MEETINGS OF LODGES AND CHAPTERS,32,Master,,,798
-MEETINGS OF LODGES AND CHAPTERS,33,Grand Mas,,,798
-MEETINGS OF LODGES AND CHAPTERS,34,Secretary,,,798
-MEETINGS OF LODGES AND CHAPTERS,35,&amp; CO,,,798
-MEETINGS OF LODGES AND CHAPTERS,36,"David Wilson, R. W. Grand Chaplain",,,798
-MEETINGS OF LODGES AND CHAPTERS,37,Ralph Lynch R. W. Grand Marshal,,,798
-MEETINGS OF LODGES AND CHAPTERS,38,Ashton Martin W. Grand Conductor,,,798
-MEETINGS OF LODGES AND CHAPTERS,39,Arthur McClellan W. Grand Guardian,,,798
-MEETINGS OF LODGES AND CHAPTERS,40,Thomas F. Byrne W. Grand Herald,,,798
-MEETINGS OF LODGES AND CHAPTERS,41,Meetings of Lodges and Encampments at Odd,,,798
-MEETINGS OF LODGES AND CHAPTERS,42,"Fellows Hall, North Gay Street",,,798
-MEETINGS OF LODGES AND CHAPTERS,43,"Washington, No. 1, every Monday",,,798
-MEETINGS OF LODGES AND CHAPTERS,44,"Franklin, 2, &quot; Thursday",,,798
-MEETINGS OF LODGES AND CHAPTERS,45,"Columbia, 3, &quot; Wednesday",,,798
-MEETINGS OF LODGES AND CHAPTERS,46,"William Tell, 4, &quot; Tuesday",,,798
-MEETINGS OF LODGES AND CHAPTERS,47,"Gratitude, 5, &quot; Monday",,,798
-MEETINGS OF LODGES AND CHAPTERS,48,"Harmony, 6, &quot; Wednesday",,,798
-MEETINGS OF LODGES AND CHAPTERS,49,"Friendship, 7, &quot; Thursday",,,798
-MEETINGS OF LODGES AND CHAPTERS,50,"Marion, 8, &quot; Tuesday",,,798
-MEETINGS OF LODGES AND CHAPTERS,51,"Jefferson, 9, &quot; Thursday",,,798
-MEETINGS OF LODGES AND CHAPTERS,52,"Corinthian, 10, &quot; Tuesday",,,798
-MEETINGS OF LODGES AND CHAPTERS,53,"Maryland, 11, &quot; Monday",,,798
-MEETINGS OF LODGES AND CHAPTERS,54,"Monumental, 14, •' Thursday",,,798
-MEETINGS OF LODGES AND CHAPTERS,55,"Mechanics', 15, &quot; Monday",,,798
-MEETINGS OF LODGES AND CHAPTERS,56,"Germania, 47, &quot; Tuesday",,,798
-MEETINGS OF LODGES AND CHAPTERS,57,"Iris, 48, • &quot; Wednesday",,,798
-MEETINGS OF LODGES AND CHAPTERS,58,"Oriental, , 52, &quot; Tuesday",,,798
-MEETINGS OF LODGES AND CHAPTERS,59,"Schiller, 55, &quot; Friday",,,798
-MEETINGS OF LODGES AND CHAPTERS,60,"Baltimore City, 57, &quot; Wednesday",,,798
-MEETINGS OF LODGES AND CHAPTERS,61,"Golden Rule, 58, &quot; Wednesday",,,798
-MEETINGS OF LODGES AND CHAPTERS,62,"Warren, 71, &quot; Friday",,,798
-MEETINGS OF LODGES AND CHAPTERS,63,"Atlantic, 72, &quot; Monday",,,798
-MEETINGS OF LODGES AND CHAPTERS,64,"Indepencence, 77, &quot; Tuesday",,,798
-MEETINGS OF LODGES AND CHAPTERS,65,"Mountain, 84, &quot; Thursday",,,798
-MEETINGS OF LODGES AND CHAPTERS,66,"Liberty, 93, &quot; Monday.'",,,798
-MEETINGS OF LODGES AND CHAPTERS,67,"Madison, . 98, &quot; Wednesday",,,798
-MEETINGS OF LODGES AND CHAPTERS,68,"Escavaille, 106, &quot; Tuesday",,,798
-MEETINGS OF LODGES AND CHAPTERS,69,"Marley, 107, &quot; Thursday",,,798
-MEETINGS OF LODGES AND CHAPTERS,70,"Jerusalem Encamp' t. No. 1, every Friday",,,798
-MEETINGS OF LODGES AND CHAPTERS,71,"Salem &quot; 2, &quot; Wednesday",,,798
-MEETINGS OF LODGES AND CHAPTERS,72,"Hebron &quot; 3, &quot; Tuesday",,,798
-MEETINGS OF LODGES AND CHAPTERS,73,"Schiller, &quot; 12, &quot; Thursday",,,798
-MEETINGS OF LODGES AND CHAPTERS,74,"At Wildey Hall, East Pratt Street",,,798
-MEETINGS OF LODGES AND CHAPTERS,75,"Thomas Wildey Lodge, No. 44, every Wed",,,798
-MEETINGS OF LODGES AND CHAPTERS,76,nesday,,,798
-MEETINGS OF LODGES AND CHAPTERS,77,"At Pacific Hall, cor. Baltimore and Para Streets",,,798
-MEETINGS OF LODGES AND CHAPTERS,78,"Pacific Lodge, No. 63, every Thursday",,,798
-MEETINGS OF LODGES AND CHAPTERS,79,"Mount ^Ararat Encampment, No. 13, every",,,798
-MEETINGS OF LODGES AND CHAPTERS,80,Tuesday,,,798
-MEETINGS OF LODGES AND CHAPTERS,81,At No. 3 South Carey Street,,,798
-MEETINGS OF LODGES AND CHAPTERS,82,"Eureka Lodge, No. 101, every Thursday",,,798
-INDEPENDENT ORDER OF RED MEN,1,"Meet in Metamora Hall, W. Lombard street",,,798
-INDEPENDENT ORDER OF RED MEN,2,near Hanover,,,798
-INDEPENDENT ORDER OF RED MEN,3,"Metamora Tribe, No. 1: Monshusia Tribe",,,798
-INDEPENDENT ORDER OF RED MEN,4,"No. 2; Sagamore Tribe, No. 8; Osceola Tribe",,,798
-INDEPENDENT ORDER OF RED MEN,5,No. 11,,,798
-UNITED ANCIENT ORDER OF DRUIDS,1,The Grand Grove meets on the 3d Thursday,,,798
-UNITED ANCIENT ORDER OF DRUIDS,2,"of May, August, November and February",,,798
-UNITED ANCIENT ORDER OF DRUIDS,3,corner Baltimore and Gay streets,,,798
-UNITED ANCIENT ORDER OF DRUIDS,4,"Washington Grove, No. 1, every Monday",,,798
-UNITED ANCIENT ORDER OF DRUIDS,5,"Baltimore City &quot; '9, '■ Thursday",,,798
-UNITED ANCIENT ORDER OF DRUIDS,6,"Mechanics', &quot; II, &quot; Friday",,,798
-UNITED ANCIENT ORDER OF DRUIDS,7,"Utah, &quot; 12, &quot; Wednesday",,,798
-UNITED ANCIENT ORDER OF DRUIDS,8,I. 0. OF UNITED BROTHERS,,,798
-UNITED ANCIENT ORDER OF DRUIDS,9,Grand Band meets quarterly at Rechabite,,,798
-UNITED ANCIENT ORDER OF DRUIDS,10,Hall,,,798
-UNITED ANCIENT ORDER OF DRUIDS,11,"Flour, Grain, Seeds &amp;c",,,798
-UNITED AMERICAN MECHANICS,1,the 3d Tuesday,,,799
-UNITED AMERICAN MECHANICS,2,"October, at Tem",,,799
+MEETINGS OF LODGES AND CHAPTERS,29,MargUind,,,798
+MEETINGS OF LODGES AND CHAPTERS,30,Master,,,798
+MEETINGS OF LODGES AND CHAPTERS,31,Grand Mas,,,798
+MEETINGS OF LODGES AND CHAPTERS,32,Secretary,,,798
+MEETINGS OF LODGES AND CHAPTERS,33,&amp; CO,,,798
+MEETINGS OF LODGES AND CHAPTERS,34,"Franklin, 2, &quot; Thursday",,,798
+MEETINGS OF LODGES AND CHAPTERS,35,"Columbia, 3, &quot; Wednesday",,,798
+MEETINGS OF LODGES AND CHAPTERS,36,"Gratitude, 5, &quot; Monday",,,798
+MEETINGS OF LODGES AND CHAPTERS,37,"Harmony, 6, &quot; Wednesday",,,798
+MEETINGS OF LODGES AND CHAPTERS,38,"Friendship, 7, &quot; Thursday",,,798
+MEETINGS OF LODGES AND CHAPTERS,39,"Marion, 8, &quot; Tuesday",,,798
+MEETINGS OF LODGES AND CHAPTERS,40,"Jefferson, 9, &quot; Thursday",,,798
+MEETINGS OF LODGES AND CHAPTERS,41,"Corinthian, 10, &quot; Tuesday",,,798
+MEETINGS OF LODGES AND CHAPTERS,42,"Maryland, 11, &quot; Monday",,,798
+MEETINGS OF LODGES AND CHAPTERS,43,"Monumental, 14, •' Thursday",,,798
+MEETINGS OF LODGES AND CHAPTERS,44,"Mechanics', 15, &quot; Monday",,,798
+MEETINGS OF LODGES AND CHAPTERS,45,"Germania, 47, &quot; Tuesday",,,798
+MEETINGS OF LODGES AND CHAPTERS,46,"Schiller, 55, &quot; Friday",,,798
+MEETINGS OF LODGES AND CHAPTERS,47,"Warren, 71, &quot; Friday",,,798
+MEETINGS OF LODGES AND CHAPTERS,48,"Atlantic, 72, &quot; Monday",,,798
+MEETINGS OF LODGES AND CHAPTERS,49,"Indepencence, 77, &quot; Tuesday",,,798
+MEETINGS OF LODGES AND CHAPTERS,50,"Mountain, 84, &quot; Thursday",,,798
+MEETINGS OF LODGES AND CHAPTERS,51,"Liberty, 93, &quot; Monday.'",,,798
+MEETINGS OF LODGES AND CHAPTERS,52,"Escavaille, 106, &quot; Tuesday",,,798
+MEETINGS OF LODGES AND CHAPTERS,53,"Marley, 107, &quot; Thursday",,,798
+MEETINGS OF LODGES AND CHAPTERS,54,nesday,,,798
+MEETINGS OF LODGES AND CHAPTERS,55,Tuesday,,,798
+INDEPENDENT ORDER OF RED MEN,1,No. 11,,,798
+UNITED ANCIENT ORDER OF DRUIDS,1,Hall,,,798
+UNITED ANCIENT ORDER OF DRUIDS,2,"Flour, Grain, Seeds &amp;c",,,798
+UNITED AMERICAN MECHANICS,1,"October, at Tem",,,799
 IMPROVED ORDER OF RED MEN,1,"United States, Im",,,799
-IMPROVED ORDER OF RED MEN,2,in the city of,,,799
-IMPROVED ORDER OF RED MEN,3,in the Corn,,,799
-IMPROVED ORDER OF RED MEN,4,State of Maryland,,,799
-IMPROVED ORDER OF RED MEN,5,Wednesday,,,799
-IMPROVED ORDER OF RED MEN,6,of Tribes,,,799
-IMPROVED ORDER OF RED MEN,7,Red Men's Hall,,3,799
-IMPROVED ORDER OF RED MEN,8,corner Pratt,,5,799
-IMPROVED ORDER OF RED MEN,9,Druids' Hall,,11,799
-IMPROVED ORDER OF RED MEN,10,Gay,,,799
-IMPROVED ORDER OF RED MEN,11,Red Men's Hall,14,,799
-IMPROVED ORDER OF RED MEN,12,corner Light and,,15,799
-IMPROVED ORDER OF RED MEN,13,Red Men's Hall,,16,799
-IMPROVED ORDER OF RED MEN,14,Men's Hall,,22,799
-IMPROVED ORDER OF RED MEN,15,Red Men's Hall,,27,799
-IMPROVED ORDER OF RED MEN,16,Red Men's Hall,,34,799
-IMPROVED ORDER OF RED MEN,17,Powhatan Hall,,39,799
-IMPROVED ORDER OF RED MEN,18,"U. S., at the Red",,,799
+IMPROVED ORDER OF RED MEN,2,State of Maryland,,,799
+IMPROVED ORDER OF RED MEN,3,Wednesday,,,799
+IMPROVED ORDER OF RED MEN,4,Red Men's Hall,,3,799
+IMPROVED ORDER OF RED MEN,5,Druids' Hall,,11,799
+IMPROVED ORDER OF RED MEN,6,Gay,,,799
+IMPROVED ORDER OF RED MEN,7,Red Men's Hall,14,,799
+IMPROVED ORDER OF RED MEN,8,Red Men's Hall,,16,799
+IMPROVED ORDER OF RED MEN,9,Men's Hall,,22,799
+IMPROVED ORDER OF RED MEN,10,Red Men's Hall,,27,799
+IMPROVED ORDER OF RED MEN,11,Red Men's Hall,,34,799
+IMPROVED ORDER OF RED MEN,12,Powhatan Hall,,39,799
 SONS OF TEMPERANCE,1,holds,,,799
 SONS OF TEMPERANCE,2,Baltimore on the,,,799
-SONS OF TEMPERANCE,3,"the Temple, North",4,,799
-SONS OF TEMPERANCE,4,Dr.W.H. Perkins,,,799
-SONS OF TEMPERANCE,5,G. Scribe;,,,799
-SONS OF TEMPERANCE,6,P. G. W. Ward,,,799
-SONS OF TEMPERANCE,7,G. Conduc,,,799
-SONS OF TEMPERANCE,8,Subordinate Divi,,,799
-SONS OF TEMPERANCE,9,the Temple,,1,799
-SONS OF TEMPERANCE,10,at the Temple,3,,799
-SONS OF TEMPERANCE,11,over People's,,2,799
-SONS OF TEMPERANCE,12,Paca,,,799
-SONS OF TEMPERANCE,13,People's Bank,5,,799
-SONS OF TEMPERANCE,14,S. E. cor,,161,799
-SONS OF TEMPERANCE,15,quarterly,,,799
-SONS OF TEMPERANCE,16,April and July,4,,799
-SONS OF TEMPERANCE,17,at the subsequent,,,799
+SONS OF TEMPERANCE,3,Dr.W.H. Perkins,,,799
+SONS OF TEMPERANCE,4,G. Scribe;,,,799
+SONS OF TEMPERANCE,5,P. G. W. Ward,,,799
+SONS OF TEMPERANCE,6,G. Conduc,,,799
+SONS OF TEMPERANCE,7,Subordinate Divi,,,799
+SONS OF TEMPERANCE,8,Paca,,,799
+SONS OF TEMPERANCE,9,People's Bank,5,,799
+SONS OF TEMPERANCE,10,S. E. cor,,161,799
+SONS OF TEMPERANCE,11,quarterly,,,799
+SONS OF TEMPERANCE,12,April and July,4,,799
 CADETS OF TEMPERANCE,1,W. P,,,799
 CADETS OF TEMPERANCE,2,V. P,,,799
 CADETS OF TEMPERANCE,3,Sec'y,,,799
 CADETS OF TEMPERANCE,4,Cement,,,799
 CADETS OF TEMPERANCE,5,"Smith, Sr",,,799
-CADETS OF TEMPERANCE,6,"of Chas. Banthem, G. G",,,799
-CADETS OF TEMPERANCE,7,"Henry Disney, G. W",,,799
-CADETS OF TEMPERANCE,8,"I'ranklin Supplee, p. G. W. P",,,799
-CADETS OF TEMPERANCE,9,Regular quarterly sessions held in January,,,799
-CADETS OF TEMPERANCE,10,"April and July, and annual sessions in October",,,799
-CADETS OF TEMPERANCE,11,Subordinate Sections in the City,,,799
-CADETS OF TEMPERANCE,12,"Washington, No. 1, Tuesday, at Wildey Hall",,,799
-CADETS OF TEMPERANCE,13,"St. Exrelsior, &quot; 2, Wednesday, Pacific Hall",,,799
-CADETS OF TEMPERANCE,14,"Irvington, &quot; 3, Powhatan &quot;",,,799
-CADETS OF TEMPERANCE,15,Thursday,,,799
-CADETS OF TEMPERANCE,16,"Lafayette, &quot; 4, Friday, Seamen's Bethel",,,799
-CADETS OF TEMPERANCE,17,"Resolute, &quot; 5, Tuesday, Temp'ce Temple",,,799
-CADETS OF TEMPERANCE,18,"Silver Spring, &quot; 18, Thursday, Hall over en",,,799
-CADETS OF TEMPERANCE,19,"gine house, Montgomery-st",,,799
-CADETS OF TEMPERANCE,20,"Union &quot; 24, Tuesday, School house",,,799
-CADETS OF TEMPERANCE,21,Canton,,,799
-CADETS OF TEMPERANCE,22,"Ellsworth &quot; 27, Thursday, cor Gough and",,,799
-CADETS OF TEMPERANCE,23,Dallas streets,,,799
-CADETS OF TEMPERANCE,24,All communications should be addressed to,,,799
-CADETS OF TEMPERANCE,25,"R. T. Smith, jr.. Grand Secretary, No. 55 w",,,799
-CADETS OF TEMPERANCE,26,"Fayette street, Baltimore",,,799
+CADETS OF TEMPERANCE,6,"Henry Disney, G. W",,,799
+CADETS OF TEMPERANCE,7,Thursday,,,799
+CADETS OF TEMPERANCE,8,Canton,,,799
+CADETS OF TEMPERANCE,9,Dallas streets,,,799
+CADETS OF TEMPERANCE,10,"Fayette street, Baltimore",,,799
 BALTIMORE GYMNASIUM,1,Carroll Hall,,,799
 BALTIMORE GYMNASIUM,2,Organized 1858. Chartered 1862,,,799
 BALTIMORE GYMNASIUM,3,Executive Committee,,,799
-BALTIMORE GYMNASIUM,4,"John Carson, Geo. W. Sanders",,,799
-BALTIMORE GYMNASIUM,5,Charles W. Hamill,,,799
-BALTIMORE GYMNASIUM,6,"Open every day (except Sundays,) from 6",,,799
-BALTIMORE GYMNASIUM,7,A. xM. to 10 P. M,,,799
+BALTIMORE GYMNASIUM,4,Charles W. Hamill,,,799
 ST. ANDREW'S SOCIETY,1,Incorporated 1806,,,799
 ST. ANDREW'S SOCIETY,2,President Wm. F. Murdoch,,,799
 ST. ANDREW'S SOCIETY,3,First Vice-President John Boyd,,,799
 ST. ANDREW'S SOCIETY,4,Second Vice-President John Biggar,,,799
-ST. ANDREW'S SOCIETY,5,its Counsellor John T. Morris,,,799
-ST. ANDREW'S SOCIETY,6,Secretary Wm. Simms,,,799
-ST. ANDREW'S SOCIETY,7,Physician Thomas Shearer,,,799
-ST. ANDREW'S SOCIETY,8,Managers,,,799
-ST. ANDREW'S SOCIETY,9,"L. Wm. Crichton, F. L. Farquharson",,,799
-ST. ANDREW'S SOCIETY,10,"J. L. Bezick, Thos. Anderson",,,799
-ST. ANDREW'S SOCIETY,11,"James Cairns, Wm. Murdoch",,,799
-ST. ANDREW'S SOCIETY,12,HIBERNfAN SOCIETY OF BALTIMORE,,,799
-ST. ANDREW'S SOCIETY,13,Incorporated by the General Assembly of,,,799
-ST. ANDREW'S SOCIETY,14,"Maryland, February, 1818",,,799
-ST. ANDREW'S SOCIETY,15,"Daniel J. Foley, President",,,799
-ST. ANDREW'S SOCIETY,16,"James Armstrong, 1st Vice-President",,,799
-ST. ANDREW'S SOCIETY,17,"Luke Cassidy, 2d Vice-President",,,799
-ST. ANDREW'S SOCIETY,18,"Rev. James Dolan, Chaplain",,,799
-ST. ANDREW'S SOCIETY,19,"Eugene Cummiskey, Counsellor",,,799
-ST. ANDREW'S SOCIETY,20,JohnH. O'Donovan lphv&lt;?if.ians ^^i^JSicians,,,799
-ST. ANDREW'S SOCIETY,21,"Dorainick A. O'Donnell, |",,,799
-ST. ANDREW'S SOCIETY,22,"M. J. Kelly, Treasurer",,,799
-ST. ANDREW'S SOCIETY,23,"©n J. Fairfax McLaughlin, Secretary",,,799
+ST. ANDREW'S SOCIETY,5,Secretary Wm. Simms,,,799
+ST. ANDREW'S SOCIETY,6,Physician Thomas Shearer,,,799
+ST. ANDREW'S SOCIETY,7,Managers,,,799
+ST. ANDREW'S SOCIETY,8,"James Cairns, Wm. Murdoch",,,799
+ST. ANDREW'S SOCIETY,9,HIBERNfAN SOCIETY OF BALTIMORE,,,799
+ST. ANDREW'S SOCIETY,10,"Maryland, February, 1818",,,799
+ST. ANDREW'S SOCIETY,11,"Daniel J. Foley, President",,,799
+ST. ANDREW'S SOCIETY,12,"James Armstrong, 1st Vice-President",,,799
+ST. ANDREW'S SOCIETY,13,"Luke Cassidy, 2d Vice-President",,,799
+ST. ANDREW'S SOCIETY,14,"Rev. James Dolan, Chaplain",,,799
+ST. ANDREW'S SOCIETY,15,"Eugene Cummiskey, Counsellor",,,799
+ST. ANDREW'S SOCIETY,16,JohnH. O'Donovan lphv&lt;?if.ians ^^i^JSicians,,,799
+ST. ANDREW'S SOCIETY,17,"Dorainick A. O'Donnell, |",,,799
+ST. ANDREW'S SOCIETY,18,"M. J. Kelly, Treasurer",,,799
 MANAGERS,1,"James Mullin, Michael Roche",,,799
 MANAGERS,2,"Henry McShane, Daniel Donnelly",,,799
-MANAGERS,3,"Sam'l H. Adams, George Reilly",,,799
 GERMAN SOCIETY OF MARYLAND,1,"A. Schumacher, President",,,799
-GERMAN SOCIETY OF MARYLAND,2,"H. Von Kapf, and G. A. Von Lingen, Sec'ys",,,799
-GERMAN SOCIETY OF MARYLAND,3,"Israel Cohen, Treasurer",,,799
-GERMAN SOCIETY OF MARYLAND,4,"H. F. Wellinghoff, Agent",,,799
-GERMAN SOCIETY OF MARYLAND,5,"and Plaster, 21 Spear's Wharf",,,799
+GERMAN SOCIETY OF MARYLAND,2,"Israel Cohen, Treasurer",,,799
+GERMAN SOCIETY OF MARYLAND,3,"H. F. Wellinghoff, Agent",,,799
 ST. GEORGE'S SOCIETY,1,Darrell,,,800
 ST. GEORGE'S SOCIETY,2,Perot,,,800
 ST. GEORGE'S SOCIETY,3,Williams,,,800
@@ -2467,81 +1977,41 @@ UNION CLUB,1,Charles,,,800
 CHILDREN'S AID SOCIETY,1,Secretary,,,800
 CHILDREN'S AID SOCIETY,2,Secretary,,,800
 W'. C,1,homes,,,800
-W'. C,2,to be received,,,800
-W'. C,3,they are i8,,,800
-W'. C,4,shoes,,,800
-W'. C,5,thank,,,800
-W'. C,6,in our,,,800
-W'. C,7,and business,,,800
-W'. C,8,commendable,,,800
+W'. C,2,shoes,,,800
+W'. C,3,thank,,,800
+W'. C,4,commendable,,,800
 BALTIMORE TYPOGRAPHICAL UNION,1,Secretary,,,800
 BALTIMORE TYPOGRAPHICAL UNION,2,night,,,800
-BALTIMORE TYPOGRAPHICAL UNION,3,"year, at Pat",,,800
-BALTIMORE TYPOGRAPHICAL UNION,4,Baltimore,,,800
+BALTIMORE TYPOGRAPHICAL UNION,3,Baltimore,,,800
 MARYLAND,1,BAKER SEWING,,,800
-SCHUETZEN PARK ASSOCIATION,1,"Belair Road, North of Broadway",,,800
-SCHUETZEN PARK ASSOCIATION,2,"E. A. Keene, President",,,800
-SCHUETZEN PARK ASSOCIATION,3,"M. G. CoHN, Secretary",,,800
-SCHUETZEN PARK ASSOCIATION,4,"Charles Lkhmkuhl, Shooting Master",,,800
-THE POOR,1,"Jesse Hunt, President",,,800
-THE POOR,2,"Z. D. Brashears, Secretary",,,800
-THE POOR,3,"Office hours, 9 to 4 o'clock",,,800
-HOUSE OF REFUGE,1,Managers of the House of Refuge on the part,,,800
-HOUSE OF REFUGE,2,of the City of Baltimore,,,800
-HOUSE OF REFUGE,3,"Charles M. Keyser, Wm. Heald",,,800
-HOUSE OF REFUGE,4,"E. M. Green wav, jr. A. Fuller Crane",,,800
-HOUSE OF REFUGE,5,"L. a. Birely, Sam'l J. Smith",,,800
-HOUSE OF REFUGE,6,"W^m. Shamburg, Chas. M. Dougherty",,,800
-HOUSE OF REFUGE,7,"Geo. M. Robinson, John McCron, D. D",,,800
-NEWS ROOMS,1,"New Exchange Building, Exchange place and",,,800
-NEWS ROOMS,2,Second Street,,,800
-NEWS ROOMS,3,Papers filed from all parts of the United,,,800
-NEWS ROOMS,4,"States, also from Europe and the West Indies",,,800
-NEWS ROOMS,5,Subscription $15 per annum for individuals,,,800
-NEWS ROOMS,6,and $20 for firms of two or more,,,800
-ATHEN^UM,1,"Corner of St. Paul and Saratoga streets, con",,,800
-ATHEN^UM,2,tains the following Societies :,,,800
-ATHEN^UM,3,Library Company of Baltimore. 1,,,800
-ATHEN^UM,4,Historical Society of Maryland. -/,,,800
-ATHEN^UM,5,Mercantile Library Association,,,800
-ATHEN^UM,6,"Library 20,000 volumes",,,800
-ATHEN^UM,7,The Library and Reading Rooms are open,,,800
-ATHEN^UM,8,"daily, from 10 A. M. until 2 P. M., for the re",,,800
-ATHEN^UM,9,"ception of ladies exclusively, and from 2 till",,,800
-ATHEN^UM,10,Subscription Five Dollars per anuum,,,800
+SCHUETZEN PARK ASSOCIATION,1,"E. A. Keene, President",,,800
+SCHUETZEN PARK ASSOCIATION,2,"M. G. CoHN, Secretary",,,800
+SCHUETZEN PARK ASSOCIATION,3,"Charles Lkhmkuhl, Shooting Master",,,800
+PROVEMENT OF THE CONDITION OF,1,THE POOR,,,800
+PROVEMENT OF THE CONDITION OF,2,"Jesse Hunt, President",,,800
+PROVEMENT OF THE CONDITION OF,3,"Z. D. Brashears, Secretary",,,800
+HOUSE OF REFUGE,1,THE MERCHANTS EXCHANGE AND,,,800
+NEWS ROOMS,1,Second Street,,,800
+ATHEN^UM,1,Mercantile Library Association,,,800
+ATHEN^UM,2,"Library 20,000 volumes",,,800
 GEO. B. COLE,1,"Wm. H. Sargeant, Librarian",,,800
 MARYLAND INSTITUTE,1,FOR PROMOTING MECHANIC ARTS,,,800
 MARYLAND INSTITUTE,2,President W. W. Maughlin,,,800
-MARYLAND INSTITUTE,3,"„ ., , ■» C. W.Bcntley",,,800
-MARYLAND INSTITUTE,4,Vice Presidents ^^^^^ S.George,,,800
-MARYLAND INSTITUTE,5,|,,,800
-MARYLAND INSTITUTE,6,Recording Secretary James Young,,,800
-MARYLAND INSTITUTE,7,Corresponding Secretary. .N. H. Thayer,,,800
-MARYLAND INSTITUTE,8,Treasurer .llugh Bolton,,,800
-MARYLAND INSTITUTE,9,Actuary I. Gibson,,,800
-MARYLAND INSTITUTE,10,Meets on the second Wednesday of each,,,800
-MARYLAND INSTITUTE,11,"month, at the hall over Centre Market. Library",,,800
-MARYLAND INSTITUTE,12,open daily from 9 A. M. to 9 P. M. Active,,,800
-MARYLAND INSTITUTE,13,members $5 for admission and $3 annual dues,,,800
-MARYLAND INSTITUTE,14,Junior members $2.50 for admission and,,,800
-MARYLAND INSTITUTE,15,$1.50 annual dues. Lady members $2.50 for,,,800
-MARYLAND INSTITUTE,16,admission and $1.50 annual dues,,,800
-MACHINE,1,and Charles-sl,,,801
-MACHINE,2,P. Kennedy,,,801
-MACHINE,3,Pennington,,,801
-MACHINE,4,M. Eaton,,,801
-MACHINE,5,Morison,,,801
-MACHINE,6,Uhler,,,801
-MACHINE,7,"day, from 9 A",,,801
-MACHINE,8,M,4,7,801
+MARYLAND INSTITUTE,3,Vice Presidents ^^^^^ S.George,,,800
+MARYLAND INSTITUTE,4,|,,,800
+MARYLAND INSTITUTE,5,Recording Secretary James Young,,,800
+MARYLAND INSTITUTE,6,Treasurer .llugh Bolton,,,800
+MARYLAND INSTITUTE,7,Actuary I. Gibson,,,800
+MACHINE,1,P. Kennedy,,,801
+MACHINE,2,Pennington,,,801
+MACHINE,3,M. Eaton,,,801
+MACHINE,4,Morison,,,801
+MACHINE,5,Uhler,,,801
+MACHINE,6,M,4,7,801
 INTERNAL REVENUE,1,A. Wisong,,,801
 INTERNAL REVENUE,2,H.Eichelberger,,,801
-INTERNAL REVENUE,3,to 3 P. M,,9,801
-INTERNAL REVENUE,4,up stairs,,,801
 UNITED STATES ASSESSORS,1,W. Webster,2,,801
-UNITED STATES ASSESSORS,2,and Exeter,,,801
-UNITED STATES ASSESSORS,3,"W. Ross, over",3,,801
-"PAYMASTER'S OFFICE, U. S. N",1,office over,,,801
+UNITED STATES ASSESSORS,2,"W. Ross, over",3,,801
 REGISTERS IN BANKRUPTCY,1,Frederick city,4,,801
 REGISTERS IN BANKRUPTCY,2,Upper Marlboro,5,,801
 BOARD OF TRADE,1,"Hodges, jr",,,801
@@ -2556,46 +2026,20 @@ CORN AND FLOUR EXCHANGE,3,Crichton,,,801
 CORN AND FLOUR EXCHANGE,4,R. Herbert,,,801
 CORN AND FLOUR EXCHANGE,5,S. Dickinson,,,801
 CORN AND FLOUR EXCHANGE,6,F. Wheatley,,,801
-EXECUTIVE COMMITTEE,1,and Henry,,,801
 GAS LIGHT COMPANY OF BALTIMORE,1,O'Donnell,,,801
 GAS LIGHT COMPANY OF BALTIMORE,2,Brown,,,801
 GAS LIGHT COMPANY OF BALTIMORE,3,street,,19,801
 HOME OF THE FRIENDLESS,1,Townsend sts,,,801
 HOME OF THE FRIENDLESS,2,Sales Room,,,801
-HOME OF THE FRIENDLESS,3,Corner Townsend and Division streets,,,801
-HOME OF THE FRIENDLESS,4,Under the care of the Sisters of Charity,,,801
-HOME OF THE FRIENDLESS,5,"Visiting days, Monday and Thursday, from'l",,,801
-HOME OF THE FRIENDLESS,6,"to 5 o'clock, P. M",,,801
-LUM,1,"Madison Avenue, N of McMechin",,,801
-AGED MEN'S HOME,1,N. W. cor Lexington and Calhoun,,,801
-AGED WOMEN'S HOME,1,Lexington between Calhoun and Stricker-sts,,,801
-AGED WOMEN'S HOME,2,"Visiting days, Thursday and Friday",,,801
 BALTIMORE ORPHAN ASYLUM,1,"Calhoun, between Lexington andSaratoga-sts",,,801
-BALTIMORE ORPHAN ASYLUM,2,"to 6 o'clock, P. M",,,801
-UNION ORPHAN ASYLUM,1,S. W. corner Franklin and Schroeder-sts,,,801
-UNION ORPHAN ASYLUM,2,For maintaining and educating children o^,,,801
-UNION ORPHAN ASYLUM,3,deceased soldiers and sailors,,,801
-UNION ORPHAN ASYLUM,4,"Miss M. PuRviANCE, President",,,801
-BALTIMORE,1,No. 82 N. Calvert Street,,,801
-BALTIMORE,2,John T. Taylor,,,801
-BALTIMORE,3,Superintendent,,,801
-MARYLAND COLLEGE OF PHARMACY,1,Over 12 W. Baltimore Street,,,801
-MARYLAND COLLEGE OF PHARMACY,2,J. Brown Baxley,,,801
-MARYLAND COLLEGE OF PHARMACY,3,Dean,,,801
-DISPENSARIES,1,"Baltimore General, N. E. corner Liberty and",,,801
-DISPENSARIES,2,Fayette,,,801
-DISPENSARIES,3,"Baltimore Special Dispensary, 73 North-st",,,801
-DISPENSARIES,4,"Eastern, corner Central av. and Baltimore",,,801
-DISPENSARIES,5,"North Eastern, 238 E. Monument near Gay",,,801
-DISPENSARIES,6,"Southern, 48 Conway",,,801
-DISPENSARIES,7,"Washington University Dispensary, N. E. cor",,,801
-DISPENSARIES,8,ner Calvert and Saratoga,,,801
-SANE,1,"Monumeut-st., E. of Broadway, Baltimore",,,801
-SANE,2,"Richard S. Steuart, M. D., President",,,801
-SANE,3,"John Fonerden, M. D., Med. Sup't",,,801
-SANE,4,"Wm. Frederick Steuart, M. D., Asst. Physician",,,801
-SANE,5,"John G. Mengel, Steward",,,801
+UNION ORPHAN ASYLUM,1,"Miss M. PuRviANCE, President",,,801
+BALTIMORE,1,John T. Taylor,,,801
+BALTIMORE,2,Superintendent,,,801
+MARYLAND COLLEGE OF PHARMACY,1,J. Brown Baxley,,,801
+MARYLAND COLLEGE OF PHARMACY,2,Dean,,,801
+DISPENSARIES,1,Fayette,,,801
+DISPENSARIES,2,"Southern, 48 Conway",,,801
+SANE,1,"John G. Mengel, Steward",,,801
 GERMAN ORPHAN ASYLUM,1,No. 69 N. Calvert-st,,,801
 GERMAN ORPHAN ASYLUM,2,"John Kranz, President",,,801
 GERMAN ORPHAN ASYLUM,3,"Fred. Gleichmann, Agent",,,801
-GERMAN ORPHAN ASYLUM,4,"Open to the Public every Thursday, from 2 to",,,801

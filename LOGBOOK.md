@@ -245,3 +245,58 @@ the noise. We cannot presently demonstrate that our best tier is better than
 our worst. That is a reason to keep validating, not a reason to relabel.
 
 Find rate across all three rounds: 25 of 72 (35%).
+
+---
+
+## 2026-08-08 — Adversarial audit: what it broke, and where it overreached
+
+Seven agents were set to refute the project's substantive claims, plus a
+separate pass I ran on the data myself.
+
+### Confirmed and fixed
+
+**The anchor table contained fabricated rows.** Twelve rows were filed under a
+street called "THE", carrying the directory's own explanatory paragraph as
+cross-street data ("any house, for instance, 71 N. CHARLES-ST., on consult").
+Across the whole table 64 of 1,521 rows (4.2%) had prose where a street name
+belonged. The extractor now rejects rows whose cross street runs longer than
+four words, contains explanatory phrasing, or begins lowercase.
+
+**BALTIMORE (E) never existed as a key.** Its heading OCR'd as broken tokens,
+so the entire East Baltimore Street table was swallowed into BALTIMORE (W) —
+visible in the tail of that street's rows, which end at Choptank, Gist and "To
+East av", all east-side crossings. Only two placed residents were affected, but
+the merge was real.
+
+**Residents piling onto single coordinates** (found in my own pass, see
+SOLUTIONS.md). 44% of 1860 points shared a location, one carrying 75 people.
+
+### Where the audit overreached
+
+**The 1860 ward 14 enslaved count.** An auditor read the printed cell as 143
+against our 142 and recommended changing it. Rejected. Our twenty ward figures
+sum to exactly 2,218, the printed column total; 143 would give 2,219 and
+contradict it. The auditor read one cell, the arithmetic reads all twenty. They
+also noted the printed table's own M+F for that row does not reconcile with its
+stated total — a clerk's slip in 1860 — which is a good reason to trust the
+column sum over any single cell.
+
+### What survived
+
+**The 1820 transcription.** An auditor independently re-read all 192 age-banded
+cells plus 12 ward totals from the page image at 600dpi and reproduced our
+figures exactly, including catching two of their own misreadings. 23.40% holds,
+now corroborated by 204 independently read data points rather than three pooled
+totals.
+
+**The 1850/1860 transcriptions.** 39 of 40 ward-year cells verified directly
+against page images. Every one of the twenty wards falls; the closest are wards
+11 and 14 at −0.17 and −0.20 points.
+
+### And it settled an open question
+
+The Sidney & Neff 1851 map's population table disagrees with the census on
+several wards — up to 1,320 people on ward 8. **The map is the unreliable one.**
+Its own printed total (169,303) does not equal the sum of its own twenty printed
+rows (169,032). The census reconciles exactly against its printed total. Earlier
+logged as unresolved; now resolved against the map.

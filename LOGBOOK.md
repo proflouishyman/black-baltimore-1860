@@ -211,3 +211,37 @@ re-derives the positive version and believes it.
 
 **Method note worth keeping:** any "X% of our points are near Y" claim in a
 dense city needs a null model before it means anything.
+
+---
+
+## 2026-08-08 — A published claim that did not survive more evidence
+
+After 32 census checks, every ward mismatch was an adjacent ward, boundary
+distance zero. That looked like a clean, meaningful result about the *shape* of
+our error — misplacements were boundary ambiguity, never gross. It went onto the
+site as "Every mismatch found so far is an adjacent ward."
+
+Round 3 took the sample to 72 and broke it. Two mismatches are not adjacent:
+
+| Resident | We place | Census says | Distance apart |
+|---|---|---|---|
+| Sevoy | ward 13 | ward 17 | 579 m, one ward between |
+| Ireland | ward 12 | ward 10 | 371 m, one ward between |
+
+Pooled: 9 of 11 mismatches adjacent (82%), 2 genuinely misplaced. The page has
+been corrected, and now says so explicitly, including that we published the
+stronger version first.
+
+**The methodological point is the one worth keeping.** A rule that holds
+perfectly across a small sample is exactly the kind of claim that fails quietly
+as evidence accumulates — and it fails in the flattering direction, because a
+clean pattern is more publishable than a messy one. The honest version is
+duller: most of our errors are boundary-scale, a minority are real.
+
+Also settled, and also not what we expected: **the confidence tiers do not
+separate.** Bracketed placements match the census ward 70% of the time,
+street-proportional 62%. Both rest on 7-8 traceable cases, so the gap is inside
+the noise. We cannot presently demonstrate that our best tier is better than
+our worst. That is a reason to keep validating, not a reason to relabel.
+
+Find rate across all three rounds: 25 of 72 (35%).

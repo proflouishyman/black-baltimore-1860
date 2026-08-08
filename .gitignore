@@ -6,3 +6,6 @@ data/raw/hue/
 data/raw/*.geojson
 data/raw/maps/*.jp2
 data/raw/maps/*.tif
+data/raw/H_*.csv
+data/raw/*.csv.gz
+data/raw/census*.pdf

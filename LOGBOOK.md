@@ -344,3 +344,75 @@ Thirteen maps total, 1804-1876. Thumbnails generated at 900px long edge,
 JPEG quality 80: 129-216 KB each, 2.2 MB for all thirteen. Page verified
 error-free over CDP (port 9222): all 13 `<img>` load, `1860.html` still
 renders with the new "Maps" nav item present.
+
+---
+
+## 2026-08-08 — Names and ward ARE public, in the samples. And why bulk matching still fails.
+
+### The correction
+
+I twice told Louis that NAMEFRST, NAMELAST and WARD were unavailable without the
+restricted IPUMS licence. That was wrong, and the error was mine: I tested
+availability against `us1860c`, the 100% file, and generalised from it.
+
+The contractual exclusion applies **only to the 100% files**. The 1% samples
+carry all three. Verified against the API: `us1860a` and `us1860b` both accept
+WARD, NAMEFRST and NAMELAST; `us1860c` rejects all three.
+
+`us1860b` is a 1-in-100 national sample with a **1-in-50 oversample of the free
+African-American population**. Downloaded in minutes on the existing API key:
+
+- 2,599 Baltimore City records
+- **542 Black Baltimoreans, every one with a name and a recorded ward**
+
+That is twenty times the 25 people we had hand-verified, obtained free and
+instantly. It should have been the first thing tried.
+
+### What it does not give us
+
+Matching those 542 against our 2,927 placed directory residents on surname plus
+forename produces 178 matches, 44 of them one-to-one. Ward agreement on those
+44: **30%**, against 56% on the hand-checked, occupation-corroborated set.
+
+That looks like our accuracy collapsing. It is not. It is the matching that is
+broken, and the null model shows it:
+
+| | ward agreement |
+|---|---|
+| random pairing, given both ward distributions | 6.1% |
+| name-only automated matches | 30% |
+| hand-checked with occupation corroboration | 56% |
+
+Solving the mixture (`observed = f*true + (1-f)*chance`) gives **f = 48%**:
+roughly half of the 44 name-only matches are the same person and half are
+different people who happen to share a name. That is consistent with the
+independent estimate of ~62 expected true overlaps at 2.1% sampling density.
+
+**And nothing in the data says which half is which.** The 30% is a mixture, not
+a measurement.
+
+### Why this matters beyond this project
+
+This is the concrete answer to "why not just pull the whole database and match
+it?" At a 1-in-50 sampling density, in a population where surnames repeat
+heavily, automated name matching finds about as many coincidences as identities.
+Adding volume does not fix it, because the contamination rate is a property of
+the name distribution, not of the sample size. Occupation and race corroboration
+is what separates them, and that is exactly what the hand checks do and the
+automated join cannot.
+
+The hand-checked 56% remains the best estimate of geocoding accuracy. The 30%
+should not be quoted.
+
+### Revised IPUMS strategy
+
+- **For validation**: the public samples are enough and are free. `us1860b` for
+  1860, `us1870b` for 1870. No licence needed.
+- **For full linkage**: still blocked. A 1-in-50 sample cannot link most of our
+  4,251 residents no matter how it is processed. That needs the restricted
+  Ancestry Full Count, and the right tier is the **20% License** (Baltimore City
+  1860 is 0.67% of the national population).
+- WARD is documented as available for 1850 (100%), 1860 and 1870 (1% and 1.2%),
+  1900-1940. IPUMS itself warns the variable is unreliable: enumerators often
+  failed to record it, boundaries shifted, and the Census Bureau published no
+  ward maps.

@@ -300,3 +300,47 @@ several wards — up to 1,320 people on ward 8. **The map is the unreliable one.
 Its own printed total (169,303) does not equal the sum of its own twenty printed
 rows (169,032). The census reconciles exactly against its printed total. Earlier
 logged as unresolved; now resolved against the map.
+
+---
+
+## 2026-08-08 — Maps gallery page (docs/maps.html)
+
+Louis asked for a gallery of period Baltimore maps, since "users will want to
+look at other maps." Built `scripts/build_maps_page.py`, wired into
+`build_artifact.py`'s NAV and `main()`.
+
+Fetched the nine remaining LOC items identified on 2026-08-07 (1804, 1823,
+1836, 1844, 1856, 1857, 1866, 1869, 1876) via the IIIF `pct:12.5`/`pct:25`
+JPEG endpoints at `tile.loc.gov`, which serves fine over plain curl even
+though `loc.gov` itself blocks it. All nine resolved on the first or second
+try; 1836's `?fo=json` needed a retry with a longer timeout. 1857's IIIF
+service string uses `g3843:g3843b`, not the `g3844:g3844b` every other item
+in this batch uses — worth remembering if more Baltimore LOC maps are added
+later, since guessing the service prefix from a sibling item's URL pattern
+will silently 404.
+
+Digital Maryland (the 1819 and 1860 maps) also blocks plain curl at its
+landing pages but not at its `/digital/download/.../size/full` endpoint,
+which turned out to serve the exact same files already sitting in
+`data/raw/maps/` (verified by matching pixel dimensions), confirming those
+two downloads are already the institution's full-resolution copies.
+
+**Editorial calls made:**
+- The 1822 item LOC catalogs as "Plan of the city of Baltimore," published
+  by Fielding Lucas Jr., with no mention of Poppleton in its own contributor
+  field. Captioned it as "surveyed by Thomas H. Poppleton, published by
+  Fielding Lucas, Jr." on the strength of the 1823 LOC record for the same
+  survey, which does credit Poppleton as cartographer. Not a contradiction,
+  just two catalog records that describe the division of labor differently.
+- 1804 (Warner & Hanna, before Jackson's 1819 directory) and 1869/1876
+  (after the 1868 directory) marked as outside the project's 1819-1868
+  window on each card, rather than split into a separate section, so the
+  gallery stays in one chronological sequence per the brief.
+- 1869 Sachse bird's-eye: fetched only the `pct:12.5` preview (4,930 x 2,376)
+  for the thumbnail. Did not fetch the 39,440 x 19,008 JP2 master, per
+  instruction.
+
+Thirteen maps total, 1804-1876. Thumbnails generated at 900px long edge,
+JPEG quality 80: 129-216 KB each, 2.2 MB for all thirteen. Page verified
+error-free over CDP (port 9222): all 13 `<img>` load, `1860.html` still
+renders with the new "Maps" nav item present.

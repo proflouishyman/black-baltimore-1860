@@ -29,7 +29,10 @@ households      one row per Baltimore household, 1790-1840, from the IPUMS
 
 enslaved        one row per enslaved person recorded in Baltimore on the 1850
                 and 1860 slave schedules
-                (year, holdnum, slavenum, sizehold, age, sex, race)
+                (year, holdnum, slavenum, sizehold, age, sex, race,
+                 fugitive, manumitted)
+                fugitive/manumitted are NULL for 1850: that schedule did not
+                ask, which is not the same fact as asking and being told no
 
 ward_census     printed federal census ward tables, transcribed by hand and
                 reconciled against the printed totals
@@ -122,7 +125,9 @@ CREATE TABLE enslaved (
   sizehold INTEGER,
   age REAL,
   sex INTEGER,
-  race INTEGER
+  race INTEGER,
+  fugitive INTEGER,
+  manumitted INTEGER
 );
 
 DROP TABLE IF EXISTS ward_census;
@@ -342,13 +347,20 @@ def load_enslaved(con):
                         (chunk["city"] == BALT["city"])]
             if sub.empty:
                 continue
+            # fugitive_ind/manumit_ind exist only in the 1860 file. They stay
+            # NULL for 1850 rather than being coerced to 0, because "the 1850
+            # schedule did not ask" and "asked, answered no" are different
+            # facts and must not look the same in a query.
+            blank = pd.Series([None] * len(sub), index=sub.index)
             for row in zip(sub["holdnum"], sub["slavenum"], sub["sizehold"],
-                           sub["age"], sub["sex"], sub["race"]):
+                           sub["age"], sub["sex"], sub["race"],
+                           sub.get("fugitive_ind", blank),
+                           sub.get("manumit_ind", blank)):
                 keep.append((year,) + tuple(
                     None if pd.isna(x) else (float(x) if i == 3 else int(x))
                     for i, x in enumerate(row)))
             n += len(sub)
-        con.executemany("INSERT INTO enslaved VALUES (?,?,?,?,?,?,?)", keep)
+        con.executemany("INSERT INTO enslaved VALUES (?,?,?,?,?,?,?,?,?)", keep)
         total += n
         print(f"  enslaved {year}: {n} people ({path.name})")
     return total

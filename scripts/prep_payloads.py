@@ -333,6 +333,12 @@ def main():
                       "per_dwelling": int(c["value_per_dwelling"])},
         })
 
+    # residents we have checked against the 1860 census carry extra detail
+    links = {}
+    lp = WORK / "census_links.json"
+    if lp.exists():
+        links = json.loads(lp.read_text(encoding="utf8"))
+
     tier = {"bracketed": 0, "single_anchor": 1, "extrapolated": 1,
             "street_proportional": 2, "block_face": 0, "corner": 0}
     people = {}
@@ -346,9 +352,12 @@ def main():
                                 r.get("occupation", ""))
             # 0 resident, 1 business, 2 institution - kept numeric to stay small
             code = {"resident": 0, "business": 1, "institution": 2}[cat]
+            gv = (r.get("given") or "").strip().split()
+            lk = links.get(f"{y}|{(r.get('surname') or '').strip().lower()}|"
+                           f"{gv[0].lower() if gv else ''}")
             rows.append([sx(g.x), sy(g.y), tier.get(r["confidence"], 2),
                          r["surname"], r["given"], (r["occupation"] or "")[:40],
-                         where, r.get("house_no", ""), code, sub])
+                         where, r.get("house_no", ""), code, sub, lk])
         people[y] = rows
 
     # occupations from every parsed record, geocoded or not

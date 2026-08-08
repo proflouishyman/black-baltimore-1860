@@ -20,6 +20,7 @@ NAV = [("index.html", "Density"), ("1819.html", "1819"), ("1822.html", "1822"),
        ("1860.html", "1860"), ("1868.html", "1868"),
        ("wards.html", "Wards"), ("work.html", "Work"), ("trade.html", "Trade"),
        ("building.html", "Building"), ("bias.html", "What's missing"),
+       ("checking.html", "Checking"),
        ("sources.html", "Sources")]
 
 # per-year framing: eyebrow, headline, lede, and the paragraph that states the
@@ -626,6 +627,35 @@ WARDS_BODY = """
 """
 
 
+def build_checking(content_tpl):
+    import json as _json
+    v = (ROOT / "data" / "work" / "validation_summary.json")
+    if not v.exists():
+        return
+    data = _json.loads(v.read_text(encoding="utf8"))
+    slim = {"tiers": data["tiers"], "total": data["total"]}
+    body = (content_tpl
+            .replace("__TITLE__", "Checking the map \u2014 Black Baltimore")
+            .replace("__NAV__", nav_html("checking.html"))
+            .replace("__EYEBROW__", "Validation against the 1860 census")
+            .replace("__H1__", "Checking the map")
+            .replace("__LEDE__", "We looked people up in the census to see whether "
+                                 "we had put them in the right place. Here is what "
+                                 "that found, including the bugs.")
+            .replace("__CONTENT__", VAL_BODY)
+            .replace("__SCRIPT__", VAL_SCRIPT.replace("__VAL__",
+                     _json.dumps(slim, separators=(",", ":")))))
+    desc = ("Validating a historical geocode against the 1860 census: method, "
+            "error rates, and the bugs it exposed.")
+    (DOCS / "checking.html").write_text(document(body, "Checking the map", desc),
+                                        encoding="utf8")
+    print(f"wrote docs/checking.html ({(DOCS/'checking.html').stat().st_size/1_000:.0f} KB)")
+
+
+VAL_SCRIPT = '\n<script id="vd" type="application/json">__VAL__</script>\n<script>\n(function () {\n  var D = JSON.parse(document.getElementById(\'vd\').textContent);\n  var order = [\'bracketed\', \'single_anchor\', \'extrapolated\', \'street_proportional\'];\n  var label = {bracketed: \'Anchored between two named corners\',\n               single_anchor: \'One anchor only\',\n               extrapolated: \'Beyond the anchored range\',\n               street_proportional: \'Street known, position estimated\',\n               unknown: \'Tier not recorded\'};\n  var tb = document.getElementById(\'vbody\');\n  var keys = order.filter(function (k) { return D.tiers[k]; })\n    .concat(Object.keys(D.tiers).filter(function (k) { return order.indexOf(k) < 0; }));\n  keys.forEach(function (k) {\n    var v = D.tiers[k], tr = document.createElement(\'tr\');\n    var rate = v.ward ? (v.match / v.ward * 100).toFixed(0) + \'%\' : \'\\u2014\';\n    [[label[k] || k, false], [v.n, true], [v.found, true], [v.ward, true],\n     [v.match, true], [rate, true]].forEach(function (c) {\n      var td = document.createElement(\'td\');\n      td.className = c[1] ? \'n\' : \'\';\n      td.textContent = c[0];\n      tr.appendChild(td);\n    });\n    tb.appendChild(tr);\n  });\n  var t = D.total, mism = t.ward - t.match;\n  document.getElementById(\'vtot\').textContent =\n    t.found + \' of \' + t.n + \' traced (\' + (t.found / t.n * 100).toFixed(0) + \'%)\';\n  document.getElementById(\'vmatch\').textContent =\n    t.match + \' of \' + t.ward + \' wards agree\';\n  document.getElementById(\'vadj\').textContent =\n    mism ? t.adjacent + \' of \' + mism + \' misses adjacent\' : \'no misses\';\n})();\n</script>\n'
+VAL_BODY = '\n  <div class="note"><strong>Nobody had checked whether any of this was\n    right.</strong> So we started looking people up in the 1860 federal census,\n    which recorded each person\'s ward independently of anything we did. If our\n    placements are sound, the wards should agree.</div>\n\n  <div class="scroll">\n    <table class="data">\n      <thead><tr>\n        <th>Placement method</th><th class="n">Checked</th><th class="n">Traced</th>\n        <th class="n">Ward known</th><th class="n">Agree</th><th class="n">Rate</th>\n      </tr></thead>\n      <tbody id="vbody"></tbody>\n    </table>\n  </div>\n  <p class="note"><span id="vtot"></span> &middot; <span id="vmatch"></span>\n    &middot; <span id="vadj"></span></p>\n\n  <h2>It found real bugs</h2>\n  <p>The first eight lookups matched on only one of three traceable people. That\n    was not noise. It exposed two faults in the highest-confidence placements.</p>\n  <p><strong>Split streets shared one ladder.</strong> North Charles and South\n    Charles both reduce to &ldquo;Charles&rdquo;, so one silently overwrote the\n    other and their geometry fused. Thirty-four street names were affected,\n    covering 473 of our best placements. Someone on the north half could be\n    interpolated onto the south half.</p>\n  <p><strong>Some streets are drawn backwards.</strong> On North Caroline the\n    digitised line runs north to south while the house numbers run south to\n    north. The code assumed numbers rise with distance, so it discarded every\n    anchor but the first and pinned people at the wrong end of the street.</p>\n  <p>Both are fixed. Nothing internal to the data would have revealed either:\n    the ladders were monotone, the anchors were real, and the output looked\n    entirely plausible.</p>\n\n  <h2>When we are wrong, we are wrong by one ward</h2>\n  <p>This is the reassuring part. <strong>Every mismatch found so far is an\n    adjacent ward</strong> &mdash; boundary distance zero, computed from the\n    ward polygons rather than judged by eye. Not one person has been placed\n    across the city from where the census puts them. The errors look like\n    boundary ambiguity, which is what you would expect when a house sits near a\n    ward line, rather than broken geocoding.</p>\n\n  <h2>The real problem is not accuracy</h2>\n  <p>It is that most people cannot be checked at all. Roughly two thirds of\n    those we look for cannot be positively identified in the census, even with\n    occupation and race filters and generous spelling variants.</p>\n  <p>That is not evidence of bad placement. It is the same gap the\n    <a href="./bias.html">bias page</a> measures from the other direction: the\n    directories and the census are two partial views of the same population,\n    and the people who fall between them are disproportionately the poorest and\n    most mobile. It does mean our confidence rests on a small, self-selected\n    subset &mdash; people distinctive enough to trace &mdash; and cannot be\n    extended to the majority we cannot verify either way.</p>\n\n  <h2>How a match is decided</h2>\n  <p>A name alone is not enough. There were two John Ashtons in 1860 Baltimore:\n    a White printer in the ward we predicted, and a Mulatto drayman in a\n    different one. Matching on ward agreement would have produced a confident,\n    wrong link that made our method look better than it is. Matches require\n    occupation or race corroboration, and identification is done before the\n    wards are compared.</p>\n  <p>Every record consulted is kept &mdash; the matches, the rejected\n    candidates, and the search results showing what the alternatives were. A\n    claim about a person in 1860 that cannot be traced back to the page it came\n    from is not worth making.</p>\n'
+
+
 def build_bias(content_tpl):
     bias = (ROOT / "data" / "work" / "directory_bias_1860.json").read_text(encoding="utf8")
     body = (content_tpl
@@ -694,6 +724,7 @@ def main():
     build_work(content_tpl, data)
     build_wards(content_tpl)
     build_bias(content_tpl)
+    build_checking(content_tpl)
     build_sources(content_tpl)
 
 

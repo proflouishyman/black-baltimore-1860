@@ -234,6 +234,26 @@
       });
     }
 
+    ctx.restore();
+    if (MODE === 'density') {
+      // number every ward: the outer wards are huge and the downtown ones
+      // tiny, so without labels the map reads as far fewer than twenty
+      ctx.save();
+      ctx.font = '600 12px system-ui, sans-serif';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      wardSet().forEach(function (w) {
+        var X = w.cx * t.k + t.ox, Y = w.cy * t.k + t.oy;
+        if (X < 0 || Y < 0 || X > css.w || Y > css.h) return;
+        ctx.lineWidth = 3; ctx.strokeStyle = tok['map-ground'];
+        ctx.strokeText(String(w.ward), X, Y);
+        ctx.fillStyle = tok.ink;
+        ctx.fillText(String(w.ward), X, Y);
+      });
+      ctx.restore();
+    }
+    ctx.save();
+    ctx.translate(t.ox, t.oy); ctx.scale(t.k, t.k);
+
     ctx.strokeStyle = tok.street;
     ctx.lineWidth = Math.max(0.3, (MODE === 'density' ? 0.6 : 0.9) / t.k);
     ctx.lineJoin = 'round'; ctx.lineCap = 'round';
@@ -393,13 +413,15 @@
     }
 
     if (!html && MODE === 'density') {
-      var ux = (mx - t.ox) / t.k, uy = (my - t.oy) / t.k;
       var WS = wardSet();
       for (var w = 0; w < WS.length; w++) {
         var wf = WS[w];
+        // isPointInPath takes CANVAS-space coordinates, unaffected by the
+        // current transform, while the path itself IS transformed by it.
+        // Passing user-space coords here silently made most wards unhittable.
         ctx.save(); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         ctx.translate(t.ox, t.oy); ctx.scale(t.k, t.k);
-        var hit = ctx.isPointInPath(wf.path, ux, uy);
+        var hit = ctx.isPointInPath(wf.path, mx * dpr, my * dpr);
         ctx.restore();
         if (hit) {
           var d = wd(wf), oy = CY === '1860' ? '1850' : (CY === '1850' ? '1860' : ''), other = oy ? wf['y' + oy] : null;

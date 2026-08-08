@@ -267,6 +267,11 @@ def main():
                              "slave": int(c50["slave"]),
                              "free_colored": int(c50["free_colored"]),
                              "aggregate": int(c50["aggregate"])}
+        # centroid in SVG space, for drawing the ward number on the map
+        cxs = [r[0::2] for r in rings]; cys = [r[1::2] for r in rings]
+        allx = [v for r in cxs for v in r]; ally = [v for r in cys for v in r]
+        feat["cx"] = round(sum(allx) / len(allx), 1)
+        feat["cy"] = round(sum(ally) / len(ally), 1)
         ward_feats.append(feat)
 
     # 1820 ward polygons carrying the Fourth Census counts
@@ -286,7 +291,10 @@ def main():
         c = cen20.get(int(num))
         if not c:
             continue
+        cxs = [r[0::2] for r in rings]; cys = [r[1::2] for r in rings]
+        allx = [v for r in cxs for v in r]; ally = [v for r in cys for v in r]
         ward20_feats.append({
+            "cx": round(sum(allx) / len(allx), 1), "cy": round(sum(ally) / len(ally), 1),
             "ward": int(num), "rings": rings,
             "y1820": {"black_pct": float(c["black_pct"]), "black": int(c["black_total"]),
                       "white": int(c["white"]), "slave": int(c["slave"]),

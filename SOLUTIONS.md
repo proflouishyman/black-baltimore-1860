@@ -275,3 +275,50 @@ the expected behaviour.
 Found by auditing the data adversarially rather than by any test. The pipeline
 reported success throughout: the ladders were valid, the anchors real, and every
 resident received a coordinate.
+
+---
+
+## [2026-08-08] - Expired IPUMS session silently returned login pages instead of data
+
+### Problem
+Downloads from `usa.ipums.org` began producing small files that looked like
+successful transfers. `data/raw/H_1820_test.csv` was 6,942 bytes and
+`slave_1860_v2.dta` was 753 bytes, both with exit code 0. Nothing in the curl
+output indicated a failure.
+
+### Root Cause
+The Rails session cookie extracted from the port-9444 browser expired partway
+through the download campaign. Once it did, IPUMS answered file requests with
+a **302 to a login page (6,942 bytes) or a 404 body (753 bytes) served with
+HTTP 200 or 302**, never with an error status curl would surface. Because the
+bytes arrived and the process exited zero, every automated check that looked
+only at exit status passed.
+
+The trap is that the failure is content-shaped, not status-shaped. A file whose
+size is suspiciously uniform across unrelated URLs is the tell: every expired
+request returned exactly 6,942 bytes.
+
+### Solution
+Verify downloads by **content**, not exit code. For each file, check that the
+magic bytes match the expected format (`<stata_dta>` for .dta, a quoted CSV
+header for .csv), and for CSVs that the last line has the same field count as
+the header and the file ends in a newline. All six household files
+(H_1790 through H_1840) passed this check at 134 fields.
+
+Cookies are re-extracted from the live browser context on port 9444 rather than
+reused from disk, since they expire on IPUMS's schedule, not ours.
+
+### Notes
+Two further findings from the same episode:
+
+1. **`curl -C -` corrupted the file.** The IPUMS server ignores the `Range`
+   header and returns the whole file, which curl then appends to the partial
+   download. The result was 1,076,738,964 bytes for a 604,941,770-byte file.
+   Resume is unsafe against this host; re-download from zero instead.
+
+2. **IPUMS links a file that does not exist.** Their current page at
+   `usa/slave/slave_data.shtml` links `slave_1860_v2.dta`, which returns a
+   genuine 404 with valid credentials, while `slave_1850.dta` on the same path
+   returns 200. The working route is the previous-version page,
+   `usa/slave/slave_data_old.shtml`. Confirmed independently by Louis, who hit
+   the same dead link in the browser.

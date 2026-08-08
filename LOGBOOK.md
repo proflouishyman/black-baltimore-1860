@@ -416,3 +416,61 @@ should not be quoted.
   1900-1940. IPUMS itself warns the variable is unreliable: enumerators often
   failed to record it, boundaries shifted, and the Census Bureau published no
   ward maps.
+
+## 2026-08-08
+
+### Prompt
+Continue autonomous work: complete the enslaved-persons and household-data
+downloads, run the household workflow, georeference the 1851 map, and be
+transparent about the census not-found rate.
+
+### Decisions
+- **Framed the household files around what they can answer, not what we wanted
+  them to answer.** The 1790-1840 complete-count files carry no name, no
+  address and no ward, so they cannot extend the mapping. Rather than drop
+  them, the analysis was pointed at a question the maps cannot reach: not
+  *where* free Black Baltimoreans lived but *in whose household*. That is a
+  genuinely new axis for the project and it covers five decades before the
+  earliest directory we map in detail.
+- **Reported the 1790 reconciliation failure rather than smoothing it.** The
+  Baltimore rows sum to 10,641 against a known ~13,500, a 21% shortfall in
+  IPUMS's own data. Marked unusable for population claims. The verifier caught
+  that the first analyst's state code was wrong (stateicp 21 is Illinois, not
+  Maryland), which is why the check stage exists.
+- **Flagged changing census categories inline rather than in a footnote.**
+  1790-1810 have only `nothfree`; 1820 uses four "Colored" age bands; 1830-1840
+  use six differently-cut "Black" bands. A single trend line across all six
+  years silently treats three different categories as one variable, so the
+  shape is reported and the point-to-point deltas are not.
+- **Promoted the not-found rate to the headline of the checking page.** 63% of
+  people searched could not be found. Every accuracy figure on the site rests
+  on the 37% we could trace, and the page now says so before it says anything
+  reassuring.
+- **Reported the ward-level gap in verification as a limit on the maps.** Wards
+  9, 14 and 18 produced zero identifications. Small n, so a zero can happen by
+  chance, but the consequence is not statistical: those wards have no
+  verification at all, and ward-to-ward density comparisons leaning on them are
+  not defensible. Said so plainly rather than averaging it away.
+- **Retracted two published claims.** Adjacent mismatches went from 9 of 11 to
+  13 of 16, and the ward 13 to 17 error recurred in a second independent round,
+  which moves it from bad luck toward something systematic we have not found.
+- **Committed 249 MB of provenance screenshots.** They sit outside `docs/` so
+  they do not bloat the published site. Weighed against repo size, the standing
+  rule that evidence travels with the data won.
+
+### Outcome
+- `docs/HOUSEHOLDS.md` written and verified; two findings survive independent
+  recomputation (rising share of Black-only households; rising overlap between
+  slaveholding and free-Black presence, robust to a household-size control).
+- Checking page rebuilt with the 63% rate, the ward 9/14/18 gap, and the two
+  corrections. Confidence tiers still do not separate (Fisher p ~ 0.68) after
+  tripling the sample.
+- Five-person IPUMS-vs-Ancestry cross-check: 5/5 agreement on age, sex, ward
+  and race. Occupation differs only through IPUMS's occ1950 harmonisation.
+- All six household files verified complete by field count and terminator.
+- 1860 enslaved file blocked on a dead IPUMS link; Louis downloading via the
+  previous-version page. See SOLUTIONS.md.
+
+### Discarded
+- `curl -C -` resume against IPUMS. The server ignores `Range` and the resumed
+  file is silently corrupt. Not a speed optimisation worth keeping.

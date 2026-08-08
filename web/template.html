@@ -162,7 +162,12 @@
 (function () {
   var MODE = "__MODE__";
   var D = JSON.parse(document.getElementById('payload').textContent);
-  var PEOPLE = (D.people && D.people[MODE]) ? D.people[MODE] : [];
+  var TY = '1860';                       // year shown in trade mode
+  function people() {
+    if (MODE === 'trade') return (D.people && D.people[TY]) ? D.people[TY] : [];
+    return (D.people && D.people[MODE]) ? D.people[MODE] : [];
+  }
+  var PEOPLE = people();
   var cv = document.getElementById('map'), ctx = cv.getContext('2d');
   var tip = document.getElementById('tip'), stage = cv.parentNode;
 
@@ -177,7 +182,7 @@
     for (var i = 2; i < f.length; i += 2) streetPath.lineTo(f[i], f[i + 1]);
   });
   // one Path2D per ward so the choropleth can fill each separately
-  (D.wards || []).concat(D.wards1820 || []).forEach(function (w) {
+  (D.wards || []).concat(D.wards1820 || []).concat(D.wards1869 || []).forEach(function (w) {
     var p = new Path2D();
     w.rings.forEach(function (f) {
       p.moveTo(f[0], f[1]);
@@ -196,7 +201,18 @@
   // quintile-ish cuts on Black share; fixed so the legend is stable
   var CY = '1860';
   // 1820 used a different ward set entirely, so switching year swaps polygons
-  function wardSet() { return CY === '1820' ? (D.wards1820 || []) : D.wards; }
+  function wardSet() {
+    if (MODE === 'building') return D.wards1869 || [];
+    return CY === '1820' ? (D.wards1820 || []) : D.wards;
+  }
+  // 1869 construction uses its own ramp, keyed to value not share
+  function valColor(v) {
+    if (v < 100000) return tok.c1;
+    if (v < 200000) return tok.c2;
+    if (v < 400000) return tok.c3;
+    if (v < 600000) return tok.c4;
+    return tok.c5;
+  }
   function wd(w) { return w['y' + CY] || w.y1860 || w.y1820; }
   function rampColor(pct) {
     if (pct < 5) return tok.c1;
@@ -232,10 +248,15 @@
         ctx.fillStyle = rampColor(wd(w).black_pct);
         ctx.fill(w.path);
       });
+    } else if (MODE === 'building') {
+      wardSet().forEach(function (w) {
+        ctx.fillStyle = valColor(w.y1869.value);
+        ctx.fill(w.path);
+      });
     }
 
     ctx.restore();
-    if (MODE === 'density') {
+    if (MODE === 'density' || MODE === 'building') {
       // number every ward: the outer wards are huge and the downtown ones
       // tiny, so without labels the map reads as far fewer than twenty
       ctx.save();
@@ -255,16 +276,16 @@
     ctx.translate(t.ox, t.oy); ctx.scale(t.k, t.k);
 
     ctx.strokeStyle = tok.street;
-    ctx.lineWidth = Math.max(0.3, (MODE === 'density' ? 0.6 : 0.9) / t.k);
+    ctx.lineWidth = Math.max(0.3, (MODE === 'density' || MODE === 'building' ? 0.6 : 0.9) / t.k);
     ctx.lineJoin = 'round'; ctx.lineCap = 'round';
-    ctx.globalAlpha = MODE === 'density' ? 0.5 : 1;
+    ctx.globalAlpha = (MODE === 'density' || MODE === 'building') ? 0.5 : 1;
     ctx.stroke(streetPath);
     ctx.globalAlpha = 1;
 
-    if (MODE === 'density' || chk('tw')) {
-      ctx.strokeStyle = MODE === 'density' ? tok.ink : tok.ward;
+    if (MODE === 'density' || MODE === 'building' || chk('tw')) {
+      ctx.strokeStyle = (MODE === 'density' || MODE === 'building') ? tok.ink : tok.ward;
       ctx.lineWidth = Math.max(0.7, 1.6 / t.k);
-      if (MODE !== 'density') ctx.setLineDash([7 / t.k, 5 / t.k]);
+      if (MODE !== 'density' && MODE !== 'building') ctx.setLineDash([7 / t.k, 5 / t.k]);
       (MODE === 'density' ? wardSet() : D.wards).forEach(function (w) { ctx.stroke(w.path); });
       ctx.setLineDash([]);
     }
@@ -281,7 +302,24 @@
     }
     ctx.restore();
 
-    if (PEOPLE.length) {
+    if (MODE === 'trade') {
+      PEOPLE = people();
+      var showB2 = document.getElementById('tb') ? chk('tb') : true;
+      var showI = document.getElementById('ti') ? chk('ti') : true;
+      [[1, tok.anchored, 3.4, showB2], [2, tok.approx, 5.2, showI]].forEach(function (spec) {
+        if (!spec[3]) return;
+        ctx.fillStyle = spec[1]; ctx.globalAlpha = 0.9;
+        ctx.beginPath();
+        for (var i = 0; i < PEOPLE.length; i++) {
+          var p = PEOPLE[i];
+          if (p[8] !== spec[0]) continue;
+          var X = p[0] * t.k + t.ox, Y = p[1] * t.k + t.oy;
+          if (X < -8 || Y < -8 || X > css.w + 8 || Y > css.h + 8) continue;
+          ctx.moveTo(X + spec[2], Y); ctx.arc(X, Y, spec[2], 0, 6.2832);
+        }
+        ctx.fill(); ctx.globalAlpha = 1;
+      });
+    } else if (PEOPLE.length) {
       var showA = document.getElementById('t0') ? chk('t0') : true;
       var showB = document.getElementById('t2') ? chk('t2') : false;
       for (var pass = 0; pass < 2; pass++) {
@@ -374,7 +412,7 @@
   document.getElementById('zin').onclick = function () { zoomBy(1.5); };
   document.getElementById('zout').onclick = function () { zoomBy(1 / 1.5); };
   document.getElementById('zreset').onclick = function () { view = { k: 1, x: 0, y: 0 }; draw(); };
-  ['t0', 't2', 'tw', 'tm'].forEach(function (id) {
+  ['t0', 't2', 'tw', 'tm', 'tb', 'ti'].forEach(function (id) {
     var e = document.getElementById(id);
     if (e) e.addEventListener('change', draw);
   });
@@ -390,7 +428,23 @@
     var r = cv.getBoundingClientRect(), mx = e.clientX - r.left, my = e.clientY - r.top;
     var t = tx(), html = null;
 
-    if (PEOPLE.length) {
+    if (MODE === 'trade') {
+      var bt = null, bdt = 121;
+      for (var i = 0; i < PEOPLE.length; i++) {
+        var p = PEOPLE[i];
+        if (p[8] === 0) continue;
+        var dx = (p[0] * t.k + t.ox) - mx, dy = (p[1] * t.k + t.oy) - my;
+        var d2 = dx * dx + dy * dy;
+        if (d2 < bdt) { bdt = d2; bt = p; }
+      }
+      if (bt) {
+        html = '<div class="nm">' + esc(bt[3]) + (bt[4] ? ' ' + esc(bt[4]) : '') + '</div>' +
+          (bt[5] ? '<div class="oc">' + esc(bt[5]) + '</div>' : '') +
+          '<div class="ad mono">' + (bt[7] ? esc(String(bt[7])) + ' ' : '') + esc(bt[6]) + '</div>' +
+          '<div class="tier" style="color:' + (bt[8] === 2 ? tok.approx : tok.anchored) + '">' +
+          (bt[8] === 2 ? 'Institution' : 'Business') + (bt[9] ? ' \u00b7 ' + esc(bt[9]) : '') + '</div>';
+      }
+    } else if (PEOPLE.length) {
       var best = null, bd = 81;
       var showA = document.getElementById('t0') ? chk('t0') : true;
       var showB = document.getElementById('t2') ? chk('t2') : false;
@@ -412,6 +466,25 @@
       }
     }
 
+    if (!html && MODE === 'building') {
+      var WSb = wardSet();
+      for (var wb = 0; wb < WSb.length; wb++) {
+        var wfb = WSb[wb];
+        ctx.save(); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.translate(t.ox, t.oy); ctx.scale(t.k, t.k);
+        var hitb = ctx.isPointInPath(wfb.path, mx * dpr, my * dpr);
+        ctx.restore();
+        if (hitb) {
+          var v = wfb.y1869;
+          html = '<div class="nm">Ward ' + wfb.ward + ', 1869</div><table>' +
+            '<tr><td>Value assessed</td><td><strong>$' + v.value.toLocaleString() + '</strong></td></tr>' +
+            '<tr><td>Dwellings</td><td>' + v.dwellings.toLocaleString() + '</td></tr>' +
+            '<tr><td>Improvements</td><td>' + v.improvements.toLocaleString() + '</td></tr>' +
+            '<tr><td>Per dwelling</td><td>$' + v.per_dwelling.toLocaleString() + '</td></tr></table>';
+          break;
+        }
+      }
+    }
     if (!html && MODE === 'density') {
       var WS = wardSet();
       for (var w = 0; w < WS.length; w++) {
@@ -450,9 +523,9 @@
   if (cyBtns) {
     Array.prototype.forEach.call(cyBtns.children, function (b) {
       b.onclick = function () {
-        CY = b.dataset.year;
+        if (MODE === 'trade') { TY = b.dataset.year; } else { CY = b.dataset.year; }
         Array.prototype.forEach.call(cyBtns.children, function (o) {
-          o.setAttribute('aria-pressed', o.dataset.year === CY);
+          o.setAttribute('aria-pressed', o.dataset.year === (MODE === 'trade' ? TY : CY));
         });
         draw();
       };

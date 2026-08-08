@@ -19,6 +19,10 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from classify_records import classify
+
 import geopandas as gpd
 from shapely.geometry import box
 from shapely.ops import unary_union
@@ -302,6 +306,33 @@ def main():
                       "aggregate": int(c["aggregate"])},
         })
 
+    # 1869 new construction, on the 1861-1882 wards it was reported under.
+    # These are NOT the 1846-1860 wards of the census choropleth.
+    val = {int(r["ward"]): r for r in csv.DictReader(open(WORK / "ward_valuation_1869.csv"))}
+    ward69_feats = []
+    for num, geom in zip(wards68["Ward_Num"], wards68.geometry):
+        geom = geom.intersection(clip).simplify(SIMPLIFY)
+        if geom.is_empty:
+            continue
+        polys = [geom] if geom.geom_type == "Polygon" else list(getattr(geom, "geoms", []))
+        rings = []
+        for poly in polys:
+            f = []
+            for x, y in poly.exterior.coords:
+                f += [sx(x), sy(y)]
+            rings.append(f)
+        c = val.get(int(num))
+        if not c:
+            continue
+        allx = [v for r in rings for v in r[0::2]]; ally = [v for r in rings for v in r[1::2]]
+        ward69_feats.append({
+            "ward": int(num), "rings": rings,
+            "cx": round(sum(allx)/len(allx), 1), "cy": round(sum(ally)/len(ally), 1),
+            "y1869": {"value": int(c["value"]), "dwellings": int(c["dwellings"]),
+                      "improvements": int(c["improvements"]),
+                      "per_dwelling": int(c["value_per_dwelling"])},
+        })
+
     tier = {"bracketed": 0, "single_anchor": 1, "extrapolated": 1,
             "street_proportional": 2, "block_face": 0, "corner": 0}
     people = {}
@@ -311,9 +342,13 @@ def main():
             where = r.get("street_raw") or ""
             if r.get("cross_street"):
                 where = f"{where} {r.get('bearing','')} of {r['cross_street']}".strip()
+            cat, sub = classify(r.get("surname", ""), r.get("given", ""),
+                                r.get("occupation", ""))
+            # 0 resident, 1 business, 2 institution - kept numeric to stay small
+            code = {"resident": 0, "business": 1, "institution": 2}[cat]
             rows.append([sx(g.x), sy(g.y), tier.get(r["confidence"], 2),
                          r["surname"], r["given"], (r["occupation"] or "")[:40],
-                         where, r.get("house_no", "")])
+                         where, r.get("house_no", ""), code, sub])
         people[y] = rows
 
     # occupations from every parsed record, geocoded or not
@@ -333,7 +368,7 @@ def main():
         occ[y] = c.most_common(40)
 
     payload = {"w": W, "h": H, "streets": paths, "modern": modern, "labels": labels,
-               "wards": ward_feats, "wards1820": ward20_feats,
+               "wards": ward_feats, "wards1820": ward20_feats, "wards1869": ward69_feats,
                "people": people, "occupations": occ, "parsed": parsed_counts,
                "metres_per_unit": round(1 / scale, 3)}
     out = WORK / "map_payload.json"

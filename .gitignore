@@ -9,3 +9,6 @@ data/raw/maps/*.tif
 data/raw/H_*.csv
 data/raw/*.csv.gz
 data/raw/census*.pdf
+data/raw/*.dta
+data/raw/*.sav
+data/raw/maps/*.jpg

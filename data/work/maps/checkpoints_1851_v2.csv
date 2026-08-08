@@ -1,0 +1,22 @@
+name,kind,reference,pixel_x,pixel_y,world_x_epsg6487,world_y_epsg6487,in_control_hull,err_helmert_m,err_affine_m,err_poly2_m,err_tps_m,crop_srcwin,note
+Washington Monument,osm_way,osm:116542858,6740,2978,433154.11,181104.93,yes,16.98,15.00,11.70,3.54,"6500,2800,500,400","cross-hatched square base in the Mount Vernon Place crossing; MIHP B-6 agrees to 5 d.p. Built 1815-1829, never moved."
+Battle Monument,osm_way,osm:453652377,7135,4256,433436.81,180346.75,yes,16.97,16.66,20.93,19.00,"7050,4120,400,340",small hatched block inside the widened Calvert St corridor labelled MONUMENT SQUARE; MIHP B-14 agrees. Built 1815-1825.
+Union Square centre,osm_way,osm:85585339,3086,4751,430920.29,179917.92,no,17.98,15.59,9.51,6.44,"2930,4460,500,400","block labelled UNION SQUARE, corners read at x 3009/3163, y 4673/4829. Laid out 1847."
+Franklin Square centre,osm_way,osm:85585348,3470,4169,431148.29,180294.07,yes,16.48,16.80,3.93,12.07,"3120,4060,500,400","block labelled FRANKLIN SQUARE between CALHOUN and CAREY, both named on the sheet; corners x 3390/3550, y 4087/4250. Laid out 1839."
+Fort McHenry star centre,osm_way,osm:1220301007,11408,9251,436257.13,177312.87,no,26.56,36.27,10.55,78.88,"11200,9080,480,380","centre of the drawn five-bastion star, from the west and east bastion tips (x 11307/11510) and north and south (y 9152/9350). The masonry fort of 1798-1803. Lowest point on the sheet by far."
+Mount Clare mansion,osm_way,osm:85715388,2838,6135,430804.69,179033.76,no,12.38,4.62,23.93,28.84,"2800,5950,700,500",hatched house symbol labelled MOUNT CLARE / J. Carroll. Built 1760s.
+Eutaw & Baltimore,street,balt_streets.geojson,5919,4432,432703.51,180192.21,yes,12.84,14.74,14.89,3.06,"5820,4270,360,300","Eutaw corridor x 5900-5938, Eutaw House hotel labelled on the NW corner. v1 recorded x=6011 here, which is 92 px / 57 m out."
+Charles & Baltimore,street,balt_streets.geojson,6727,4444,433201.05,180218.63,yes,15.77,15.94,19.96,22.51,"6490,4230,500,400","Charles reads as a pale vertical band, which is the sheet join, so x is the weaker coordinate here."
+Gay & Baltimore,street,balt_streets.geojson,7587,4408,433736.67,180249.17,yes,3.67,4.21,3.89,0.63,"7350,4210,500,400",N. GAY labelled.
+Broadway & Baltimore,street,balt_streets.geojson,9678,4196,435043.92,180448.56,yes,9.76,7.89,6.32,8.82,"9500,4050,400,340","Broadway corridor x 9646-9709, unusually wide, with the market line down the middle."
+Chester & Baltimore,street,balt_streets.geojson,10570,4197,435592.18,180479.10,yes,7.09,7.04,4.67,3.70,"10380,4030,620,380",CHESTER named at the head of the street on the same sheet.
+Potomac & Baltimore,street,balt_streets.geojson,12315,4198,436683.44,180539.62,no,16.35,15.87,11.76,5.33,"12120,4040,620,380",POTOMAC named at the head of the street. Easternmost check point.
+Fulton & Baltimore,street,balt_streets.geojson,2600,4495,430607.59,180065.75,no,20.59,18.70,12.55,5.04,"2340,4300,500,400","Fulton identified from the sheet's own vertical label at x~2606; the crossing itself is in open ground, so this is a weaker pick."
+Calhoun & Fayette,street,balt_streets.geojson,3370,4272,431089.42,180231.35,yes,20.82,21.22,5.66,11.49,"3120,4060,500,400","STRICKER, MORRIS, CALHOUN and CAREY all named in this crop."
+Stricker & Hollins,street,balt_streets.geojson,3187,4660,430979.50,179977.23,yes,18.25,15.73,10.26,6.80,"2930,4460,500,400","Hollins runs along the north side of Union Square, not the south."
+Broadway & Monument,street,balt_streets.geojson,9674,2981,435009.40,181209.62,yes,14.19,11.83,9.15,11.14,"9520,2820,620,380",
+Eutaw & Madison,street,balt_streets.geojson,5937,2790,432650.94,181199.30,yes,14.78,11.66,8.27,11.18,"5750,2680,620,380",W. MADISON and W. MONUMENT both named in this crop.
+Charles & Chase,street,balt_streets.geojson,6705,2110,433123.69,181645.27,yes,18.91,14.07,10.10,20.25,"6560,2020,620,380",street name not legible in the crop; identified by position only. Weakest pick in the set and expected to show it.
+Charles & Cross,street,balt_streets.geojson,6737,6651,433274.17,178808.30,yes,16.57,22.50,15.42,12.90,"6580,6520,620,380","CROSS named; the market house sits in the street, corridor centre taken."
+Russell & Ostend,street,balt_streets.geojson,5295,6625,432356.10,178783.97,no,17.37,18.52,14.11,38.95,"5040,6460,500,400",RUSSEL named on the sheet; Ostend located from its label further west along the same corridor. Weaker pick.
+Wolfe & Lancaster,street,balt_streets.geojson,10171,5777,435383.99,179469.77,yes,6.31,8.61,5.35,9.07,"9980,5620,620,380",

@@ -322,3 +322,71 @@ Two further findings from the same episode:
    returns 200. The working route is the previous-version page,
    `usa/slave/slave_data_old.shtml`. Confirmed independently by Louis, who hit
    the same dead link in the browser.
+
+## [2026-08-08] - The 1851 georeference reported a fit error, on points picked at quarter resolution, against the layer it was testing
+
+### Problem
+`docs/GEOREFERENCE.md` claimed the 1851 Sidney & Neff plan was georeferenced to
+56 m RMSE (affine) or 49 m (second-order polynomial). Both numbers were wrong,
+and wrong in kind: they described how well the transform reproduced the points
+it had been fitted to, not how accurately it places anything else. The exercise
+was also supposed to quantify how far the c.1930 HUE base layer has drifted from
+1851, and it could not, because it had been fitted to HUE.
+
+### Root cause
+Four faults compounded.
+
+1. `scripts/georeference_1851.py` read every control point off
+   `baltimore_1851_plan_preview.jpg` (3354x2661) and scaled by four to reach the
+   13414x10643 master. Street names are illegible at that size. Two independent
+   full-resolution re-readings put Eutaw & Baltimore at master x=5915 and 5919;
+   v1 recorded 6011, an error of about 59 m on one of only twelve points.
+2. Twelve control points, seven of them on Baltimore Street within 60 preview
+   pixels of one line. A near-collinear network constrains one axis and not the
+   other, and covered about a quarter of the sheet. FGDC-STD-007.3-1998 requires
+   at least 20 check points with at least 20% in each quadrant.
+3. RMSE was computed at the fitting points. Training error, optimistically
+   biased by construction, and worst for the second-order fit, which had only 6
+   degrees of freedom per axis left.
+4. Control coordinates came from the HUE c.1930 file, which was the comparison
+   target. Least squares drives mean disagreement with the reference to zero, so
+   the average displacement the script could detect was zero whatever the truth.
+
+### Solution
+Redone in two independent passes over the Library of Congress master, both
+reading crops of the full-resolution jp2 rather than the preview.
+`scripts/georeference_1851_v2.py` contributes 54 control points;
+`scripts/georeference_1851_v2_check.py` contributes 21 more, located before the
+first table was seen and therefore usable as NSSDA check points, seven of them
+standing structures rather than street crossings.
+
+World coordinates come from modern Baltimore City centrelines and from
+OpenStreetMap way geometry cross-checked against the Maryland Inventory of
+Historic Properties. HUE is never used to fit, only to measure.
+
+Four models are fitted (Helmert, affine, polynomial 2, thin plate spline) and
+validated by leave-one-out cross validation and by the independent check points.
+Accuracy is reported in NSSDA form. Result: polynomial 2, LOOCV RMSE 12.9 m,
+"tested 22.3 m horizontal accuracy at 95% confidence level". The independent
+check points return 12.4 m for the same transform.
+
+### Notes
+- Thin plate spline is the best model inside the control hull (12.15 m) and the
+  worst outside it (38.00 m, and 78.9 m at Fort McHenry). Neither fit RMSE nor
+  leave-one-out could show this, since every held-out point is surrounded by the
+  others. It took check points deliberately placed outside the hull. The raster
+  is warped with polynomial 2 as a result.
+- Near-duplicate control points destroy a thin plate spline: forced to
+  interpolate exactly through two points a few pixels apart with different world
+  coordinates, it needs an unbounded gradient. The first run showed TPS LOOCV of
+  96.7 m with a 735 m worst point. Points within 120 px of an existing control
+  point are now held out of the merged network.
+- A Helmert fit must negate the raster row axis first. Rows count down and
+  northings count up, so the pixel frame is left-handed and a determinant-+1
+  rotation cannot express the flip. Left unflipped the fit does not degrade, it
+  returns kilometre-scale nonsense, which is how the bug surfaced.
+- The useful research finding: HUE c.1930 sits a median 2.4 m from modern
+  centrelines at 50 control intersections (mean 3.1, p90 5.2, max 14.7). The
+  seventy-year-old base layer is not the source of the project's positional
+  error. Where the street grid did not survive, chiefly the Jones Falls corridor
+  and the filled waterfront, it still is.

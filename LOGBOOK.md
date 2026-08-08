@@ -474,3 +474,41 @@ transparent about the census not-found rate.
 ### Discarded
 - `curl -C -` resume against IPUMS. The server ignores `Range` and the resumed
   file is silently corrupt. Not a speed optimisation worth keeping.
+
+## 2026-08-08 - Georeferencing the 1851 plan properly
+
+### Prompt
+Research how historical map georeferencing is actually done, diagnose what our
+first attempt got wrong, then reimplement it correctly.
+
+### Decisions
+- Took FGDC-STD-007.3-1998 (NSSDA) as the governing standard for how accuracy is
+  measured and reported, over any ad hoc convention. Its 20-check-point minimum,
+  quadrant distribution rule, insistence on an independent source of higher
+  accuracy, and the 1.7308 multiplier all shape what v2 reports.
+- Sourced control coordinates from modern Baltimore City centrelines and OSM way
+  geometry rather than from the HUE c.1930 file, specifically so that HUE could
+  be measured instead of assumed. This was the fix for the circularity.
+- Chose standing pre-1851 structures for the check-point set where possible
+  (Washington Monument, Battle Monument, Union Square, Franklin Square, Fort
+  McHenry, Mount Clare), because they carry no dependence on street naming.
+- Ruled out Federal Hill (quarried), the harbour shoreline (filled), Patterson
+  Park (grew from a small square to 1,900 m) and the Jones Falls (culverted) as
+  control features. Recorded the reasoning rather than silently omitting them.
+- Chose the shipped transform on independent check-point error, not on fit error.
+  That reversed what the fit alone would have chosen: TPS fits perfectly and
+  extrapolates badly, so polynomial 2 ships.
+- Kept the v1 script and raster in place rather than overwriting, so the two are
+  comparable.
+
+### Outcome
+- docs/GEOREFERENCING_METHOD.md written: the standard, cited, plus a blunt list
+  of what v1 skipped.
+- scripts/georeference_1851_v2_check.py written: 21 independent check points,
+  inter-operator agreement, in-hull vs out-of-hull error, combined transform.
+- docs/GEOREFERENCE.md rewritten with the corrected result.
+- Headline moved from a claimed 56 m fit RMSE to a cross-validated 12.9 m,
+  reported as 22.3 m at 95% confidence.
+- Searched the georeferencing ecosystem for prior work on this sheet. One exists,
+  Map Warper 37609, a five-point warp of a downsampled derivative with a 98.7
+  outlier. Nothing at Rumsey, Allmaps, LOC, NYPL, MSA, Digital Maryland or JHU.

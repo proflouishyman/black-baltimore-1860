@@ -1,0 +1,69 @@
+name,role,reference,pixel_x,pixel_y,world_x_epsg6487,world_y_epsg6487,loo_err_helmert_m,loo_err_affine_m,loo_err_poly2_m,loo_err_tps_m
+Charles & Baltimore,control,balt_streets/911,6748.0,4415.0,433201.03,180218.63,8.18,7.71,7.26,7.35
+Calvert & Baltimore,control,balt_streets/911,7135.0,4410.0,433447.27,180232.47,5.51,5.45,3.15,14.09
+Gay & Baltimore,control,balt_streets/911,7587.0,4407.0,433736.64,180249.17,5.34,5.41,3.75,10.23
+Eutaw & Baltimore,control,balt_streets/911,5915.0,4435.0,432703.48,180192.21,17.48,18.67,19.48,8.39
+Greene & Baltimore,control,balt_streets/911,5545.0,4448.0,432465.54,180179.28,15.45,16.54,17.52,10.97
+Paca & Pratt,control,balt_streets/911,5748.0,4956.0,432605.22,179854.80,7.23,9.28,9.17,14.23
+Paca & Lexington,control,balt_streets/911,5734.0,4008.0,432572.53,180428.40,22.71,22.41,20.92,11.83
+Eutaw & Lexington,control,balt_streets/911,5906.0,4008.0,432690.24,180435.22,27.87,27.92,26.57,9.56
+Charles & Franklin,control,balt_streets/911,6740.0,3413.0,433166.77,180837.53,13.95,12.87,10.74,6.75
+Eutaw & Monument,control,balt_streets/911,5915.0,2975.0,432656.77,181080.21,22.95,20.60,17.74,13.06
+Poppleton & Baltimore,control,balt_streets/911,4389.0,4468.0,431735.51,180135.10,14.56,15.40,11.54,4.58
+Carey & Baltimore,control,balt_streets/911,3560.0,4490.0,431217.00,180103.40,21.05,22.02,12.76,3.13
+Gilmor & Baltimore,control,balt_streets/911,2989.0,4485.0,430851.51,180080.45,13.60,12.69,5.85,0.52
+Stricker & Baltimore,control,balt_streets/911,3181.0,4483.0,430973.20,180087.93,13.28,12.84,3.55,1.63
+Carey & Lexington,control,balt_streets/911,3558.0,4043.0,431205.23,180357.66,6.31,7.30,14.76,15.55
+Carey & Pratt,control,balt_streets/911,3561.0,5027.0,431234.15,179772.12,25.86,26.21,17.96,9.72
+Scott & Pratt,control,balt_streets/911,4803.0,4991.0,432007.08,179821.80,16.28,15.77,15.05,3.18
+Caroline & Baltimore,control,balt_streets/911,9216.0,4196.0,434751.89,180436.19,8.22,7.02,6.18,2.12
+Bond & Baltimore,control,balt_streets/911,9412.0,4196.0,434872.21,180441.20,5.94,4.76,3.20,0.84
+Broadway & Baltimore,control,balt_streets/911,9680.0,4199.0,435036.54,180448.09,4.95,4.73,2.48,2.61
+Castle & Baltimore,control,balt_streets/911,10456.0,4199.0,435522.05,180474.50,8.86,8.59,2.33,6.17
+Chester & Baltimore,control,balt_streets/911,10576.0,4198.0,435592.15,180479.11,10.05,11.02,7.45,6.07
+Patterson Park & Baltimore,control,balt_streets/911,10934.0,4197.0,435825.89,180492.40,13.24,11.89,2.70,7.67
+Rose & Baltimore,control,balt_streets/911,11422.0,4196.0,436132.52,180509.21,15.82,14.22,4.38,0.29
+Luzerne & Baltimore,control,balt_streets/911,11526.0,4196.0,436197.14,180512.86,16.20,14.68,4.11,0.23
+Bond & Aliceanna,control,balt_streets/911,9422.0,5608.0,434924.45,179551.48,10.03,11.24,9.56,9.57
+Wolfe & Fleet,control,balt_streets/911,10160.0,5422.0,435370.98,179691.69,0.80,3.32,4.41,4.65
+Broadway & Eastern,control,balt_streets/911,9687.0,5251.0,435072.85,179788.58,3.91,2.15,2.25,6.45
+Light & Hughes,control,balt_streets/911,7035.0,6006.0,433399.02,179220.48,38.79,38.57,35.16,15.83
+Light & Montgomery,control,balt_streets/911,7035.0,6113.0,433417.63,179158.18,22.57,22.68,17.58,10.57
+Light & Warren,control,balt_streets/911,7036.0,6300.0,433425.40,179039.40,22.17,22.87,15.68,11.47
+Light & Cross,control,balt_streets/911,7037.0,6653.0,433450.47,178820.08,12.15,16.05,1.76,18.32
+William & Cross,control,balt_streets/911,7233.0,6653.0,433591.48,178852.06,21.66,21.97,35.63,30.62
+William & Montgomery,control,balt_streets/911,7233.0,6113.0,433544.38,179163.40,20.37,20.97,14.85,9.74
+Charles & Cross,control,balt_streets/911,6728.0,6653.0,433275.42,178795.21,31.80,37.78,29.35,31.70
+Kenwood & O'Donnell,control,balt_streets/911,11931.0,6328.0,436511.28,179189.74,14.47,10.33,4.67,3.26
+Linwood & O'Donnell,control,balt_streets/911,12131.0,6328.0,436633.27,179196.46,14.37,9.98,0.80,0.86
+Curley & O'Donnell,control,balt_streets/911,12228.0,6328.0,436693.68,179199.77,14.84,10.44,0.54,0.48
+Curley & Elliott,control,balt_streets/911,12230.0,6507.0,436700.06,179087.35,14.31,9.62,0.85,0.66
+Ellwood & O'Donnell,control,balt_streets/911,12528.0,6328.0,436879.77,179209.90,16.18,11.85,2.95,0.40
+Broadway & Monument,control,balt_streets/911,9673.0,2981.0,434997.64,181209.40,4.96,6.69,3.75,2.68
+Wolfe & Monument,control,balt_streets/911,10143.0,2984.0,435289.52,181224.76,8.18,10.92,5.79,5.06
+Aisquith & Monument,control,balt_streets/911,8637.0,2990.0,434340.30,181171.96,8.25,11.46,12.44,15.09
+Harford & Chase,control,balt_streets/911,8525.0,2126.0,434268.10,181708.82,15.98,14.20,18.17,20.20
+Gay & Preston,control,balt_streets/911,9950.0,1722.0,435145.96,181993.41,16.01,10.20,15.06,19.54
+Guilford & Biddle,control,balt_streets/911,7282.0,1925.0,433478.89,181782.78,16.57,11.82,8.40,11.25
+Barclay & Chase,control,balt_streets/911,7495.0,2118.0,433607.29,181671.11,10.51,7.69,3.01,14.03
+St Paul & Preston,control,balt_streets/911,6964.0,1737.0,433248.88,181887.17,24.03,23.80,19.26,8.15
+Calvert & Preston,control,balt_streets/911,7111.0,1735.0,433348.66,181893.55,18.60,16.92,10.72,0.37
+Greenmount & Preston,control,balt_streets/911,7806.0,1728.0,433793.64,181919.10,15.80,11.53,2.37,1.47
+Greenmount & Federal,control,balt_streets/911,7733.0,1158.0,433725.93,182268.69,20.92,17.57,5.74,11.60
+Greenmount & Lanvale,control,balt_streets/911,7700.0,988.0,433705.85,182385.94,8.77,3.30,13.93,15.83
+Etting & Lanvale,control,balt_streets/911,4922.0,2194.0,431997.67,181549.24,10.55,7.24,5.27,8.47
+Etting & Dolphin,control,balt_streets/911,5037.0,2346.0,432079.77,181462.84,5.06,1.88,3.85,8.68
+Washington Monument,check_merged,osm:116542858,6740,2978,433154.11,181104.93,18.25,16.62,13.17,6.13
+Battle Monument,check_merged,osm:453652377,7135,4256,433436.81,180346.75,15.89,15.99,20.35,18.85
+Union Square centre,check_merged,osm:85585339,3086,4751,430920.29,179917.92,14.29,13.07,4.37,2.43
+Franklin Square centre,check_merged,osm:85585348,3470,4169,431148.29,180294.07,13.45,14.41,4.34,5.72
+Fort McHenry star centre,check_merged,osm:1220301007,11408,9251,436257.13,177312.87,23.52,36.10,11.52,65.99
+Mount Clare mansion,check_merged,osm:85715388,2838,6135,430804.69,179033.76,8.08,3.16,17.59,20.24
+Potomac & Baltimore,check_merged,balt_streets.geojson,12315,4198,436683.44,180539.62,19.85,19.88,8.41,6.29
+Fulton & Baltimore,check_merged,balt_streets.geojson,2600,4495,430607.59,180065.75,16.74,15.96,7.03,6.20
+Calhoun & Fayette,check_merged,balt_streets.geojson,3370,4272,431089.42,180231.35,18.15,19.16,8.28,2.43
+Stricker & Hollins,check_merged,balt_streets.geojson,3187,4660,430979.50,179977.23,14.54,13.14,5.99,2.91
+Eutaw & Madison,check_merged,balt_streets.geojson,5937,2790,432650.94,181199.30,16.89,14.23,10.41,13.85
+Charles & Chase,check_merged,balt_streets.geojson,6705,2110,433123.69,181645.27,21.06,16.85,11.09,24.76
+Russell & Ostend,check_merged,balt_streets.geojson,5295,6625,432356.10,178783.97,16.53,19.24,10.13,33.12
+Wolfe & Lancaster,check_merged,balt_streets.geojson,10171,5777,435383.99,179469.77,4.78,6.41,6.27,8.42

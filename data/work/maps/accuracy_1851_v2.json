@@ -1,0 +1,153 @@
+{
+  "inter_operator": {
+    "n": 7,
+    "pairs": [
+      {
+        "name": "Eutaw & Baltimore",
+        "control_px": 5915.0,
+        "control_py": 4435.0,
+        "check_px": 5919,
+        "check_py": 4432,
+        "dist_px": 5.0
+      },
+      {
+        "name": "Charles & Baltimore",
+        "control_px": 6748.0,
+        "control_py": 4415.0,
+        "check_px": 6727,
+        "check_py": 4444,
+        "dist_px": 35.805027579936315
+      },
+      {
+        "name": "Gay & Baltimore",
+        "control_px": 7587.0,
+        "control_py": 4407.0,
+        "check_px": 7587,
+        "check_py": 4408,
+        "dist_px": 1.0
+      },
+      {
+        "name": "Broadway & Baltimore",
+        "control_px": 9680.0,
+        "control_py": 4199.0,
+        "check_px": 9678,
+        "check_py": 4196,
+        "dist_px": 3.605551275463989
+      },
+      {
+        "name": "Chester & Baltimore",
+        "control_px": 10576.0,
+        "control_py": 4198.0,
+        "check_px": 10570,
+        "check_py": 4197,
+        "dist_px": 6.082762530298219
+      },
+      {
+        "name": "Broadway & Monument",
+        "control_px": 9673.0,
+        "control_py": 2981.0,
+        "check_px": 9674,
+        "check_py": 2981,
+        "dist_px": 1.0
+      },
+      {
+        "name": "Charles & Cross",
+        "control_px": 6728.0,
+        "control_py": 6653.0,
+        "check_px": 6737,
+        "check_py": 6651,
+        "dist_px": 9.219544457292887
+      }
+    ],
+    "median_px": 5.0,
+    "max_px": 35.805027579936315
+  },
+  "checkpoints": {
+    "helmert": {
+      "n": 21,
+      "rmse_m": 16.114567640372858,
+      "mean_m": 15.266487676051739,
+      "median_m": 16.47703183219895,
+      "max_m": 26.564532769640486,
+      "nssda_95_m": 27.89109367195734,
+      "rmse_in_hull_m": 14.783264062714268,
+      "rmse_out_of_hull_m": 19.039833900448937
+    },
+    "affine": {
+      "n": 21,
+      "rmse_m": 16.419365097924246,
+      "mean_m": 14.926423250453622,
+      "median_m": 15.585662238530665,
+      "max_m": 36.26836800219949,
+      "nssda_95_m": 28.418637111487282,
+      "rmse_in_hull_m": 14.462396616906254,
+      "rmse_out_of_hull_m": 20.51053719444011
+    },
+    "poly2": {
+      "n": 21,
+      "rmse_m": 12.372721005601868,
+      "mean_m": 11.091115100907883,
+      "median_m": 10.261010031660525,
+      "max_m": 23.92834517761539,
+      "nssda_95_m": 21.41470551649571,
+      "rmse_in_hull_m": 11.388832870801844,
+      "rmse_out_of_hull_m": 14.544105417349483
+    },
+    "tps": {
+      "n": 21,
+      "rmse_m": 22.760825779686655,
+      "mean_m": 15.219678695327305,
+      "median_m": 11.137172188660305,
+      "max_m": 78.8803010464882,
+      "nssda_95_m": 39.39443725948166,
+      "rmse_in_hull_m": 12.146093403420055,
+      "rmse_out_of_hull_m": 38.00492340730158
+    }
+  },
+  "combined": {
+    "helmert": {
+      "n": 68,
+      "fit_rmse_m": 15.885746276444806,
+      "loocv_rmse_m": 16.35888392504816,
+      "loocv_mean_m": 14.786792519717345,
+      "loocv_median_m": 14.702947235753658,
+      "loocv_max_m": 38.78894506463746,
+      "nssda_95_m": 28.313956297473357
+    },
+    "affine": {
+      "n": 68,
+      "fit_rmse_m": 15.417202859200225,
+      "loocv_rmse_m": 16.21501317031181,
+      "loocv_mean_m": 14.19529987679733,
+      "loocv_median_m": 12.9688572137747,
+      "loocv_max_m": 38.569174748149464,
+      "nssda_95_m": 28.06494479517568
+    },
+    "poly2": {
+      "n": 68,
+      "fit_rmse_m": 11.804630612207786,
+      "loocv_rmse_m": 12.861495243986079,
+      "loocv_mean_m": 10.196063189870019,
+      "loocv_median_m": 8.341674227851065,
+      "loocv_max_m": 35.634487094808236,
+      "nssda_95_m": 22.260675968291103
+    },
+    "tps": {
+      "n": 68,
+      "fit_rmse_m": 9.397308813415492e-10,
+      "loocv_rmse_m": 14.345718378372645,
+      "loocv_mean_m": 10.075548682733269,
+      "loocv_median_m": 8.27176943894253,
+      "loocv_max_m": 65.99499348025746,
+      "nssda_95_m": 24.829569369287373
+    }
+  },
+  "sheet_geometry": {
+    "metres_per_pixel": 0.6261543510414556,
+    "rotation_deg": 2.665743082970059,
+    "scan_px_per_cm_of_paper": 124.20370370370371,
+    "approx_scale_denominator": 7777.068948953783,
+    "note": "scale denominator assumes the LOC sheet dimension of 108 cm on the long axis (https://www.loc.gov/item/2004629026/)"
+  },
+  "shipped_model": "poly2"
+}

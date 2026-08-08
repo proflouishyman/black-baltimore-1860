@@ -177,3 +177,37 @@ not treat this as a discrepancy in the census transcription until the table has
 been read at full resolution from the JP2** — our census figures reconcile
 exactly against their own printed totals, which is strong evidence they are
 right.
+
+---
+
+## 2026-08-07 — A finding tested and discarded: historic buildings
+
+The Maryland Inventory of Historic Properties gives 5,255 surveyed buildings in
+Baltimore City with footprint polygons. The obvious idea was to mark residents
+whose address coincides with a surviving surveyed building — "this house is
+still standing" is a powerful exhibit line.
+
+74.5% of our best-anchored 1860 residents sit within 15m of a surveyed historic
+building, which looked like a strong result.
+
+**It is not a result.** Tested against a null model — the same number of random
+points drawn inside the same wards — random points are *closer*:
+
+| within | our residents | random points |
+|---|---|---|
+| 15m | 68.2% | 76.1% |
+| 30m | 72.2% | 80.2% |
+| 60m | 84.7% | 87.6% |
+
+The proximity measures how densely surveyed buildings blanket central
+Baltimore, not anything about these people. Our residents are in fact slightly
+*further* from surveyed historic buildings than chance would predict.
+
+That inverse gap is faintly interesting — it is consistent with the blocks
+where Black Baltimoreans lived being less likely to survive and be surveyed —
+but it is small, confounded by our own geocoding bias toward well-anchored
+streets, and nowhere near strong enough to publish. Recorded here so nobody
+re-derives the positive version and believes it.
+
+**Method note worth keeping:** any "X% of our points are near Y" claim in a
+dense city needs a null model before it means anything.

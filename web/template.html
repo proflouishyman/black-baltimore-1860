@@ -232,16 +232,6 @@
       });
     }
 
-    // orientation layer: today's streets, drawn faint and underneath
-    if (chk('tm')) {
-      ctx.strokeStyle = tok.approx;
-      ctx.globalAlpha = 0.28;
-      ctx.lineWidth = Math.max(0.3, 0.8 / t.k);
-      ctx.lineJoin = 'round'; ctx.lineCap = 'round';
-      ctx.stroke(modernPath);
-      ctx.globalAlpha = 1;
-    }
-
     ctx.strokeStyle = tok.street;
     ctx.lineWidth = Math.max(0.3, (MODE === 'density' ? 0.6 : 0.9) / t.k);
     ctx.lineJoin = 'round'; ctx.lineCap = 'round';
@@ -255,6 +245,17 @@
       if (MODE !== 'density') ctx.setLineDash([7 / t.k, 5 / t.k]);
       D.wards.forEach(function (w) { ctx.stroke(w.path); });
       ctx.setLineDash([]);
+    }
+
+    // orientation layer: today's streets, drawn deliberately on top, dark
+    // and legible, so the viewer can switch it on to orient and off again.
+    if (chk('tm')) {
+      ctx.strokeStyle = tok.ink;
+      ctx.globalAlpha = 0.85;
+      ctx.lineWidth = Math.max(0.5, 1.4 / t.k);
+      ctx.lineJoin = 'round'; ctx.lineCap = 'round';
+      ctx.stroke(modernPath);
+      ctx.globalAlpha = 1;
     }
     ctx.restore();
 
@@ -278,6 +279,34 @@
         }
         ctx.fill(); ctx.globalAlpha = 1;
       }
+    }
+
+    // modern-street labels: fixed screen-space font size so they stay
+    // legible at every zoom, drawn on top of everything else while the
+    // orientation layer is switched on.
+    if (chk('tm') && D.labels && D.labels.length) {
+      ctx.font = '600 12px system-ui, -apple-system, "Segoe UI", sans-serif';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.globalAlpha = 1;
+      var placed = [];
+      D.labels.forEach(function (lb) {
+        var X = lb.x * t.k + t.ox, Y = lb.y * t.k + t.oy;
+        if (X < -40 || Y < -20 || X > css.w + 40 || Y > css.h + 20) return;
+        // rough bounding radius so labels don't stack on top of each other
+        var rad = Math.max(24, lb.t.length * 3.6);
+        for (var i = 0; i < placed.length; i++) {
+          var dx = X - placed[i].x, dy = Y - placed[i].y;
+          if (dx * dx + dy * dy < (rad + placed[i].r) * (rad + placed[i].r) * 0.55) return;
+        }
+        placed.push({ x: X, y: Y, r: rad });
+        ctx.save();
+        ctx.translate(X, Y); ctx.rotate(lb.a);
+        ctx.strokeStyle = tok['map-ground']; ctx.lineWidth = 4;
+        ctx.strokeText(lb.t, 0, 0);
+        ctx.fillStyle = tok.ink;
+        ctx.fillText(lb.t, 0, 0);
+        ctx.restore();
+      });
     }
     scalebar(t.k);
   }

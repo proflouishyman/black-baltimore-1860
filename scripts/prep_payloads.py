@@ -14,8 +14,9 @@ Output: data/work/map_payload.json
 
 import csv
 import json
+import math
 import re
-from collections import Counter
+from collections import Counter, defaultdict
 from pathlib import Path
 
 import geopandas as gpd
@@ -143,21 +144,93 @@ def main():
     # Modern centrelines, purely for orientation. Simplified harder than the
     # period network because it is never measured against, only glanced at.
     modern = []
+    labels = []
     mpath = RAW / "balt_streets.geojson"
     if mpath.exists():
         mg = gpd.read_file(mpath).to_crs(epsg=CRS_M)
         mg = mg[mg.intersects(city)].copy()
         mg["geometry"] = mg.geometry.intersection(city).simplify(SIMPLIFY * 3)
-        for g in mg.geometry:
-            if g.is_empty:
+
+        # Group clipped geometry by street name so we can pick the major
+        # arteries for labelling (total length) and know where their longest
+        # unbroken run sits (label placement), while still emitting every
+        # segment into `modern` for drawing.
+        by_name = defaultdict(list)
+        for name, g in zip(mg["ROAD_NAME"], mg.geometry):
+            if g.is_empty or not name:
                 continue
             parts = [g] if g.geom_type == "LineString" else list(getattr(g, "geoms", []))
             for pp in parts:
                 if pp.geom_type == "LineString" and len(pp.coords) >= 2:
+                    by_name[name].append(pp)
                     f = []
                     for x, y in pp.coords:
                         f += [sx(x), sy(y)]
                     modern.append(f)
+
+        EXCLUDE_NAMES = {"NO NAME", "UNNAMED", "UNKNOWN", ""}
+        MIN_TOTAL_LEN = 800  # metres; drops alleys/service roads from the ranking
+        NUM_LABELS = 35
+
+        totals = {
+            n: sum(p.length for p in parts) for n, parts in by_name.items()
+            if n.strip().upper() not in EXCLUDE_NAMES and not n.strip().isdigit()
+        }
+        chosen = sorted(
+            ((n, t) for n, t in totals.items() if t >= MIN_TOTAL_LEN),
+            key=lambda kv: -kv[1],
+        )[:NUM_LABELS]
+
+        def cap_word(w):
+            # Baltimore is thick with "Mc" surnames-as-streets; plain
+            # str.capitalize() would flatten "MCHENRY" to "Mchenry".
+            lw = w.lower()
+            if lw.startswith("mc") and len(lw) > 2:
+                return "Mc" + lw[2].upper() + lw[3:]
+            return w.capitalize()
+
+        DIRS = {"N", "S", "E", "W", "NE", "NW", "SE", "SW"}
+        SUFFIXES = {
+            "ST": "St", "AVE": "Ave", "AV": "Ave", "RD": "Rd", "BLVD": "Blvd",
+            "DR": "Dr", "LN": "Ln", "CT": "Ct", "PL": "Pl", "PKWY": "Pkwy",
+            "HWY": "Hwy", "TER": "Ter", "CIR": "Cir", "WAY": "Way",
+            "EXPWY": "Expwy",
+        }
+
+        def norm_name(raw):
+            out = []
+            for w in raw.split():
+                if w in DIRS:
+                    out.append(w)
+                elif w in SUFFIXES:
+                    out.append(SUFFIXES[w])
+                else:
+                    out.append(cap_word(w))
+            return " ".join(out)
+
+        print(f"labels: {len(chosen)} major streets chosen")
+        for n, t in chosen:
+            print(f"  {t:7.0f}m  {norm_name(n)}")
+
+        for name, total in chosen:
+            longest = max(by_name[name], key=lambda p: p.length)
+            if longest.length < 30:
+                continue
+            mid = longest.length / 2
+            eps = min(20.0, longest.length / 4)
+            mx, my = longest.interpolate(mid).coords[0]
+            p0 = longest.interpolate(max(mid - eps, 0.0))
+            p1 = longest.interpolate(min(mid + eps, longest.length))
+            x0s, y0s = sx(p0.x), sy(p0.y)
+            x1s, y1s = sx(p1.x), sy(p1.y)
+            if x0s == x1s and y0s == y1s:
+                continue
+            a = math.atan2(y1s - y0s, x1s - x0s)
+            if a > math.pi / 2 or a < -math.pi / 2:
+                a += math.pi
+            labels.append({
+                "t": norm_name(name), "x": sx(mx), "y": sy(my), "a": round(a, 4),
+            })
 
     cen = {int(r["ward"]): r for r in csv.DictReader(open(WORK / "ward_census_1860.csv"))}
     cen50 = {int(r["ward"]): r for r in csv.DictReader(open(WORK / "ward_census_1850.csv"))}
@@ -223,13 +296,14 @@ def main():
                 c[o] += 1
         occ[y] = c.most_common(40)
 
-    payload = {"w": W, "h": H, "streets": paths, "modern": modern,
+    payload = {"w": W, "h": H, "streets": paths, "modern": modern, "labels": labels,
                "wards": ward_feats,
                "people": people, "occupations": occ, "parsed": parsed_counts,
                "metres_per_unit": round(1 / scale, 3)}
     out = WORK / "map_payload.json"
     out.write_text(json.dumps(payload, separators=(",", ":")))
-    print("streets", len(paths), "modern", len(modern), "wards", len(ward_feats))
+    print("streets", len(paths), "modern", len(modern), "labels", len(labels),
+          "wards", len(ward_feats))
     for y in YEARS:
         print(f"  {y}: {len(people.get(y, [])):5d} placed, "
               f"{parsed_counts.get(y,0):5d} parsed, "

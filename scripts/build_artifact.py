@@ -18,7 +18,8 @@ DOCS = ROOT / "docs"
 NAV = [("index.html", "Density"), ("1819.html", "1819"), ("1822.html", "1822"),
        ("1842.html", "1842"), ("1845.html", "1845"), ("1851.html", "1851"),
        ("1860.html", "1860"), ("1868.html", "1868"),
-       ("wards.html", "Wards"), ("work.html", "Work"), ("sources.html", "Sources")]
+       ("wards.html", "Wards"), ("work.html", "Work"), ("trade.html", "Trade"),
+       ("building.html", "Building"), ("sources.html", "Sources")]
 
 # per-year framing: eyebrow, headline, lede, and the paragraph that states the
 # method and its limits honestly
@@ -154,6 +155,10 @@ TIER2 = """<label class="row"><input type="checkbox" id="t2" checked>
           <span class="sub">Street known, position along it estimated.</span></span></label>"""
 
 
+TRADE_PANEL = '\n    <div class="years" id="cyears" style="display:flex;gap:6px;margin-bottom:2px">\n      <button data-year="1842" aria-pressed="false">1842</button>\n      <button data-year="1845" aria-pressed="false">1845</button>\n      <button data-year="1851" aria-pressed="false">1851</button>\n      <button data-year="1860" aria-pressed="true">1860</button>\n      <button data-year="1868" aria-pressed="false">1868</button>\n    </div>\n\n    <fieldset>\n      <legend>Show</legend>\n      <label class="row"><input type="checkbox" id="tb" checked>\n        <span class="swatch" style="background:var(--anchored)"></span>\n        <span><span class="lab">Businesses</span><br>\n          <span class="sub">Proprietors, not employees: grocers, eating houses,\n            barbers, hucksters, boarding houses.</span></span></label>\n      <label class="row"><input type="checkbox" id="ti" checked>\n        <span class="swatch" style="background:var(--approx)"></span>\n        <span><span class="lab">Institutions</span><br>\n          <span class="sub">Churches, schools, lodges.</span></span></label>\n      <label class="row"><input type="checkbox" id="tw">\n        <span class="ward-key"></span>\n        <span><span class="lab">Ward boundaries</span></span></label>\n      <label class="row"><input type="checkbox" id="tm">\n        <span class="swatch" style="background:var(--approx);opacity:.35"></span>\n        <span><span class="lab">Baltimore today</span><br>\n          <span class="sub">Switch on to orient, then off.</span></span></label>\n    </fieldset>\n\n    <p class="note"><strong>Ownership, not just labour.</strong> The directories\n      do not separate a Black church, a Black-run eating house and a Black\n      labourer &mdash; all three sit in the same alphabetical list. Pulling the\n      first two out turns a map of where people were made to live into a map of\n      what they built there.</p>\n\n    <p class="note"><strong>These counts are floors.</strong> Businesses are\n      identified from occupation strings, so a proprietor described only as\n      &ldquo;grocer&rdquo; is caught and one described as &ldquo;works at\n      Smith&rsquo;s&rdquo; is not. Institutions are worse: only a handful\n      geocode, because directories give them corner addresses\n      (&ldquo;Sharp near Pratt&rdquo;) with no house number. Sharp Street\n      Methodist, Ebenezer, Israel Church, Asbury, Good Hope Lodge and the\n      Douglass Institute are all in the parsed data even where they are not on\n      this map.</p>\n'
+BUILDING_PANEL = '\n    <fieldset>\n      <legend>Value assessed, 1869</legend>\n      <div class="ramp"><div style="background:var(--c1)"></div>\n        <div style="background:var(--c2)"></div><div style="background:var(--c3)"></div>\n        <div style="background:var(--c4)"></div><div style="background:var(--c5)"></div></div>\n      <div class="ramp-lab"><span>under $100k</span><span>over $600k</span></div>\n    </fieldset>\n\n    <fieldset>\n      <legend>Overlay</legend>\n      <label class="row"><input type="checkbox" id="tm">\n        <span class="swatch" style="background:var(--approx);opacity:.35"></span>\n        <span><span class="lab">Baltimore today</span><br>\n          <span class="sub">Switch on to orient, then off.</span></span></label>\n    </fieldset>\n\n    <p class="note"><strong>Where the money was going.</strong> Every other ward\n      series here is about who lived where. This one is about where Baltimore\n      was building. The city assessed $6,615,275 of new dwellings and\n      improvements in 1869, across 2,836 dwellings, and it was not spread\n      evenly: ward 12 saw $825,050 and ward 5 saw $39,900, a twentyfold gap.</p>\n\n    <p class="note"><strong>Compare it against 1868, not against the census\n      choropleth.</strong> These are the 1861&ndash;1882 wards, a different\n      division of the city from the twenty wards of 1850 and 1860. Ward 7 here\n      is not ward 7 there. The 1868 residents map uses this same boundary set,\n      one year apart, so that is the honest pairing.</p>\n'
+
+
 def build_maps(map_tpl, payload_txt, data):
     density_panel = (
         """
@@ -233,6 +238,17 @@ def build_maps(map_tpl, payload_txt, data):
                             (f"{anch:,}", "Anchored"),
                             (f"{round(len(rows)/parsed*100) if parsed else 0}%", "Placed rate")])
         pages.append((f"{y}.html", y, eyebrow, h1, lede, panel + block + notes))
+
+    pages.append(("trade.html", "trade", "Directories, 1842\u20131868",
+                  "What Black Baltimore built",
+                  "Black-owned businesses and Black institutions, pulled out of "
+                  "the residential listings they were buried in.",
+                  TRADE_PANEL))
+    pages.append(("building.html", "building", "Mayor's Message, 1869",
+                  "Where Baltimore was building, 1869",
+                  "New dwellings and improvements assessed by ward, the year "
+                  "after the last directory on this site.",
+                  BUILDING_PANEL))
 
     for fname, mode, eyebrow, h1, lede, panel in pages:
         body = (map_tpl

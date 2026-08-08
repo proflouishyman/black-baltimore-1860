@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A gallery of period Baltimore maps, 1804-1876, each linked to its full-resolution original at the Library of Congress or Digital Maryland.">
+<meta property="og:title" content="Other maps of the city">
+<meta property="og:description" content="A gallery of period Baltimore maps, 1804-1876, each linked to its full-resolution original at the Library of Congress or Digital Maryland.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>&#x1F5FA;</text></svg>">
+<title>Maps — Black Baltimore</title>
+<style>
+  :root {
+    --ground: #E8E5DE; --panel: #F1EFE9; --ink: #17201F; --ink-2: #46514E;
+    --ink-3: #6E7A76; --rule: #CFCABF; --anchored: #A96A08; --approx: #00846F;
+    --bar: #A96A08; --bar-soft: #D8C6A4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #101619; --panel: #161E22; --ink: #E4E7E5; --ink-2: #A9B4B1;
+      --ink-3: #7E8A88; --rule: #253034; --anchored: #CB811A; --approx: #2C9C8D;
+      --bar: #CB811A; --bar-soft: #3B3527;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #101619; --panel: #161E22; --ink: #E4E7E5; --ink-2: #A9B4B1;
+    --ink-3: #7E8A88; --rule: #253034; --anchored: #CB811A; --approx: #2C9C8D;
+    --bar: #CB811A; --bar-soft: #3B3527;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--ground); color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.55;
+    -webkit-font-smoothing: antialiased; }
+  .serif { font-family: "Iowan Old Style", "Palatino Linotype", Palatino,
+           "Book Antiqua", Georgia, serif; }
+  .mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+          font-variant-numeric: tabular-nums; }
+
+  .page { max-width: 1080px; margin: 0 auto; padding: 26px 26px 80px; }
+  nav { display: flex; flex-wrap: wrap; gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule); margin-bottom: 34px; }
+  nav a { flex: 1 1 auto; min-width: 52px; text-align: center; padding: 8px 6px;
+    font-size: 12px; text-decoration: none; color: var(--ink-2);
+    background: var(--panel); letter-spacing: .04em; }
+  nav a:hover { background: var(--ground); color: var(--ink); }
+  nav a[aria-current="page"] { background: var(--ink); color: var(--panel); font-weight: 600; }
+  nav a:focus-visible { outline: 2px solid var(--anchored); outline-offset: -2px; }
+
+  .eyebrow { font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-3); margin: 0 0 10px; }
+  h1 { font-size: 38px; line-height: 1.1; margin: 0 0 12px; text-wrap: balance;
+    font-weight: 600; letter-spacing: -.015em; }
+  h2 { font-size: 21px; margin: 44px 0 12px; font-weight: 600; letter-spacing: -.01em; }
+  .lede { color: var(--ink-2); font-size: 16.5px; max-width: 64ch; margin: 0 0 6px; }
+  p { max-width: 68ch; }
+  a { color: var(--anchored); }
+
+  .years { display: flex; flex-wrap: wrap; gap: 6px; margin: 26px 0 18px; }
+  .years button { font: inherit; font-size: 13px; padding: 6px 14px; cursor: pointer;
+    background: var(--panel); color: var(--ink-2); border: 1px solid var(--rule);
+    border-radius: 2px; }
+  .years button:hover { border-color: var(--ink-3); color: var(--ink); }
+  .years button[aria-pressed="true"] { background: var(--ink); color: var(--panel);
+    border-color: var(--ink); font-weight: 600; }
+  .years button:focus-visible { outline: 2px solid var(--anchored); outline-offset: 2px; }
+
+  .chart { display: grid; grid-template-columns: 150px 1fr 64px; gap: 3px 12px;
+    align-items: center; margin-top: 8px; }
+  .chart .lab { font-size: 13px; text-align: right; color: var(--ink-2); }
+  .chart .track { background: var(--bar-soft); height: 17px; border-radius: 0 3px 3px 0; }
+  .chart .fill { background: var(--bar); height: 17px; border-radius: 0 3px 3px 0;
+    transition: width .25s ease; }
+  .chart .val { font-size: 12.5px; color: var(--ink-3);
+    font-variant-numeric: tabular-nums; }
+  @media (prefers-reduced-motion: reduce) { .chart .fill { transition: none; } }
+  @media (max-width: 620px) { .chart { grid-template-columns: 110px 1fr 52px; } }
+
+  table.data { border-collapse: collapse; font-size: 13.5px; margin-top: 10px; width: 100%; }
+  table.data th, table.data td { text-align: left; padding: 7px 12px 7px 0;
+    border-bottom: 1px solid var(--rule); }
+  table.data td.n, table.data th.n { text-align: right;
+    font-variant-numeric: tabular-nums; }
+  .scroll { overflow-x: auto; }
+  table.data th { cursor: pointer; user-select: none; white-space: nowrap; }
+  table.data th:hover { color: var(--ink); }
+  table.data th[aria-sort]::after { content: " \2193"; font-size: 11px; }
+  table.data th[aria-sort="descending"]::after { content: " \2191"; }
+  table.data th:focus-visible { outline: 2px solid var(--anchored); outline-offset: -2px; }
+  td.bar { position: relative; min-width: 92px; }
+  td.bar .bw { position: absolute; left: 0; top: 4px; bottom: 4px;
+    background: var(--bar-soft); border-radius: 0 2px 2px 0; z-index: 0; }
+  td.bar .bv { position: relative; z-index: 1; padding-right: 2px; }
+
+  figure { margin: 26px 0; }
+  figure img { width: 100%; max-width: 100%; height: auto; display: block;
+    border: 1px solid var(--rule); background: #fff; }
+  figcaption { font-size: 12.5px; color: var(--ink-3); margin-top: 9px; max-width: 68ch; }
+
+  .biblio { border-top: 1px solid var(--rule); padding-top: 20px; margin-top: 30px; }
+  .biblio h3 { font-size: 16px; margin: 0 0 4px; font-weight: 600; }
+  .biblio .meta { font-size: 13px; color: var(--ink-3); margin: 0 0 6px; }
+  .biblio p { font-size: 13.5px; color: var(--ink-2); margin: 0 0 8px; }
+  .note { font-size: 13px; color: var(--ink-3); border-left: 2px solid var(--rule);
+    padding-left: 14px; margin: 22px 0; }
+  .note strong { color: var(--ink-2); font-weight: 600; }
+
+  .map-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px; margin: 22px 0 8px; }
+  .map-card { margin: 0; border: 1px solid var(--rule); background: var(--panel);
+    padding: 12px; border-radius: 3px; }
+  .map-card img { width: 100%; height: auto; display: block; border: 1px solid var(--rule);
+    background: #fff; }
+  .map-card h3 { font-size: 14.5px; margin: 10px 0 3px; font-weight: 600;
+    letter-spacing: -.005em; }
+  .map-card .meta { font-size: 12px; color: var(--ink-3); margin: 0 0 8px; }
+  .map-card p { font-size: 13px; color: var(--ink-2); margin: 0 0 8px; max-width: none; }
+  .map-card .dl { font-size: 12.5px; margin: 10px 0 0; }
+  .map-badge { display: inline-block; font-size: 10.5px; letter-spacing: .04em;
+    text-transform: uppercase; padding: 2px 7px; border-radius: 2px; margin: 10px 0 0;
+    border: 1px solid var(--rule); color: var(--ink-3); }
+  .map-badge.in { color: var(--anchored); border-color: var(--anchored); }
+  .map-badge.out { border-style: dashed; }
+</style>
+
+</head>
+<body>
+<div class="page">
+  <nav>
+    <a href="./">Density</a>
+    <a href="./1819.html">1819</a>
+    <a href="./1822.html">1822</a>
+    <a href="./1842.html">1842</a>
+    <a href="./1845.html">1845</a>
+    <a href="./1851.html">1851</a>
+    <a href="./1860.html">1860</a>
+    <a href="./1868.html">1868</a>
+    <a href="./wards.html">Wards</a>
+    <a href="./work.html">Work</a>
+    <a href="./trade.html">Trade</a>
+    <a href="./building.html">Building</a>
+    <a href="./bias.html">What's missing</a>
+    <a href="./checking.html">Checking</a>
+    <a href="./maps.html" aria-current="page">Maps</a>
+    <a href="./sources.html">Sources</a>
+    </nav>
+  <p class="eyebrow">Thirteen maps, 1804–1876</p>
+  <h1 class="serif">Other maps of the city</h1>
+  <p class="lede">The printed maps Baltimore made of itself across this period, each linked to its full-resolution original.</p>
+  
+  <p>Thirteen printed maps of Baltimore, 1804 to 1876, shown small below and
+    linked out to the full-resolution original held by the Library of
+    Congress or Digital Maryland. None of them is the base layer this
+    project's residents are placed against, which is a circa-1930 street
+    survey, chosen because it still carries the alleys most of this
+    population lived on. These are here because a map of dots is easier to
+    read once you have seen the city the dots sit on.</p>
+  <p>Maps marked <strong>1819&ndash;1868</strong> fall inside the span this
+    site's directories cover. The rest are shown for context: one map from
+    before Jackson's 1819 directory, and two from after the last directory,
+    1868, used here.</p>
+
+  <div class="map-grid">
+    <figure class="map-card">
+      <a href="https://www.loc.gov/item/77691636/" target="_blank" rel="noopener">
+        <img src="img/maps/1804.jpg" alt="Improved plan of the city of Baltimore, 1804" loading="lazy">
+      </a>
+      <span class="map-badge out">outside the project window</span>
+      <h3>1804 &middot; Improved plan of the city of Baltimore</h3>
+      <p class="meta">Warner & Hanna &middot; Library of Congress</p>
+      <p>A pictorial plan bound into James Robinson's 1804 Baltimore directory, fifteen years before Jackson's directory gives us our first mapped year. Included for the shape of the city just before this project's period begins, not as a source for anyone on these maps.</p>
+      <p class="dl"><a href="https://www.loc.gov/item/77691636/" target="_blank" rel="noopener">View at Library of Congress</a>
+        <span class="mono" style="color:var(--ink-3);font-size:11.5px"> &middot; JP2, 3,703 × 2,932 px</span></p>
+    </figure>
+    <figure class="map-card">
+      <a href="https://collections.digitalmaryland.org/digital/collection/cator/id/163" target="_blank" rel="noopener">
+        <img src="img/maps/1819.jpg" alt="Map of Maryland, with inset of the City of Baltimore, 1819" loading="lazy">
+      </a>
+      <span class="map-badge in">1819&ndash;1868</span>
+      <h3>1819 &middot; Map of Maryland, with inset of the City of Baltimore</h3>
+      <p class="meta">Fielding Lucas, Jr. &middot; Enoch Pratt Free Library, via Digital Maryland (Cator Collection)</p>
+      <p>The same year as Jackson's directory, the earliest year mapped on this site. The Baltimore inset is small, a shaded patch showing how much of the city was actually built up, with the Washington Monument marked half-finished at the edge of Howard's woods.</p>
+      <p class="dl"><a href="https://collections.digitalmaryland.org/digital/download/collection/cator/id/163/size/full" target="_blank" rel="noopener">Download full resolution</a>
+        <span class="mono" style="color:var(--ink-3);font-size:11.5px"> &middot; 5,000 × 4,009 px, 600dpi</span></p>
+    </figure>
+    <figure class="map-card">
+      <a href="https://www.loc.gov/item/2002624027/" target="_blank" rel="noopener">
+        <img src="img/maps/1822.jpg" alt="Plan of the city of Baltimore, 1822" loading="lazy">
+      </a>
+      <span class="map-badge in">1819&ndash;1868</span>
+      <h3>1822 &middot; Plan of the city of Baltimore</h3>
+      <p class="meta">Surveyed by Thomas H. Poppleton, published by Fielding Lucas, Jr. &middot; Library of Congress</p>
+      <p>The official city plat, the survey Baltimore was actually laid out from, and contemporary with our 1819 and 1822 cohorts. Poppleton was commissioned to survey and fix the city's streets in 1818, and this plan is the printed result of that survey rather than a later redrawing of it.</p>
+      <p class="dl"><a href="https://www.loc.gov/item/2002624027/" target="_blank" rel="noopener">View at Library of Congress</a>
+        <span class="mono" style="color:var(--ink-3);font-size:11.5px"> &middot; JP2, 6,975 × 5,506 px</span></p>
+    </figure>
+    <figure class="map-card">
+      <a href="https://www.loc.gov/item/77691538/" target="_blank" rel="noopener">
+        <img src="img/maps/1823.jpg" alt="This plan of the city of Baltimore, 1823" loading="lazy">
+      </a>
+      <span class="map-badge in">1819&ndash;1868</span>
+      <h3>1823 &middot; This plan of the city of Baltimore</h3>
+      <p class="meta">Thomas H. Poppleton, cartographer &middot; Library of Congress</p>
+      <p>A hand colored, much larger edition of the same survey, printed one year after the 1822 plat above and adding an inset of the original 1729 town, sixty acres, drawn to scale inside the 1823 city that had grown up around it.</p>
+      <p class="dl"><a href="https://www.loc.gov/item/77691538/" target="_blank" rel="noopener">View at Library of Congress</a>
+        <span class="mono" style="color:var(--ink-3);font-size:11.5px"> &middot; JP2, 15,196 × 13,376 px</span></p>
+    </figure>
+    <figure class="map-card">
+      <a href="https://www.loc.gov/item/2002624026/" target="_blank" rel="noopener">
+        <img src="img/maps/1836.jpg" alt="Plan of the city of Baltimore, 1836" loading="lazy">
+      </a>
+      <span class="map-badge in">1819&ndash;1868</span>
+      <h3>1836 &middot; Plan of the city of Baltimore</h3>
+      <p class="meta">Fielding Lucas, Jr. &middot; Library of Congress</p>
+      <p>Fourteen years after Poppleton's plat, with wards drawn and a population table added. Sits in the gap between our 1822 and 1842 directory cohorts, where the site has no map of its own to show.</p>
+      <p class="dl"><a href="https://www.loc.gov/item/2002624026/" target="_blank" rel="noopener">View at Library of Congress</a>
+        <span class="mono" style="color:var(--ink-3);font-size:11.5px"> &middot; JP2, 6,923 × 5,374 px</span></p>
+    </figure>
+    <figure class="map-card">
+      <a href="https://www.loc.gov/item/2020587086/" target="_blank" rel="noopener">
+        <img src="img/maps/1844.jpg" alt="Plan of Baltimore, 1844" loading="lazy">
+      </a>
+      <span class="map-badge in">1819&ndash;1868</span>
+      <h3>1844 &middot; Plan of Baltimore</h3>
+      <p class="meta">Fielding Lucas, Jr. &middot; Library of Congress</p>
+      <p>One year before our 1845 cohort, the first year on this site with house numbers. This plan shows the wards and the young rail lines the numbered addresses of 1845 sit alongside.</p>
+      <p class="dl"><a href="https://www.loc.gov/item/2020587086/" target="_blank" rel="noopener">View at Library of Congress</a>
+        <span class="mono" style="color:var(--ink-3);font-size:11.5px"> &middot; JP2, 3,816 × 3,936 px</span></p>
+    </figure>
+    <figure class="map-card">
+      <a href="https://www.loc.gov/item/2004629026/" target="_blank" rel="noopener">
+        <img src="img/maps/1851.jpg" alt="Plan of the city of Baltimore, Maryland, 1851" loading="lazy">
+      </a>
+      <span class="map-badge in">1819&ndash;1868</span>
+      <h3>1851 &middot; Plan of the city of Baltimore, Maryland</h3>
+      <p class="meta">Sidney & Neff &middot; Library of Congress</p>
+      <p>Names every street, draws building footprints, and prints the ward numbers directly on the map, which is why it is a candidate for checking our ward polygons against a period source rather than a modern reconstruction. Its own population table does not reconcile with the census: the printed total, 169,303, does not equal the sum of its own twenty rows, 169,032. The census is the better authority on numbers.</p>
+      <p class="dl"><a href="https://www.loc.gov/item/2004629026/" target="_blank" rel="noopener">View at Library of Congress</a>
+        <span class="mono" style="color:var(--ink-3);font-size:11.5px"> &middot; JP2, 13,414 × 10,643 px</span></p>
+    </figure>
+    <figure class="map-card">
+      <a href="https://www.loc.gov/item/2002624007/" target="_blank" rel="noopener">
+        <img src="img/maps/1856.jpg" alt="Scott's map of the city of Baltimore, 1856" loading="lazy">
+      </a>
+      <span class="map-badge in">1819&ndash;1868</span>
+      <h3>1856 &middot; Scott's map of the city of Baltimore</h3>
+      <p class="meta">Simon J. Martenet &middot; Library of Congress</p>
+      <p>Wards and landowners, five years before Wood's 1860 directory. Printed as two large sheets, so this thumbnail is a small fraction of what the original carries.</p>
+      <p class="dl"><a href="https://www.loc.gov/item/2002624007/" target="_blank" rel="noopener">View at Library of Congress</a>
+        <span class="mono" style="color:var(--ink-3);font-size:11.5px"> &middot; JP2, 18,170 × 14,666 px</span></p>
+    </figure>
+    <figure class="map-card">
+      <a href="https://www.loc.gov/item/2002624019/" target="_blank" rel="noopener">
+        <img src="img/maps/1857.jpg" alt="Map of the city and county of Baltimore, Maryland, 1857" loading="lazy">
+      </a>
+      <span class="map-badge in">1819&ndash;1868</span>
+      <h3>1857 &middot; Map of the city and county of Baltimore, Maryland</h3>
+      <p class="meta">Robert Taylor, surveyor &middot; Library of Congress</p>
+      <p>A land ownership map reaching past the city line into the surrounding county, naming landowners rather than street residents. Useful for what lay just outside the ward boundaries this site maps.</p>
+      <p class="dl"><a href="https://www.loc.gov/item/2002624019/" target="_blank" rel="noopener">View at Library of Congress</a>
+        <span class="mono" style="color:var(--ink-3);font-size:11.5px"> &middot; JP2, 15,804 × 19,291 px</span></p>
+    </figure>
+    <figure class="map-card">
+      <a href="https://collections.digitalmaryland.org/digital/collection/tcgc/id/22" target="_blank" rel="noopener">
+        <img src="img/maps/1860.jpg" alt="Map of Baltimore, published for the Balto. City Directory, 1860" loading="lazy">
+      </a>
+      <span class="map-badge in">1819&ndash;1868</span>
+      <h3>1860 &middot; Map of Baltimore, published for the Balto. City Directory</h3>
+      <p class="meta">Surveyed by William Sides, published by John W. Woods &middot; Talbot County Free Library, via Digital Maryland</p>
+      <p>The exact companion to our strongest year: bound into the same volume the residents on the 1860 page were parsed from, published by the same John W. Woods. Its margins list street names and prominent businesses alongside the directory page numbers where they appear, a built-in index between the map and the book.</p>
+      <p class="dl"><a href="https://collections.digitalmaryland.org/digital/download/collection/tcgc/id/22/size/full" target="_blank" rel="noopener">Download full resolution</a>
+        <span class="mono" style="color:var(--ink-3);font-size:11.5px"> &middot; 5,000 × 4,009 px, 600dpi</span></p>
+    </figure>
+    <figure class="map-card">
+      <a href="https://www.loc.gov/item/2020587113/" target="_blank" rel="noopener">
+        <img src="img/maps/1866.jpg" alt="Map of Baltimore, 1866" loading="lazy">
+      </a>
+      <span class="map-badge in">1819&ndash;1868</span>
+      <h3>1866 &middot; Map of Baltimore</h3>
+      <p class="meta">William Sides, cartographer, published by John W. Woods &middot; Library of Congress</p>
+      <p>The same surveyor and publisher as the 1860 directory map above, six years later and after Baltimore redrew its wards in 1861. Our 1868 page is geocoded against that later ward boundary, so this is the map that shows it.</p>
+      <p class="dl"><a href="https://www.loc.gov/item/2020587113/" target="_blank" rel="noopener">View at Library of Congress</a>
+        <span class="mono" style="color:var(--ink-3);font-size:11.5px"> &middot; JP2, 6,073 × 4,450 px</span></p>
+    </figure>
+    <figure class="map-card">
+      <a href="https://www.loc.gov/item/75694535/" target="_blank" rel="noopener">
+        <img src="img/maps/1869.jpg" alt="E. Sachse & Co.'s bird's eye view of the city of Baltimore, 1869" loading="lazy">
+      </a>
+      <span class="map-badge out">outside the project window</span>
+      <h3>1869 &middot; E. Sachse & Co.'s bird's eye view of the city of Baltimore</h3>
+      <p class="meta">E. Sachse & Co. &middot; Library of Congress</p>
+      <p>Not measurable, drawn in perspective rather than to scale, one year after the last directory on this site. It shows the city the way a person standing above it would see it, which no plan or plat in this gallery does. The master JP2 is enormous, so only a downsized thumbnail is used here.</p>
+      <p class="dl"><a href="https://www.loc.gov/item/75694535/" target="_blank" rel="noopener">View at Library of Congress</a>
+        <span class="mono" style="color:var(--ink-3);font-size:11.5px"> &middot; JP2, 39,440 × 19,008 px, not downloaded here</span></p>
+    </figure>
+    <figure class="map-card">
+      <a href="https://www.loc.gov/item/2020587065/" target="_blank" rel="noopener">
+        <img src="img/maps/1876.jpg" alt="Map of Baltimore prepared for the Stranger's guide in Baltimore, 1876" loading="lazy">
+      </a>
+      <span class="map-badge out">outside the project window</span>
+      <h3>1876 &middot; Map of Baltimore prepared for the Stranger's guide in Baltimore</h3>
+      <p class="meta">William Sides, cartographer, published by John W. Woods &middot; Library of Congress</p>
+      <p>The same survey team as the 1860 and 1866 maps, eight years after the last directory this site draws on. Shown to mark how far past this project's period the same mapmakers kept working, not as a source for anyone on the site.</p>
+      <p class="dl"><a href="https://www.loc.gov/item/2020587065/" target="_blank" rel="noopener">View at Library of Congress</a>
+        <span class="mono" style="color:var(--ink-3);font-size:11.5px"> &middot; JP2, 6,477 × 4,592 px</span></p>
+    </figure>
+  </div>
+
+  <div class="note"><strong>Not shown here: the Sanborn fire insurance
+    maps.</strong> Sanborn coverage of Baltimore City begins in 1890, more
+    than twenty years after the last directory this site draws on, so no one
+    mapped here can be placed against one. They are still worth knowing
+    about: Sanborn maps draw individual building footprints and note
+    construction material, which is the closest surviving record of the
+    alley fabric before it was cleared in the twentieth century. See the
+    Library of Congress
+    <a href="https://www.loc.gov/collections/sanborn-maps/?q=baltimore"
+    target="_blank" rel="noopener">Sanborn Maps collection, filtered to
+    Baltimore</a>.</div>
+
+</div>
+
+
+</body>
+</html>

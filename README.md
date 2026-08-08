@@ -14,13 +14,19 @@ list those residents in a section of their own — "Colored Persons" in Wood's
 address. This project parses those sections and puts the people back on the
 map.
 
-Current state: **21,643 residents parsed** across six directories spanning 46
-years, **2,866 of the 1860 cohort** placed as points, **637 of the 1842 cohort**
-placed by block face, and the whole city mapped by ward from the census.
+Current state: **~22,800 residents parsed** across seven directory years
+spanning 49 years, **13,081 of them placed** as points or block faces, and the
+whole city mapped by ward from the printed censuses of 1820, 1850 and 1860.
+
+The headline finding: **Black Baltimore was 23.40% of the city in 1820, 16.79%
+in 1850, and 13.13% in 1860.** A forty-year decline, driven not by Black
+departure — the population barely moved — but by white in-migration piling up
+around a community that was standing still.
 
 | Year | Directory | Residents parsed | Addressing |
 |---|---|---|---|
-| 1822 | Keenan's | 414 | relative, flagged `f` for free |
+| 1819 | Jackson's | 526 | relative and "near", hand transcription |
+| 1822 | Keenan's | 1,061 | relative, dagger-marked, hand transcription |
 | 1842 | Matchett's | 2,724 | relative ("Wolfe st s of Fleet") |
 | 1845 | Baltimore Directory | 2,100 | house number + street |
 | 1851 | Matchett's | 3,642 | house number + street |

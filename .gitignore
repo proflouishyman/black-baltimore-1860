@@ -13,3 +13,15 @@ data/raw/*.dta
 data/raw/*.sav
 data/raw/maps/*.jpg
 data/raw/H_*_test.csv
+
+# Historical GIS acquisitions. Provenance, licence and download recipes are in
+# docs/BALTIMORE_GEOGRAPHIES.md and the per-directory manifest.json files. Bulk
+# rasters and the two largest vector files are not carried in git, matching the
+# repo's existing policy for data/raw.
+data/raw/gis/**/*.jp2
+data/raw/gis/**/*.tif
+data/raw/gis/**/*.jpg
+data/raw/gis/**/*.png
+data/raw/gis/**/*.pdf
+data/raw/gis/open_baltimore/baltimore_street_centerline_native.geojson
+data/raw/gis/maryland_imap/md_historic_inventory_baltimore_city.geojson

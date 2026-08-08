@@ -1,0 +1,107 @@
+{
+ "55464": {
+  "name": "1792_folie",
+  "n_gcps": 5,
+  "median_error_m": 0.6635451399034717,
+  "max_error_m": 1.8412284385433961,
+  "file": "mapwarper_55464_1792_folie_gcps.json"
+ },
+ "36610": {
+  "name": "1801_warner_hanna",
+  "n_gcps": 4,
+  "median_error_m": 16.25483137955532,
+  "max_error_m": 21.5491592253489,
+  "file": "mapwarper_36610_1801_warner_hanna_gcps.json"
+ },
+ "36809": {
+  "name": "1801_warner_hanna_color",
+  "n_gcps": 5,
+  "median_error_m": 5.194150743817826,
+  "max_error_m": 7.504040911917564,
+  "file": "mapwarper_36809_1801_warner_hanna_color_gcps.json"
+ },
+ "109684": {
+  "name": "1836_lucas",
+  "n_gcps": 151,
+  "median_error_m": 18.796746596890294,
+  "max_error_m": 262.530548832736,
+  "file": "mapwarper_109684_1836_lucas_gcps.json"
+ },
+ "31201": {
+  "name": "1838_baltimore",
+  "n_gcps": 6,
+  "median_error_m": 12.06167600996348,
+  "max_error_m": 25.84155849547895,
+  "file": "mapwarper_31201_1838_baltimore_gcps.json"
+ },
+ "35860": {
+  "name": "1848_williams",
+  "n_gcps": 5,
+  "median_error_m": 29.156428401349487,
+  "max_error_m": 106.83961391077206,
+  "file": "mapwarper_35860_1848_williams_gcps.json"
+ },
+ "31175": {
+  "name": "1845_1855",
+  "n_gcps": 3,
+  "median_error_m": 0.0,
+  "max_error_m": 0.0,
+  "file": "mapwarper_31175_1845_1855_gcps.json"
+ },
+ "37609": {
+  "name": "1851_baltimore",
+  "n_gcps": 5,
+  "median_error_m": 27.341958555904828,
+  "max_error_m": 98.67036242741773,
+  "file": "mapwarper_37609_1851_baltimore_gcps.json"
+ },
+ "91461": {
+  "name": "us_coast_survey_baltimore_harbour_city",
+  "n_gcps": 4,
+  "median_error_m": 71.15850013053914,
+  "max_error_m": 109.7362900340816,
+  "file": "mapwarper_91461_us_coast_survey_baltimore_harbour_city_gcps.json"
+ },
+ "16095": {
+  "name": "city_and_suburbs",
+  "n_gcps": 4,
+  "median_error_m": 19.408773110659954,
+  "max_error_m": 20.671976954254813,
+  "file": "mapwarper_16095_city_and_suburbs_gcps.json"
+ },
+ "34005": {
+  "name": "1873_baltimore",
+  "n_gcps": 15,
+  "median_error_m": 9.040550085887046,
+  "max_error_m": 38.757851572125766,
+  "file": "mapwarper_34005_1873_baltimore_gcps.json"
+ },
+ "58710": {
+  "name": "1876_hopkins_papenfuse",
+  "n_gcps": 3,
+  "median_error_m": 0.0,
+  "max_error_m": 0.0,
+  "file": "mapwarper_58710_1876_hopkins_papenfuse_gcps.json"
+ },
+ "36406": {
+  "name": "1876_hopkins_harbor_saratoga",
+  "n_gcps": 14,
+  "median_error_m": 8.689609493488236,
+  "max_error_m": 78.50723763578584,
+  "file": "mapwarper_36406_1876_hopkins_harbor_saratoga_gcps.json"
+ },
+ "29712": {
+  "name": "1896_bromley_plate12",
+  "n_gcps": 9,
+  "median_error_m": 194.33293316506692,
+  "max_error_m": 625.1263571707985,
+  "file": "mapwarper_29712_1896_bromley_plate12_gcps.json"
+ },
+ "28259": {
+  "name": "1914_atlas_sheet_1S1W",
+  "n_gcps": 7,
+  "median_error_m": 20.198893475730582,
+  "max_error_m": 31.43054949961926,
+  "file": "mapwarper_28259_1914_atlas_sheet_1S1W_gcps.json"
+ }
+}

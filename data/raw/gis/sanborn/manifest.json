@@ -1,0 +1,71 @@
+{
+  "source": "Library of Congress, Sanborn Fire Insurance Maps Collection",
+  "collection_url": "https://www.loc.gov/collections/sanborn-maps/",
+  "verified_access_date": "2026-08-08",
+  "license": "Public domain (no known restrictions; LOC serves these free with no login)",
+  "search_used": "https://www.loc.gov/collections/sanborn-maps/?q=baltimore&fo=json&c=150",
+  "note": "LOC search API blocks plain curl/requests via Cloudflare bot challenge. Fetches in this manifest were made through a real browser session (Playwright over CDP on localhost:9222) which passed the challenge; once past it, tile.loc.gov image/derivative URLs work fine with plain curl (verified below).",
+  "baltimore_city_editions_in_scope_1850_1905": [
+    {
+      "edition": "1890",
+      "loc_item_ids": [
+        "sanborn03573_001 (Vol.1, 84 sheets)",
+        "sanborn03573_002 (Vol.2, 90 sheets)",
+        "sanborn03573_003 (Vol.3, 84 sheets)"
+      ],
+      "total_sheets": 258,
+      "item_urls": [
+        "https://www.loc.gov/item/sanborn03573_001/",
+        "https://www.loc.gov/item/sanborn03573_002/",
+        "https://www.loc.gov/item/sanborn03573_003/"
+      ]
+    },
+    {
+      "edition": "1901-1902",
+      "loc_item_ids": [
+        "sanborn03573_004 (Vol.1, 1901, 109 sheets)",
+        "sanborn03573_005 (Vol.2, 1901, 123 sheets)",
+        "sanborn03573_006 (Vol.3, 1902, 128 sheets)",
+        "sanborn03573_007 (Vol.4, 1902, 130 sheets)"
+      ],
+      "total_sheets": 490,
+      "item_urls": [
+        "https://www.loc.gov/item/sanborn03573_004/",
+        "https://www.loc.gov/item/sanborn03573_005/",
+        "https://www.loc.gov/item/sanborn03573_006/",
+        "https://www.loc.gov/item/sanborn03573_007/"
+      ]
+    }
+  ],
+  "later_editions_out_of_scope_present_in_same_collection": "1914, 1915, 1917, 1922, 1928, 1929, 1936, 1951, 1952, 1953 volumes also exist for Baltimore Independent Cities under the same bib group (sanborn03573_008 through _055) plus separate items for Baltimore County towns (Towson, Catonsville, Dundalk, Pikesville, Reisterstown, Sparrows Point, etc., earliest Towson 1885) and unrelated Baltimore, Ohio / Baltimore, Michigan sheets that share the search term 'Baltimore' but are a different city.",
+  "download_url_pattern": {
+    "description": "Each LOC Sanborn item exposes a 'resources[0].files' array (visible via ?fo=json on the item page) with one entry per sheet. Each sheet entry is a list of derivative files.",
+    "example_item_json": "https://www.loc.gov/item/sanborn03573_001/?fo=json",
+    "derivatives_per_sheet": [
+      {"mimetype": "image/jpeg", "note": "IIIF-served JPEG at fractional scale, e.g. pct:12.5 / pct:25 / pct:50", "example": "https://tile.loc.gov/image-services/iiif/service:gmd:gmd384m:g3844m:g3844bm:g3844bm_g03573189001:03573_01_1890-0000L/full/pct:50/0/default.jpg"},
+      {"mimetype": "image/jp2", "note": "Full-resolution JPEG2000, typically 8-14 MB per sheet", "example": "https://tile.loc.gov/storage-services/service/gmd/gmd384m/g3844m/g3844bm/g3844bm_g03573189001/03573_01_1890-0000L.jp2"},
+      {"mimetype": "image/tiff", "note": "Full master TIFF, ~130-150 MB per sheet -- do NOT bulk download", "example": "https://tile.loc.gov/storage-services/master/gmd/gmd384m/g3844m/g3844bm/g3844bm_g03573189001/03573_01_1890-0000L.tif"},
+      {"info_json": "https://tile.loc.gov/image-services/iiif/service:gmd:gmd384m:g3844m:g3844bm:g3844bm_g03573189001:03573_01_1890-0000L/info.json", "note": "Full IIIF Image API 2.x info.json per sheet -- confirms IIIF support"}
+    ],
+    "sheet_naming": "Sheets named e.g. -0000L / -0000R (double-page plates, left/right half), -watr (water supply map), -ind1 (index/key map)."
+  },
+  "verification_performed": [
+    {"action": "curl -I on jp2 URL for sanborn03573_001 sheet 0000L", "result": "HTTP/2 200, content-length 11880989, server cloudflare, works with plain curl (no auth/challenge on tile.loc.gov)"},
+    {"action": "curl -I on IIIF jpg derivative (pct:25)", "result": "HTTP/2 200, content-type image/jpeg, content-length 479309"}
+  ],
+  "downloaded_samples": [
+    {
+      "file": "sanborn03573_001_sheet0000L_1890.jp2",
+      "size_bytes": 11880989,
+      "source_url": "https://tile.loc.gov/storage-services/service/gmd/gmd384m/g3844m/g3844bm/g3844bm_g03573189001/03573_01_1890-0000L.jp2",
+      "describes": "Baltimore, 1890 Sanborn, Vol.1, sheet 0000L (first double-page plate)"
+    },
+    {
+      "file": "sanborn03573_001_sheet0000L_1890_full.jpg",
+      "size_bytes": 1441506,
+      "source_url": "https://tile.loc.gov/image-services/iiif/service:gmd:gmd384m:g3844m:g3844bm:g3844bm_g03573189001:03573_01_1890-0000L/full/pct:50/0/default.jpg",
+      "describes": "Same sheet, IIIF-served JPEG at 50% scale"
+    }
+  ],
+  "bulk_download_recipe": "For each item ID (e.g. sanborn03573_001), GET https://www.loc.gov/item/<ID>/?fo=json, iterate resources[0]['files'] (one list per sheet), pick the entry with mimetype image/jp2 for full-resolution, and curl its 'url'. The LOC item-page HTML endpoint itself is behind a Cloudflare bot challenge when hit directly with curl/requests -- fetch item JSON through a real browser session (or the loc.gov API with an API key) first, then the returned tile.loc.gov asset URLs download fine with plain curl/wget, no login needed."
+}

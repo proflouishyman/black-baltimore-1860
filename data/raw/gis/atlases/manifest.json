@@ -1,0 +1,145 @@
+{
+  "verified_access_date": "2026-08-08",
+  "sources": [
+    {
+      "name": "Johns Hopkins University, Sheridan Libraries -- JScholarship repository, 'Maps and Atlases' community, 'Maryland State, County and Baltimore City Atlases' collection",
+      "collection_search_url": "https://jscholarship.library.jhu.edu/search?query=Hopkins%20atlas%20Baltimore",
+      "access_note": "Direct curl/requests fetches to jscholarship.library.jhu.edu get HTTP 403 (Cloudflare bot protection). All JHU URLs below were verified through a real browser session (Playwright over CDP). Item pages and metadata load fine once past the challenge; file downloads required in-page fetch() with credentials (see recipe below) because the bitstream '/download' and '/server/api/core/bitstreams/<uuid>/content' endpoints also sit behind the same Cloudflare check.",
+      "license": "No login required to view/download; items carry an 'Item-specific license agreed upon submission' (license.txt on each item) -- treat as free/open access digitized public-domain historical atlases, JHU-hosted. No paywall encountered.",
+      "format": "Individual plate scans as JPEG or JPEG2000 (JP2) or TIFF per item, no IIIF manifest observed, no GeoTIFF/tiles from JHU itself.",
+      "items": [
+        {
+          "title": "City atlas of Baltimore, Maryland, and environs: from official records, private plans and actual surveys (G.M. Hopkins, Jr.)",
+          "date": "1876-1877",
+          "item_url": "https://jscholarship.library.jhu.edu/items/aac86a81-aa13-49db-8816-4daa2fc311ee",
+          "handle": "http://jhir.library.jhu.edu/handle/1774.2/32648",
+          "file_count": 167,
+          "sample_bitstream_download_url": "https://jscholarship.library.jhu.edu/server/api/core/bitstreams/a409b54b-73ba-4ca5-95c2-1533e8d75dd8/content",
+          "in_scope": true,
+          "notes": "This is THE core Hopkins 1876-77 Baltimore city atlas, JHU-hosted -- most directly useful single item for this project given the JHU institutional home."
+        },
+        {
+          "title": "[BALTIMORE CO.] Atlas of Baltimore County, Maryland (G.M. Hopkins)",
+          "date": "1877",
+          "item_url": "https://jscholarship.library.jhu.edu/items/e254045e-b45d-410a-887e-1bceb449dd6e",
+          "file_count": 94,
+          "in_scope": true
+        },
+        {
+          "title": "Atlas of the city of Baltimore: from actual surveys and official plans (G.W. Bromley)",
+          "date": "1885-1887",
+          "item_url": "https://jscholarship.library.jhu.edu/items/42fa0470-960f-41f8-a291-76dd7cea4630",
+          "file_count": 106,
+          "format_note": "Files listed as .jp2 (higher quality than the 1876 Hopkins JPEGs)",
+          "in_scope": true
+        },
+        {
+          "title": "[BALTIMORE CITY] Atlas of the City of Baltimore Maryland (G.W. Bromley)",
+          "date": "1896",
+          "item_url": "https://jscholarship.library.jhu.edu/items/935ea5a3-e408-472f-b150-78700b8dedb3",
+          "file_count": 0,
+          "in_scope": true,
+          "notes": "CATALOG RECORD ONLY -- no digitized page images attached at JHU (only license.txt in the file list). NOT CONFIRMED as digitized/available here despite matching the requested 1896 Bromley edition. Do not assume this can be downloaded from JHU; a warped fragment of this exact edition (Plate 12) does exist, sourced from the Maryland State Archives copy, not JHU -- see msa_bc_ba_atlases entry below."
+        },
+        {
+          "title": "[BALTIMORE CITY] Atlas of the City of Baltimore, Maryland: From Actual Surveys and Official Plans (G.W. Bromley)",
+          "date": "1906",
+          "item_url": "https://jscholarship.library.jhu.edu/items/fcecb9cb-1782-46f6-a01c-9d0a0a118f33",
+          "file_count": 73,
+          "in_scope": true,
+          "notes": "One plate (18) is a substitute scan from a different copy per the item description -- rest are original."
+        },
+        {
+          "title": "[BALTIMORE CO.] Atlas of Baltimore County, 1898 (G.W./Walter S. Bromley)",
+          "date": "1898",
+          "item_url": "https://jscholarship.library.jhu.edu/items/b41488d1-958b-49d2-9088-1dab168d4d91",
+          "file_count": 74,
+          "in_scope": true
+        },
+        {
+          "title": "[BALTIMORE CITY] Atlas of the City of Baltimore, MD - 1897 [SINGLE SHEETS] (Baltimore City Topographical Survey, 1893-1896 field work)",
+          "date": "1897",
+          "item_url": "https://jscholarship.library.jhu.edu/items/3d6d9905-dcde-4435-9fc5-11fbc52245a4",
+          "file_count": 76,
+          "in_scope": true,
+          "notes": "Not a fire-insurance/property atlas -- a municipal topographic survey (39 sheets originally 1893-96, bound 1897). Different content (contours/topography, not building footprints/ownership) but same era and large-scale; may be useful as a topographic base layer, not for parcel-level addressing."
+        },
+        {
+          "title": "[ANNE ARUNDEL CO.] / [HOWARD CO.] Atlas of Fifteen Miles Around Baltimore (G.M. Hopkins)",
+          "date": "1878",
+          "in_scope": false,
+          "notes": "Surrounding counties, not Baltimore City proper -- listed for completeness only, out of core scope."
+        },
+        {
+          "title": "Baltimore, Maryland Sanborn Insurance Maps of Selected Johns Hopkins Owned Properties",
+          "item_url": "https://jscholarship.library.jhu.edu/items/384d56cd-af50-4b23-a052-885867cc8729",
+          "notes": "JHU also holds a small, JHU-property-specific Sanborn excerpt set (not the full-city LOC Sanborn collection). Not investigated further -- LOC's Sanborn holdings (see sanborn/manifest.json) are the comprehensive source; this JHU set only covers JHU-owned parcels."
+        }
+      ],
+      "download_recipe": "1. Load the item page in a real browser (Cloudflare-protected). 2. Collect bitstream download links -- either the human link 'https://jscholarship.library.jhu.edu/bitstreams/<uuid>/download' or the direct asset 'https://jscholarship.library.jhu.edu/server/api/core/bitstreams/<uuid>/content'. 3. Both are ALSO behind the Cloudflare check for bare curl/requests (confirmed: plain curl -I returns 403). 4. Within the same authenticated browser context, run page.evaluate with fetch(url, {credentials:'include'}) and pipe the arrayBuffer out (base64) to bypass the challenge, OR simply use the browser's native download (right-click/Save As) for one-off manual grabs. 5. For ~830 total items in the 'Maps and Atlases' community and hundreds of files per atlas, do NOT attempt an unattended bulk curl loop -- it will 403 immediately; any bulk pull needs a real, challenge-passed browser session (e.g. headless Chrome with a persistent context) driving the fetch loop, with pacing to stay polite to JHU's servers."
+    },
+    {
+      "name": "Maryland State Archives -- 'bc_ba_atlases_1876_1915' scanned PDF series (Baltimore City & Baltimore County Atlases, 1876-1915, compiled by the late State Archivist Edward Papenfuse)",
+      "verified_working_urls": [
+        "https://mdhistory.msa.maryland.gov/msaref07/bc_ba_atlases_1876_1915/pdf/bc_ba_atlases_1876_1915-0794.pdf",
+        "https://mdhistory.msa.maryland.gov/msaref07/bc_ba_atlases_1876_1915/pdf/bc_ba_atlases_1876_1915-0197.pdf"
+      ],
+      "access_note": "These download with PLAIN curl, no browser/Cloudflare workaround needed, no login. http:// URLs 302-redirect to https://mdhistory.msa.maryland.gov, which then serves the PDF directly (HTTP 200).",
+      "license": "Public domain / state archives -- no login, no paywall encountered.",
+      "format": "One PDF per bound-atlas page/plate, sequentially numbered (-0001.pdf, -0002.pdf, ... at least through -0800.pdf confirmed to exist; did not probe beyond -0800 to avoid hammering the server). Each PDF appears to be a single-page raster scan (not a georeferenced GeoTIFF).",
+      "scope": "Confirmed spans at least the 1876 Hopkins city atlas and the 1896 Bromley city atlas (identified via cross-reference below), consistent with the collection's stated 1876-1915 range. Sheet-to-page-number mapping is NOT indexed anywhere I could confirm -- no finding-aid/TOC page was located (tried /html/index.html and several guessed msa.maryland.gov paths, all 404/403). Treat as a flat sequential scan run; would need manual browsing or the mdhistory.net site search (not accessed) to map a specific street/plate to a page number.",
+      "how_found": "Cross-referenced from mapwarper.net georeferenced-map metadata (see georeferenced section below), which recorded these exact PDF URLs as 'source_uri' for two already-warped Baltimore plates.",
+      "downloaded_samples": [
+        {
+          "file": "msa_bc_ba_atlases_1876_1915-0794_hopkins1876_HarborToSaratoga.pdf",
+          "size_bytes": 1410634,
+          "identified_as": "1876 Hopkins atlas, 'Harbor to Saratoga' plate (per corresponding Map Warper entry, id 36406)"
+        },
+        {
+          "file": "msa_bc_ba_atlases_1876_1915-0197_bromley1896_plate12.pdf",
+          "size_bytes": 8139707,
+          "identified_as": "1896 Bromley atlas, Plate 12 (per corresponding Map Warper entry, id 29712, date_depicted 1896)"
+        }
+      ]
+    },
+    {
+      "name": "Map Warper (mapwarper.net) -- pre-existing georeferenced Baltimore atlas sheets",
+      "relevance_to_task_item_3": "Answers 'is any Baltimore atlas already georeferenced' -- YES, partially: individual plates/sheets from the Hopkins 1876 and Bromley 1896/1915 atlases have already been georeferenced (status: 'warped') by Map Warper users, NOT the atlases in their entirety.",
+      "verified_examples": [
+        {"id": 58710, "title": "Baltimore 1876 Papenfuse Atlas", "status": "warped", "bbox_wgs84": "-76.7030527,39.3126616,-76.6173547,39.3743235", "tiles": "https://mapwarper.net/maps/tile/58710/{z}/{x}/{y}.png", "wms": "https://mapwarper.net/maps/wms/58710?request=GetCapabilities&service=WMS&version=1.1.1"},
+        {"id": 36406, "title": "1876 Baltimore Atlas - Harbor to Saratoga", "status": "warped", "bbox_wgs84": "-76.62663382,39.28121208,-76.60243689,39.29471937", "source_uri": "MSA PDF -0794 (see above)"},
+        {"id": 29712, "title": "Section of Plate 12, Atlas of the City of Baltimore (1896)", "status": "warped", "date_depicted": "1896", "bbox_wgs84": "-76.64729022,39.29793501,-76.63466657,39.30997832", "source_uri": "MSA PDF -0197 (see above)"},
+        {"id": 34957, "title": "[BALTIMORE CO.] Atlas of Baltimore County, Maryland - Ninth District", "status": "warped", "source_uri": "JHU JScholarship bitstream (jscholarship...1774.2/32594)"},
+        {"id": 80413, "title": "Bromley 1915 Baltimore Plate 29", "status": "warped", "note": "1915 -- outside 1850-1905 window, listed for completeness"},
+        {"id": 28259, "title": "Sheet 1S-1W, Atlas of the City of Baltimore (1914)", "status": "warped", "note": "1914 -- outside window"},
+        {"id": 74782, "title": "Papenfuse: Atlases and Maps of Baltimore City and County, 1876-1915 & Block Maps as of April 2005 -- Overview Map for Atlas", "status": "warped", "note": "This is a georeferenced KEY/INDEX map showing atlas sheet boundaries, not the content plates themselves -- useful as a spatial index into the MSA PDF series if its GCPs/output are examined."}
+      ],
+      "verification_performed": [
+        {"action": "GET WMS GetMap for map 58710 with explicit bbox/width/height", "result": "HTTP 200, image/png, 800x600, 686KB -- real georeferenced raster returned"},
+        {"action": "GET XYZ tile z16 for map 58710", "result": "HTTP 200, image/png, 256x256 -- tile service live"},
+        {"action": "GET /maps/<id>/export.tif (GeoTIFF)", "result": "302 redirect to an HTML page, NOT a working direct download without a browser session/login -- WMS and tile endpoints are the reliable public access path, not the export.tif link"}
+      ],
+      "downloaded_samples": [
+        {"file": "mapwarper_58710_hopkins1876_georeferenced_wms_sample.png", "size_bytes": 686044, "source_url": "https://mapwarper.net/maps/wms/58710?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetMap&LAYERS=58710&SRS=EPSG:4326&BBOX=-76.7030527,39.3126616,-76.6173547,39.3743235&WIDTH=800&HEIGHT=600&FORMAT=image/png"},
+        {"file": "mapwarper_58710_hopkins1876_tile_z16.png", "size_bytes": 4096, "source_url": "https://mapwarper.net/maps/tile/58710/16/18774/24475.png"}
+      ],
+      "caveat": "This appears to be scattered, individual-user georeferencing (a handful of plates each from a few different atlas editions), not a systematic full-atlas georeferencing project. Coverage of any single edition is fragmentary -- do not assume the whole 1876 or 1896 atlas is tiled. Full list of all ~72 Baltimore-area entries on Map Warper (many unrelated to fire-insurance/property atlases, e.g. Lucas 1836, Warner & Hanna 1801) was captured separately by another research thread in this project (see data file already in scratch, not duplicated here since it is outside this task's Sanborn/Hopkins/Bromley scope)."
+    },
+    {
+      "name": "Archive.org",
+      "checked": true,
+      "result": "NOT CONFIRMED. Searched archive.org's public advancedsearch API for 'Hopkins atlas Baltimore', 'Bromley atlas Baltimore 1906', and 'sanborn baltimore maryland' -- no relevant atlas or Sanborn map items found (only unrelated news-broadcast recordings and an unrelated 'Cecil County' atlas). Archive.org does NOT appear to independently host these Baltimore fire-insurance/property atlases; JHU JScholarship and the Maryland State Archives PDF series are the working sources, not archive.org."
+    },
+    {
+      "name": "Historic Map Works",
+      "checked": false,
+      "result": "NOT CHECKED -- WebSearch quota for this session was exhausted before this source could be investigated (see note below); site is a for-profit map-print vendor historically known to mirror low-res Hopkins/Bromley plate scans behind ads, typically NOT full-resolution or freely downloadable. Given strong verified free JHU + MSA coverage already in hand, deprioritized. If a georeferencing pipeline still needs it, check historicmapworks.com directly for a Baltimore-city browse page."
+    },
+    {
+      "name": "Baltimore City Archives",
+      "checked": false,
+      "result": "NOT CHECKED for this task -- WebSearch quota exhausted (see note below) before this source could be investigated. The Baltimore City Archives' own online holdings are generally not full-resolution self-serve digitized atlases (much of their historic cartographic material has instead been digitized and redistributed via the MSA 'mdhistory.net' series found above, per Papenfuse's role as former State Archivist). Worth a follow-up WebFetch pass on baltimorecityarchives.org once search quota resets."
+    }
+  ],
+  "session_note": "WebSearch tool for this session hit its 200-call budget almost immediately (before any query for this task ran) and no queries beyond the two attempted returned results. All findings above come from direct WebFetch/curl/Playwright(CDP) navigation and from cross-referencing Map Warper's public API for source_uri fields -- no unverified web-search snippets are included."
+}

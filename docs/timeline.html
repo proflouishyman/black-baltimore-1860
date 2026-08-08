@@ -1,0 +1,945 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Black Baltimore 1790-1868: population, household composition and slaveholding, from the federal censuses and IPUMS microdata.">
+<meta property="og:title" content="A timeline of Black Baltimore">
+<meta property="og:description" content="Black Baltimore 1790-1868: population, household composition and slaveholding, from the federal censuses and IPUMS microdata.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>&#x1F5FA;</text></svg>">
+<title>Timeline — Black Baltimore</title>
+<style>
+  :root {
+    --ground: #E8E5DE; --panel: #F1EFE9; --ink: #17201F; --ink-2: #46514E;
+    --ink-3: #6E7A76; --rule: #CFCABF; --anchored: #A96A08; --approx: #00846F;
+    --bar: #A96A08; --bar-soft: #D8C6A4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #101619; --panel: #161E22; --ink: #E4E7E5; --ink-2: #A9B4B1;
+      --ink-3: #7E8A88; --rule: #253034; --anchored: #CB811A; --approx: #2C9C8D;
+      --bar: #CB811A; --bar-soft: #3B3527;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #101619; --panel: #161E22; --ink: #E4E7E5; --ink-2: #A9B4B1;
+    --ink-3: #7E8A88; --rule: #253034; --anchored: #CB811A; --approx: #2C9C8D;
+    --bar: #CB811A; --bar-soft: #3B3527;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--ground); color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.55;
+    -webkit-font-smoothing: antialiased; }
+  .serif { font-family: "Iowan Old Style", "Palatino Linotype", Palatino,
+           "Book Antiqua", Georgia, serif; }
+  .mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+          font-variant-numeric: tabular-nums; }
+
+  .page { max-width: 1080px; margin: 0 auto; padding: 26px 26px 80px; }
+  nav { display: flex; flex-wrap: wrap; gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule); margin-bottom: 34px; }
+  nav a { flex: 1 1 auto; min-width: 52px; text-align: center; padding: 8px 6px;
+    font-size: 12px; text-decoration: none; color: var(--ink-2);
+    background: var(--panel); letter-spacing: .04em; }
+  nav a:hover { background: var(--ground); color: var(--ink); }
+  nav a[aria-current="page"] { background: var(--ink); color: var(--panel); font-weight: 600; }
+  nav a:focus-visible { outline: 2px solid var(--anchored); outline-offset: -2px; }
+
+  .eyebrow { font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-3); margin: 0 0 10px; }
+  h1 { font-size: 38px; line-height: 1.1; margin: 0 0 12px; text-wrap: balance;
+    font-weight: 600; letter-spacing: -.015em; }
+  h2 { font-size: 21px; margin: 44px 0 12px; font-weight: 600; letter-spacing: -.01em; }
+  .lede { color: var(--ink-2); font-size: 16.5px; max-width: 64ch; margin: 0 0 6px; }
+  p { max-width: 68ch; }
+  a { color: var(--anchored); }
+
+  .years { display: flex; flex-wrap: wrap; gap: 6px; margin: 26px 0 18px; }
+  .years button { font: inherit; font-size: 13px; padding: 6px 14px; cursor: pointer;
+    background: var(--panel); color: var(--ink-2); border: 1px solid var(--rule);
+    border-radius: 2px; }
+  .years button:hover { border-color: var(--ink-3); color: var(--ink); }
+  .years button[aria-pressed="true"] { background: var(--ink); color: var(--panel);
+    border-color: var(--ink); font-weight: 600; }
+  .years button:focus-visible { outline: 2px solid var(--anchored); outline-offset: 2px; }
+
+  .chart { display: grid; grid-template-columns: 150px 1fr 64px; gap: 3px 12px;
+    align-items: center; margin-top: 8px; }
+  .chart .lab { font-size: 13px; text-align: right; color: var(--ink-2); }
+  .chart .track { background: var(--bar-soft); height: 17px; border-radius: 0 3px 3px 0; }
+  .chart .fill { background: var(--bar); height: 17px; border-radius: 0 3px 3px 0;
+    transition: width .25s ease; }
+  .chart .val { font-size: 12.5px; color: var(--ink-3);
+    font-variant-numeric: tabular-nums; }
+  @media (prefers-reduced-motion: reduce) { .chart .fill { transition: none; } }
+  @media (max-width: 620px) { .chart { grid-template-columns: 110px 1fr 52px; } }
+
+  table.data { border-collapse: collapse; font-size: 13.5px; margin-top: 10px; width: 100%; }
+  table.data th, table.data td { text-align: left; padding: 7px 12px 7px 0;
+    border-bottom: 1px solid var(--rule); }
+  table.data td.n, table.data th.n { text-align: right;
+    font-variant-numeric: tabular-nums; }
+  .scroll { overflow-x: auto; }
+  table.data th { cursor: pointer; user-select: none; white-space: nowrap; }
+  table.data th:hover { color: var(--ink); }
+  table.data th[aria-sort]::after { content: " \2193"; font-size: 11px; }
+  table.data th[aria-sort="descending"]::after { content: " \2191"; }
+  table.data th:focus-visible { outline: 2px solid var(--anchored); outline-offset: -2px; }
+  td.bar { position: relative; min-width: 92px; }
+  td.bar .bw { position: absolute; left: 0; top: 4px; bottom: 4px;
+    background: var(--bar-soft); border-radius: 0 2px 2px 0; z-index: 0; }
+  td.bar .bv { position: relative; z-index: 1; padding-right: 2px; }
+
+  figure { margin: 26px 0; }
+  figure img { width: 100%; max-width: 100%; height: auto; display: block;
+    border: 1px solid var(--rule); background: #fff; }
+  figcaption { font-size: 12.5px; color: var(--ink-3); margin-top: 9px; max-width: 68ch; }
+
+  .biblio { border-top: 1px solid var(--rule); padding-top: 20px; margin-top: 30px; }
+  .biblio h3 { font-size: 16px; margin: 0 0 4px; font-weight: 600; }
+  .biblio .meta { font-size: 13px; color: var(--ink-3); margin: 0 0 6px; }
+  .biblio p { font-size: 13.5px; color: var(--ink-2); margin: 0 0 8px; }
+  .note { font-size: 13px; color: var(--ink-3); border-left: 2px solid var(--rule);
+    padding-left: 14px; margin: 22px 0; }
+  .note strong { color: var(--ink-2); font-weight: 600; }
+
+  .map-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px; margin: 22px 0 8px; }
+  .map-card { margin: 0; border: 1px solid var(--rule); background: var(--panel);
+    padding: 12px; border-radius: 3px; }
+  .map-card img { width: 100%; height: auto; display: block; border: 1px solid var(--rule);
+    background: #fff; }
+  .map-card h3 { font-size: 14.5px; margin: 10px 0 3px; font-weight: 600;
+    letter-spacing: -.005em; }
+  .map-card .meta { font-size: 12px; color: var(--ink-3); margin: 0 0 8px; }
+  .map-card p { font-size: 13px; color: var(--ink-2); margin: 0 0 8px; max-width: none; }
+  .map-card .dl { font-size: 12.5px; margin: 10px 0 0; }
+  .map-badge { display: inline-block; font-size: 10.5px; letter-spacing: .04em;
+    text-transform: uppercase; padding: 2px 7px; border-radius: 2px; margin: 10px 0 0;
+    border: 1px solid var(--rule); color: var(--ink-3); }
+  .map-badge.in { color: var(--anchored); border-color: var(--anchored); }
+  .map-badge.out { border-style: dashed; }
+</style>
+
+<style>
+  /* timeline page only: everything else is inherited from the shared sheet */
+  .chartgrid { display: grid; gap: 26px; margin: 22px 0 4px;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); }
+  .cardfig { margin: 0; border: 1px solid var(--rule); background: var(--panel);
+    padding: 14px 14px 10px; border-radius: 3px; }
+  .cardfig h3 { font-size: 14.5px; margin: 0 0 2px; font-weight: 600; }
+  .cardfig .sub { font-size: 12px; color: var(--ink-3); margin: 0 0 10px;
+    max-width: none; }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 10px; }
+  .legend .lg { font-size: 12px; color: var(--ink-2); display: flex;
+    align-items: center; gap: 6px; }
+  .legend .lgs { width: 11px; height: 11px; border-radius: 2px; flex: none; }
+  .legend .lgv { color: var(--ink-3); font-size: 11.5px; }
+
+  .tbar { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center;
+    margin: 16px 0 2px; }
+  .tbar label { font-size: 12px; color: var(--ink-3); letter-spacing: .04em;
+    text-transform: uppercase; }
+  .tbar input { font: inherit; font-size: 13px; padding: 6px 10px;
+    background: var(--panel); color: var(--ink); border: 1px solid var(--rule);
+    border-radius: 2px; min-width: 210px; }
+  .tbar input:focus-visible { outline: 2px solid var(--anchored);
+    outline-offset: 1px; }
+  .tbar .count { font-size: 12.5px; color: var(--ink-3);
+    font-variant-numeric: tabular-nums; margin-left: auto; }
+
+  table.data td.n, table.data th.n { font-variant-numeric: tabular-nums; }
+  table.data tr.flagged td { background: color-mix(in srgb, var(--anchored) 8%,
+    transparent); }
+  .flag { color: var(--anchored); font-weight: 600; cursor: help; }
+  .src { font-size: 11.5px; letter-spacing: .03em; }
+  .src.printed { color: var(--approx); }
+  .src.micro { color: var(--anchored); }
+  p.fn { font-size: 12px; color: var(--ink-3); margin: 9px 0 0; max-width: 68ch; }
+
+  ol.tl { list-style: none; margin: 20px 0 0; padding: 0 0 0 20px;
+    border-left: 2px solid var(--rule); }
+  ol.tl li { position: relative; padding: 0 0 24px 6px; }
+  ol.tl li::before { content: ""; position: absolute; left: -27px; top: 6px;
+    width: 10px; height: 10px; border-radius: 50%; background: var(--anchored);
+    border: 2px solid var(--ground); }
+  ol.tl li.k-directory::before { background: var(--approx); }
+  ol.tl li.k-context::before { background: var(--ground);
+    border-color: var(--ink-3); }
+  ol.tl .yr { font-size: 12px; letter-spacing: .1em; color: var(--ink-3);
+    font-variant-numeric: tabular-nums; }
+  ol.tl h3 { font-size: 16px; margin: 1px 0 5px; font-weight: 600;
+    letter-spacing: -.01em; }
+  ol.tl p { font-size: 13.5px; color: var(--ink-2); margin: 0; max-width: 66ch; }
+  ol.tl li.hide { display: none; }
+
+  .stats { display: flex; flex-wrap: wrap; gap: 18px 34px; margin: 24px 0 6px; }
+  .stat .n { font-size: 26px; font-weight: 600; letter-spacing: -.02em; }
+  .stat .k { font-size: 12px; color: var(--ink-3); letter-spacing: .04em; }
+</style>
+</head>
+<body>
+<div class="page">
+  <nav>
+    <a href="./">Density</a>
+    <a href="./1819.html">1819</a>
+    <a href="./1822.html">1822</a>
+    <a href="./1842.html">1842</a>
+    <a href="./1845.html">1845</a>
+    <a href="./1851.html">1851</a>
+    <a href="./1860.html">1860</a>
+    <a href="./1868.html">1868</a>
+    <a href="./timeline.html" aria-current="page">Timeline</a>
+    <a href="./wards.html">Wards</a>
+    <a href="./work.html">Work</a>
+    <a href="./trade.html">Trade</a>
+    <a href="./building.html">Building</a>
+    <a href="./bias.html">What's missing</a>
+    <a href="./checking.html">Checking</a>
+    <a href="./maps.html">Maps</a>
+    <a href="./sources.html">Sources</a>
+    </nav>
+  <p class="eyebrow">Censuses and directories, 1790–1868</p>
+  <h1 class="serif">A timeline of Black Baltimore</h1>
+  <p class="lede">Eight censuses and seven city directories, 1790 to 1868, with the household data behind them.</p>
+  
+  <div class="stats"><div class="stat"><div class="n mono">25,680</div><div class="k">Free Black Baltimoreans, 1860</div></div><div class="stat"><div class="n mono">2,218</div><div class="k">Still enslaved, 1860</div></div><div class="stat"><div class="n mono">23.4%</div><div class="k">Black share of the city, 1820 peak</div></div><div class="stat"><div class="n mono">13.1%</div><div class="k">Black share of the city, 1860</div></div></div>
+
+  <div class="note"><strong>The single most misread number on this page is the
+    percentage.</strong> Black Baltimore was 23.4 per cent of
+    the city in 1820 and 13.1 per cent in 1860. That fall is not
+    a fall in population. Between those two censuses the number of free Black
+    Baltimoreans rose from 10,326 to 25,680. What changed
+    was the denominator. Baltimore added roughly
+    136,465 white residents over the same
+    forty years, mostly German and Irish arrivals, and a growing population
+    became a smaller fraction of a city growing faster still.</div>
+
+  <h2>Two charts, read together</h2>
+  
+  <div class="chartgrid">
+    <figure class="cardfig">
+      <h3>The counts</h3>
+      <p class="sub">Every group grew except one. Read this chart first.</p>
+      <svg viewBox="0 0 560 320" role="img" aria-label="Baltimore population by status, 1790 to 1860" style="width:100%;height:auto;display:block" preserveAspectRatio="xMidYMid meet">
+<title>Baltimore population by status, 1790 to 1860</title><desc>Three lines. The white population rises from about 9,000 in 1790 to 184,520 in 1860. Free Black Baltimoreans rise from a few hundred to 25,680. The enslaved population peaks at 4,649 in 1810 and falls to 2,218.</desc>
+<line x1="56" y1="290.0" x2="546" y2="290.0" style="stroke:var(--rule);stroke-width:1"/>
+<text x="48" y="293.5" text-anchor="end" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">0</text>
+<line x1="56" y1="221.5" x2="546" y2="221.5" style="stroke:var(--rule);stroke-width:1"/>
+<text x="48" y="225.0" text-anchor="end" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">50,000</text>
+<line x1="56" y1="153.0" x2="546" y2="153.0" style="stroke:var(--rule);stroke-width:1"/>
+<text x="48" y="156.5" text-anchor="end" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">100,000</text>
+<line x1="56" y1="84.5" x2="546" y2="84.5" style="stroke:var(--rule);stroke-width:1"/>
+<text x="48" y="88.0" text-anchor="end" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">150,000</text>
+<line x1="56" y1="16.0" x2="546" y2="16.0" style="stroke:var(--rule);stroke-width:1"/>
+<text x="48" y="19.5" text-anchor="end" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">200,000</text>
+<text x="56.0" y="307" text-anchor="middle" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">1790</text>
+<text x="126.0" y="307" text-anchor="middle" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">1800</text>
+<text x="196.0" y="307" text-anchor="middle" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">1810</text>
+<text x="266.0" y="307" text-anchor="middle" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">1820</text>
+<text x="336.0" y="307" text-anchor="middle" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">1830</text>
+<text x="406.0" y="307" text-anchor="middle" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">1840</text>
+<text x="476.0" y="307" text-anchor="middle" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">1850</text>
+<text x="546.0" y="307" text-anchor="middle" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">1860</text>
+<line x1="56.0" y1="277.2" x2="126.0" y2="261.0" stroke-dasharray="4 3" style="stroke:var(--ink-3);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="126.0" y1="261.0" x2="196.0" y2="240.5" style="stroke:var(--ink-3);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="196.0" y1="240.5" x2="266.0" y2="224.2" style="stroke:var(--ink-3);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="266.0" y1="224.2" x2="336.0" y2="206.4" style="stroke:var(--ink-3);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="336.0" y1="206.4" x2="406.0" y2="178.9" style="stroke:var(--ink-3);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="406.0" y1="178.9" x2="476.0" y2="97.3" style="stroke:var(--ink-3);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="476.0" y1="97.3" x2="546.0" y2="37.2" style="stroke:var(--ink-3);stroke-width:2;stroke-linecap:round;fill:none"/>
+<circle cx="56.0" cy="277.2" r="3" style="fill:var(--ground);stroke:var(--ink-3);stroke-width:1.5"/>
+<circle cx="126.0" cy="261.0" r="3" style="fill:var(--ink-3);stroke:var(--ink-3);stroke-width:1.5"/>
+<circle cx="196.0" cy="240.5" r="3" style="fill:var(--ink-3);stroke:var(--ink-3);stroke-width:1.5"/>
+<circle cx="266.0" cy="224.2" r="3" style="fill:var(--ink-3);stroke:var(--ink-3);stroke-width:1.5"/>
+<circle cx="336.0" cy="206.4" r="3" style="fill:var(--ink-3);stroke:var(--ink-3);stroke-width:1.5"/>
+<circle cx="406.0" cy="178.9" r="3" style="fill:var(--ink-3);stroke:var(--ink-3);stroke-width:1.5"/>
+<circle cx="476.0" cy="97.3" r="3" style="fill:var(--ink-3);stroke:var(--ink-3);stroke-width:1.5"/>
+<circle cx="546.0" cy="37.2" r="3" style="fill:var(--ink-3);stroke:var(--ink-3);stroke-width:1.5"/>
+<line x1="56.0" y1="289.6" x2="126.0" y2="286.4" stroke-dasharray="4 3" style="stroke:var(--anchored);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="126.0" y1="286.4" x2="196.0" y2="282.2" style="stroke:var(--anchored);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="196.0" y1="282.2" x2="266.0" y2="275.9" style="stroke:var(--anchored);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="266.0" y1="275.9" x2="336.0" y2="270.3" style="stroke:var(--anchored);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="336.0" y1="270.3" x2="406.0" y2="265.4" style="stroke:var(--anchored);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="406.0" y1="265.4" x2="476.0" y2="255.1" style="stroke:var(--anchored);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="476.0" y1="255.1" x2="546.0" y2="254.8" style="stroke:var(--anchored);stroke-width:2;stroke-linecap:round;fill:none"/>
+<circle cx="56.0" cy="289.6" r="3" style="fill:var(--ground);stroke:var(--anchored);stroke-width:1.5"/>
+<circle cx="126.0" cy="286.4" r="3" style="fill:var(--anchored);stroke:var(--anchored);stroke-width:1.5"/>
+<circle cx="196.0" cy="282.2" r="3" style="fill:var(--anchored);stroke:var(--anchored);stroke-width:1.5"/>
+<circle cx="266.0" cy="275.9" r="3" style="fill:var(--anchored);stroke:var(--anchored);stroke-width:1.5"/>
+<circle cx="336.0" cy="270.3" r="3" style="fill:var(--anchored);stroke:var(--anchored);stroke-width:1.5"/>
+<circle cx="406.0" cy="265.4" r="3" style="fill:var(--anchored);stroke:var(--anchored);stroke-width:1.5"/>
+<circle cx="476.0" cy="255.1" r="3" style="fill:var(--anchored);stroke:var(--anchored);stroke-width:1.5"/>
+<circle cx="546.0" cy="254.8" r="3" style="fill:var(--anchored);stroke:var(--anchored);stroke-width:1.5"/>
+<line x1="56.0" y1="288.6" x2="126.0" y2="286.2" stroke-dasharray="4 3" style="stroke:var(--approx);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="126.0" y1="286.2" x2="196.0" y2="283.6" style="stroke:var(--approx);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="196.0" y1="283.6" x2="266.0" y2="284.0" style="stroke:var(--approx);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="266.0" y1="284.0" x2="336.0" y2="284.4" style="stroke:var(--approx);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="336.0" y1="284.4" x2="406.0" y2="285.7" style="stroke:var(--approx);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="406.0" y1="285.7" x2="476.0" y2="286.0" style="stroke:var(--approx);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="476.0" y1="286.0" x2="546.0" y2="287.0" style="stroke:var(--approx);stroke-width:2;stroke-linecap:round;fill:none"/>
+<circle cx="56.0" cy="288.6" r="3" style="fill:var(--ground);stroke:var(--approx);stroke-width:1.5"/>
+<circle cx="126.0" cy="286.2" r="3" style="fill:var(--approx);stroke:var(--approx);stroke-width:1.5"/>
+<circle cx="196.0" cy="283.6" r="3" style="fill:var(--approx);stroke:var(--approx);stroke-width:1.5"/>
+<circle cx="266.0" cy="284.0" r="3" style="fill:var(--approx);stroke:var(--approx);stroke-width:1.5"/>
+<circle cx="336.0" cy="284.4" r="3" style="fill:var(--approx);stroke:var(--approx);stroke-width:1.5"/>
+<circle cx="406.0" cy="285.7" r="3" style="fill:var(--approx);stroke:var(--approx);stroke-width:1.5"/>
+<circle cx="476.0" cy="286.0" r="3" style="fill:var(--approx);stroke:var(--approx);stroke-width:1.5"/>
+<circle cx="546.0" cy="287.0" r="3" style="fill:var(--approx);stroke:var(--approx);stroke-width:1.5"/>
+<line x1="56" y1="290" x2="546" y2="290" style="stroke:var(--ink-3);stroke-width:1"/>
+</svg>
+      <div class="legend"><span class="lg"><span class="lgs" style="background:var(--ink-3)"></span>White <span class="mono lgv">184,520 in 1860</span></span><span class="lg"><span class="lgs" style="background:var(--anchored)"></span>Free Black <span class="mono lgv">25,680 in 1860</span></span><span class="lg"><span class="lgs" style="background:var(--approx)"></span>Enslaved <span class="mono lgv">2,218 in 1860</span></span></div>
+    </figure>
+    <figure class="cardfig">
+      <h3>The share</h3>
+      <p class="sub">The same city, expressed as a proportion. It moves the
+        other way after 1820.</p>
+      <svg viewBox="0 0 560 320" role="img" aria-label="Black share of Baltimore's population, 1790 to 1860" style="width:100%;height:auto;display:block" preserveAspectRatio="xMidYMid meet">
+<title>Black share of Baltimore's population, 1790 to 1860</title><desc>A single line rising to a peak of 23.4 per cent in 1820 and falling to 13.1 per cent in 1860.</desc>
+<line x1="56" y1="290.0" x2="546" y2="290.0" style="stroke:var(--rule);stroke-width:1"/>
+<text x="48" y="293.5" text-anchor="end" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">0%</text>
+<line x1="56" y1="235.2" x2="546" y2="235.2" style="stroke:var(--rule);stroke-width:1"/>
+<text x="48" y="238.7" text-anchor="end" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">5%</text>
+<line x1="56" y1="180.4" x2="546" y2="180.4" style="stroke:var(--rule);stroke-width:1"/>
+<text x="48" y="183.9" text-anchor="end" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">10%</text>
+<line x1="56" y1="125.6" x2="546" y2="125.6" style="stroke:var(--rule);stroke-width:1"/>
+<text x="48" y="129.1" text-anchor="end" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">15%</text>
+<line x1="56" y1="70.8" x2="546" y2="70.8" style="stroke:var(--rule);stroke-width:1"/>
+<text x="48" y="74.3" text-anchor="end" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">20%</text>
+<line x1="56" y1="16.0" x2="546" y2="16.0" style="stroke:var(--rule);stroke-width:1"/>
+<text x="48" y="19.5" text-anchor="end" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">25%</text>
+<text x="56.0" y="307" text-anchor="middle" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">1790</text>
+<text x="126.0" y="307" text-anchor="middle" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">1800</text>
+<text x="196.0" y="307" text-anchor="middle" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">1810</text>
+<text x="266.0" y="307" text-anchor="middle" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">1820</text>
+<text x="336.0" y="307" text-anchor="middle" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">1830</text>
+<text x="406.0" y="307" text-anchor="middle" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">1840</text>
+<text x="476.0" y="307" text-anchor="middle" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">1850</text>
+<text x="546.0" y="307" text-anchor="middle" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">1860</text>
+<line x1="56.0" y1="153.7" x2="126.0" y2="68.3" stroke-dasharray="4 3" style="stroke:var(--anchored);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="126.0" y1="68.3" x2="196.0" y2="46.9" style="stroke:var(--anchored);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="196.0" y1="46.9" x2="266.0" y2="33.5" style="stroke:var(--anchored);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="266.0" y1="33.5" x2="336.0" y2="35.9" style="stroke:var(--anchored);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="336.0" y1="35.9" x2="406.0" y2="63.7" style="stroke:var(--anchored);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="406.0" y1="63.7" x2="476.0" y2="106.0" style="stroke:var(--anchored);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="476.0" y1="106.0" x2="546.0" y2="146.1" style="stroke:var(--anchored);stroke-width:2;stroke-linecap:round;fill:none"/>
+<circle cx="56.0" cy="153.7" r="3" style="fill:var(--ground);stroke:var(--anchored);stroke-width:1.5"/>
+<circle cx="126.0" cy="68.3" r="3" style="fill:var(--anchored);stroke:var(--anchored);stroke-width:1.5"/>
+<circle cx="196.0" cy="46.9" r="3" style="fill:var(--anchored);stroke:var(--anchored);stroke-width:1.5"/>
+<circle cx="266.0" cy="33.5" r="3" style="fill:var(--anchored);stroke:var(--anchored);stroke-width:1.5"/>
+<circle cx="336.0" cy="35.9" r="3" style="fill:var(--anchored);stroke:var(--anchored);stroke-width:1.5"/>
+<circle cx="406.0" cy="63.7" r="3" style="fill:var(--anchored);stroke:var(--anchored);stroke-width:1.5"/>
+<circle cx="476.0" cy="106.0" r="3" style="fill:var(--anchored);stroke:var(--anchored);stroke-width:1.5"/>
+<circle cx="546.0" cy="146.1" r="3" style="fill:var(--anchored);stroke:var(--anchored);stroke-width:1.5"/>
+<text x="273.0" y="24.5" text-anchor="start" style="fill:var(--ink-2);font-size:11px;font-weight:600">peak</text>
+<line x1="56" y1="290" x2="546" y2="290" style="stroke:var(--ink-3);stroke-width:1"/>
+</svg>
+      <div class="legend"><span class="lg"><span class="lgs" style="background:var(--anchored)"></span>Black share of the city <span class="mono lgv">13.1% in 1860</span></span></div>
+    </figure>
+  </div>
+
+
+  <p class="note"><strong>The free Black line is three different census
+    categories, not one variable.</strong> 1790 to 1810 have no race-labelled
+    column at all, so the count is <span class="mono">nothfree</span>, the
+    census category "other free persons except Indians not taxed," which is the
+    standard proxy historians use. 1820 introduces four age bands labelled
+    "Colored." 1830 and 1840 switch to six differently cut bands labelled
+    "Black." 1850 and 1860 come from the printed ward tables and their "free
+    colored" column. A single line drawn through all of that is comparing at
+    least three things, and the joins are at 1820 and at 1850. Read the shape,
+    not the year-to-year steps.</p>
+
+  <p class="note"><strong>1790 does not reconcile and is drawn dashed and
+    hollow wherever it appears.</strong> The IPUMS household rows for Baltimore
+    sum to 10,641 people against a tagged city population of
+    13,503, a shortfall of
+    21 per cent in the source
+    rows themselves rather than in our filter. Independent verification
+    reproduced the same gap. No trend statement on this page starts at 1790.</p>
+
+  <h2>The city year by year</h2>
+  <p>Click any column heading to sort. Type in the box to filter. The
+    <em>Source</em> column matters: two different kinds of evidence feed this
+    table and they are not blended. The printed federal census ward tables were
+    transcribed by hand and reconciled against the printed totals, so they are
+    authoritative. The IPUMS complete-count microdata runs slightly under the
+    published aggregates in every year.</p>
+
+  <div class="tbar">
+    <label for="cq">Filter</label>
+    <input type="search" id="cq" placeholder="year, source, any figure">
+    <span class="count" id="cq-count"></span>
+  </div>
+  <div class="scroll">
+    <table class="data" id="tab-city">
+      <thead><tr></tr></thead><tbody></tbody>
+    </table>
+  </div>
+  <p class="fn">&dagger; 1790 does not reconcile. Its household rows sum to 21 per cent under the city population the census itself records, so the row is tinted here and excluded from every trend claim on this page.</p>
+
+  <p class="note"><strong>All of these counts are floors.</strong> Household
+    sums run between 0.1 and 1.9 per cent below the printed figures in the years
+    where both exist. Read every number as "at least this many." Where the two
+    sources disagree we keep the printed volume, because it is what the Census
+    actually published.</p>
+
+  <h2>1790 to 1868, in order</h2>
+  <p>Census years are marked in one colour, city directories in another, and the
+    two entries that come from outside this data are marked as context. Use the
+    buttons to show one kind at a time.</p>
+
+  <div class="years" id="tlfilter">
+    <button data-kind="all" aria-pressed="true">Everything</button>
+    <button data-kind="census" aria-pressed="false">Census years</button>
+    <button data-kind="directory" aria-pressed="false">Directories</button>
+    <button data-kind="context" aria-pressed="false">Context</button>
+  </div>
+
+  <ol class="tl" id="tl">
+    <li class="k-census" data-kind="census"><div class="yr">1790</div><h3>The first federal census</h3><p>1,733 Baltimore households, 281 free Black residents and 1,043 enslaved people. These are the least reliable figures on this page. The household rows account for only 79 per cent of the population the census itself recorded for the city, so treat every 1790 number as a floor with materially lower confidence than the rest.</p></li>
+    <li class="k-census" data-kind="census"><div class="yr">1800</div><h3>Free and enslaved almost level</h3><p>2,614 free Black Baltimoreans against 2,752 enslaved. In ten years the free population had gone from a few hundred to nearly the size of the enslaved population. Slaveholding was at its widest reach in the city this year, in 26.0 per cent of all households, and it never reached that far again.</p></li>
+    <li class="k-census" data-kind="census"><div class="yr">1810</div><h3>Slavery peaks and stops growing</h3><p>4,649 enslaved people, the largest number Baltimore ever recorded. Free Black residents pass them this year at 5,658. From here the two lines move apart in opposite directions for fifty years.</p></li>
+    <li class="k-directory" data-kind="directory"><div class="yr">1819</div><h3>The earliest year we can map</h3><p>Jackson's Baltimore Directory lists Black householders with addresses. 526 residents parsed from the volume, 92 placed on a map. The addresses mostly say near something rather than giving a corner, which is why so few of them resolve. This year exists on borrowed labour, transcribed from the page by Louis S. Diggs, Sr.</p></li>
+    <li class="k-census" data-kind="census"><div class="yr">1820</div><h3>The peak: 23.4 per cent of the city</h3><p>10,326 free Black residents and 4,357 enslaved, together 23.4 per cent of Baltimore. This is the highest Black share the city ever records in this period. It is also the first year with a printed ward table, which used twelve wards rather than the twenty in use by 1850.</p></li>
+    <li class="k-directory" data-kind="directory"><div class="yr">1822</div><h3>Marked with a dagger</h3><p>Keenan's directory prints no separate section. Instead a dagger precedes certain names. 1,061 residents parsed from the volume, 230 placed on a map. The meaning of the dagger is inferred from occupations and addresses rather than stated, because the page carrying the legend is not legible in the scan we have.</p></li>
+    <li class="k-census" data-kind="census"><div class="yr">1830</div><h3>Growth on both sides of the line</h3><p>14,364 free Black residents, up more than four thousand in a decade, and 4,058 enslaved, down again. Black share holds near its peak at 23.2 per cent. Inside the houses, the median slaveholding falls from two people to one.</p></li>
+    <li class="k-census" data-kind="census"><div class="yr">1840</div><h3>Slaveholding becomes marginal</h3><p>Slaveholding households are 9.9 per cent of the city, down from 26.0 per cent in 1800. Free Black Baltimoreans number 17,958. Mixed households have fallen to 46 per cent of all Black-present households, from two thirds in 1800.</p></li>
+    <li class="k-directory" data-kind="directory"><div class="yr">1842</div><h3>Colored Householders, listed apart</h3><p>Matchett's prints a separate section with a note at the front that these residents are listed by themselves. 2,724 residents parsed from the volume, 744 placed on a map. Baltimore had no house numbers yet, so each person sits on a block face rather than at an address.</p></li>
+    <li class="k-directory" data-kind="directory"><div class="yr">1845</div><h3>House numbers arrive</h3><p>Between 1842 and 1845 the city adopted house numbers and the directory changes with it. 2,100 residents parsed from the volume, 1,527 placed on a map. From this volume on, a resident can be placed between two named corners instead of somewhere along a block.</p></li>
+    <li class="k-census" data-kind="census"><div class="yr">1850</div><h3>The largest free Black city</h3><p>25,442 free Black Baltimoreans, more than any other American city, and 2,946 still enslaved. Black share has fallen to 16.8 per cent even though the Black population grew by more than seven thousand since 1840. The city grew faster.</p></li>
+    <li class="k-directory" data-kind="directory"><div class="yr">1851</div><h3>A decade before the war</h3><p>Matchett's again, with the section closing on an explicit line reading END COLORED RESIDENTS. 3,642 residents parsed from the volume, 1,631 placed on a map. A third of the entries give no house number at all and cannot be placed.</p></li>
+    <li class="k-census" data-kind="census"><div class="yr">1860</div><h3>Falling share, growing city</h3><p>25,680 free Black residents and 2,218 enslaved, 13.1 per cent of Baltimore. The Black share fell in every one of the twenty wards over the previous decade. The Black population itself fell by under two per cent while 43,854 white residents arrived.</p></li>
+    <li class="k-context" data-kind="context"><div class="yr">1861</div><h3>The wards are redrawn</h3><p>Baltimore redivides itself, so ward numbers after this date do not mean what they meant in 1850 and 1860. This is why the 1868 map and the 1869 building figures are drawn on a different boundary set from the census maps. Not a figure from this data, but necessary for reading it.</p></li>
+    <li class="k-context" data-kind="context"><div class="yr">1864</div><h3>Maryland abolishes slavery</h3><p>The new state constitution took effect on 1 November 1864 and freed the people the 1860 census had counted as property. Nothing in this database records that moment. It sits between the last census on this page and the last directory, and it is the reason the two look so different.</p></li>
+    <li class="k-directory" data-kind="directory"><div class="yr">1868</div><h3>After emancipation</h3><p>Wood's directory devotes 64 printed pages to the section that ran 31 pages in 1860. 8,512 residents parsed from the volume, 6,070 placed on a map. The listed population has doubled in eight years. Emancipation and wartime migration are visible in the page count before any analysis begins.</p></li>
+  </ol>
+
+  <h2>Slavery contracting inside a growing city</h2>
+  <div class="chartgrid">
+    <figure class="cardfig">
+      <h3>Free and enslaved, on one scale</h3>
+      <p class="sub">The crossing happens between 1800 and 1810 and is never
+        reversed.</p>
+      <svg viewBox="0 0 560 320" role="img" aria-label="Free and enslaved Black Baltimoreans, 1790 to 1860" style="width:100%;height:auto;display:block" preserveAspectRatio="xMidYMid meet">
+<title>Free and enslaved Black Baltimoreans, 1790 to 1860</title><desc>Two lines on one scale. The free line crosses above the enslaved line between 1800 and 1810 and never returns.</desc>
+<line x1="56" y1="290.0" x2="546" y2="290.0" style="stroke:var(--rule);stroke-width:1"/>
+<text x="48" y="293.5" text-anchor="end" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">0</text>
+<line x1="56" y1="244.3" x2="546" y2="244.3" style="stroke:var(--rule);stroke-width:1"/>
+<text x="48" y="247.8" text-anchor="end" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">5,000</text>
+<line x1="56" y1="198.7" x2="546" y2="198.7" style="stroke:var(--rule);stroke-width:1"/>
+<text x="48" y="202.2" text-anchor="end" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">10,000</text>
+<line x1="56" y1="153.0" x2="546" y2="153.0" style="stroke:var(--rule);stroke-width:1"/>
+<text x="48" y="156.5" text-anchor="end" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">15,000</text>
+<line x1="56" y1="107.3" x2="546" y2="107.3" style="stroke:var(--rule);stroke-width:1"/>
+<text x="48" y="110.8" text-anchor="end" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">20,000</text>
+<line x1="56" y1="61.7" x2="546" y2="61.7" style="stroke:var(--rule);stroke-width:1"/>
+<text x="48" y="65.2" text-anchor="end" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">25,000</text>
+<line x1="56" y1="16.0" x2="546" y2="16.0" style="stroke:var(--rule);stroke-width:1"/>
+<text x="48" y="19.5" text-anchor="end" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">30,000</text>
+<text x="56.0" y="307" text-anchor="middle" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">1790</text>
+<text x="126.0" y="307" text-anchor="middle" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">1800</text>
+<text x="196.0" y="307" text-anchor="middle" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">1810</text>
+<text x="266.0" y="307" text-anchor="middle" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">1820</text>
+<text x="336.0" y="307" text-anchor="middle" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">1830</text>
+<text x="406.0" y="307" text-anchor="middle" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">1840</text>
+<text x="476.0" y="307" text-anchor="middle" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">1850</text>
+<text x="546.0" y="307" text-anchor="middle" style="fill:var(--ink-3);font-size:10.5px;font-variant-numeric:tabular-nums">1860</text>
+<line x1="56.0" y1="287.4" x2="126.0" y2="266.1" stroke-dasharray="4 3" style="stroke:var(--anchored);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="126.0" y1="266.1" x2="196.0" y2="238.3" style="stroke:var(--anchored);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="196.0" y1="238.3" x2="266.0" y2="195.7" style="stroke:var(--anchored);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="266.0" y1="195.7" x2="336.0" y2="158.8" style="stroke:var(--anchored);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="336.0" y1="158.8" x2="406.0" y2="126.0" style="stroke:var(--anchored);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="406.0" y1="126.0" x2="476.0" y2="57.6" style="stroke:var(--anchored);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="476.0" y1="57.6" x2="546.0" y2="55.5" style="stroke:var(--anchored);stroke-width:2;stroke-linecap:round;fill:none"/>
+<circle cx="56.0" cy="287.4" r="3" style="fill:var(--ground);stroke:var(--anchored);stroke-width:1.5"/>
+<circle cx="126.0" cy="266.1" r="3" style="fill:var(--anchored);stroke:var(--anchored);stroke-width:1.5"/>
+<circle cx="196.0" cy="238.3" r="3" style="fill:var(--anchored);stroke:var(--anchored);stroke-width:1.5"/>
+<circle cx="266.0" cy="195.7" r="3" style="fill:var(--anchored);stroke:var(--anchored);stroke-width:1.5"/>
+<circle cx="336.0" cy="158.8" r="3" style="fill:var(--anchored);stroke:var(--anchored);stroke-width:1.5"/>
+<circle cx="406.0" cy="126.0" r="3" style="fill:var(--anchored);stroke:var(--anchored);stroke-width:1.5"/>
+<circle cx="476.0" cy="57.6" r="3" style="fill:var(--anchored);stroke:var(--anchored);stroke-width:1.5"/>
+<circle cx="546.0" cy="55.5" r="3" style="fill:var(--anchored);stroke:var(--anchored);stroke-width:1.5"/>
+<line x1="56.0" y1="280.5" x2="126.0" y2="264.9" stroke-dasharray="4 3" style="stroke:var(--approx);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="126.0" y1="264.9" x2="196.0" y2="247.5" style="stroke:var(--approx);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="196.0" y1="247.5" x2="266.0" y2="250.2" style="stroke:var(--approx);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="266.0" y1="250.2" x2="336.0" y2="252.9" style="stroke:var(--approx);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="336.0" y1="252.9" x2="406.0" y2="261.2" style="stroke:var(--approx);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="406.0" y1="261.2" x2="476.0" y2="263.1" style="stroke:var(--approx);stroke-width:2;stroke-linecap:round;fill:none"/>
+<line x1="476.0" y1="263.1" x2="546.0" y2="269.7" style="stroke:var(--approx);stroke-width:2;stroke-linecap:round;fill:none"/>
+<circle cx="56.0" cy="280.5" r="3" style="fill:var(--ground);stroke:var(--approx);stroke-width:1.5"/>
+<circle cx="126.0" cy="264.9" r="3" style="fill:var(--approx);stroke:var(--approx);stroke-width:1.5"/>
+<circle cx="196.0" cy="247.5" r="3" style="fill:var(--approx);stroke:var(--approx);stroke-width:1.5"/>
+<circle cx="266.0" cy="250.2" r="3" style="fill:var(--approx);stroke:var(--approx);stroke-width:1.5"/>
+<circle cx="336.0" cy="252.9" r="3" style="fill:var(--approx);stroke:var(--approx);stroke-width:1.5"/>
+<circle cx="406.0" cy="261.2" r="3" style="fill:var(--approx);stroke:var(--approx);stroke-width:1.5"/>
+<circle cx="476.0" cy="263.1" r="3" style="fill:var(--approx);stroke:var(--approx);stroke-width:1.5"/>
+<circle cx="546.0" cy="269.7" r="3" style="fill:var(--approx);stroke:var(--approx);stroke-width:1.5"/>
+<text x="203.0" y="238.5" text-anchor="start" style="fill:var(--ink-2);font-size:11px;font-weight:600">slavery peaks</text>
+<line x1="56" y1="290" x2="546" y2="290" style="stroke:var(--ink-3);stroke-width:1"/>
+</svg>
+      <div class="legend"><span class="lg"><span class="lgs" style="background:var(--anchored)"></span>Free Black <span class="mono lgv">25,680 in 1860</span></span><span class="lg"><span class="lgs" style="background:var(--approx)"></span>Enslaved <span class="mono lgv">2,218 in 1860</span></span></div>
+    </figure>
+    <figure class="cardfig">
+      <h3>Who was still enslaved</h3>
+      <p class="sub">Age and sex of every person on Baltimore's slave
+        schedules. Choose a year, then click a heading to sort.</p>
+      <div class="years" id="eyears" style="margin:2px 0 10px"></div>
+      <div class="scroll">
+        <table class="data" id="tab-ens"><thead><tr></tr></thead><tbody></tbody></table>
+      </div>
+    </figure>
+  </div>
+
+  <p>The enslaved population of Baltimore reached 4,649 in 1810 and
+    never grew again. By 1860 it was 2,218, a fall of
+    52 per cent across fifty
+    years in a state where slavery remained fully legal and where no abolition
+    statute was passed until 1864. Over the same fifty years the free Black
+    population of the city grew from 5,658 to 25,680. By
+    1860 free Black Baltimoreans outnumbered the enslaved more than
+    11 to one, which is why this city, and not a
+    Northern one, held the largest free Black population in the United States.</p>
+
+  <p><strong>Two thirds of the people still held in Baltimore were women and
+    girls.</strong> The 1850 schedule records 2,001 females against
+    947 males, which is 68 per cent female, and 1860 is
+    almost identical at 69 per cent. Urban slavery in Baltimore
+    was domestic work, and the schedules show it in the sex ratio before they
+    show it anywhere else. The age profile points the same way. The largest
+    single band in both years is people in their teens.</p>
+
+  <p>The schedules also show how small the holdings were. In 1850,
+    2,949 people were held in 1,688 separate holdings,
+    an average of 1.7 people each.
+    1,068 of them, 36 per cent, were the only
+    enslaved person recorded in their holding, and only
+    46 people were held in a group of eleven or more. This
+    was not plantation slavery moved indoors. It was mostly one or two people
+    inside a household, which is also why they cannot be mapped: the schedules
+    record them under an owner's name, with no address of their own.</p>
+
+  <div class="note"><strong>One cross-check that came out well, twice.</strong>
+    The IPUMS 1850 slave schedule counts 2,949 enslaved people in
+    Baltimore. The printed 1850 census volume, which this project transcribed by
+    hand from the page and reconciled ward by ward, gives
+    2,946. That is a gap of
+    3 people out of nearly three
+    thousand, or
+    0.1
+    per cent. The same check on 1860 gives 2,221 against
+    2,218, a gap of
+    3. Two independent sources,
+    transcribed by different methods more than a century apart, agreeing to a
+    tenth of a per cent in both years. That is the kind of agreement that makes
+    the rest of the table worth trusting.</div>
+
+  <h2>Ward by ward</h2>
+  <p>Three census years survive with a ward-level race breakdown.
+    <strong>1820 used twelve wards and 1850 and 1860 used twenty</strong>, so
+    1820 is a different division of the same city and should be read as a
+    distribution rather than compared ward against ward. 1850 and 1860 share
+    boundaries exactly, so that pair is a like-for-like comparison.</p>
+
+  <div class="years" id="wyears"></div>
+  <div class="tbar">
+    <label for="wq">Filter</label>
+    <input type="search" id="wq" placeholder="ward number or any figure">
+    <span class="count" id="wq-count"></span>
+  </div>
+  <div class="scroll">
+    <table class="data" id="tab-ward"><thead><tr></tr></thead><tbody></tbody></table>
+  </div>
+  <p class="note">Sort 1860 by <em>Black share</em> and the top of the table is
+    wards 11, 15 and 12, the same wards that top 1850. The Black share of the
+    population fell in every one of the twenty wards between those two
+    censuses. The <a href="./wards.html">ward page</a> puts the two years side
+    by side with the change in each.</p>
+
+  <h2>Whose household, 1790 to 1840</h2>
+  <p>This is the part of the story the maps cannot tell. The household
+    microdata carries <strong>no name, no address and no ward</strong>. The
+    finest geography in the file is the whole city, so nothing in this section
+    can be placed on a street. What it can do is answer a different question,
+    and an earlier one than any directory this project maps: not where Black
+    Baltimoreans lived, but with whom.</p>
+
+  <p>A household counts as Black-present here if it recorded at least one free
+    Black resident. It is <em>Black-only</em> when no free white resident was
+    recorded in it, and <em>mixed</em> when both were. There is no
+    head-of-household race in this file, so a Black-only household is a
+    statement about who was counted in the house, not proof of who headed it.
+    A mixed household's head cannot be determined from this data at all.</p>
+
+  <div class="tbar">
+    <label for="hq">Filter</label>
+    <input type="search" id="hq" placeholder="year or any figure">
+    <span class="count" id="hq-count"></span>
+  </div>
+  <p><em>Mean Black, Black-only</em> is the average number of free Black
+    residents recorded in a Black-only household, and <em>Mean Black, mixed</em>
+    the same figure for mixed households. <em>People in mixed</em> is the share
+    of all free Black people counted that year who were living in a mixed
+    household.</p>
+
+  <div class="scroll">
+    <table class="data" id="tab-hh"><thead><tr></tr></thead><tbody></tbody></table>
+  </div>
+  <p class="fn">&dagger; 1790 does not reconcile. Its household rows sum to 21 per cent under the city population the census itself records, so the row is tinted here and excluded from every trend claim on this page.</p>
+
+  <p><strong>Free Black Baltimoreans increasingly lived in their own
+    households.</strong> Mixed households were
+    66 per cent of all Black-present households in 1800 and
+    46 per cent by 1840. Household size says the same thing
+    from the other direction. A Black-only household held an average of
+    4.2 to
+    5.8 free Black
+    residents across these years, while a mixed household held
+    1.6 to
+    1.9. One or
+    two Black residents inside a larger white household is a different
+    arrangement from a Black family unit, and the second was becoming the more
+    common one.</p>
+
+  <p class="note"><strong>These figures were recomputed from the household
+    table for this page rather than copied from the project's earlier
+    write-up</strong>, and they reproduce it. The share of Black-present
+    households that were mixed comes out at 61.1 per cent in
+    1790 and 46.3 per cent in 1840, against 61.1 and 46.3 in
+    <a href="https://github.com/proflouishyman/black-baltimore-1860/blob/main/docs/HOUSEHOLDS.md">docs/HOUSEHOLDS.md</a>.
+    Every household count, mean and share in the two tables here matches that
+    document exactly. The 1790 row is flagged in both.</p>
+
+  <p>The people-level column does not fall smoothly. It dips at 1810 and
+    partly rebounds at 1820, and that wiggle lands exactly on the year the
+    underlying measure changes from the <span class="mono">nothfree</span> proxy
+    to explicit age-banded race columns. Read it as a possible artifact of the
+    category boundary rather than a real reversal in how people were living. The
+    household-level column moves the same direction across the whole period and
+    is not affected by it.</p>
+
+  <h2>Slaveholding households</h2>
+  <p>Slavery in Baltimore did not end by shrinking evenly. It became a smaller
+    and smaller part of city life while the households that kept it held fewer
+    and fewer people.</p>
+
+  <div class="tbar">
+    <label for="sq">Filter</label>
+    <input type="search" id="sq" placeholder="year or any figure">
+    <span class="count" id="sq-count"></span>
+  </div>
+  <div class="scroll">
+    <table class="data" id="tab-sl"><thead><tr></tr></thead><tbody></tbody></table>
+  </div>
+  <p class="fn">&dagger; 1790 does not reconcile. Its household rows sum to 21 per cent under the city population the census itself records, so the row is tinted here and excluded from every trend claim on this page.</p>
+
+  <p>Slaveholding households fell from 26.0 per cent of all
+    Baltimore households in 1800 to 9.9 per cent in 1840,
+    even though the absolute number of slaveholding households kept rising until
+    1830, because the city itself grew roughly tenfold over the period. The
+    median holding fell from two people to one between 1820 and 1830, and the
+    mean from 2.71 to 1.86.</p>
+
+  <p><strong>The last column is the one worth pausing on.</strong> The share of
+    slaveholding households that also recorded free Black residents rose from
+    8.3 per cent in 1790 to
+    34.8 per cent in 1840. The shrinking population of
+    slaveholders and the growing free Black population were not two separate
+    stories happening in different houses. They increasingly overlapped inside
+    the same ones. The rise from 1790 to 1810 rests on a single consistent proxy
+    and is a clean trend. The further jump at 1820 crosses the category boundary
+    flagged above and is less clean, though the direction holds either way.</p>
+
+  <p class="note"><strong>The enslaved totals in this table will not match the
+    city table above, and that is deliberate.</strong> These come from the
+    household microdata. The city table prefers the printed volume wherever one
+    exists. 1820 is the one year where both are available, and they disagree:
+    4,419 here against 4,357 there, a gap of
+    1.4 per cent.
+    Merging the two would hide exactly the kind of seam a reader needs to see,
+    so both are shown with their source named.</p>
+
+  <h2>What this page cannot tell you</h2>
+  <p><strong>1790 is unreliable.</strong> Its household rows account for about
+    79 per cent of the city the census
+    itself says was there. It is shown because omitting it silently would be
+    worse, and it is marked everywhere it appears.</p>
+  <p><strong>The free Black series is not one measurement.</strong> Three census
+    categories and two transcription methods sit behind that line. It is honest
+    about direction and magnitude and should not be read as a precise annual
+    series.</p>
+  <p><strong>Every count is a floor.</strong> Where an independent check exists,
+    the microdata runs under the printed figures, never over. Read every number
+    on this page as a minimum.</p>
+  <p><strong>None of the household data can be mapped.</strong> No name, no
+    address, no ward. Anyone wanting street-level evidence should use the
+    <a href="./index.html">density maps</a> and the year maps, and should read
+    <a href="./bias.html">what those maps miss</a> first, because the
+    directories under-recorded exactly the densest Black wards.</p>
+  <p><strong>The enslaved cannot be placed at all.</strong> They appear in the
+    schedules under an owner's name, with no address of their own. Where they
+    lived in the city is a question this evidence cannot answer.</p>
+
+  <h2>Where the numbers come from</h2>
+  <p>City and ward figures for 1820, 1850 and 1860 come from the printed federal
+    census ward tables, transcribed by hand from the scans and checked by
+    summing every column against the printed city totals. Figures for 1790,
+    1800, 1810, 1830 and 1840 come from the IPUMS complete-count household
+    microdata for Baltimore City. The enslaved profiles for 1850 and 1860 come
+    from the IPUMS complete-count slave schedules, which are a separate file from
+    the household data. Directory counts come from this project's own
+    parsing and geocoding of the volumes listed on the
+    <a href="./sources.html">sources page</a>. Every step is scripted and the
+    repository is public.</p>
+
+</div>
+
+<script id="tld" type="application/json">{"city":[{"year":1790,"hh":1733,"pop":10641,"white":9317,"fb":281,"ens":1043,"black":1324,"pct":12.44,"src":"IPUMS complete-count household microdata","printed":false,"flag":true},{"year":1800,"hh":3907,"pop":26520,"white":21154,"fb":2614,"ens":2752,"black":5366,"pct":20.23,"src":"IPUMS complete-count household microdata","printed":false,"flag":false},{"year":1810,"hh":7275,"pop":46465,"white":36158,"fb":5658,"ens":4649,"black":10307,"pct":22.18,"src":"IPUMS complete-count household microdata","printed":false,"flag":false},{"year":1820,"hh":9545,"pop":62738,"white":48055,"fb":10326,"ens":4357,"black":14683,"pct":23.4,"src":"printed federal census, ward tables","printed":true,"flag":false},{"year":1830,"hh":12669,"pop":79473,"white":61051,"fb":14364,"ens":4058,"black":18422,"pct":23.18,"src":"IPUMS complete-count household microdata","printed":false,"flag":false},{"year":1840,"hh":17118,"pop":102225,"white":81115,"fb":17958,"ens":3152,"black":21110,"pct":20.65,"src":"IPUMS complete-count household microdata","printed":false,"flag":false},{"year":1850,"hh":null,"pop":169054,"white":140666,"fb":25442,"ens":2946,"black":28388,"pct":16.79,"src":"printed federal census, ward tables","printed":true,"flag":false},{"year":1860,"hh":null,"pop":212418,"white":184520,"fb":25680,"ens":2218,"black":27898,"pct":13.13,"src":"printed federal census, ward tables","printed":true,"flag":false}],"wards":{"1820":[{"ward":1,"white":3675,"fb":535,"ens":267,"black":802,"agg":4477,"pct":17.91},{"ward":2,"white":5794,"fb":1430,"ens":288,"black":1718,"agg":7512,"pct":22.87},{"ward":3,"white":4982,"fb":1204,"ens":362,"black":1566,"agg":6548,"pct":23.92},{"ward":4,"white":5465,"fb":809,"ens":371,"black":1180,"agg":6645,"pct":17.76},{"ward":5,"white":2538,"fb":240,"ens":313,"black":553,"agg":3091,"pct":17.89},{"ward":6,"white":2752,"fb":258,"ens":459,"black":717,"agg":3469,"pct":20.67},{"ward":7,"white":2542,"fb":450,"ens":468,"black":918,"agg":3460,"pct":26.53},{"ward":8,"white":2739,"fb":626,"ens":227,"black":853,"agg":3592,"pct":23.75},{"ward":9,"white":2516,"fb":795,"ens":268,"black":1063,"agg":3579,"pct":29.7},{"ward":10,"white":4646,"fb":1066,"ens":407,"black":1473,"agg":6119,"pct":24.07},{"ward":11,"white":4275,"fb":1273,"ens":334,"black":1607,"agg":5882,"pct":27.32},{"ward":12,"white":6131,"fb":1640,"ens":593,"black":2233,"agg":8364,"pct":26.7}],"1850":[{"ward":1,"white":13483,"fb":1091,"ens":79,"black":1170,"agg":14653,"pct":7.98},{"ward":2,"white":8490,"fb":917,"ens":85,"black":1002,"agg":9492,"pct":10.56},{"ward":3,"white":9764,"fb":1862,"ens":195,"black":2057,"agg":11821,"pct":17.4},{"ward":4,"white":6611,"fb":766,"ens":250,"black":1016,"agg":7627,"pct":13.32},{"ward":5,"white":4430,"fb":1198,"ens":84,"black":1282,"agg":5712,"pct":22.44},{"ward":6,"white":6766,"fb":2145,"ens":104,"black":2249,"agg":9015,"pct":24.95},{"ward":7,"white":6590,"fb":1013,"ens":57,"black":1070,"agg":7660,"pct":13.97},{"ward":8,"white":8125,"fb":750,"ens":78,"black":828,"agg":8953,"pct":9.25},{"ward":9,"white":4268,"fb":333,"ens":139,"black":472,"agg":4740,"pct":9.96},{"ward":10,"white":4196,"fb":596,"ens":241,"black":837,"agg":5033,"pct":16.63},{"ward":11,"white":6593,"fb":2078,"ens":252,"black":2330,"agg":8923,"pct":26.11},{"ward":12,"white":7214,"fb":1911,"ens":158,"black":2069,"agg":9283,"pct":22.29},{"ward":13,"white":4495,"fb":807,"ens":264,"black":1071,"agg":5566,"pct":19.24},{"ward":14,"white":6013,"fb":1221,"ens":177,"black":1398,"agg":7411,"pct":18.86},{"ward":15,"white":7753,"fb":2242,"ens":307,"black":2549,"agg":10302,"pct":24.74},{"ward":16,"white":4555,"fb":1189,"ens":134,"black":1323,"agg":5878,"pct":22.51},{"ward":17,"white":7389,"fb":2400,"ens":45,"black":2445,"agg":9834,"pct":24.86},{"ward":18,"white":10644,"fb":934,"ens":168,"black":1102,"agg":11746,"pct":9.38},{"ward":19,"white":7095,"fb":717,"ens":63,"black":780,"agg":7875,"pct":9.9},{"ward":20,"white":6192,"fb":1272,"ens":66,"black":1338,"agg":7530,"pct":17.77}],"1860":[{"ward":1,"white":14545,"fb":433,"ens":54,"black":487,"agg":15032,"pct":3.24},{"ward":2,"white":8666,"fb":628,"ens":46,"black":674,"agg":9340,"pct":7.22},{"ward":3,"white":13478,"fb":1750,"ens":115,"black":1865,"agg":15343,"pct":12.16},{"ward":4,"white":6553,"fb":385,"ens":72,"black":457,"agg":7010,"pct":6.52},{"ward":5,"white":4416,"fb":903,"ens":41,"black":944,"agg":5360,"pct":17.61},{"ward":6,"white":7916,"fb":1894,"ens":78,"black":1972,"agg":9888,"pct":19.94},{"ward":7,"white":10984,"fb":1378,"ens":43,"black":1421,"agg":12405,"pct":11.46},{"ward":8,"white":13575,"fb":753,"ens":59,"black":812,"agg":14387,"pct":5.64},{"ward":9,"white":2864,"fb":188,"ens":92,"black":280,"agg":3144,"pct":8.91},{"ward":10,"white":3712,"fb":553,"ens":50,"black":603,"agg":4315,"pct":13.97},{"ward":11,"white":7829,"fb":2389,"ens":353,"black":2742,"agg":10571,"pct":25.94},{"ward":12,"white":7793,"fb":1967,"ens":111,"black":2078,"agg":9871,"pct":21.05},{"ward":13,"white":3691,"fb":691,"ens":91,"black":782,"agg":4473,"pct":17.48},{"ward":14,"white":5744,"fb":1176,"ens":142,"black":1318,"agg":7062,"pct":18.66},{"ward":15,"white":10101,"fb":2787,"ens":173,"black":2960,"agg":13061,"pct":22.66},{"ward":16,"white":6675,"fb":1482,"ens":80,"black":1562,"agg":8237,"pct":18.96},{"ward":17,"white":12784,"fb":2168,"ens":3,"black":2171,"agg":14955,"pct":14.52},{"ward":18,"white":19837,"fb":1219,"ens":275,"black":1494,"agg":21331,"pct":7.0},{"ward":19,"white":11944,"fb":1019,"ens":94,"black":1113,"agg":13057,"pct":8.52},{"ward":20,"white":11413,"fb":1917,"ens":246,"black":2163,"agg":13576,"pct":15.93}]},"wardYears":["1820","1850","1860"],"composition":[{"year":1790,"allhh":1733,"present":113,"bh":44,"bp":168,"mh":69,"mp":113,"pct_mixed":61.1,"pct_people_mixed":40.2,"b_mean":3.82,"m_mean":1.64,"negwhite":0,"flag":true},{"year":1800,"allhh":3907,"present":814,"bh":273,"bp":1574,"mh":541,"mp":1040,"pct_mixed":66.5,"pct_people_mixed":39.8,"b_mean":5.77,"m_mean":1.92,"negwhite":0,"flag":false},{"year":1810,"allhh":7275,"present":1985,"bh":942,"bp":3998,"mh":1043,"mp":1660,"pct_mixed":52.5,"pct_people_mixed":29.3,"b_mean":4.24,"m_mean":1.59,"negwhite":0,"flag":false},{"year":1820,"allhh":9545,"present":3140,"bh":1488,"bp":6913,"mh":1652,"mp":3219,"pct_mixed":52.6,"pct_people_mixed":31.8,"b_mean":4.65,"m_mean":1.95,"negwhite":0,"flag":false},{"year":1830,"allhh":12669,"present":4454,"bh":2344,"bp":10595,"mh":2110,"mp":3769,"pct_mixed":47.4,"pct_people_mixed":26.2,"b_mean":4.52,"m_mean":1.79,"negwhite":0,"flag":false},{"year":1840,"allhh":17118,"present":5463,"bh":2932,"bp":13641,"mh":2531,"mp":4317,"pct_mixed":46.3,"pct_people_mixed":24.0,"b_mean":4.65,"m_mean":1.71,"negwhite":0,"flag":false}],"slaveholding":[{"year":1790,"allhh":1733,"sh":397,"pct_sh":22.9,"mean":2.63,"median":2,"ens":1043,"overlap":33,"pct_overlap":8.3,"flag":true},{"year":1800,"allhh":3907,"sh":1017,"pct_sh":26.0,"mean":2.71,"median":2,"ens":2752,"overlap":192,"pct_overlap":18.9,"flag":false},{"year":1810,"allhh":7275,"sh":1755,"pct_sh":24.1,"mean":2.65,"median":2,"ens":4649,"overlap":389,"pct_overlap":22.2,"flag":false},{"year":1820,"allhh":9545,"sh":1876,"pct_sh":19.7,"mean":2.36,"median":2,"ens":4419,"overlap":669,"pct_overlap":35.7,"flag":false},{"year":1830,"allhh":12669,"sh":2005,"pct_sh":15.8,"mean":2.02,"median":1,"ens":4058,"overlap":670,"pct_overlap":33.4,"flag":false},{"year":1840,"allhh":17118,"sh":1692,"pct_sh":9.9,"mean":1.86,"median":1,"ens":3152,"overlap":588,"pct_overlap":34.8,"flag":false}],"enslavedYears":["1850","1860"],"enslaved":{"1850":{"rows":[{"band":"Under 10","m":222,"f":311,"u":0,"all":533},{"band":"10 to 19","m":360,"f":696,"u":0,"all":1056},{"band":"20 to 29","m":178,"f":438,"u":0,"all":616},{"band":"30 to 39","m":91,"f":227,"u":0,"all":318},{"band":"40 to 49","m":47,"f":170,"u":0,"all":217},{"band":"50 to 59","m":32,"f":89,"u":0,"all":121},{"band":"60 and over","m":16,"f":65,"u":0,"all":81},{"band":"Age not recorded","m":1,"f":5,"u":1,"all":7}]},"1860":{"rows":[{"band":"Under 10","m":141,"f":232,"u":0,"all":373},{"band":"10 to 19","m":232,"f":502,"u":0,"all":734},{"band":"20 to 29","m":171,"f":336,"u":0,"all":507},{"band":"30 to 39","m":60,"f":183,"u":0,"all":243},{"band":"40 to 49","m":35,"f":119,"u":0,"all":154},{"band":"50 to 59","m":21,"f":79,"u":0,"all":100},{"band":"60 and over","m":19,"f":91,"u":0,"all":110}]}}}</script>
+<script>
+(function () {
+  var D = JSON.parse(document.getElementById('tld').textContent);
+
+  function fmt(v, kind) {
+    if (v === null || v === undefined || v === '') return 'not in file';
+    if (kind === 'int') return Number(v).toLocaleString();
+    if (kind === 'pct1') return Number(v).toFixed(1) + '%';
+    if (kind === 'pct2') return Number(v).toFixed(2) + '%';
+    if (kind === 'num2') return Number(v).toFixed(2);
+    return String(v);
+  }
+
+  /* One sortable, filterable table. Sorting is on the raw value, filtering on
+     the rendered text, so a reader filtering "printed" matches what they see. */
+  function makeTable(opts) {
+    var table = document.getElementById(opts.id);
+    var hr = table.tHead.rows[0], tb = table.tBodies[0];
+    var input = opts.filter ? document.getElementById(opts.filter) : null;
+    var countEl = opts.count ? document.getElementById(opts.count) : null;
+    var key = opts.sort, asc = opts.asc !== false, rows = opts.rows;
+
+    function cellText(r, c) {
+      if (c.render) return c.render(r).text;
+      return fmt(r[c.k], c.f);
+    }
+
+    function render() {
+      var q = input ? input.value.trim().toLowerCase() : '';
+      var out = rows.filter(function (r) {
+        if (!q) return true;
+        return opts.cols.some(function (c) {
+          return cellText(r, c).toLowerCase().indexOf(q) >= 0;
+        });
+      });
+      out = out.slice().sort(function (a, b) {
+        var x = a[key], y = b[key];
+        if (x === null || x === undefined) x = -Infinity;
+        if (y === null || y === undefined) y = -Infinity;
+        if (typeof x === 'string' || typeof y === 'string') {
+          x = String(x).toLowerCase(); y = String(y).toLowerCase();
+        }
+        return (x === y ? 0 : (x > y ? 1 : -1)) * (asc ? 1 : -1);
+      });
+      tb.innerHTML = '';
+      out.forEach(function (r) {
+        var tr = document.createElement('tr');
+        if (r.flag) tr.className = 'flagged';
+        opts.cols.forEach(function (c) {
+          var td = document.createElement('td');
+          td.className = c.n ? 'n' : '';
+          if (c.render) {
+            var v = c.render(r);
+            td.innerHTML = v.html;
+          } else {
+            td.textContent = fmt(r[c.k], c.f);
+          }
+          tr.appendChild(td);
+        });
+        tb.appendChild(tr);
+      });
+      if (countEl) {
+        countEl.textContent = out.length === rows.length
+          ? rows.length + (rows.length === 1 ? ' row' : ' rows')
+          : out.length + ' of ' + rows.length + ' rows';
+      }
+    }
+
+    function head() {
+      hr.innerHTML = '';
+      opts.cols.forEach(function (c) {
+        var th = document.createElement('th');
+        th.className = c.n ? 'n' : '';
+        th.textContent = c.t;
+        th.tabIndex = 0;
+        th.setAttribute('role', 'button');
+        th.setAttribute('scope', 'col');
+        if (c.k === key) th.setAttribute('aria-sort', asc ? 'ascending' : 'descending');
+        function go() {
+          if (key === c.k) { asc = !asc; } else { key = c.k; asc = !c.n; }
+          Array.prototype.forEach.call(hr.children, function (o) {
+            o.removeAttribute('aria-sort');
+          });
+          th.setAttribute('aria-sort', asc ? 'ascending' : 'descending');
+          render();
+        }
+        th.onclick = go;
+        th.onkeydown = function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+        };
+        hr.appendChild(th);
+      });
+    }
+
+    if (input) input.oninput = render;
+    head();
+    render();
+    return { setRows: function (r) { rows = r; render(); } };
+  }
+
+  /* Flagged years carry a marker and a tooltip. The marker is kept to a single
+     character so it never wraps the column and never widens the table. Each
+     affected table carries a footnote spelling the marker out. */
+  function yearCell(r) {
+    return {
+      text: String(r.year) + (r.flag ? ' unreliable' : ''),
+      html: r.flag
+        ? String(r.year) + ' <span class="flag" title="1790 does not ' +
+          'reconcile. The household rows sum to 21 per cent under the city ' +
+          'population the census itself records.">&dagger;</span>'
+        : String(r.year)
+    };
+  }
+
+  function srcCell(r) {
+    var printed = r.printed;
+    var label = printed ? 'Printed census, ward tables' : 'IPUMS household microdata';
+    return {
+      text: label,
+      html: '<span class="src ' + (printed ? 'printed' : 'micro') + '">' +
+        label + '</span>'
+    };
+  }
+
+  makeTable({
+    id: 'tab-city', rows: D.city, sort: 'year', asc: true,
+    filter: 'cq', count: 'cq-count',
+    cols: [
+      { k: 'year',  t: 'Year',             render: yearCell },
+      { k: 'pop',   t: 'City population',  n: true, f: 'int' },
+      { k: 'white', t: 'White',            n: true, f: 'int' },
+      { k: 'fb',    t: 'Free Black',       n: true, f: 'int' },
+      { k: 'ens',   t: 'Enslaved',         n: true, f: 'int' },
+      { k: 'black', t: 'Black total',      n: true, f: 'int' },
+      { k: 'pct',   t: 'Black share',      n: true, f: 'pct2' },
+      { k: 'hh',    t: 'Households',       n: true, f: 'int' },
+      { k: 'printed', t: 'Source',         render: srcCell }
+    ]
+  });
+
+  var wardTable = makeTable({
+    id: 'tab-ward', rows: D.wards[D.wardYears[D.wardYears.length - 1]],
+    sort: 'ward', asc: true, filter: 'wq', count: 'wq-count',
+    cols: [
+      { k: 'ward',  t: 'Ward',        n: true, f: 'int' },
+      { k: 'white', t: 'White',       n: true, f: 'int' },
+      { k: 'fb',    t: 'Free Black',  n: true, f: 'int' },
+      { k: 'ens',   t: 'Enslaved',    n: true, f: 'int' },
+      { k: 'black', t: 'Black total', n: true, f: 'int' },
+      { k: 'agg',   t: 'Ward total',  n: true, f: 'int' },
+      { k: 'pct',   t: 'Black share', n: true, f: 'pct2' }
+    ]
+  });
+
+  var wy = document.getElementById('wyears');
+  D.wardYears.forEach(function (y, i) {
+    var b = document.createElement('button');
+    b.textContent = y;
+    b.setAttribute('data-year', y);
+    b.setAttribute('aria-pressed', i === D.wardYears.length - 1 ? 'true' : 'false');
+    b.onclick = function () {
+      Array.prototype.forEach.call(wy.children, function (o) {
+        o.setAttribute('aria-pressed', o === b ? 'true' : 'false');
+      });
+      wardTable.setRows(D.wards[y]);
+    };
+    wy.appendChild(b);
+  });
+
+  makeTable({
+    id: 'tab-hh', rows: D.composition, sort: 'year', asc: true,
+    filter: 'hq', count: 'hq-count',
+    cols: [
+      { k: 'year',    t: 'Year',                    render: yearCell },
+      { k: 'allhh',   t: 'All households',          n: true, f: 'int' },
+      { k: 'present', t: 'Black-present',           n: true, f: 'int' },
+      { k: 'bh',      t: 'Black-only',              n: true, f: 'int' },
+      { k: 'mh',      t: 'Mixed',                   n: true, f: 'int' },
+      { k: 'pct_mixed', t: 'Mixed share',           n: true, f: 'pct1' },
+      { k: 'b_mean',  t: 'Mean Black, Black-only',  n: true, f: 'num2' },
+      { k: 'm_mean',  t: 'Mean Black, mixed',       n: true, f: 'num2' },
+      { k: 'pct_people_mixed', t: 'People in mixed', n: true, f: 'pct1' }
+    ]
+  });
+
+  makeTable({
+    id: 'tab-sl', rows: D.slaveholding, sort: 'year', asc: true,
+    filter: 'sq', count: 'sq-count',
+    cols: [
+      { k: 'year',   t: 'Year',                render: yearCell },
+      { k: 'allhh',  t: 'All households',      n: true, f: 'int' },
+      { k: 'sh',     t: 'Slaveholding',        n: true, f: 'int' },
+      { k: 'pct_sh', t: 'Share of all',        n: true, f: 'pct1' },
+      { k: 'mean',   t: 'Mean holding',        n: true, f: 'num2' },
+      { k: 'median', t: 'Median holding',      n: true, f: 'int' },
+      { k: 'ens',    t: 'Enslaved people',     n: true, f: 'int' },
+      { k: 'overlap', t: 'Also free Black present', n: true, f: 'int' },
+      { k: 'pct_overlap', t: 'Overlap share',  n: true, f: 'pct1' }
+    ]
+  });
+
+  var ensTable = makeTable({
+    id: 'tab-ens', rows: D.enslaved[D.enslavedYears[0]].rows,
+    sort: 'all', asc: false,
+    cols: [
+      { k: 'band', t: 'Age' },
+      { k: 'm',    t: 'Male',        n: true, f: 'int' },
+      { k: 'f',    t: 'Female',      n: true, f: 'int' },
+      { k: 'u',    t: 'Not recorded', n: true, f: 'int' },
+      { k: 'all',  t: 'All',         n: true, f: 'int' }
+    ]
+  });
+
+  var ey = document.getElementById('eyears');
+  D.enslavedYears.forEach(function (y, i) {
+    var b = document.createElement('button');
+    b.textContent = y;
+    b.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+    b.onclick = function () {
+      Array.prototype.forEach.call(ey.children, function (o) {
+        o.setAttribute('aria-pressed', o === b ? 'true' : 'false');
+      });
+      ensTable.setRows(D.enslaved[y].rows);
+    };
+    ey.appendChild(b);
+  });
+
+  /* timeline filter */
+  var tl = document.getElementById('tl'), tf = document.getElementById('tlfilter');
+  Array.prototype.forEach.call(tf.children, function (b) {
+    b.onclick = function () {
+      var kind = b.getAttribute('data-kind');
+      Array.prototype.forEach.call(tf.children, function (o) {
+        o.setAttribute('aria-pressed', o === b ? 'true' : 'false');
+      });
+      Array.prototype.forEach.call(tl.children, function (li) {
+        var show = kind === 'all' || li.getAttribute('data-kind') === kind;
+        li.className = li.className.replace(/ ?hide/, '') + (show ? '' : ' hide');
+      });
+    };
+  });
+})();
+</script>
+
+
+</body>
+</html>

@@ -181,35 +181,51 @@
     entirely plausible.</p>
 
   <h2>Mostly we are wrong by one ward. Not always.</h2>
-  <p><strong>Nine of eleven mismatches are adjacent wards</strong> &mdash;
+  <p><strong>Thirteen of sixteen mismatches are adjacent wards</strong> &mdash;
     boundary distance zero, computed from the ward polygons rather than judged
     by eye. That is the expected shape of error for a house sitting near a ward
     line, and it is reassuring.</p>
-  <p><strong>But two are not.</strong> One resident we place in ward 13 the
+  <p><strong>But three are not.</strong> Two residents we place in ward 13 the
     census puts in ward 17, 579&nbsp;metres away with a ward in between.
     Another we place in ward 12 sits in ward 10, 371&nbsp;metres off. Those are
-    not boundary ambiguity. They are wrong.</p>
+    not boundary ambiguity. They are wrong. The ward&nbsp;13 to ward&nbsp;17
+    error has now appeared twice in independent rounds, which makes it look
+    less like bad luck than like something systematic in that part of the
+    city that we have not yet found.</p>
   <p>This correction is worth stating plainly, because we published the
     stronger claim first. After 32 checks every mismatch was adjacent, and this
-    page said so. Extending to 72 broke the pattern. A clean rule that holds
+    page said so. Extending to 102 broke the pattern. A clean rule that holds
     across a small sample is exactly the kind of claim that fails quietly as
     evidence accumulates, and the honest version is duller: <em>most</em> of our
     errors are boundary-scale, and a minority are real misplacements of a few
     hundred metres.</p>
 
   <h2>Do the confidence tiers mean anything?</h2>
-  <p>Not demonstrably. Our best tier, anchored between two named corners,
-    matches the census ward 70&nbsp;per&nbsp;cent of the time. The weakest,
-    street known but position estimated, matches 62&nbsp;per&nbsp;cent. That gap
-    is well inside the noise at these sample sizes. <strong>We cannot presently
-    show that a bracketed placement is more accurate than an estimated
-    one</strong> &mdash; not the result we expected, and a reason to keep
-    checking rather than to trust the labels.</p>
+  <p>Still not demonstrably. Our best tier, anchored between two named corners,
+    now matches the census ward in 11 of 14 cases (79&nbsp;per&nbsp;cent). The
+    weakest, street known but position estimated, matches 9 of 14
+    (64&nbsp;per&nbsp;cent). A fifteen-point gap looks encouraging until you
+    test it: Fisher&rsquo;s exact test on that table gives
+    <em>p</em>&nbsp;&asymp;&nbsp;0.68. That is noise.</p>
+  <p>We have now tripled the sample without resolving this, which is itself
+    worth recording. Fourteen traceable people per tier is simply too few, and
+    the binding constraint is not effort but the tracing rate below.
+    <strong>We still cannot show that a bracketed placement is more accurate
+    than an estimated one</strong> &mdash; not the result we expected, and a
+    reason to keep checking rather than to trust the labels.</p>
 
   <h2>The real problem is not accuracy</h2>
-  <p>It is that most people cannot be checked at all. Only about a third of
-    those we look for can be positively identified in the census, even with
-    occupation and race filters and generous spelling variants.</p>
+  <p>It is that most people cannot be checked at all. Across 102 attempted
+    lookups we positively identified 38 people in the 1860 census.
+    <strong>Sixty-three per cent of the people we searched for could not be
+    found</strong>, even with occupation and race filters and generous spelling
+    variants. That is the single most important number on this page, and it
+    bounds everything else on it: every accuracy figure we quote rests on the
+    37&nbsp;per&nbsp;cent we could trace.</p>
+  <p>We deliberately count a person as not found unless the identification is
+    corroborated. A looser standard would raise the rate and make the map look
+    better verified than it is, at the cost of importing wrong links. We would
+    rather miss a real match than manufacture a false one.</p>
   <p>That is not evidence of bad placement. It is the same gap the
     <a href="./bias.html">bias page</a> measures from the other direction: the
     directories and the census are two partial views of the same population,
@@ -217,6 +233,21 @@
     most mobile. It does mean our confidence rests on a small, self-selected
     subset &mdash; people distinctive enough to trace &mdash; and cannot be
     extended to the majority we cannot verify either way.</p>
+
+  <h2>And the people we cannot trace are not spread evenly</h2>
+  <p>This is the part that should temper how the maps are read. The tracing
+    rate varies sharply by ward, and in three wards it is zero: <strong>wards
+    9, 14 and 18 produced no identifications at all</strong> (0 of 3, 0 of 5
+    and 0 of 3 respectively). Wards 6 and 7 are nearly as weak, at 1 of 5 and
+    3 of 10.</p>
+  <p>The counts are small, and with three to five attempts a zero can happen by
+    chance. But it means something specific: <em>we have no verification
+    whatsoever for those wards.</em> Whatever error exists in our placements
+    there is unmeasured, and any bias already present in the directories for
+    those districts compounds rather than averages out. A reader comparing
+    density across wards on these maps should know that the evidence behind
+    each ward is not of equal strength, and we would not defend a
+    ward-to-ward comparison that leaned on 9, 14 or 18.</p>
 
   <h2>How a match is decided</h2>
   <p>A name alone is not enough. There were two John Ashtons in 1860 Baltimore:
@@ -232,7 +263,7 @@
 
 </div>
 
-<script id="vd" type="application/json">{"tiers":{"bracketed":{"n":29,"found":10,"ward":10,"match":7,"adjacent":3},"extrapolated":{"n":7,"found":4,"ward":4,"match":1,"adjacent":2},"street_proportional":{"n":31,"found":8,"ward":8,"match":5,"adjacent":3},"single_anchor":{"n":5,"found":3,"ward":3,"match":1,"adjacent":1}},"total":{"n":72,"found":25,"ward":25,"match":14,"adjacent":9}}</script>
+<script id="vd" type="application/json">{"tiers":{"bracketed":{"n":39,"found":14,"ward":14,"match":11,"adjacent":3},"extrapolated":{"n":12,"found":6,"ward":6,"match":1,"adjacent":4},"street_proportional":{"n":45,"found":14,"ward":14,"match":9,"adjacent":5},"single_anchor":{"n":6,"found":4,"ward":4,"match":1,"adjacent":1}},"total":{"n":102,"found":38,"ward":38,"match":22,"adjacent":13}}</script>
 <script>
 (function () {
   var D = JSON.parse(document.getElementById('vd').textContent);

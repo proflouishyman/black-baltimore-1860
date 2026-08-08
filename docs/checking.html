@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Validating a historical geocode against the 1860 census: method, error rates, and the bugs it exposed.">
+<meta property="og:title" content="Checking the map">
+<meta property="og:description" content="Validating a historical geocode against the 1860 census: method, error rates, and the bugs it exposed.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>&#x1F5FA;</text></svg>">
+<title>Checking the map — Black Baltimore</title>
+<style>
+  :root {
+    --ground: #E8E5DE; --panel: #F1EFE9; --ink: #17201F; --ink-2: #46514E;
+    --ink-3: #6E7A76; --rule: #CFCABF; --anchored: #A96A08; --approx: #00846F;
+    --bar: #A96A08; --bar-soft: #D8C6A4;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #101619; --panel: #161E22; --ink: #E4E7E5; --ink-2: #A9B4B1;
+      --ink-3: #7E8A88; --rule: #253034; --anchored: #CB811A; --approx: #2C9C8D;
+      --bar: #CB811A; --bar-soft: #3B3527;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #101619; --panel: #161E22; --ink: #E4E7E5; --ink-2: #A9B4B1;
+    --ink-3: #7E8A88; --rule: #253034; --anchored: #CB811A; --approx: #2C9C8D;
+    --bar: #CB811A; --bar-soft: #3B3527;
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--ground); color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif; line-height: 1.55;
+    -webkit-font-smoothing: antialiased; }
+  .serif { font-family: "Iowan Old Style", "Palatino Linotype", Palatino,
+           "Book Antiqua", Georgia, serif; }
+  .mono { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+          font-variant-numeric: tabular-nums; }
+
+  .page { max-width: 1080px; margin: 0 auto; padding: 26px 26px 80px; }
+  nav { display: flex; flex-wrap: wrap; gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule); margin-bottom: 34px; }
+  nav a { flex: 1 1 auto; min-width: 52px; text-align: center; padding: 8px 6px;
+    font-size: 12px; text-decoration: none; color: var(--ink-2);
+    background: var(--panel); letter-spacing: .04em; }
+  nav a:hover { background: var(--ground); color: var(--ink); }
+  nav a[aria-current="page"] { background: var(--ink); color: var(--panel); font-weight: 600; }
+  nav a:focus-visible { outline: 2px solid var(--anchored); outline-offset: -2px; }
+
+  .eyebrow { font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-3); margin: 0 0 10px; }
+  h1 { font-size: 38px; line-height: 1.1; margin: 0 0 12px; text-wrap: balance;
+    font-weight: 600; letter-spacing: -.015em; }
+  h2 { font-size: 21px; margin: 44px 0 12px; font-weight: 600; letter-spacing: -.01em; }
+  .lede { color: var(--ink-2); font-size: 16.5px; max-width: 64ch; margin: 0 0 6px; }
+  p { max-width: 68ch; }
+  a { color: var(--anchored); }
+
+  .years { display: flex; flex-wrap: wrap; gap: 6px; margin: 26px 0 18px; }
+  .years button { font: inherit; font-size: 13px; padding: 6px 14px; cursor: pointer;
+    background: var(--panel); color: var(--ink-2); border: 1px solid var(--rule);
+    border-radius: 2px; }
+  .years button:hover { border-color: var(--ink-3); color: var(--ink); }
+  .years button[aria-pressed="true"] { background: var(--ink); color: var(--panel);
+    border-color: var(--ink); font-weight: 600; }
+  .years button:focus-visible { outline: 2px solid var(--anchored); outline-offset: 2px; }
+
+  .chart { display: grid; grid-template-columns: 150px 1fr 64px; gap: 3px 12px;
+    align-items: center; margin-top: 8px; }
+  .chart .lab { font-size: 13px; text-align: right; color: var(--ink-2); }
+  .chart .track { background: var(--bar-soft); height: 17px; border-radius: 0 3px 3px 0; }
+  .chart .fill { background: var(--bar); height: 17px; border-radius: 0 3px 3px 0;
+    transition: width .25s ease; }
+  .chart .val { font-size: 12.5px; color: var(--ink-3);
+    font-variant-numeric: tabular-nums; }
+  @media (prefers-reduced-motion: reduce) { .chart .fill { transition: none; } }
+  @media (max-width: 620px) { .chart { grid-template-columns: 110px 1fr 52px; } }
+
+  table.data { border-collapse: collapse; font-size: 13.5px; margin-top: 10px; width: 100%; }
+  table.data th, table.data td { text-align: left; padding: 7px 12px 7px 0;
+    border-bottom: 1px solid var(--rule); }
+  table.data td.n, table.data th.n { text-align: right;
+    font-variant-numeric: tabular-nums; }
+  .scroll { overflow-x: auto; }
+  table.data th { cursor: pointer; user-select: none; white-space: nowrap; }
+  table.data th:hover { color: var(--ink); }
+  table.data th[aria-sort]::after { content: " \2193"; font-size: 11px; }
+  table.data th[aria-sort="descending"]::after { content: " \2191"; }
+  table.data th:focus-visible { outline: 2px solid var(--anchored); outline-offset: -2px; }
+  td.bar { position: relative; min-width: 92px; }
+  td.bar .bw { position: absolute; left: 0; top: 4px; bottom: 4px;
+    background: var(--bar-soft); border-radius: 0 2px 2px 0; z-index: 0; }
+  td.bar .bv { position: relative; z-index: 1; padding-right: 2px; }
+
+  figure { margin: 26px 0; }
+  figure img { width: 100%; max-width: 100%; height: auto; display: block;
+    border: 1px solid var(--rule); background: #fff; }
+  figcaption { font-size: 12.5px; color: var(--ink-3); margin-top: 9px; max-width: 68ch; }
+
+  .biblio { border-top: 1px solid var(--rule); padding-top: 20px; margin-top: 30px; }
+  .biblio h3 { font-size: 16px; margin: 0 0 4px; font-weight: 600; }
+  .biblio .meta { font-size: 13px; color: var(--ink-3); margin: 0 0 6px; }
+  .biblio p { font-size: 13.5px; color: var(--ink-2); margin: 0 0 8px; }
+  .note { font-size: 13px; color: var(--ink-3); border-left: 2px solid var(--rule);
+    padding-left: 14px; margin: 22px 0; }
+  .note strong { color: var(--ink-2); font-weight: 600; }
+</style>
+
+</head>
+<body>
+<div class="page">
+  <nav>
+    <a href="./">Density</a>
+    <a href="./1819.html">1819</a>
+    <a href="./1822.html">1822</a>
+    <a href="./1842.html">1842</a>
+    <a href="./1845.html">1845</a>
+    <a href="./1851.html">1851</a>
+    <a href="./1860.html">1860</a>
+    <a href="./1868.html">1868</a>
+    <a href="./wards.html">Wards</a>
+    <a href="./work.html">Work</a>
+    <a href="./trade.html">Trade</a>
+    <a href="./building.html">Building</a>
+    <a href="./bias.html">What's missing</a>
+    <a href="./checking.html" aria-current="page">Checking</a>
+    <a href="./sources.html">Sources</a>
+    </nav>
+  <p class="eyebrow">Validation against the 1860 census</p>
+  <h1 class="serif">Checking the map</h1>
+  <p class="lede">We looked people up in the census to see whether we had put them in the right place. Here is what that found, including the bugs.</p>
+  
+  <div class="note"><strong>Nobody had checked whether any of this was
+    right.</strong> So we started looking people up in the 1860 federal census,
+    which recorded each person's ward independently of anything we did. If our
+    placements are sound, the wards should agree.</div>
+
+  <div class="scroll">
+    <table class="data">
+      <thead><tr>
+        <th>Placement method</th><th class="n">Checked</th><th class="n">Traced</th>
+        <th class="n">Ward known</th><th class="n">Agree</th><th class="n">Rate</th>
+      </tr></thead>
+      <tbody id="vbody"></tbody>
+    </table>
+  </div>
+  <p class="note"><span id="vtot"></span> &middot; <span id="vmatch"></span>
+    &middot; <span id="vadj"></span></p>
+
+  <h2>It found real bugs</h2>
+  <p>The first eight lookups matched on only one of three traceable people. That
+    was not noise. It exposed two faults in the highest-confidence placements.</p>
+  <p><strong>Split streets shared one ladder.</strong> North Charles and South
+    Charles both reduce to &ldquo;Charles&rdquo;, so one silently overwrote the
+    other and their geometry fused. Thirty-four street names were affected,
+    covering 473 of our best placements. Someone on the north half could be
+    interpolated onto the south half.</p>
+  <p><strong>Some streets are drawn backwards.</strong> On North Caroline the
+    digitised line runs north to south while the house numbers run south to
+    north. The code assumed numbers rise with distance, so it discarded every
+    anchor but the first and pinned people at the wrong end of the street.</p>
+  <p>Both are fixed. Nothing internal to the data would have revealed either:
+    the ladders were monotone, the anchors were real, and the output looked
+    entirely plausible.</p>
+
+  <h2>When we are wrong, we are wrong by one ward</h2>
+  <p>This is the reassuring part. <strong>Every mismatch found so far is an
+    adjacent ward</strong> &mdash; boundary distance zero, computed from the
+    ward polygons rather than judged by eye. Not one person has been placed
+    across the city from where the census puts them. The errors look like
+    boundary ambiguity, which is what you would expect when a house sits near a
+    ward line, rather than broken geocoding.</p>
+
+  <h2>The real problem is not accuracy</h2>
+  <p>It is that most people cannot be checked at all. Roughly two thirds of
+    those we look for cannot be positively identified in the census, even with
+    occupation and race filters and generous spelling variants.</p>
+  <p>That is not evidence of bad placement. It is the same gap the
+    <a href="./bias.html">bias page</a> measures from the other direction: the
+    directories and the census are two partial views of the same population,
+    and the people who fall between them are disproportionately the poorest and
+    most mobile. It does mean our confidence rests on a small, self-selected
+    subset &mdash; people distinctive enough to trace &mdash; and cannot be
+    extended to the majority we cannot verify either way.</p>
+
+  <h2>How a match is decided</h2>
+  <p>A name alone is not enough. There were two John Ashtons in 1860 Baltimore:
+    a White printer in the ward we predicted, and a Mulatto drayman in a
+    different one. Matching on ward agreement would have produced a confident,
+    wrong link that made our method look better than it is. Matches require
+    occupation or race corroboration, and identification is done before the
+    wards are compared.</p>
+  <p>Every record consulted is kept &mdash; the matches, the rejected
+    candidates, and the search results showing what the alternatives were. A
+    claim about a person in 1860 that cannot be traced back to the page it came
+    from is not worth making.</p>
+
+</div>
+
+<script id="vd" type="application/json">{"tiers":{"bracketed":{"n":19,"found":6,"ward":6,"match":4,"adjacent":2},"extrapolated":{"n":1,"found":0,"ward":0,"match":0,"adjacent":0},"street_proportional":{"n":12,"found":4,"ward":4,"match":2,"adjacent":2}},"total":{"n":32,"found":10,"ward":10,"match":6,"adjacent":4}}</script>
+<script>
+(function () {
+  var D = JSON.parse(document.getElementById('vd').textContent);
+  var order = ['bracketed', 'single_anchor', 'extrapolated', 'street_proportional'];
+  var label = {bracketed: 'Anchored between two named corners',
+               single_anchor: 'One anchor only',
+               extrapolated: 'Beyond the anchored range',
+               street_proportional: 'Street known, position estimated',
+               unknown: 'Tier not recorded'};
+  var tb = document.getElementById('vbody');
+  var keys = order.filter(function (k) { return D.tiers[k]; })
+    .concat(Object.keys(D.tiers).filter(function (k) { return order.indexOf(k) < 0; }));
+  keys.forEach(function (k) {
+    var v = D.tiers[k], tr = document.createElement('tr');
+    var rate = v.ward ? (v.match / v.ward * 100).toFixed(0) + '%' : '\u2014';
+    [[label[k] || k, false], [v.n, true], [v.found, true], [v.ward, true],
+     [v.match, true], [rate, true]].forEach(function (c) {
+      var td = document.createElement('td');
+      td.className = c[1] ? 'n' : '';
+      td.textContent = c[0];
+      tr.appendChild(td);
+    });
+    tb.appendChild(tr);
+  });
+  var t = D.total, mism = t.ward - t.match;
+  document.getElementById('vtot').textContent =
+    t.found + ' of ' + t.n + ' traced (' + (t.found / t.n * 100).toFixed(0) + '%)';
+  document.getElementById('vmatch').textContent =
+    t.match + ' of ' + t.ward + ' wards agree';
+  document.getElementById('vadj').textContent =
+    mism ? t.adjacent + ' of ' + mism + ' misses adjacent' : 'no misses';
+})();
+</script>
+
+
+</body>
+</html>

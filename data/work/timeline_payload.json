@@ -1,0 +1,1056 @@
+{
+ "city": [
+  {
+   "year": 1790,
+   "hh": 1733,
+   "pop": 10641,
+   "white": 9317,
+   "fb": 281,
+   "ens": 1043,
+   "black": 1324,
+   "pct": 12.44,
+   "src": "IPUMS complete-count household microdata",
+   "printed": false,
+   "flag": true
+  },
+  {
+   "year": 1800,
+   "hh": 3907,
+   "pop": 26520,
+   "white": 21154,
+   "fb": 2614,
+   "ens": 2752,
+   "black": 5366,
+   "pct": 20.23,
+   "src": "IPUMS complete-count household microdata",
+   "printed": false,
+   "flag": false
+  },
+  {
+   "year": 1810,
+   "hh": 7275,
+   "pop": 46465,
+   "white": 36158,
+   "fb": 5658,
+   "ens": 4649,
+   "black": 10307,
+   "pct": 22.18,
+   "src": "IPUMS complete-count household microdata",
+   "printed": false,
+   "flag": false
+  },
+  {
+   "year": 1820,
+   "hh": 9545,
+   "pop": 62738,
+   "white": 48055,
+   "fb": 10326,
+   "ens": 4357,
+   "black": 14683,
+   "pct": 23.4,
+   "src": "printed federal census, ward tables",
+   "printed": true,
+   "flag": false
+  },
+  {
+   "year": 1830,
+   "hh": 12669,
+   "pop": 79473,
+   "white": 61051,
+   "fb": 14364,
+   "ens": 4058,
+   "black": 18422,
+   "pct": 23.18,
+   "src": "IPUMS complete-count household microdata",
+   "printed": false,
+   "flag": false
+  },
+  {
+   "year": 1840,
+   "hh": 17118,
+   "pop": 102225,
+   "white": 81115,
+   "fb": 17958,
+   "ens": 3152,
+   "black": 21110,
+   "pct": 20.65,
+   "src": "IPUMS complete-count household microdata",
+   "printed": false,
+   "flag": false
+  },
+  {
+   "year": 1850,
+   "hh": null,
+   "pop": 169054,
+   "white": 140666,
+   "fb": 25442,
+   "ens": 2946,
+   "black": 28388,
+   "pct": 16.79,
+   "src": "printed federal census, ward tables",
+   "printed": true,
+   "flag": false
+  },
+  {
+   "year": 1860,
+   "hh": null,
+   "pop": 212418,
+   "white": 184520,
+   "fb": 25680,
+   "ens": 2218,
+   "black": 27898,
+   "pct": 13.13,
+   "src": "printed federal census, ward tables",
+   "printed": true,
+   "flag": false
+  }
+ ],
+ "wards": {
+  "1820": [
+   {
+    "ward": 1,
+    "white": 3675,
+    "fb": 535,
+    "ens": 267,
+    "black": 802,
+    "agg": 4477,
+    "pct": 17.91
+   },
+   {
+    "ward": 2,
+    "white": 5794,
+    "fb": 1430,
+    "ens": 288,
+    "black": 1718,
+    "agg": 7512,
+    "pct": 22.87
+   },
+   {
+    "ward": 3,
+    "white": 4982,
+    "fb": 1204,
+    "ens": 362,
+    "black": 1566,
+    "agg": 6548,
+    "pct": 23.92
+   },
+   {
+    "ward": 4,
+    "white": 5465,
+    "fb": 809,
+    "ens": 371,
+    "black": 1180,
+    "agg": 6645,
+    "pct": 17.76
+   },
+   {
+    "ward": 5,
+    "white": 2538,
+    "fb": 240,
+    "ens": 313,
+    "black": 553,
+    "agg": 3091,
+    "pct": 17.89
+   },
+   {
+    "ward": 6,
+    "white": 2752,
+    "fb": 258,
+    "ens": 459,
+    "black": 717,
+    "agg": 3469,
+    "pct": 20.67
+   },
+   {
+    "ward": 7,
+    "white": 2542,
+    "fb": 450,
+    "ens": 468,
+    "black": 918,
+    "agg": 3460,
+    "pct": 26.53
+   },
+   {
+    "ward": 8,
+    "white": 2739,
+    "fb": 626,
+    "ens": 227,
+    "black": 853,
+    "agg": 3592,
+    "pct": 23.75
+   },
+   {
+    "ward": 9,
+    "white": 2516,
+    "fb": 795,
+    "ens": 268,
+    "black": 1063,
+    "agg": 3579,
+    "pct": 29.7
+   },
+   {
+    "ward": 10,
+    "white": 4646,
+    "fb": 1066,
+    "ens": 407,
+    "black": 1473,
+    "agg": 6119,
+    "pct": 24.07
+   },
+   {
+    "ward": 11,
+    "white": 4275,
+    "fb": 1273,
+    "ens": 334,
+    "black": 1607,
+    "agg": 5882,
+    "pct": 27.32
+   },
+   {
+    "ward": 12,
+    "white": 6131,
+    "fb": 1640,
+    "ens": 593,
+    "black": 2233,
+    "agg": 8364,
+    "pct": 26.7
+   }
+  ],
+  "1850": [
+   {
+    "ward": 1,
+    "white": 13483,
+    "fb": 1091,
+    "ens": 79,
+    "black": 1170,
+    "agg": 14653,
+    "pct": 7.98
+   },
+   {
+    "ward": 2,
+    "white": 8490,
+    "fb": 917,
+    "ens": 85,
+    "black": 1002,
+    "agg": 9492,
+    "pct": 10.56
+   },
+   {
+    "ward": 3,
+    "white": 9764,
+    "fb": 1862,
+    "ens": 195,
+    "black": 2057,
+    "agg": 11821,
+    "pct": 17.4
+   },
+   {
+    "ward": 4,
+    "white": 6611,
+    "fb": 766,
+    "ens": 250,
+    "black": 1016,
+    "agg": 7627,
+    "pct": 13.32
+   },
+   {
+    "ward": 5,
+    "white": 4430,
+    "fb": 1198,
+    "ens": 84,
+    "black": 1282,
+    "agg": 5712,
+    "pct": 22.44
+   },
+   {
+    "ward": 6,
+    "white": 6766,
+    "fb": 2145,
+    "ens": 104,
+    "black": 2249,
+    "agg": 9015,
+    "pct": 24.95
+   },
+   {
+    "ward": 7,
+    "white": 6590,
+    "fb": 1013,
+    "ens": 57,
+    "black": 1070,
+    "agg": 7660,
+    "pct": 13.97
+   },
+   {
+    "ward": 8,
+    "white": 8125,
+    "fb": 750,
+    "ens": 78,
+    "black": 828,
+    "agg": 8953,
+    "pct": 9.25
+   },
+   {
+    "ward": 9,
+    "white": 4268,
+    "fb": 333,
+    "ens": 139,
+    "black": 472,
+    "agg": 4740,
+    "pct": 9.96
+   },
+   {
+    "ward": 10,
+    "white": 4196,
+    "fb": 596,
+    "ens": 241,
+    "black": 837,
+    "agg": 5033,
+    "pct": 16.63
+   },
+   {
+    "ward": 11,
+    "white": 6593,
+    "fb": 2078,
+    "ens": 252,
+    "black": 2330,
+    "agg": 8923,
+    "pct": 26.11
+   },
+   {
+    "ward": 12,
+    "white": 7214,
+    "fb": 1911,
+    "ens": 158,
+    "black": 2069,
+    "agg": 9283,
+    "pct": 22.29
+   },
+   {
+    "ward": 13,
+    "white": 4495,
+    "fb": 807,
+    "ens": 264,
+    "black": 1071,
+    "agg": 5566,
+    "pct": 19.24
+   },
+   {
+    "ward": 14,
+    "white": 6013,
+    "fb": 1221,
+    "ens": 177,
+    "black": 1398,
+    "agg": 7411,
+    "pct": 18.86
+   },
+   {
+    "ward": 15,
+    "white": 7753,
+    "fb": 2242,
+    "ens": 307,
+    "black": 2549,
+    "agg": 10302,
+    "pct": 24.74
+   },
+   {
+    "ward": 16,
+    "white": 4555,
+    "fb": 1189,
+    "ens": 134,
+    "black": 1323,
+    "agg": 5878,
+    "pct": 22.51
+   },
+   {
+    "ward": 17,
+    "white": 7389,
+    "fb": 2400,
+    "ens": 45,
+    "black": 2445,
+    "agg": 9834,
+    "pct": 24.86
+   },
+   {
+    "ward": 18,
+    "white": 10644,
+    "fb": 934,
+    "ens": 168,
+    "black": 1102,
+    "agg": 11746,
+    "pct": 9.38
+   },
+   {
+    "ward": 19,
+    "white": 7095,
+    "fb": 717,
+    "ens": 63,
+    "black": 780,
+    "agg": 7875,
+    "pct": 9.9
+   },
+   {
+    "ward": 20,
+    "white": 6192,
+    "fb": 1272,
+    "ens": 66,
+    "black": 1338,
+    "agg": 7530,
+    "pct": 17.77
+   }
+  ],
+  "1860": [
+   {
+    "ward": 1,
+    "white": 14545,
+    "fb": 433,
+    "ens": 54,
+    "black": 487,
+    "agg": 15032,
+    "pct": 3.24
+   },
+   {
+    "ward": 2,
+    "white": 8666,
+    "fb": 628,
+    "ens": 46,
+    "black": 674,
+    "agg": 9340,
+    "pct": 7.22
+   },
+   {
+    "ward": 3,
+    "white": 13478,
+    "fb": 1750,
+    "ens": 115,
+    "black": 1865,
+    "agg": 15343,
+    "pct": 12.16
+   },
+   {
+    "ward": 4,
+    "white": 6553,
+    "fb": 385,
+    "ens": 72,
+    "black": 457,
+    "agg": 7010,
+    "pct": 6.52
+   },
+   {
+    "ward": 5,
+    "white": 4416,
+    "fb": 903,
+    "ens": 41,
+    "black": 944,
+    "agg": 5360,
+    "pct": 17.61
+   },
+   {
+    "ward": 6,
+    "white": 7916,
+    "fb": 1894,
+    "ens": 78,
+    "black": 1972,
+    "agg": 9888,
+    "pct": 19.94
+   },
+   {
+    "ward": 7,
+    "white": 10984,
+    "fb": 1378,
+    "ens": 43,
+    "black": 1421,
+    "agg": 12405,
+    "pct": 11.46
+   },
+   {
+    "ward": 8,
+    "white": 13575,
+    "fb": 753,
+    "ens": 59,
+    "black": 812,
+    "agg": 14387,
+    "pct": 5.64
+   },
+   {
+    "ward": 9,
+    "white": 2864,
+    "fb": 188,
+    "ens": 92,
+    "black": 280,
+    "agg": 3144,
+    "pct": 8.91
+   },
+   {
+    "ward": 10,
+    "white": 3712,
+    "fb": 553,
+    "ens": 50,
+    "black": 603,
+    "agg": 4315,
+    "pct": 13.97
+   },
+   {
+    "ward": 11,
+    "white": 7829,
+    "fb": 2389,
+    "ens": 353,
+    "black": 2742,
+    "agg": 10571,
+    "pct": 25.94
+   },
+   {
+    "ward": 12,
+    "white": 7793,
+    "fb": 1967,
+    "ens": 111,
+    "black": 2078,
+    "agg": 9871,
+    "pct": 21.05
+   },
+   {
+    "ward": 13,
+    "white": 3691,
+    "fb": 691,
+    "ens": 91,
+    "black": 782,
+    "agg": 4473,
+    "pct": 17.48
+   },
+   {
+    "ward": 14,
+    "white": 5744,
+    "fb": 1176,
+    "ens": 142,
+    "black": 1318,
+    "agg": 7062,
+    "pct": 18.66
+   },
+   {
+    "ward": 15,
+    "white": 10101,
+    "fb": 2787,
+    "ens": 173,
+    "black": 2960,
+    "agg": 13061,
+    "pct": 22.66
+   },
+   {
+    "ward": 16,
+    "white": 6675,
+    "fb": 1482,
+    "ens": 80,
+    "black": 1562,
+    "agg": 8237,
+    "pct": 18.96
+   },
+   {
+    "ward": 17,
+    "white": 12784,
+    "fb": 2168,
+    "ens": 3,
+    "black": 2171,
+    "agg": 14955,
+    "pct": 14.52
+   },
+   {
+    "ward": 18,
+    "white": 19837,
+    "fb": 1219,
+    "ens": 275,
+    "black": 1494,
+    "agg": 21331,
+    "pct": 7.0
+   },
+   {
+    "ward": 19,
+    "white": 11944,
+    "fb": 1019,
+    "ens": 94,
+    "black": 1113,
+    "agg": 13057,
+    "pct": 8.52
+   },
+   {
+    "ward": 20,
+    "white": 11413,
+    "fb": 1917,
+    "ens": 246,
+    "black": 2163,
+    "agg": 13576,
+    "pct": 15.93
+   }
+  ]
+ },
+ "composition": [
+  {
+   "year": 1790,
+   "allhh": 1733,
+   "present": 113,
+   "bh": 44,
+   "bp": 168,
+   "mh": 69,
+   "mp": 113,
+   "pct_mixed": 61.1,
+   "pct_people_mixed": 40.2,
+   "b_mean": 3.82,
+   "m_mean": 1.64,
+   "negwhite": 0,
+   "flag": true
+  },
+  {
+   "year": 1800,
+   "allhh": 3907,
+   "present": 814,
+   "bh": 273,
+   "bp": 1574,
+   "mh": 541,
+   "mp": 1040,
+   "pct_mixed": 66.5,
+   "pct_people_mixed": 39.8,
+   "b_mean": 5.77,
+   "m_mean": 1.92,
+   "negwhite": 0,
+   "flag": false
+  },
+  {
+   "year": 1810,
+   "allhh": 7275,
+   "present": 1985,
+   "bh": 942,
+   "bp": 3998,
+   "mh": 1043,
+   "mp": 1660,
+   "pct_mixed": 52.5,
+   "pct_people_mixed": 29.3,
+   "b_mean": 4.24,
+   "m_mean": 1.59,
+   "negwhite": 0,
+   "flag": false
+  },
+  {
+   "year": 1820,
+   "allhh": 9545,
+   "present": 3140,
+   "bh": 1488,
+   "bp": 6913,
+   "mh": 1652,
+   "mp": 3219,
+   "pct_mixed": 52.6,
+   "pct_people_mixed": 31.8,
+   "b_mean": 4.65,
+   "m_mean": 1.95,
+   "negwhite": 0,
+   "flag": false
+  },
+  {
+   "year": 1830,
+   "allhh": 12669,
+   "present": 4454,
+   "bh": 2344,
+   "bp": 10595,
+   "mh": 2110,
+   "mp": 3769,
+   "pct_mixed": 47.4,
+   "pct_people_mixed": 26.2,
+   "b_mean": 4.52,
+   "m_mean": 1.79,
+   "negwhite": 0,
+   "flag": false
+  },
+  {
+   "year": 1840,
+   "allhh": 17118,
+   "present": 5463,
+   "bh": 2932,
+   "bp": 13641,
+   "mh": 2531,
+   "mp": 4317,
+   "pct_mixed": 46.3,
+   "pct_people_mixed": 24.0,
+   "b_mean": 4.65,
+   "m_mean": 1.71,
+   "negwhite": 0,
+   "flag": false
+  }
+ ],
+ "slaveholding": [
+  {
+   "year": 1790,
+   "allhh": 1733,
+   "sh": 397,
+   "pct_sh": 22.9,
+   "mean": 2.63,
+   "median": 2,
+   "ens": 1043,
+   "overlap": 33,
+   "pct_overlap": 8.3,
+   "flag": true
+  },
+  {
+   "year": 1800,
+   "allhh": 3907,
+   "sh": 1017,
+   "pct_sh": 26.0,
+   "mean": 2.71,
+   "median": 2,
+   "ens": 2752,
+   "overlap": 192,
+   "pct_overlap": 18.9,
+   "flag": false
+  },
+  {
+   "year": 1810,
+   "allhh": 7275,
+   "sh": 1755,
+   "pct_sh": 24.1,
+   "mean": 2.65,
+   "median": 2,
+   "ens": 4649,
+   "overlap": 389,
+   "pct_overlap": 22.2,
+   "flag": false
+  },
+  {
+   "year": 1820,
+   "allhh": 9545,
+   "sh": 1876,
+   "pct_sh": 19.7,
+   "mean": 2.36,
+   "median": 2,
+   "ens": 4419,
+   "overlap": 669,
+   "pct_overlap": 35.7,
+   "flag": false
+  },
+  {
+   "year": 1830,
+   "allhh": 12669,
+   "sh": 2005,
+   "pct_sh": 15.8,
+   "mean": 2.02,
+   "median": 1,
+   "ens": 4058,
+   "overlap": 670,
+   "pct_overlap": 33.4,
+   "flag": false
+  },
+  {
+   "year": 1840,
+   "allhh": 17118,
+   "sh": 1692,
+   "pct_sh": 9.9,
+   "mean": 1.86,
+   "median": 1,
+   "ens": 3152,
+   "overlap": 588,
+   "pct_overlap": 34.8,
+   "flag": false
+  }
+ ],
+ "enslaved": {
+  "1850": {
+   "rows": [
+    {
+     "band": "Under 10",
+     "m": 222,
+     "f": 311,
+     "u": 0,
+     "all": 533
+    },
+    {
+     "band": "10 to 19",
+     "m": 360,
+     "f": 696,
+     "u": 0,
+     "all": 1056
+    },
+    {
+     "band": "20 to 29",
+     "m": 178,
+     "f": 438,
+     "u": 0,
+     "all": 616
+    },
+    {
+     "band": "30 to 39",
+     "m": 91,
+     "f": 227,
+     "u": 0,
+     "all": 318
+    },
+    {
+     "band": "40 to 49",
+     "m": 47,
+     "f": 170,
+     "u": 0,
+     "all": 217
+    },
+    {
+     "band": "50 to 59",
+     "m": 32,
+     "f": 89,
+     "u": 0,
+     "all": 121
+    },
+    {
+     "band": "60 and over",
+     "m": 16,
+     "f": 65,
+     "u": 0,
+     "all": 81
+    },
+    {
+     "band": "Age not recorded",
+     "m": 1,
+     "f": 5,
+     "u": 1,
+     "all": 7
+    }
+   ],
+   "m": 947,
+   "f": 2001,
+   "u": 1,
+   "total": 2949,
+   "holds": 1688
+  },
+  "1860": {
+   "rows": [
+    {
+     "band": "Under 10",
+     "m": 141,
+     "f": 232,
+     "u": 0,
+     "all": 373
+    },
+    {
+     "band": "10 to 19",
+     "m": 232,
+     "f": 502,
+     "u": 0,
+     "all": 734
+    },
+    {
+     "band": "20 to 29",
+     "m": 171,
+     "f": 336,
+     "u": 0,
+     "all": 507
+    },
+    {
+     "band": "30 to 39",
+     "m": 60,
+     "f": 183,
+     "u": 0,
+     "all": 243
+    },
+    {
+     "band": "40 to 49",
+     "m": 35,
+     "f": 119,
+     "u": 0,
+     "all": 154
+    },
+    {
+     "band": "50 to 59",
+     "m": 21,
+     "f": 79,
+     "u": 0,
+     "all": 100
+    },
+    {
+     "band": "60 and over",
+     "m": 19,
+     "f": 91,
+     "u": 0,
+     "all": 110
+    }
+   ],
+   "m": 679,
+   "f": 1542,
+   "u": 0,
+   "total": 2221,
+   "holds": 1285
+  }
+ },
+ "enslavedYears": [
+  "1850",
+  "1860"
+ ],
+ "holdings": {
+  "1850": [
+   {
+    "band": "1 person",
+    "holds": 1068,
+    "people": 1068
+   },
+   {
+    "band": "2 people",
+    "holds": 305,
+    "people": 610
+   },
+   {
+    "band": "3 to 5",
+    "holds": 276,
+    "people": 964
+   },
+   {
+    "band": "6 to 10",
+    "holds": 37,
+    "people": 261
+   },
+   {
+    "band": "11 or more",
+    "holds": 2,
+    "people": 46
+   }
+  ],
+  "1860": [
+   {
+    "band": "1 person",
+    "holds": 847,
+    "people": 847
+   },
+   {
+    "band": "2 people",
+    "holds": 231,
+    "people": 462
+   },
+   {
+    "band": "3 to 5",
+    "holds": 174,
+    "people": 608
+   },
+   {
+    "band": "6 to 10",
+    "holds": 28,
+    "people": 196
+   },
+   {
+    "band": "11 or more",
+    "holds": 5,
+    "people": 108
+   }
+  ]
+ },
+ "placed": {
+  "1819": 92,
+  "1822": 230,
+  "1842": 744,
+  "1845": 1527,
+  "1851": 1631,
+  "1860": 3054,
+  "1868": 6070
+ },
+ "listed": {
+  "1819": 526,
+  "1822": 1061,
+  "1842": 2724,
+  "1845": 2100,
+  "1851": 3642,
+  "1860": 4251,
+  "1868": 8512
+ },
+ "wardYears": [
+  "1820",
+  "1850",
+  "1860"
+ ],
+ "events": [
+  {
+   "year": 1790,
+   "kind": "census",
+   "title": "The first federal census",
+   "text": "1,733 Baltimore households, 281 free Black residents and 1,043 enslaved people. These are the least reliable figures on this page. The household rows account for only 79 per cent of the population the census itself recorded for the city, so treat every 1790 number as a floor with materially lower confidence than the rest."
+  },
+  {
+   "year": 1800,
+   "kind": "census",
+   "title": "Free and enslaved almost level",
+   "text": "2,614 free Black Baltimoreans against 2,752 enslaved. In ten years the free population had gone from a few hundred to nearly the size of the enslaved population. Slaveholding was at its widest reach in the city this year, in 26.0 per cent of all households, and it never reached that far again."
+  },
+  {
+   "year": 1810,
+   "kind": "census",
+   "title": "Slavery peaks and stops growing",
+   "text": "4,649 enslaved people, the largest number Baltimore ever recorded. Free Black residents pass them this year at 5,658. From here the two lines move apart in opposite directions for fifty years."
+  },
+  {
+   "year": 1819,
+   "kind": "directory",
+   "title": "The earliest year we can map",
+   "text": "Jackson's Baltimore Directory lists Black householders with addresses. 526 residents parsed from the volume, 92 placed on a map. The addresses mostly say near something rather than giving a corner, which is why so few of them resolve. This year exists on borrowed labour, transcribed from the page by Louis S. Diggs, Sr."
+  },
+  {
+   "year": 1820,
+   "kind": "census",
+   "title": "The peak: 23.4 per cent of the city",
+   "text": "10,326 free Black residents and 4,357 enslaved, together 23.4 per cent of Baltimore. This is the highest Black share the city ever records in this period. It is also the first year with a printed ward table, which used twelve wards rather than the twenty in use by 1850."
+  },
+  {
+   "year": 1822,
+   "kind": "directory",
+   "title": "Marked with a dagger",
+   "text": "Keenan's directory prints no separate section. Instead a dagger precedes certain names. 1,061 residents parsed from the volume, 230 placed on a map. The meaning of the dagger is inferred from occupations and addresses rather than stated, because the page carrying the legend is not legible in the scan we have."
+  },
+  {
+   "year": 1830,
+   "kind": "census",
+   "title": "Growth on both sides of the line",
+   "text": "14,364 free Black residents, up more than four thousand in a decade, and 4,058 enslaved, down again. Black share holds near its peak at 23.2 per cent. Inside the houses, the median slaveholding falls from two people to one."
+  },
+  {
+   "year": 1840,
+   "kind": "census",
+   "title": "Slaveholding becomes marginal",
+   "text": "Slaveholding households are 9.9 per cent of the city, down from 26.0 per cent in 1800. Free Black Baltimoreans number 17,958. Mixed households have fallen to 46 per cent of all Black-present households, from two thirds in 1800."
+  },
+  {
+   "year": 1842,
+   "kind": "directory",
+   "title": "Colored Householders, listed apart",
+   "text": "Matchett's prints a separate section with a note at the front that these residents are listed by themselves. 2,724 residents parsed from the volume, 744 placed on a map. Baltimore had no house numbers yet, so each person sits on a block face rather than at an address."
+  },
+  {
+   "year": 1845,
+   "kind": "directory",
+   "title": "House numbers arrive",
+   "text": "Between 1842 and 1845 the city adopted house numbers and the directory changes with it. 2,100 residents parsed from the volume, 1,527 placed on a map. From this volume on, a resident can be placed between two named corners instead of somewhere along a block."
+  },
+  {
+   "year": 1850,
+   "kind": "census",
+   "title": "The largest free Black city",
+   "text": "25,442 free Black Baltimoreans, more than any other American city, and 2,946 still enslaved. Black share has fallen to 16.8 per cent even though the Black population grew by more than seven thousand since 1840. The city grew faster."
+  },
+  {
+   "year": 1851,
+   "kind": "directory",
+   "title": "A decade before the war",
+   "text": "Matchett's again, with the section closing on an explicit line reading END COLORED RESIDENTS. 3,642 residents parsed from the volume, 1,631 placed on a map. A third of the entries give no house number at all and cannot be placed."
+  },
+  {
+   "year": 1860,
+   "kind": "census",
+   "title": "Falling share, growing city",
+   "text": "25,680 free Black residents and 2,218 enslaved, 13.1 per cent of Baltimore. The Black share fell in every one of the twenty wards over the previous decade. The Black population itself fell by under two per cent while 43,854 white residents arrived."
+  },
+  {
+   "year": 1861,
+   "kind": "context",
+   "title": "The wards are redrawn",
+   "text": "Baltimore redivides itself, so ward numbers after this date do not mean what they meant in 1850 and 1860. This is why the 1868 map and the 1869 building figures are drawn on a different boundary set from the census maps. Not a figure from this data, but necessary for reading it."
+  },
+  {
+   "year": 1864,
+   "kind": "context",
+   "title": "Maryland abolishes slavery",
+   "text": "The new state constitution took effect on 1 November 1864 and freed the people the 1860 census had counted as property. Nothing in this database records that moment. It sits between the last census on this page and the last directory, and it is the reason the two look so different."
+  },
+  {
+   "year": 1868,
+   "kind": "directory",
+   "title": "After emancipation",
+   "text": "Wood's directory devotes 64 printed pages to the section that ran 31 pages in 1860. 8,512 residents parsed from the volume, 6,070 placed on a map. The listed population has doubled in eight years. Emancipation and wartime migration are visible in the page count before any analysis begins."
+  }
+ ]
+}

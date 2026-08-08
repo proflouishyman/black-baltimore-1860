@@ -368,6 +368,19 @@
         ctx.restore();
       });
     }
+    // residents verified against the census get a ring, so you can see at a
+    // glance which dots have more behind them
+    if (MODE !== 'density' && MODE !== 'building') {
+      ctx.lineWidth = 1.6;
+      ctx.strokeStyle = tok.ink;
+      for (var li = 0; li < PEOPLE.length; li++) {
+        var lp = PEOPLE[li];
+        if (!lp[10]) continue;
+        var LX = lp[0] * t.k + t.ox, LY = lp[1] * t.k + t.oy;
+        if (LX < -10 || LY < -10 || LX > css.w + 10 || LY > css.h + 10) continue;
+        ctx.beginPath(); ctx.arc(LX, LY, 6.5, 0, 6.2832); ctx.stroke();
+      }
+    }
     scalebar(t.k);
   }
 
@@ -417,6 +430,28 @@
     if (e) e.addEventListener('change', draw);
   });
 
+  // extra panel for residents traced into the 1860 federal census
+  function censusHtml(c) {
+    if (!c) return '';
+    var rows = '';
+    function row(k, v) { if (v) rows += '<tr><td>' + k + '</td><td>' + esc(v) + '</td></tr>'; }
+    row('Age', c.age); row('Sex', c.sex); row('Colour', c.colour);
+    row('Occupation', c.occupation);
+    row('Census ward', c.ward_census);
+    var verdict = c.agree === true
+      ? '<span style="color:' + tok.approx + '">ward agrees with our placement</span>'
+      : (c.agree === false
+         ? '<span style="color:' + tok.anchored + '">census puts them in ward ' +
+           esc(c.ward_census) + ', we place them in ' + esc(c.ward_ours) + '</span>'
+         : '');
+    return '<div style="margin-top:8px;border-top:1px solid var(--rule);padding-top:7px">' +
+      '<div class="tier" style="color:var(--ink-2);margin-top:0">Traced in the 1860 census</div>' +
+      '<table>' + rows + '</table>' +
+      (verdict ? '<div style="font-size:11.5px;margin-top:5px">' + verdict + '</div>' : '') +
+      (c.notes ? '<div style="font-size:11px;color:var(--ink-3);margin-top:5px">' +
+        esc(c.notes) + '</div>' : '') + '</div>';
+  }
+
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
       return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
@@ -462,7 +497,8 @@
           (best[5] ? '<div class="oc">' + esc(best[5]) + '</div>' : '') +
           '<div class="ad mono">' + (best[7] ? esc(String(best[7])) + ' ' : '') + esc(best[6]) + '</div>' +
           '<div class="tier" style="color:' + (anch ? tok.anchored : tok.approx) + '">' +
-          (MODE === '1842' ? 'Block face' : (anch ? 'Anchored to corners' : 'Street only')) + '</div>';
+          (MODE === '1842' ? 'Block face' : (anch ? 'Anchored to corners' : 'Street only')) + '</div>' +
+          censusHtml(best[10]);
       }
     }
 

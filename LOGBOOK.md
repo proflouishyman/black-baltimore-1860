@@ -117,3 +117,63 @@ Records are classified resident / business / institution by heuristic. Tuned to
 positives. Dropped "hall" from the institution matcher because it is a common
 surname and also matched a bound-in clothing advertisement. Counts are reported
 as floors, not totals, in both the writeup and the user-facing copy.
+
+---
+
+## 2026-08-07 — Period base maps acquired
+
+Louis asked the obvious question nobody had asked: "are there no normal street
+maps in this period? tax maps? fire maps? something that would actually let you
+see the city?"
+
+There are, and the Library of Congress holds **61 Baltimore maps dated
+1800–1880**, freely downloadable at high resolution over IIIF. Acquired:
+
+- **1822, Poppleton, *Plan of the City of Baltimore*** (Lucas) — 6,975 × 5,506
+  JP2. The official city plat, and the right base for the 1819/1822 cohorts.
+  `loc.gov/item/2002624027/`
+- **1851, Sidney & Neff, *Plan of the City of Baltimore, Maryland*** — 13,414 ×
+  10,643 JP2. Names every street, shows building footprints, and **prints the
+  ward numbers on the map**. The right base for 1842–1860.
+  `loc.gov/item/2004629026/`
+
+Also identified, not yet pulled: 1804 improved plan, 1823, 1836, 1844, 1856
+Scott's, 1857 city and county, 1866, 1869 Sachse bird's-eye (39,440 × 19,008),
+1876 Stranger's Guide.
+
+**Sanborn fire insurance maps for Baltimore City begin in 1890** — too late to
+place anyone from our directories, but valuable for a different purpose: they
+show building footprints and construction material for the alley fabric
+*before* twentieth-century demolition, which is the fabric our residents lived
+in.
+
+### Why this matters to the method
+
+Every resident is currently placed on a circa-1930 street survey, because that
+was the newest layer still carrying the alleys. These two sheets let us
+georeference against the actual period city. The 1851 sheet is the more
+valuable of the two: because it prints ward numbers, it can validate our ward
+polygons against a period source rather than against a modern reconstruction.
+
+### An unresolved cross-check
+
+The 1851 sheet carries its own inset table, "Population of Baltimore City
+1850", ward by ward. Compared against our transcription of the Seventh Census:
+
+| Ward | 1851 map | Our census transcription |
+|---|---|---|
+| 13 | 5,568 | 5,566 |
+| 14 | 7,411 | 7,411 |
+| 18 | 11,751 | 11,746 |
+| 7 | 8,987 | 7,660 |
+| 8 | 7,638 | 8,953 |
+| 12 | 8,394 | 9,283 |
+
+Several wards agree to within a handful of people; several diverge by more than
+a thousand. Both figures cannot be right. Possibilities: the map used
+preliminary returns, the compiler used a different ward configuration, or the
+numerals were misread off an engraved italic face at preview resolution. **Do
+not treat this as a discrepancy in the census transcription until the table has
+been read at full resolution from the JP2** — our census figures reconcile
+exactly against their own printed totals, which is strong evidence they are
+right.

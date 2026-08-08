@@ -107,6 +107,9 @@ def main():
     ward_dir = RAW / "hue" / "HUE_Baltimore_Wards"
     wards60 = gpd.read_file(ward_dir / "baltimore_wards_1846_1860.shp").to_crs(epsg=CRS_M)
     wards68 = gpd.read_file(ward_dir / "baltimore_wards_1861_1882.shp").to_crs(epsg=CRS_M)
+    # 1820 used twelve wards on an entirely different boundary set, so it needs
+    # its own polygons rather than new attributes on the 1846-1860 ones
+    wards20 = gpd.read_file(ward_dir / "baltimore_wards_1818_1831.shp").to_crs(epsg=CRS_M)
 
     allg = [g for gdf in pts.values() for g in gdf.geometry] + \
            list(wards60.geometry) + list(wards68.geometry)
@@ -266,6 +269,31 @@ def main():
                              "aggregate": int(c50["aggregate"])}
         ward_feats.append(feat)
 
+    # 1820 ward polygons carrying the Fourth Census counts
+    cen20 = {int(r["ward"]): r for r in csv.DictReader(open(WORK / "ward_census_1820.csv"))}
+    ward20_feats = []
+    for num, geom in zip(wards20["Ward_Num"], wards20.geometry):
+        geom = geom.intersection(clip).simplify(SIMPLIFY)
+        if geom.is_empty:
+            continue
+        polys = [geom] if geom.geom_type == "Polygon" else list(getattr(geom, "geoms", []))
+        rings = []
+        for poly in polys:
+            f = []
+            for x, y in poly.exterior.coords:
+                f += [sx(x), sy(y)]
+            rings.append(f)
+        c = cen20.get(int(num))
+        if not c:
+            continue
+        ward20_feats.append({
+            "ward": int(num), "rings": rings,
+            "y1820": {"black_pct": float(c["black_pct"]), "black": int(c["black_total"]),
+                      "white": int(c["white"]), "slave": int(c["slave"]),
+                      "free_colored": int(c["free_colored"]),
+                      "aggregate": int(c["aggregate"])},
+        })
+
     tier = {"bracketed": 0, "single_anchor": 1, "extrapolated": 1,
             "street_proportional": 2, "block_face": 0, "corner": 0}
     people = {}
@@ -297,7 +325,7 @@ def main():
         occ[y] = c.most_common(40)
 
     payload = {"w": W, "h": H, "streets": paths, "modern": modern, "labels": labels,
-               "wards": ward_feats,
+               "wards": ward_feats, "wards1820": ward20_feats,
                "people": people, "occupations": occ, "parsed": parsed_counts,
                "metres_per_unit": round(1 / scale, 3)}
     out = WORK / "map_payload.json"

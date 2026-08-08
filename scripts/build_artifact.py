@@ -143,8 +143,9 @@ TIER_CONTROLS = """
       <label class="row"><input type="checkbox" id="tm">
         <span class="swatch" style="background:var(--approx);opacity:.35"></span>
         <span><span class="lab">Baltimore today</span><br>
-          <span class="sub">Modern streets, faint, for orientation only. Not
-            the geometry anything is placed on.</span></span></label>
+          <span class="sub">Today's streets and avenues, labelled and drawn
+            over the top. Switch on to orient, then off. This is not the
+            geometry anything is placed on.</span></span></label>
     </fieldset>
 """
 TIER2 = """<label class="row"><input type="checkbox" id="t2" checked>
@@ -157,14 +158,15 @@ def build_maps(map_tpl, payload_txt, data):
     density_panel = (
         """
     <div class="years" id="cyears" style="display:flex;gap:6px;margin-bottom:2px">
+      <button data-year="1820" aria-pressed="false">1820</button>
       <button data-year="1850" aria-pressed="false">1850</button>
       <button data-year="1860" aria-pressed="true">1860</button>
     </div>
 """ +
-        stat_block([("16.8% &rarr; 13.1%", "Black share, 1850 to 1860"),
-                    ("&minus;490", "Change in Black population"),
-                    ("+43,854", "Change in white population"),
-                    ("20 of 20", "Wards where the share fell")]) +
+        stat_block([("23.4%", "Black share, 1820"),
+                    ("16.8%", "Black share, 1850"),
+                    ("13.1%", "Black share, 1860"),
+                    ("20 of 20", "Wards falling, 1850&ndash;60")]) +
         """
     <fieldset>
       <legend>Black share of ward population</legend>
@@ -179,12 +181,18 @@ def build_maps(map_tpl, payload_txt, data):
       <label class="row"><input type="checkbox" id="tm">
         <span class="swatch" style="background:var(--approx);opacity:.35"></span>
         <span><span class="lab">Baltimore today</span><br>
-          <span class="sub">Modern streets, faint, for orientation only. Not
-            the geometry anything is placed on.</span></span></label>
+          <span class="sub">Today's streets and avenues, labelled and drawn
+            over the top. Switch on to orient, then off. This is not the
+            geometry anything is placed on.</span></span></label>
     </fieldset>
 
-    <p class="note"><strong>Switch between 1850 and 1860.</strong> The two
-      censuses share the same ward boundaries, so the comparison is exact. The
+    <p class="note"><strong>Forty years, one direction.</strong> Black
+      Baltimore was 23.4 per cent of the city in 1820, 16.8 in 1850, 13.1 in
+      1860. The 1820 map uses the twelve wards then in force, which are a
+      different division of the city from the twenty wards of 1850 and 1860 —
+      so read 1820 against the others as a distribution, not ward by ward.</p>
+    <p class="note"><strong>1850 and 1860 share the same ward boundaries</strong>,
+      so that comparison is exact. The
       Black share of the city fell in <em>every one of the twenty wards</em>.
       Not because Black Baltimore shrank much &mdash; it fell by 490 people,
       under 2 per cent &mdash; but because 43,854 white residents arrived,
@@ -202,10 +210,10 @@ def build_maps(map_tpl, payload_txt, data):
       cannot be mapped more finely: they appear under an owner's name, with no
       address of their own.</p>""")
 
-    pages = [("index.html", "density", "Seventh and Eighth Censuses",
+    pages = [("index.html", "density", "Fourth, Seventh and Eighth Censuses",
               "Where Black Baltimore lived",
-              "The whole city by ward, free and enslaved, in 1850 and 1860 \u2014 the "
-              "decade the ground shifted beneath it.",
+              "The whole city by ward, free and enslaved, across forty years \u2014 "
+              "1820, 1850 and 1860.",
               density_panel)]
 
     for y in ["1819", "1822", "1842", "1845", "1851", "1860", "1868"]:

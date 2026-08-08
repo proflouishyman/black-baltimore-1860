@@ -177,7 +177,7 @@
     for (var i = 2; i < f.length; i += 2) streetPath.lineTo(f[i], f[i + 1]);
   });
   // one Path2D per ward so the choropleth can fill each separately
-  D.wards.forEach(function (w) {
+  (D.wards || []).concat(D.wards1820 || []).forEach(function (w) {
     var p = new Path2D();
     w.rings.forEach(function (f) {
       p.moveTo(f[0], f[1]);
@@ -195,7 +195,9 @@
   }
   // quintile-ish cuts on Black share; fixed so the legend is stable
   var CY = '1860';
-  function wd(w) { return w['y' + CY] || w.y1860; }
+  // 1820 used a different ward set entirely, so switching year swaps polygons
+  function wardSet() { return CY === '1820' ? (D.wards1820 || []) : D.wards; }
+  function wd(w) { return w['y' + CY] || w.y1860 || w.y1820; }
   function rampColor(pct) {
     if (pct < 5) return tok.c1;
     if (pct < 10) return tok.c2;
@@ -226,7 +228,7 @@
     ctx.translate(t.ox, t.oy); ctx.scale(t.k, t.k);
 
     if (MODE === 'density') {
-      D.wards.forEach(function (w) {
+      wardSet().forEach(function (w) {
         ctx.fillStyle = rampColor(wd(w).black_pct);
         ctx.fill(w.path);
       });
@@ -243,7 +245,7 @@
       ctx.strokeStyle = MODE === 'density' ? tok.ink : tok.ward;
       ctx.lineWidth = Math.max(0.7, 1.6 / t.k);
       if (MODE !== 'density') ctx.setLineDash([7 / t.k, 5 / t.k]);
-      D.wards.forEach(function (w) { ctx.stroke(w.path); });
+      (MODE === 'density' ? wardSet() : D.wards).forEach(function (w) { ctx.stroke(w.path); });
       ctx.setLineDash([]);
     }
 
@@ -392,14 +394,15 @@
 
     if (!html && MODE === 'density') {
       var ux = (mx - t.ox) / t.k, uy = (my - t.oy) / t.k;
-      for (var w = 0; w < D.wards.length; w++) {
-        var wf = D.wards[w];
+      var WS = wardSet();
+      for (var w = 0; w < WS.length; w++) {
+        var wf = WS[w];
         ctx.save(); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         ctx.translate(t.ox, t.oy); ctx.scale(t.k, t.k);
         var hit = ctx.isPointInPath(wf.path, ux, uy);
         ctx.restore();
         if (hit) {
-          var d = wd(wf), oy = CY === '1860' ? '1850' : '1860', other = wf['y' + oy];
+          var d = wd(wf), oy = CY === '1860' ? '1850' : (CY === '1850' ? '1860' : ''), other = oy ? wf['y' + oy] : null;
           html = '<div class="nm">Ward ' + wf.ward + ', ' + CY + '</div><table>' +
             '<tr><td>Black share</td><td><strong>' + d.black_pct.toFixed(2) + '%</strong></td></tr>' +
             '<tr><td>Free colored</td><td>' + d.free_colored.toLocaleString() + '</td></tr>' +

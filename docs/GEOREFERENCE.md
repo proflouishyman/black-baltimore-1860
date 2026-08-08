@@ -72,6 +72,25 @@ farmland in 1851 and offered no reliable street intersections to read), y
 downtown, to Cross St in South Baltimore and Light & York at the harbor's
 edge.
 
+**But the range overstates the coverage, and this is the fit's main
+weakness.** Seven of the twelve control points lie on Baltimore Street
+itself, within 60px of y=1100. Only five constrain the whole north-south
+extent of the sheet. A control network concentrated along one east-west
+line is well conditioned along that line and poorly conditioned across it,
+so the quoted RMSE is effectively a Baltimore Street figure. Error
+perpendicular to that corridor — in the northern wards above Biddle and in
+the far south below Cross — is not measured by these residuals and should
+be assumed larger than 56m.
+
+This is a fixable limitation rather than a fundamental one. The reason it
+was not fixed here is documented below: the two best candidate anchors off
+the Baltimore Street line (Charles & Monument, Orleans & Front) both fell
+in gaps in the reference geometry and were dropped rather than forced. Any
+future pass should prioritise north-south anchors over adding more
+downtown ones, since a thirteenth point on Baltimore Street would improve
+the reported RMSE while making the map no more accurate where it is
+actually weakest.
+
 ## Two points dropped, not fabricated
 
 **Charles & Monument** (Mount Vernon Place, where the Washington Monument

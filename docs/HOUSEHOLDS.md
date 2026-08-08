@@ -41,10 +41,16 @@ out.
 inside white households.** Household-level, mixed (free-Black-and-white)
 households fell from 61–67% of all Black-present households in 1790–1800 to
 46–47% by 1830–1840. Household size confirms the reading: Black-only
-households averaged 3.8–5.8 free Black residents, while mixed households
+households averaged 4.2–5.8 free Black residents, while mixed households
 averaged only 1.6–1.9 — consistent with one or two Black residents, plausibly
 servants or dependents, inside a larger white household, versus a full
 Black family unit in the Black-only case.
+
+*Corrected.* An earlier version of this sentence gave the Black-only range as
+3.8–5.8. The 3.8 is the 1790 value, and 1790 is the year flagged above as
+failing to reconcile, so quoting it inside a range presented as evidence was
+wrong. Excluding 1790 the range is 4.2–5.8, which is what the figure above
+and `docs/timeline.html` now both report.
 
 **As slaveholding contracted, it did not simply disappear — an increasing
 share of the slaveholders who remained also had free Black people in the

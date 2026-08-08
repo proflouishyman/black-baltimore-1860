@@ -18,6 +18,7 @@ DOCS = ROOT / "docs"
 NAV = [("index.html", "Density"), ("1819.html", "1819"), ("1822.html", "1822"),
        ("1842.html", "1842"), ("1845.html", "1845"), ("1851.html", "1851"),
        ("1860.html", "1860"), ("1868.html", "1868"),
+       ("timeline.html", "Timeline"),
        ("wards.html", "Wards"), ("work.html", "Work"), ("trade.html", "Trade"),
        ("building.html", "Building"), ("bias.html", "What's missing"),
        ("checking.html", "Checking"),

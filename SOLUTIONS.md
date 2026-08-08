@@ -226,3 +226,52 @@ name. Left open rather than explained away.
 independent source.** Nothing in the internal consistency of the data would
 have revealed it: the ladders were monotone, the anchors were real, and the
 output looked entirely plausible. Validate against something external.
+
+---
+
+## [2026-08-08] - Residents piled onto single coordinates
+
+### Problem
+An adversarial check of the data found that 44% of placed 1860 residents shared
+a coordinate with another resident, and one point carried 75 people. Those 75
+lived at genuinely different addresses - 9, 59, 70, 78, 84 and 116 South Howard
+among them. On the map they rendered as a single dot, so the densest streets
+appeared far thinner than they were.
+
+### Root Cause
+Two faults, both silently collapsing distinct addresses onto one point.
+
+1. **A single anchor was treated as a location for every house number.**
+   `interpolate()` returned `ladder[0][1]` whenever a street's ladder had only
+   one entry, so every resident of that street received the same distance along
+   the line regardless of their number. A single anchor locates one house; it
+   says nothing about where any other number falls.
+
+2. **The tier-2 number range was keyed by the raw street name, not the resolved
+   one.** Residents of a renamed street pooled under the old name while the
+   placement code looked up the new one. All 33 residents of Lerew's Alley were
+   therefore scaled against the number range of the single person who wrote
+   "Tyson", and since that range was degenerate they all received the midpoint
+   of the street.
+
+### Solution
+`interpolate()` now refuses a ladder shorter than two anchors and returns None,
+letting the caller fall through to proportional placement, which spreads
+residents along the street and is labelled honestly as an estimate. The tier-2
+span is keyed by the resolved street name so renamed streets pool correctly.
+
+Result for 1860: placed rose 3,013 to 3,053, the misleading `single_anchor`
+tier disappeared entirely (97 records redistributed), and the worst pileup fell
+from 75 people to 27. Every year gained: 1845 1454->1527, 1851 1588->1631,
+1868 6054->6070.
+
+### Notes
+Stacking is now 40% of points, but 995 of those 1,206 are genuinely the same
+address - families and boarding houses sharing a door, which is real
+co-residence rather than error. Only 211 points (7% of placements) remain
+artifact, all in the `extrapolated` tier, where clamping to the end of a line is
+the expected behaviour.
+
+Found by auditing the data adversarially rather than by any test. The pipeline
+reported success throughout: the ladders were valid, the anchors real, and every
+resident received a coordinate.

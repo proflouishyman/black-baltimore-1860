@@ -390,3 +390,83 @@ check points return 12.4 m for the same transform.
   seventy-year-old base layer is not the source of the project's positional
   error. Where the street grid did not survive, chiefly the Jones Falls corridor
   and the filled waterfront, it still is.
+
+---
+
+## [2026-08-09] - Searched the wrong book for 1840 and called it an absence, twice
+
+### Problem
+Twice we concluded that the printed federal census carried no ward-level table
+for Baltimore in 1840, and that the only route to 1840 ward population was the
+handwritten manuscript schedules. On that basis, one of the four years the
+exhibit was commissioned around was written off as impossible.
+
+The table exists. It is the Sixth Census, printed pages 194 and 195, under
+"AGGREGATE AMOUNT OF EACH DESCRIPTION OF PERSONS WITHIN THE DISTRICT OF
+MARYLAND", with a stub column headed "NAME OF WARD, TOWN, TOWNSHIP, PARISH,
+PRECINCT, HUNDRED, OR DISTRICT". Twelve Baltimore wards, free white, free
+coloured and enslaved, each banded by age and sex.
+
+### Root Cause
+Two distinct failures, and only the first was already known.
+
+**1. Image scans defeat text search.** Already recorded for 1820: searching a
+PDF with no text layer returns nothing whether or not the table is present. The
+result is indistinguishable from a genuine absence.
+
+**2. We were searching a different book, and had never checked which book it
+was.** `data/raw/census1840_md.pdf` is not the 1840 population volume. It is
+twelve pages of the *Compendium of the Sixth Census*, printed page 142 onward,
+carrying the recapitulation of the value of manufactures by county. There is no
+population table in it and there never was. No amount of more careful searching
+would have found one.
+
+This second failure is worse than the first because the usual fix does not
+touch it. Rendering every page of that file and reading it like a human would
+still have produced "no ward table", correctly, about a file that was never
+going to have one.
+
+Compounding it: the population volume is **not on census.gov at all**. The
+Bureau's own page states "This volume is not part of our digital collection."
+It is not on the Internet Archive either. It is on HathiTrust,
+`uc1.31175023953089`. So the file we did have was the file that was easy to
+get, and its being easy to get is precisely why it was the wrong one.
+
+### Solution
+Recovered by identifying the volume before drawing any conclusion from it:
+render the title page and the table of contents and confirm what book this
+actually is. Then locate the correct volume by name across census.gov,
+HathiTrust, the Internet Archive and Google Books rather than assuming one
+repository has it.
+
+Verified before use by checking that the volume goes below county level at all
+(New York City appears by ward on printed page 114), then transcribing
+Baltimore and reconciling.
+
+Every column reconciles exactly:
+
+    free coloured   17,967   printed 17,967   diff 0
+    enslaved         3,199   printed  3,199   diff 0
+    aggregate      102,313   printed 102,313  diff 0
+    white + free coloured + enslaved = aggregate, residual 0
+
+Against IPUMS complete-count microdata: free Black 17,967 against 17,958,
+enslaved 3,199 against 3,152, total 102,313 against 102,225. Those residuals
+are the ordinary gap between a published aggregate and a modern recount of the
+manuscript schedules.
+
+The city row is independently confirmed a second time, because the Compendium
+prints the same figures in a separately typeset table. Two compositors agreeing
+caught two digits that had been misread at low resolution.
+
+### Notes
+1840 used **twelve** wards, on the 1832-1840 division, not the fourteen of
+1841-1845. Craig's 1842 directory describes the fourteen-ward division in metes
+and bounds, which places the change after the June 1840 enumeration. Joining
+1840 counts to the 1841-1845 polygons would have been a silent, plausible
+error.
+
+The generalisable rule, now applied to 1800, 1810 and 1830: **identify the
+volume before concluding anything from it, and never trust that the
+easily-downloadable file is the one you want.** An absence is only a finding
+once you can list what you actually opened and looked at.

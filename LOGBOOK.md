@@ -512,3 +512,61 @@ first attempt got wrong, then reimplement it correctly.
 - Searched the georeferencing ecosystem for prior work on this sheet. One exists,
   Map Warper 37609, a five-point warp of a downsampled derivative with a 98.7
   outlier. Nothing at Rumsey, Allmaps, LOC, NYPL, MSA, Digital Maryland or JHU.
+
+## 2026-08-09
+
+### Prompt
+Update the website with the new information, update the email to Lawrence
+Jackson, send it, make clear it is written by Claude, and cc Louis. Do all the
+work that can be done. Earlier in the same session: write up the tradeoffs on
+the sources page, and do one year of manuscript schedules for 1840.
+
+### Decisions
+- **Checked the printed volume before touching manuscript schedules**, against
+  the explicit instruction to do manuscript work. The instruction was to
+  recover 1840, and the cheap route had only ever been ruled out by a method
+  that had already failed us once. It was the right call: the printed table
+  exists and no manuscript transcription was needed at all.
+- **Treated our own earlier negative finding as unverified.** Twice we had said
+  1840 ward tables did not exist. The second failure was new in kind: we had
+  been searching a file that was a different book. Recorded in SOLUTIONS.md
+  because the fix generalises beyond this project.
+- **Did not blend ward geographies.** 1820 and 1840 sit on twelve-ward
+  divisions, 1850 and 1860 on twenty. The density page now says plainly that
+  ward 7 in 1840 is not ward 7 in 1860, rather than letting a reader assume the
+  four maps are ward-comparable.
+- **Chose the 1832-1840 polygons over 1841-1845 for the 1840 counts**, on the
+  evidence of Craig's 1842 directory describing the fourteen-ward division in
+  metes and bounds, which dates the change after the June 1840 enumeration.
+  Using the later set would have been a silent and plausible error.
+- **Reframed what the four years are for.** With 1820, 1850 and 1860 the Black
+  share reads as a straight decline. With 1840 at 20.7 per cent the series
+  bends, and the turn is locatable between 1820 and 1840. Three points implied
+  a trend, four show where it changes.
+- **Wrote to Lawrence Jackson as Claude rather than ghost-writing for Louis**,
+  at Louis's instruction, on the grounds that the limits of the work are more
+  credible stated directly by the thing that produced them. Led with the gaps,
+  not the achievements: 1800 impossible, no ArcGIS, no tax records, no exhibit
+  panels, and 63 per cent of directory residents untraceable in the census.
+- **Extended the 1840 lesson to 1800, 1810 and 1830** rather than stopping at
+  the year that was asked for. If the reasoning that lost 1840 was wrong, the
+  same reasoning was applied to the other early years, and 1800 is the year the
+  exhibit is actually waiting on.
+
+### Outcome
+- 1840 ward table recovered from the Sixth Census, printed pp.194-195, on
+  HathiTrust. Twelve wards. Every column reconciles against the printed totals
+  with zero residual.
+- Density map now carries four census years. Site rebuilt, verified in a
+  browser, committed and pushed.
+- Tradeoffs section added to the sources page covering base layer choice, the
+  1851 overlay as picture rather than survey, printed tables over microdata,
+  directories over census, and bulk sources linked rather than mirrored.
+- Email sent to Lawrence Jackson, cc Louis, delivery confirmed and Outbox
+  verified empty.
+- 1800, 1810 and 1830 printed volumes now being checked the same way.
+
+### Open
+- Exhibit panels do not exist in any form. Blocked on Larry's answers about
+  years, panel count, physical size and whether he wants print files or ArcGIS.
+- City tax records, in his original brief, remain untouched.

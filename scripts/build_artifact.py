@@ -174,6 +174,7 @@ def build_maps(map_tpl, payload_txt, data):
         """
     <div class="years" id="cyears" style="display:flex;gap:6px;margin-bottom:2px">
       <button data-year="1820" aria-pressed="false">1820</button>
+      <button data-year="1840" aria-pressed="false">1840</button>
       <button data-year="1850" aria-pressed="false">1850</button>
       <button data-year="1860" aria-pressed="true">1860</button>
     </div>
@@ -202,10 +203,20 @@ def build_maps(map_tpl, payload_txt, data):
     </fieldset>
 
     <p class="note"><strong>Forty years, one direction.</strong> Black
-      Baltimore was 23.4 per cent of the city in 1820, 16.8 in 1850, 13.1 in
-      1860. The 1820 map uses the twelve wards then in force, which are a
-      different division of the city from the twenty wards of 1850 and 1860 —
-      so read 1820 against the others as a distribution, not ward by ward.</p>
+      Baltimore was 23.4 per cent of the city in 1820, 20.7 in 1840, 16.8 in
+      1850 and 13.1 in 1860. The turn happens between 1820 and 1840, which is
+      only visible now that the 1840 table has been recovered.</p>
+    <p class="note"><strong>1820 and 1840 use twelve wards. 1850 and 1860 use
+      twenty.</strong> Those are different divisions of the city, so read the
+      earlier maps against the later ones as a distribution rather than ward by
+      ward. Ward 7 in 1840 is not ward 7 in 1860.</p>
+    <p class="note"><strong>1840 was nearly missed twice.</strong> The printed
+      volume carrying it is not on the Census Bureau's own site, which says of
+      it only that it is not part of their digital collection, and the file we
+      had been searching for years turned out to be a different book entirely:
+      twelve pages of the Compendium recording manufactures by county. The
+      ward table is in the Sixth Census proper, printed pages 194 and 195, on
+      HathiTrust. Every column reconciles against the printed totals exactly.</p>
     <p class="note"><strong>1850 and 1860 share the same ward boundaries</strong>,
       so that comparison is exact. The
       Black share of the city fell in <em>every one of the twenty wards</em>.
@@ -225,10 +236,10 @@ def build_maps(map_tpl, payload_txt, data):
       cannot be mapped more finely: they appear under an owner's name, with no
       address of their own.</p>""")
 
-    pages = [("index.html", "density", "Fourth, Seventh and Eighth Censuses",
+    pages = [("index.html", "density", "Fourth through Eighth Censuses",
               "Where Black Baltimore lived",
-              "The whole city by ward, free and enslaved, across forty years \u2014 "
-              "1820, 1850 and 1860.",
+              "The whole city by ward, free and enslaved, across forty years: "
+              "1820, 1840, 1850 and 1860.",
               density_panel)]
 
     for y in ["1819", "1822", "1842", "1845", "1851", "1860", "1868"]:

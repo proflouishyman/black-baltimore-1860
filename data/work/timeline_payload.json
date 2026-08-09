@@ -68,14 +68,14 @@
   {
    "year": 1840,
    "hh": 17118,
-   "pop": 102225,
-   "white": 81115,
-   "fb": 17958,
-   "ens": 3152,
-   "black": 21110,
-   "pct": 20.65,
-   "src": "IPUMS complete-count household microdata",
-   "printed": false,
+   "pop": 102313,
+   "white": 81147,
+   "fb": 17967,
+   "ens": 3199,
+   "black": 21166,
+   "pct": 20.69,
+   "src": "printed federal census, ward tables",
+   "printed": true,
    "flag": false
   },
   {
@@ -214,6 +214,116 @@
     "black": 2233,
     "agg": 8364,
     "pct": 26.7
+   }
+  ],
+  "1840": [
+   {
+    "ward": 1,
+    "white": 6020,
+    "fb": 1220,
+    "ens": 181,
+    "black": 1401,
+    "agg": 7421,
+    "pct": 18.88
+   },
+   {
+    "ward": 2,
+    "white": 6035,
+    "fb": 1229,
+    "ens": 129,
+    "black": 1358,
+    "agg": 7393,
+    "pct": 18.37
+   },
+   {
+    "ward": 3,
+    "white": 7503,
+    "fb": 2415,
+    "ens": 184,
+    "black": 2599,
+    "agg": 10102,
+    "pct": 25.73
+   },
+   {
+    "ward": 4,
+    "white": 7205,
+    "fb": 1286,
+    "ens": 110,
+    "black": 1396,
+    "agg": 8601,
+    "pct": 16.23
+   },
+   {
+    "ward": 5,
+    "white": 6894,
+    "fb": 933,
+    "ens": 385,
+    "black": 1318,
+    "agg": 8212,
+    "pct": 16.05
+   },
+   {
+    "ward": 6,
+    "white": 5628,
+    "fb": 727,
+    "ens": 256,
+    "black": 983,
+    "agg": 6611,
+    "pct": 14.87
+   },
+   {
+    "ward": 7,
+    "white": 4756,
+    "fb": 1058,
+    "ens": 428,
+    "black": 1486,
+    "agg": 6242,
+    "pct": 23.81
+   },
+   {
+    "ward": 8,
+    "white": 7322,
+    "fb": 2031,
+    "ens": 293,
+    "black": 2324,
+    "agg": 9646,
+    "pct": 24.09
+   },
+   {
+    "ward": 9,
+    "white": 5676,
+    "fb": 1292,
+    "ens": 369,
+    "black": 1661,
+    "agg": 7337,
+    "pct": 22.64
+   },
+   {
+    "ward": 10,
+    "white": 7372,
+    "fb": 1991,
+    "ens": 229,
+    "black": 2220,
+    "agg": 9592,
+    "pct": 23.14
+   },
+   {
+    "ward": 11,
+    "white": 7340,
+    "fb": 1842,
+    "ens": 339,
+    "black": 2181,
+    "agg": 9521,
+    "pct": 22.91
+   },
+   {
+    "ward": 12,
+    "white": 9396,
+    "fb": 1943,
+    "ens": 296,
+    "black": 2239,
+    "agg": 11635,
+    "pct": 19.24
    }
   ],
   "1850": [
@@ -952,6 +1062,7 @@
  },
  "wardYears": [
   "1820",
+  "1840",
   "1850",
   "1860"
  ],
@@ -1002,7 +1113,7 @@
    "year": 1840,
    "kind": "census",
    "title": "Slaveholding becomes marginal",
-   "text": "Slaveholding households are 9.9 per cent of the city, down from 26.0 per cent in 1800. Free Black Baltimoreans number 17,958. Mixed households have fallen to 46 per cent of all Black-present households, from two thirds in 1800."
+   "text": "Slaveholding households are 9.9 per cent of the city, down from 26.0 per cent in 1800. Free Black Baltimoreans number 17,967. Mixed households have fallen to 46 per cent of all Black-present households, from two thirds in 1800."
   },
   {
    "year": 1842,

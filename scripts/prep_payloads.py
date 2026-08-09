@@ -114,6 +114,10 @@ def main():
     # 1820 used twelve wards on an entirely different boundary set, so it needs
     # its own polygons rather than new attributes on the 1846-1860 ones
     wards20 = gpd.read_file(ward_dir / "baltimore_wards_1818_1831.shp").to_crs(epsg=CRS_M)
+    # 1840 used TWELVE wards on the 1832-1840 division, not the fourteen of
+    # 1841-1845. Craig's 1842 directory describes the fourteen-ward division in
+    # metes and bounds, which places the change after the June 1840 enumeration.
+    wards40 = gpd.read_file(ward_dir / "baltimore_wards_1832_1840.shp").to_crs(epsg=CRS_M)
 
     allg = [g for gdf in pts.values() for g in gdf.geometry] + \
            list(wards60.geometry) + list(wards68.geometry)
@@ -306,6 +310,35 @@ def main():
                       "aggregate": int(c["aggregate"])},
         })
 
+    # 1840 ward polygons carrying the Sixth Census counts. The printed volume
+    # is on HathiTrust rather than census.gov, pp.194-195; see docs/CENSUS1840.md.
+    cen40 = {int(r["ward"]): r for r in csv.DictReader(open(WORK / "ward_census_1840.csv"))}
+    ward40_feats = []
+    for num, geom in zip(wards40["Ward_Num"], wards40.geometry):
+        geom = geom.intersection(clip).simplify(SIMPLIFY)
+        if geom.is_empty:
+            continue
+        polys = [geom] if geom.geom_type == "Polygon" else list(getattr(geom, "geoms", []))
+        rings = []
+        for poly in polys:
+            f = []
+            for x, y in poly.exterior.coords:
+                f += [sx(x), sy(y)]
+            rings.append(f)
+        c = cen40.get(int(num))
+        if not c:
+            continue
+        cxs = [r[0::2] for r in rings]; cys = [r[1::2] for r in rings]
+        allx = [v for r in cxs for v in r]; ally = [v for r in cys for v in r]
+        ward40_feats.append({
+            "cx": round(sum(allx) / len(allx), 1), "cy": round(sum(ally) / len(ally), 1),
+            "ward": int(num), "rings": rings,
+            "y1840": {"black_pct": float(c["black_pct"]), "black": int(c["black_total"]),
+                      "white": int(c["white"]), "slave": int(c["slave"]),
+                      "free_colored": int(c["free_colored"]),
+                      "aggregate": int(c["aggregate"])},
+        })
+
     # 1869 new construction, on the 1861-1882 wards it was reported under.
     # These are NOT the 1846-1860 wards of the census choropleth.
     val = {int(r["ward"]): r for r in csv.DictReader(open(WORK / "ward_valuation_1869.csv"))}
@@ -377,7 +410,8 @@ def main():
         occ[y] = c.most_common(40)
 
     payload = {"w": W, "h": H, "streets": paths, "modern": modern, "labels": labels,
-               "wards": ward_feats, "wards1820": ward20_feats, "wards1869": ward69_feats,
+               "wards": ward_feats, "wards1820": ward20_feats,
+               "wards1840": ward40_feats, "wards1869": ward69_feats,
                "people": people, "occupations": occ, "parsed": parsed_counts,
                "metres_per_unit": round(1 / scale, 3)}
     out = WORK / "map_payload.json"

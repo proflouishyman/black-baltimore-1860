@@ -182,7 +182,8 @@
     for (var i = 2; i < f.length; i += 2) streetPath.lineTo(f[i], f[i + 1]);
   });
   // one Path2D per ward so the choropleth can fill each separately
-  (D.wards || []).concat(D.wards1820 || []).concat(D.wards1869 || []).forEach(function (w) {
+  (D.wards || []).concat(D.wards1820 || []).concat(D.wards1840 || [])
+    .concat(D.wards1869 || []).forEach(function (w) {
     var p = new Path2D();
     w.rings.forEach(function (f) {
       p.moveTo(f[0], f[1]);
@@ -203,7 +204,10 @@
   // 1820 used a different ward set entirely, so switching year swaps polygons
   function wardSet() {
     if (MODE === 'building') return D.wards1869 || [];
-    return CY === '1820' ? (D.wards1820 || []) : D.wards;
+    if (CY === '1820') return D.wards1820 || [];
+    // 1840 sits on its own twelve-ward division, not the twenty of 1850/1860
+    if (CY === '1840') return D.wards1840 || [];
+    return D.wards;
   }
   // 1869 construction uses its own ramp, keyed to value not share
   function valColor(v) {
@@ -213,7 +217,7 @@
     if (v < 600000) return tok.c4;
     return tok.c5;
   }
-  function wd(w) { return w['y' + CY] || w.y1860 || w.y1820; }
+  function wd(w) { return w['y' + CY] || w.y1860 || w.y1840 || w.y1820; }
   function rampColor(pct) {
     if (pct < 5) return tok.c1;
     if (pct < 10) return tok.c2;

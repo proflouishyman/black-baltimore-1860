@@ -319,6 +319,17 @@
     ctx.save();
     ctx.translate(t.ox, t.oy); ctx.scale(t.k, t.k);
 
+    // Period base layer: the 1851 Sidney & Neff plan, pre-warped by
+    // scripts/build_base_layer.py into exactly this canvas square, so it needs
+    // no projection maths here and draws as a single image. Drawn first, under
+    // everything, and held back until the image has actually decoded so a slow
+    // load never blanks the map.
+    if (chk('t51') && BASE51 && BASE51.complete && BASE51.naturalWidth) {
+      ctx.globalAlpha = 0.85;
+      ctx.drawImage(BASE51, 0, 0, D.w, D.h);
+      ctx.globalAlpha = 1;
+    }
+
     if (MODE === 'density') {
       wardSet().forEach(function (w) {
         ctx.fillStyle = rampColor(wd(w).black_pct);
@@ -501,7 +512,21 @@
   document.getElementById('zin').onclick = function () { zoomBy(1.5); };
   document.getElementById('zout').onclick = function () { zoomBy(1 / 1.5); };
   document.getElementById('zreset').onclick = function () { view = { k: 1, x: 0, y: 0 }; draw(); };
-  ['t0', 't2', 'tw', 'tm', 'tb', 'ti'].forEach(function (id) {
+  // Loaded lazily: only fetch the 1.2 MB base image if the reader asks for it,
+  // then redraw once it arrives.
+  var BASE51 = null;
+  (function () {
+    var box = document.getElementById('t51');
+    if (!box) return;
+    box.addEventListener('change', function () {
+      if (!box.checked || BASE51) return;
+      BASE51 = new Image();
+      BASE51.onload = draw;
+      BASE51.src = './img/base_1851.jpg';
+    });
+  })();
+
+  ['t0', 't2', 'tw', 'tm', 'tb', 'ti', 't51'].forEach(function (id) {
     var e = document.getElementById(id);
     if (e) e.addEventListener('change', draw);
   });

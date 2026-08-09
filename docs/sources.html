@@ -264,6 +264,106 @@
     
   </div>
 
+  <h2>What we chose, and what it costs</h2>
+
+  <p>Every source here was picked over an alternative, and each choice buys
+    something and gives something up. This section states the trades plainly,
+    because a reader who knows where the seams are can judge the maps better
+    than one who is told only that they are careful.</p>
+
+  <h3>The streets are from 1930, not from the period</h3>
+
+  <p>Residents are placed against the Historical Urban Ecological street file,
+    a digitisation of Baltimore centrelines from about 1930. That is seventy
+    years later than the earliest year mapped here, and it was the single
+    thing about this project we most expected to be wrong.</p>
+
+  <p><strong>It is not.</strong> Georeferencing five period maps let us finally
+    measure it rather than assume it. At intersections read off the 1822, 1851,
+    1857 and 1860 sheets, the 1930 street file sits a median of 1.5 to 2.4
+    metres from a modern survey. Four separate measurements, four maps, two
+    different modern reference layers, all landing within a metre of each
+    other. Where Baltimore's street grid survived, it did not move.</p>
+
+  <p>We chose the 1930 file over modern street data for one reason: it still
+    contains the alleys. Strawberry, Lerew's, Happy, Honey. Those alleys are
+    where much of Black Baltimore actually lived, and modern data has lost
+    them. The cost is that it is wrong in the specific places the grid did
+    <em>not</em> survive, and those are known: the Jones Falls corridor, where
+    Front Street no longer exists in any form, and the filled waterfront, where
+    the shoreline itself is not comparable across the period. Those are
+    identifiable rather than spread evenly, which is the useful kind of
+    error.</p>
+
+  <h3>The 1851 map under the dots is a picture, not the geometry</h3>
+
+  <p>Switch on <em>The city in 1851</em> on any map page and Sidney and Neff's
+    plan appears beneath the residents. It is georeferenced from 68 control
+    points read at full resolution, and it is accurate to 12.9 metres tested by
+    cross validation, which the federal standard would report as 22.3 metres at
+    95 per cent confidence.</p>
+
+  <p><strong>Nobody is placed using it.</strong> It is there so a viewer can see
+    the city as it actually was, alleys, wharves, ward numbers and all. Placement
+    still runs on the 1930 centrelines, because at 12.9 metres the period map is
+    coarser than the thing it would be correcting. Treat the two layers
+    agreeing as reassurance and treat them disagreeing as a question, not as a
+    correction to the dots.</p>
+
+  <p>An earlier version of this georeference reported 56 metres and was wrong in
+    kind, not just in size. Its control points had been read off an image four
+    times too small to show street names, and its error was measured on the
+    same points used to fit it, which is not a measurement at all. Both faults
+    and the numbers they produced are documented in the repository rather than
+    quietly replaced.</p>
+
+  <h3>Printed census tables over the microdata, where both exist</h3>
+
+  <p>Two sources give Baltimore's population: the tables printed in the federal
+    census volumes, transcribed here by hand and reconciled against their own
+    printed totals, and IPUMS complete-count microdata built from the manuscript
+    schedules. They disagree slightly. For 1820 the printed volume gives 4,357
+    enslaved people and the microdata sums to 4,419, a gap of 1.4 per cent.</p>
+
+  <p>Where both exist the printed volume wins, because it is what the Census
+    actually published and what contemporaries read. The microdata fills the
+    years the printed ward tables do not cover. Every row on the
+    <a href="./timeline.html">timeline</a> says which source it came from rather
+    than hiding the seam.</p>
+
+  <p>The two agree closely enough elsewhere to be worth stating: on the 1850 and
+    1860 slave schedules, IPUMS counts 2,949 and 2,221 enslaved people in
+    Baltimore against our hand transcription of 2,946 and 2,218. Three people
+    apart, in both years, from entirely separate documents.</p>
+
+  <h3>Directories over the census, for the map itself</h3>
+
+  <p>The census records more people, but it records them by ward, and a ward is
+    a large and awkward shape. The directories give a street and often a house
+    number, which is what makes a dot possible at all. So the maps are built
+    from directories and the census is used to check them.</p>
+
+  <p>The cost is severe and worth naming. Directories list householders and
+    proprietors, not everyone in a house. They undercount the poorest and most
+    mobile, who are also disproportionately the people this project exists to
+    show. And when we go looking for directory residents in the census,
+    <strong>63 per cent cannot be found at all</strong>. Every accuracy figure
+    quoted here rests on the 37 per cent we could trace. The
+    <a href="./checking.html">checking page</a> works through what that does and
+    does not license.</p>
+
+  <h3>Bulk sources are linked, not mirrored</h3>
+
+  <p>The full-count census files, the slave schedules and the full-resolution
+    map scans come to about 2.6 gigabytes. None of it is stored in this
+    repository. All of it is public, and
+    <a href="https://github.com/proflouishyman/black-baltimore-1860/blob/main/data/MANIFEST.md">data/MANIFEST.md</a>
+    records exactly where each file came from, including the two traps that
+    cost us a day: a download link on the IPUMS site that returns a 404, and an
+    expired login session that serves a login page with a success code instead
+    of an error.</p>
+
+
   <h2>Method and code</h2>
   <p>Every step is scripted and the repository is public:
     <a href="https://github.com/proflouishyman/black-baltimore-1860">github.com/proflouishyman/black-baltimore-1860</a>.

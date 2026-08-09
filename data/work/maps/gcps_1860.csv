@@ -1,0 +1,28 @@
+label,street_a,street_b,region,pixel_x,pixel_y,modern_x_epsg6487,modern_y_epsg6487,hue_x_epsg6487,hue_y_epsg6487,hue_minus_modern_m,fit_residual_affine_m,fit_residual_poly2_m,fit_residual_tps_m,loo_error_affine_m,loo_error_poly2_m,loo_error_tps_m,map_vs_hue_m,note
+Payson & W Baltimore,PAYSON,BALTIMORE,W,1035,1648,430309.38,180046.70,430309.19,180047.00,0.4,23.0,24.2,0.0,27.6,40.9,32.9,22.7,Payson engraved vertically at the corridor; Baltimore confirmed by counting Fayette-Baltimore spacing against the block depths
+Fulton & W Baltimore,FULTON,BALTIMORE,W,1170,1657,430607.59,180065.75,430608.45,180064.97,1.2,2.1,6.3,0.0,2.4,9.0,23.3,3.0,both names engraved in their corridors
+Gilmor & Mosher,GILMOR,MOSHER,NW,1288,1085,430792.81,181368.52,430793.20,181367.64,1.0,38.3,17.9,0.0,46.5,28.4,5.3,37.4,both names engraved in their corridors
+Stricker & Mosher,STRICKER,MOSHER,NW,1341,1085,430914.11,181373.99,430913.71,181373.28,0.8,37.9,18.3,0.0,45.5,27.5,6.8,37.1,both names engraved in their corridors
+Carey & W Franklin,CAREY,FRANKLIN,W,1445,1358,431189.88,180726.00,431188.89,180725.43,1.1,34.2,38.6,0.0,38.6,44.4,58.2,33.9,Franklin engraved; Carey identified as the corridor one block west of the engraved Republican St
+Scott & W Ramsay,SCOTT,RAMSAY,SW,1812,1928,432019.15,179576.26,432018.23,179577.16,1.3,30.7,43.4,0.0,33.6,52.1,78.4,31.9,both names engraved in their corridors
+Paca & W Pratt,PACA,PRATT,CS,2078,1792,432605.26,179854.80,432603.11,179849.34,5.9,25.1,22.0,0.0,26.6,25.0,33.8,29.1,S Paca engraved; Pratt corridor carries the ward boundary dashes
+Eutaw & Camden,EUTAW,CAMDEN,CS,2145,1851,432727.60,179739.59,432728.62,179736.81,3.0,23.5,14.6,0.0,25.0,16.5,33.3,24.8,both names engraved in their corridors
+Eutaw & Baltimore,EUTAW,BALTIMORE,C,2139,1656,432703.51,180192.21,432704.61,180190.09,2.4,12.5,17.6,0.0,13.1,20.2,15.7,10.1,both names engraved
+Howard & Baltimore,HOWARD,BALTIMORE,C,2195,1657,432830.07,180197.57,432829.39,180197.06,0.8,12.2,19.3,0.0,12.8,22.2,10.3,11.8,both names engraved
+Charles & Baltimore,CHARLES,BALTIMORE,C,2371,1659,433201.05,180218.63,433202.02,180217.88,1.2,20.9,22.3,0.0,21.8,25.6,11.1,19.7,both names engraved; German St one block south confirms the corridor
+Charles & W Madison,CHARLES,MADISON,N,2371,1180,433146.97,181225.11,433146.38,181223.75,1.5,25.7,21.9,0.0,27.4,25.7,6.7,27.2,both names engraved; Mount Vernon Place one block south
+Charles & E Chase,CHARLES,CHASE,N,2371,985,433123.69,181645.27,433122.69,181645.65,1.1,31.7,29.9,0.0,34.9,36.7,23.5,31.7,both names engraved
+Calvert & E Biddle,CALVERT,BIDDLE,N,2473,943,433355.21,181775.61,433355.79,181773.86,1.8,6.2,10.7,0.0,6.9,13.2,30.9,7.8,both names engraved
+Charles & Cross,CHARLES,CROSS,S,2359,2282,433274.17,178808.30,433273.22,178808.21,1.0,32.6,26.0,0.0,37.8,33.4,24.6,32.3,S Charles engraved; Cross corridor holds Cross Street Market
+Light & Cross,LIGHT,CROSS,S,2448,2282,433449.30,178833.08,433448.72,178832.87,0.6,15.8,13.6,0.0,18.4,17.4,22.2,16.2,LOWER CONFIDENCE: Light itself is not engraved near this crossing; identified as the second corridor east of the engraved Patapsco St
+Charles & W Ostend,CHARLES,OSTEND,S,2357,2400,433288.63,178577.11,433286.01,178578.52,3.0,18.7,13.6,0.0,22.6,21.6,26.2,16.0,both names engraved
+Caroline & E Baltimore,CAROLINE,BALTIMORE,E,3088,1592,434751.91,180436.18,434751.67,180434.80,1.4,10.8,5.9,0.0,11.6,6.7,6.8,10.6,S Caroline engraved; E Baltimore engraved two blocks west
+Broadway & E Baltimore,BROADWAY,BALTIMORE,E,3220,1597,435043.92,180448.56,435036.78,180449.22,7.2,13.3,5.7,0.0,14.4,6.6,6.1,17.8,"Broadway engraved and unmistakable, wide corridor with a market oval"
+Broadway & E Monument,BROADWAY,MONUMENT,E,3224,1239,435009.40,181209.62,434997.87,181206.30,12.0,11.6,9.3,0.0,12.7,10.4,10.1,22.0,both names engraved
+Wolfe & E Monument,WOLFE,MONUMENT,E,3355,1239,435289.55,181224.75,435288.95,181222.46,2.4,14.4,14.4,0.0,16.0,16.5,12.9,16.5,Wolfe engraved vertically at the corridor
+Broadway & E Federal,BROADWAY,FEDERAL,NE,3222,730,434949.30,182335.75,434938.92,182334.86,10.4,3.8,18.2,0.0,4.6,27.3,11.4,12.4,Federal engraved; Broadway traced continuously north from Monument
+Broadway & E Lanvale,BROADWAY,LANVALE,NE,3222,671,434943.72,182454.60,434933.12,182452.05,10.9,6.8,10.4,0.0,8.3,18.1,12.5,14.4,Lanvale engraved; Broadway traced continuously north from Monument
+Chester & McElderry,CHESTER,MCELDERRY,FE,3466,1300,435558.51,181116.08,,,,10.7,8.3,0.0,11.9,10.0,13.2,,"both names engraved; note this was platted-but-thinly-built ground in 1860, so the sheet may be showing a plat rather than a survey"
+Luzerne & E Monument,LUZERNE,MONUMENT,FE,3732,1242,436152.20,181272.46,436152.25,181270.46,2.0,33.6,25.4,0.0,39.4,38.9,10.7,33.7,both names engraved; same platted-ground caveat as Chester
+Broadway & Aliceanna,BROADWAY,ALICEANNA,SE,3225,2009,435097.11,179561.72,435099.87,179561.35,2.8,28.1,14.3,0.0,32.3,19.6,7.3,26.8,Alice Anna engraved; Broadway corridor carries the market sheds
+Broadway & Lancaster,BROADWAY,LANCASTER,SE,3222,2058,435103.85,179453.81,435104.67,179455.15,1.6,25.6,7.7,0.0,29.8,11.1,7.8,26.9,Lancaster engraved; Broadway as above

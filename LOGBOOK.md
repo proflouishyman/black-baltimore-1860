@@ -570,3 +570,73 @@ the sources page, and do one year of manuscript schedules for 1840.
 - Exhibit panels do not exist in any form. Blocked on Larry's answers about
   years, panel count, physical size and whether he wants print files or ArcGIS.
 - City tax records, in his original brief, remain untouched.
+
+---
+
+## 2026-08-09 — Printed censuses of 1800, 1810 and 1830 checked for Baltimore ward tables
+
+### Prompt or task
+Determine whether the printed federal census volumes for 1800, 1810 and 1830
+carry ward-level population tables for Baltimore City, applying the method that
+eventually found the 1840 table rather than the keyword searching that twice
+failed to.
+
+### Decisions made
+- **Identified every volume from its own title page before reading anything into
+  it.** This immediately caught two mislabelled holdings: what census.gov offers
+  for 1830 is the *Abstract of the Returns of the Fifth Census* (county level,
+  Baltimore county and city as a single row), not the census, and the only
+  accessible 1810 copy is a Norman Ross 1990 facsimile rather than an 1811
+  original. Neither fact is visible from a file name or a catalogue title.
+- **Mapped each volume by rendering every page and OCR-reading the running head**
+  rather than searching text. The 1810 volume's page order as Google reports it
+  is scrambled, so a page-by-page map was the only way to locate Maryland. It is
+  one page, printed p.53.
+- **Treated a keyword hit as a hypothesis, not a finding.** "Baltimore" in the
+  1810 volume flags printed p.52a first, which is Delaware, where Sussex County
+  has a Baltimore hundred. Recorded as a trap.
+- **Ruled 1800 out on positive evidence, not on a failed search.** The Maryland
+  schedule occupies exactly one page and was read in full, as was the separate
+  corrected Maryland return that Etting sent in December 1801. Baltimore is one
+  row in both printings, and the two agree digit for digit.
+- **Reported the 1810 column set as it actually is** rather than forcing it into
+  the modern shape. In 1800 and 1810 free people of colour are a single
+  undifferentiated count with no age or sex bands, and Baltimore in 1810 is split
+  into city, eastern precincts and western precincts, which is a real sub-city
+  geography but not wards.
+- **Flagged rather than fixed a 5-person discrepancy in the 1810 printing.** The
+  City of Baltimore row's twelve cells sum to 35,588 against a printed 35,583,
+  while all three neighbouring rows close exactly. Left as a printer's error,
+  not corrected.
+- **Declined to write `ward_census_1830.csv`.** The 1830 ward table exists and
+  was located, but the only digital copy anywhere is the Google Books scan, hard
+  capped at 2500 px tall, at which a digit is about six pixels wide. Two
+  independent reading passes of the twelve ward totals disagreed with each other
+  and neither summed to the printed 80,620. Shipping a plausible table from that
+  scan would repeat, in transcription, the error this project already made twice
+  in searching. Documented instead where a transcriber should work and what a
+  better source would be.
+- **Established the join target for 1830 before anyone needs it.** June 1830
+  falls in the HUE 1818-1831 period, verified to hold 12 polygons, which is the
+  same set `ward_census_1820.csv` uses. So 1820 and 1830 would be directly
+  comparable ward by ward, the only such pair in the series.
+
+### Outcome
+- `docs/CENSUS_EARLY_YEARS.md` written: volume identity, location, arithmetic
+  and reconciliation for all three years, plus the list of everything opened.
+- 1800: no ward table, definitively. City totals 26,514 with 2,771 free people
+  of colour and 2,843 enslaved, reconciling to within 6 people of IPUMS on the
+  total.
+- 1810: no ward table. City plus both precincts reconcile to IPUMS within 0.19%
+  on population and 0.40% on Black total, which also settles that the IPUMS 1810
+  Baltimore universe includes the precincts.
+- 1830: **ward table found**, twelve wards, Fifth Census printed pp.80-81, under
+  the same stub heading that located 1840. Not transcribed.
+- Page images saved under `data/evidence/census1800/`, `census1810/` and
+  `census1830/`.
+
+### Open
+- 1830 transcription, blocked on scan resolution. Three routes named: a
+  library copy of the Duff Green 1832 printing, the 1830 manuscript schedules
+  (NARA M19, free on the Internet Archive), or a contemporary Baltimore
+  reprinting in Matchett's 1831 or Niles' Register.

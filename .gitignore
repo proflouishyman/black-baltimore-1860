@@ -26,3 +26,4 @@ data/raw/gis/**/*.pdf
 data/raw/gis/open_baltimore/baltimore_street_centerline_native.geojson
 data/raw/gis/maryland_imap/md_historic_inventory_baltimore_city.geojson
 data/work/maps/*.tif
+panels/

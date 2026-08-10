@@ -675,6 +675,39 @@
     });
   }
 
+  // Print/exhibit mode. `?bare=1` strips the site chrome so the canvas fills
+  // the viewport and can be captured at print resolution, and the other
+  // parameters set the same state a viewer would set by clicking, so a panel
+  // is reproducible from its URL alone rather than from a sequence of clicks.
+  //   ?bare=1        hide rail, HUD and zoom buttons
+  //   ?year=1840     select a census year (density) or directory year (trade)
+  //   ?layers=t51,tm switch named layers on
+  //   ?theme=light   force a palette regardless of the renderer's OS setting
+  (function () {
+    var q = new URLSearchParams(location.search);
+    if (q.get('theme')) document.documentElement.setAttribute('data-theme', q.get('theme'));
+    var yr = q.get('year');
+    if (yr) {
+      if (MODE === 'trade') { TY = yr; } else { CY = yr; }
+      if (cyBtns) Array.prototype.forEach.call(cyBtns.children, function (o) {
+        o.setAttribute('aria-pressed', o.dataset.year === yr);
+      });
+    }
+    (q.get('layers') || '').split(',').forEach(function (id) {
+      var el = document.getElementById(id.trim());
+      if (el && !el.checked) { el.checked = true;
+        el.dispatchEvent(new Event('change', { bubbles: true })); }
+    });
+    if (q.get('bare') === '1') {
+      document.body.classList.add('bare');
+      var st = document.createElement('style');
+      st.textContent = '.bare .rail,.bare .hud,.bare .zoomers,.bare #tip{display:none!important}' +
+        '.bare .wrap{grid-template-columns:1fr!important}' +
+        '.bare .stage{height:100vh!important}';
+      document.head.appendChild(st);
+    }
+  })();
+
   readTokens();
   window.addEventListener('resize', resize);
   var mq = window.matchMedia('(prefers-color-scheme: dark)');
